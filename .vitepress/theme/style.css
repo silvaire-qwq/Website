@@ -1,0 +1,271 @@
+/**
+ * Customize default theme styling by overriding CSS variables:
+ * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
+ */
+
+/**
+ * Colors
+ *
+ * Each colors have exact same color scale system with 3 levels of solid
+ * colors with different brightness, and 1 soft color.
+ * 
+ * - `XXX-1`: The most solid color used mainly for colored text. It must
+ *   satisfy the contrast ratio against when used on top of `XXX-soft`.
+ *
+ * - `XXX-2`: The color used mainly for hover state of the button.
+ *
+ * - `XXX-3`: The color for solid background, such as bg color of the button.
+ *   It must satisfy the contrast ratio with pure white (#ffffff) text on
+ *   top of it.
+ *
+ * - `XXX-soft`: The color used for subtle background such as custom container
+ *   or badges. It must satisfy the contrast ratio when putting `XXX-1` colors
+ *   on top of it.
+ *
+ *   The soft color must be semi transparent alpha channel. This is crucial
+ *   because it allows adding multiple "soft" colors on top of each other
+ *   to create a accent, such as when having inline code block inside
+ *   custom containers.
+ *
+ * - `default`: The color used purely for subtle indication without any
+ *   special meanings attached to it such as bg color for menu hover state.
+ *
+ * - `brand`: Used for primary brand colors, such as link text, button with
+ *   brand theme, etc.
+ *
+ * - `tip`: Used to indicate useful information. The default theme uses the
+ *   brand color for this by default.
+ *
+ * - `warning`: Used to indicate warning to the users. Used in custom
+ *   container, badges, etc.
+ *
+ * - `danger`: Used to show error, or dangerous message to the users. Used
+ *   in custom container, badges, etc.
+ * -------------------------------------------------------------------------- */
+
+ @import url('https://fonts.font.im/css?family=Fira+Mono:400,700');
+
+* {
+      --vp-font-family-mono: "Fira Mono" !important;
+  } 
+
+ :root {
+  --vp-c-default-1: var(--vp-c-gray-1);
+  --vp-c-default-2: var(--vp-c-gray-2);
+  --vp-c-default-3: var(--vp-c-gray-3);
+  --vp-c-default-soft: var(--vp-c-gray-soft);
+
+  --vp-c-brand-1: var(--vp-c-indigo-1);
+  --vp-c-brand-2: var(--vp-c-indigo-2);
+  --vp-c-brand-3: var(--vp-c-indigo-3);
+  --vp-c-brand-soft: var(--vp-c-indigo-soft);
+
+  --vp-c-tip-1: var(--vp-c-brand-1);
+  --vp-c-tip-2: var(--vp-c-brand-2);
+  --vp-c-tip-3: var(--vp-c-brand-3);
+  --vp-c-tip-soft: var(--vp-c-brand-soft);
+
+  --vp-c-warning-1: var(--vp-c-yellow-1);
+  --vp-c-warning-2: var(--vp-c-yellow-2);
+  --vp-c-warning-3: var(--vp-c-yellow-3);
+  --vp-c-warning-soft: var(--vp-c-yellow-soft);
+
+  --vp-c-danger-1: var(--vp-c-red-1);
+  --vp-c-danger-2: var(--vp-c-red-2);
+  --vp-c-danger-3: var(--vp-c-red-3);
+  --vp-c-danger-soft: var(--vp-c-red-soft);
+}
+
+/**
+ * Component: Button
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-button-brand-border: transparent;
+  --vp-button-brand-text: var(--vp-c-white);
+  --vp-button-brand-bg: var(--vp-c-brand-3);
+  --vp-button-brand-hover-border: transparent;
+  --vp-button-brand-hover-text: var(--vp-c-white);
+  --vp-button-brand-hover-bg: var(--vp-c-brand-2);
+  --vp-button-brand-active-border: transparent;
+  --vp-button-brand-active-text: var(--vp-c-white);
+  --vp-button-brand-active-bg: var(--vp-c-brand-1);
+}
+
+/**
+ * Component: Home
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
+    var(--vp-c-brand-1) 30%,
+    var(--vp-c-brand-3)
+  );
+
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
+    #cba6f4 50%,
+    #b4befe 50%
+  );
+  --vp-home-hero-image-filter: blur(44px);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --vp-home-hero-image-filter: blur(56px);
+  }
+}
+
+@media (min-width: 960px) {
+  :root {
+    --vp-home-hero-image-filter: blur(68px);
+  }
+}
+
+/**
+ * Component: Custom Block
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-custom-block-tip-border: transparent;
+  --vp-custom-block-tip-text: var(--vp-c-text-1);
+  --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
+  --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
+}
+
+/**
+ * Component: Algolia
+ * -------------------------------------------------------------------------- */
+
+.DocSearch {
+  --docsearch-primary-color: var(--vp-c-brand-1) !important;
+}
+
+/* article */
+
+div.VPLink.no-icon.VPFeature {
+  article.box {
+    border: var(--vp-c-divider) 1px solid;
+    border-radius: 0.7em;
+    transition: all 0.4s ease 0s;
+    box-shadow: 10px 10px 10px var(--vp-c-bg-elv);
+  }
+  article.box:hover {
+    background-color: var(--vp-c-bg-elv);
+    transition: all 0.4s;
+  }
+  article.box:hover .icon {
+    background-color: transparent;
+    transition: all 0.4s;
+  }
+  article.box .icon {
+    scale: 1.8;
+    background-color: transparent;
+    border-radius: .35em;
+    transition: all 0.4s ease 0s;
+  }
+}
+
+/* button */
+
+a.VPButton {
+  border-radius: 0.65em !important;
+}
+
+a.VPButton.medium.alt {
+  background-color: var(--vp-c-divider);
+}
+
+a.VPButton.medium.alt:hover {
+  background-color: var(--vp-c-gutter);
+}
+
+/* Custom Block */
+
+:root {
+  --vp-custom-block-tip-bg: var(--vp-c-green-soft);
+}
+
+.custom-block.tip {
+  border-color: var(--vp-c-green-2);
+}
+
+.custom-block.warning {
+  border-color: var(--vp-c-yellow-2);
+}
+
+.custom-block.danger {
+  border-color: var(--vp-c-red-2);
+}
+
+.custom-block.important {
+  border-color: var(--vp-c-purple-1);
+}
+
+.custom-block.note {
+  border-color: var(--vp-c-indigo-1);
+}
+
+/* a.mark */
+a.mark {
+  transition: .2s;
+  text-decoration: none !important;
+  background: linear-gradient(var(--vp-c-divider), var(--vp-c-divider)) no-repeat 0 100% / 100% 1px;
+}
+a.mark:hover {
+  border-radius: 4px;
+  padding: 0px 3px 0px 3px;
+  background: linear-gradient(var(--vp-c-divider), var(--vp-c-divider)) no-repeat 0 100% / 100% 100%;
+}
+a.mark:hover::after {
+  content: '' !important;
+}
+
+/* blockquote */
+blockquote {
+  background-color: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider) !important;
+  border-radius: 0.8em;
+  padding: 10px 15px 10px 15px!important;
+}
+
+/* header-anchor */
+.header-anchor {
+  display: none;
+}
+
+/* hero image */
+div.VPHero.has-image.VPHomeHero {
+  img.VPImage.image-src {
+    border-radius: 100%;
+    height: 270px;
+  }
+}
+
+/* friends */
+.friends {
+  h1 {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--vp-c-divider);
+    font-size: 550%;
+    margin-top: 50px;
+    margin-bottom: -35px;
+  }
+  h3 {
+    a {
+      text-decoration: none;
+      color: var(--vp-c-text-1);
+    }
+    margin-left: 40px;
+    margin-top: 15px;
+  }
+}
+
+/* custom-block-title */
+.custom-block-title {
+  font-size: 200%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
