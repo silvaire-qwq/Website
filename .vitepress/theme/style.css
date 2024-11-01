@@ -252,14 +252,14 @@ div.VPHero.has-image.VPHomeHero {
     font-size: 550%;
     margin-top: 50px;
     margin-bottom: -35px;
+    margin-left: -25px;
   }
   h3 {
     a {
       text-decoration: none;
       color: var(--vp-c-text-1);
     }
-    margin-left: 40px;
-    margin-top: 15px;
+    margin-top: 20px;
   }
 }
 
@@ -268,4 +268,13 @@ div.VPHero.has-image.VPHomeHero {
   font-size: 200%;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.home {
+  h3 {
+    color: var(--vp-c-gutter);
+    margin-top: 10px;
+  }
+  margin-top: 100px;
+  margin-bottom: 100px;
 }

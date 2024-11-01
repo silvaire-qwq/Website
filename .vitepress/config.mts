@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Hydrangea 的小窝",
+  title: "Hydrangea_Offcial's Blog",
   description: "明年此日青云去，却笑人间举子忙。",
   markdown: {
     theme: {
@@ -46,6 +46,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '主页', link: '/' },
+      { text: '笔记本', link: '/notes' },
       { text: '朋友们', link: '/friends' }
     ],
 
