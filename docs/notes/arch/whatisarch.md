@@ -1,4 +1,4 @@
-# Arch Linux 是什么? 
+# Arch Linux 是什么?
 
 > 内容来自 [Arch Linux - ArchWiki](https://wiki.archlinux.org/title/Arch_Linux) ，本文对其有修改。不使用页脚的版权信息。
 

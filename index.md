@@ -9,9 +9,11 @@
 
 <div class="friends">
 
-# 2024
+# Nov 2024
 
-### [分享一些 9-10月 我喜欢的音乐～](/docs/posts/music24910)
+### [给网站来点小优化](/docs/posts/2024/11/03/web-update-pre)
 
 
+# Sep 2024
+### [我决定从 VSCode 转到 NeoVim 了](/docs/posts/vim-basic)
 </div>

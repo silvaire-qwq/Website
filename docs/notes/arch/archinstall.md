@@ -11,10 +11,10 @@
 
 ## 准备
 
-- 一个 [Arch Linux 镜像](https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/archlinux-x86_64.iso) (如果你没有的话可以点击一下 Arch Linux 镜像，会直接下载下来哦)。
-- 一个写盘工具。
-- 如果要装双系统的话，请提前先分好区 (空的，不要有文件系统) 哦
-- 最重要的是 [USB 和 电脑](https://www.bilibili.com/video/BV1GJ411x7h7/?share_source=copy_web&vd_source=7042c7b68a10e8b7be829bab8708b7cb)
+1. 一个 [Arch Linux 镜像](https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/archlinux-x86_64.iso) (如果你没有的话可以点击一下 Arch Linux 镜像，会直接下载下来哦)。
+2. 一个写盘工具。
+3. 如果要装双系统的话，请提前先分好区 (空的，不要有文件系统) 哦。
+4. 最重要的是 USB 和 电脑。
 
 ## 写盘
 

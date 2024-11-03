@@ -1,11 +1,13 @@
-# 为什么没有输入法？
+# Arch Linux 安装输入法
 
-不用担心，一起来安装吧～
+> [!WARNING] 警告
+> 本期教程为 Arch Linux (系) 撰写的。<br>
+> 如果您是 Debian/Red Hat 系的，那么安装方法与此不同。
 
 ## 安装输入法
 
 ```shell
-  sudo pacman -S fcitx5 fcitx5-configtool fcitx5-lua fcitx5-chinese-addons
+ sudo pacman -S fcitx5 fcitx5-configtool fcitx5-lua fcitx5-chinese-addons
 ```
 
 ## 配置

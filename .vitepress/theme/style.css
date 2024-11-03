@@ -43,9 +43,11 @@
  *   in custom container, badges, etc.
  * -------------------------------------------------------------------------- */
 
+ @import url('https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap');
  @import url('https://fonts.font.im/css?family=Fira+Mono:400,700');
 
 * {
+      --vp-font-family-base: "MiSans VF" !important;
       --vp-font-family-mono: "Fira Mono" !important;
   } 
 
@@ -250,12 +252,15 @@ div.VPHero.has-image.VPHomeHero {
     color: transparent;
     -webkit-text-stroke: 1px var(--vp-c-gutter);
     opacity: .8;
-    font-size: 550%;
+    line-height: 80px;
+    font-weight: bold;
+    font-size: 520%;
     margin-top: 50px;
     margin-bottom: -35px;
   }
   h3 {
     a {
+      font-weight: normal;
       text-decoration: none;
       color: var(--vp-c-text-1);
       margin-left: 30px;
@@ -266,16 +271,23 @@ div.VPHero.has-image.VPHomeHero {
 
 /* custom-block-title */
 .custom-block-title {
-  font-size: 200%;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  font-size: 16px;
 }
 
 .home {
+  h1 {
+    font-weight: 600;
+  }
   h3 {
     color: var(--vp-c-gutter);
     margin-top: 10px;
+    font-weight: 500;
   }
   margin-top: 100px;
   margin-bottom: 100px;
+}
+
+.custom-block {
+  border-radius: 0.8em;
+  font-size: 16px;
 }

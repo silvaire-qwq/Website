@@ -1,12 +1,9 @@
-# 为什么别人的终端这么好看？
-
-
-那就来一起美化一下吧～
+# 美化终端
 
 ---
 
-由于oh-my-zsh太慢了，所以这期教程使用zim作为框架～
-如果您没有安装zsh，请先`sudo pacman -S zsh`。
+由于 `oh-my-zsh` 比较慢，所以这期教程使用 ```zim``` 作为框架。<br>
+如果您没有安装 zsh，请先安装 zsh。
 
 ## zim
 
@@ -22,7 +19,7 @@ curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | 
 nano ~/.zimrc
 ```
 
-### 添加powerlevel10k模块并安装
+### 添加 powerlevel10k 模块并安装
 
 ```shell
 zmodule romkatv/powerlevel10k
@@ -30,7 +27,7 @@ zmodule romkatv/powerlevel10k
 zimfw install
 ```
 
-### 切换默认shell并重启
+### 切换默认 shell 并重启
 
 ```shell
 sudo nano /etc/passwd
@@ -39,13 +36,13 @@ sudo nano /etc/passwd
 reboot
 ```
 
-下次启动zsh时会让您配置powerlevel10k。请按照自己需求选择～
+下次启动 zsh 时会让您配置 powerlevel10k 。请按照自己需求选择。
 
 ## 字体
 
-powerlevel10k中有很多图标无法显示，可以按照以下方法解决：
+powerlevel10k 中有很多图标无法显示，可以按照以下方法解决：
 
-### 安装字体
+### 安装字体 (适用于 Arch Linux)
 
 ```shell
 sudo pacman -S ttf-jetbrains-mono-nerd
@@ -53,11 +50,9 @@ sudo pacman -S ttf-jetbrains-mono-nerd
 
 ### 切换终端默认字体
 
-由于安装教程里面是 KDE ，所以这里以 Konsole 为例～
+这里以 Konsole 为例。
 
 ```shell
 # 右键点击 - 编辑当前方案 - 外观
 # 字体(选择) - 选择JetBrainsMono Nerd Font(不要选MONO!!) - 确定 - 确定
 ```
-
-在这之后，您就可以使用ZSH了～
