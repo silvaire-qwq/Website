@@ -19,6 +19,7 @@
 <br>
 
 # Geniuses
+### [Ariasakaの小窝](https://blog.yaria.top/)
 ### [CE-RAMOS](https://ce-ramos.cn/)
 ### [青稚的空间](https://blog.linux-qitong.top/)
 ### [张洪 Heo](https://blog.zhheo.com/)

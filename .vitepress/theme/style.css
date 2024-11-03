@@ -248,16 +248,17 @@ div.VPHero.has-image.VPHomeHero {
 .friends {
   h1 {
     color: transparent;
-    -webkit-text-stroke: 1px var(--vp-c-divider);
+    -webkit-text-stroke: 1px var(--vp-c-gutter);
+    opacity: .8;
     font-size: 550%;
     margin-top: 50px;
     margin-bottom: -35px;
-    margin-left: -25px;
   }
   h3 {
     a {
       text-decoration: none;
       color: var(--vp-c-text-1);
+      margin-left: 30px;
     }
     margin-top: 20px;
   }
