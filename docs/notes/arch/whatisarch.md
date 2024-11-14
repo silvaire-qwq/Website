@@ -1,6 +1,6 @@
 # Arch Linux 是什么?
 
-> 内容来自 [Arch Linux - ArchWiki](https://wiki.archlinux.org/title/Arch_Linux) ，本文对其有修改。不使用页脚的版权信息。
+> 内容来自 [Arch Linux - ArchWiki](https://wiki.archlinux.org/title/Arch_Linux) 。不使用页脚的版权信息。
 
 Arch Linux 是一种**通用操作系统**，它是基于 x86-64 架构的一类 **GNU/Linux 发行版**。
 
