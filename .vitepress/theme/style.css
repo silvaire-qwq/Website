@@ -43,7 +43,7 @@
  *   in custom container, badges, etc.
  * -------------------------------------------------------------------------- */
 
- @import url('./fonts/index.css');
+ @import url('./fonts/import.css');
 
 * {
       --vp-font-family-base: 'PingFang SC', 'SF Mono' !important;
