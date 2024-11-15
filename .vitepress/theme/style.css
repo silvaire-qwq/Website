@@ -43,11 +43,12 @@
  *   in custom container, badges, etc.
  * -------------------------------------------------------------------------- */
 
- @import url('./fonts/import.css');
+ @import url('https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap');
+ @import url('https://fonts.font.im/css?family=Fira+Mono:400,700');
 
 * {
-      --vp-font-family-base: 'PingFang SC', 'SF Mono' !important;
-      --vp-font-family-mono: 'SF Mono', 'PingFang SC' !important;
+      --vp-font-family-base: "MiSans VF" !important;
+      --vp-font-family-mono: "Fira Mono" !important;
   } 
 
  :root {
