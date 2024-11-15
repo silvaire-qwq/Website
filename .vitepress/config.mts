@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Hydrangea_Offcial's Blog",
+  title: "Silvaire_qwq's Blog",
   description: "明年此日青云去，却笑人间举子忙。",
   markdown: {
     theme: {
@@ -51,7 +51,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/Hydrangea-Offcial' }
+      { icon: 'github', link: 'https://github.com/silvaire-qwq' }
     ]
   }
 })
