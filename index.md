@@ -1,20 +1,24 @@
+---
 
-<div class="home">
+layout: home
 
-# Silvaire_qwq's Blog
-### Don't aim for success if you really want it. <br>Just stick to what you love and believe in, and it will come naturally.
+hero:
+  name: "Silvaire_qwq's Blog"
+  tagline: Don't aim for success if you really want it. <br>Just stick to what you love and believe in, and it will come naturally.
+  image: "https://gcore.jsdelivr.net/gh/silvaire-qwq/silvaire-qwq@cdn3/new.jpg"
 
-</div>
-
-
-<div class="friends">
-
-# Nov 2024
-
-### [独立博客自省问卷 15 题](/docs/posts/2024/11/14/15-blog)
-### [给网站来点小优化](/docs/posts/2024/11/03/web-update-pre)
-
-
-# Sep 2024
-### [我决定从 VSCode 转到 NeoVim 了](/docs/posts/vim-basic)
-</div>
+    
+features:
+  - title: 独立博客自省问卷 15 题
+    link: /docs/posts/2024/11/14/15-blog
+    details: 看别人的网站时发现了这个问卷，我也来答一下。
+    linkText: 阅读
+  - title: '给网站来点小优化'
+    details: '一些新的设计。'
+    link: /docs/posts/2024/11/03/web-update-pre
+    linkText: 阅读
+  - title: '我决定从 VSCode 转到 NeoVim 了'
+    details: '在这篇文章中，我会分享一下我为何放弃 VSCode 使用 NeoVim 和使用 NeoVim 的一些经验。'
+    link: /docs/posts/vim-basic
+    linkText: 阅读
+---

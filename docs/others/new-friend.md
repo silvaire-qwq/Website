@@ -14,4 +14,4 @@ https://lunars.site
 - 已经挂上了 Hydrangea_Offcial
 - 有 3 篇或更多的原创文章
 ## 3. 审核
-如果您符合条件，请将网站名和网址发送至 ```mail@lunars.site```，等待审核。
+如果您符合条件，请将网站名、简介和网址发送至 ```mail@lunars.site```，等待审核。

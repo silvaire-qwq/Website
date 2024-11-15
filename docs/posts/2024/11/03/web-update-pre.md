@@ -19,10 +19,6 @@
 > **BLOCKQUOTE**<br>
 > TEST
 
-## 字体 (MiSans VF)
-
-见 [此](https://hyperos.mi.com/font/zh/)
-
 ## 页面美化
 
 包括主页、笔记本、友情链接。
