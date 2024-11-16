@@ -46,7 +46,13 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '主页', link: '/' },
-      { text: '笔记本', link: '/notes' },
+      { text: '文章', link: '/blogs' },
+      { text: '笔记本', 
+        items: [
+          { text: 'Arch Linux', link: '/notes/archlinux' },
+          { text: 'Linux', link: '/notes/linux' },
+        ]
+       },
       { text: '朋友们', link: '/friends' }
     ],
 
