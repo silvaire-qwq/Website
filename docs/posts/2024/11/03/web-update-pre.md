@@ -23,10 +23,6 @@
 
 包括主页、笔记本、友情链接。
 
-## 分类
-
-原来的大部分文章已移动到笔记本。
-
 ## 灵感来源
 - [Redish101 Blog](https://blog.redish101.top/)
 - [纸鹿摸鱼处](https://blog.zhilu.cyou/)

@@ -10,6 +10,10 @@ features:
     link: https://blog.yaria.top/
     details: 人有悲欢离合，月有阴晴圆缺。
     linkText: 前往
+  - title: Kevin Wang的博客
+    link: https://www.pluskevin.com/blog/
+    details: 记录我的IT学习历程、我的软件开发学习！
+    linkText: 前往
   - title: CE-RAMOS
     link: https://ce-ramos.cn/
     details: 一款致力于模仿原版系统界面且功能强大的PE。
@@ -27,4 +31,3 @@ features:
     details: 和我成为朋友吧 (∠・ω< )⌒☆
     linkText: 前往
 ---
-

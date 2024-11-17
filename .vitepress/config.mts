@@ -47,12 +47,6 @@ export default defineConfig({
     nav: [
       { text: '主页', link: '/' },
       { text: '文章', link: '/blogs' },
-      { text: '笔记本', 
-        items: [
-          { text: 'Arch Linux', link: '/notes/archlinux' },
-          { text: 'Linux', link: '/notes/linux' },
-        ]
-       },
       { text: '朋友们', link: '/friends' }
     ],
 

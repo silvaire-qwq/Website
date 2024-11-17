@@ -11,6 +11,6 @@ hero:
       text: 查看文章
       link: /blogs
     - theme: alt
-      text: 笔记本 ( Arch Linux )
-      link: /notes/archlinux
+      text: GitHub
+      link: https://github.com/silvaire-qwq
 ---

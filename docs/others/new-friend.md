@@ -3,7 +3,7 @@
 ### 名称
 Hydrangea_Offcial
 ### 头像
-[右键-复制链接地址](https://gcore.jsdelivr.net/gh/lunarblog/CDN@Avatar-241002/avatar/241002.JPG)
+[右键-复制链接地址](https://gcore.jsdelivr.net/gh/silvaire-qwq/silvaire-qwq@cdn3/new.jpg)
 ### 描述
 明年此日青云去，却笑人间举子忙。
 ### 网址
