@@ -4,8 +4,8 @@ layout: home
 features:
   - title: Silper 已被合并
     details: 已将 Silper 的单独站点与 Silvaire's Blog 合并。
-    link: /photos
-    linkText: 跳转到新的 Silper
+    link: /docs/others/about-silper
+    linkText: 关于 Silper 与版权问题
   - title: 第二期
     link: /photos/002
     details: 于 2024 年 11 月 21 日 上传的 9 张由 Oshino Uomi 创作的图片
