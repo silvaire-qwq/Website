@@ -302,3 +302,94 @@ a.title {
 .VPFooter {
   border-top: none !important;
 }
+
+.vp-doc .custom-block {
+  padding: 8px 16px;
+}
+
+.vp-doc .custom-block :first-child:first-child {
+  margin: 8px 0;
+}
+
+.VPMenuGroup > .title {
+  font-size: 0.7em;
+}
+
+.vp-doc a {
+  background: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft)) no-repeat center bottom / 100% 2px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.vp-doc a:hover {
+  border-radius: 0.35em;
+  padding: 1px 3px 1px 3px;
+  background: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft)) no-repeat center bottom / 100% 100%;
+}
+
+.vp-doc strong {
+  background: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft)) no-repeat center bottom / 100% 40%;
+}
+
+.vp-doc s {
+  text-decoration: none;
+  filter: blur(3px);
+  transition: 0.2s;
+}
+
+.vp-doc s:hover {
+  filter: blur(0px);
+}
+
+/* 文档二级标题编号 */
+.vp-doc {
+  counter-reset: section-counter;
+}
+
+.vp-doc h2 {
+  counter-increment: section-counter;
+}
+
+.vp-doc h2::before {
+  content: counter(section-counter);
+  position: absolute;
+  left: -2rem;
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: var(--vp-c-divider);
+  opacity: .7;
+  z-index: -1;
+}
+
+.some-comp.some-comp a {
+  background: unset;
+}
+
+.some-comp.some-comp a[target]::after {
+  content: unset;
+}
+
+.fa-solid, .fa-regular, .fa-brands {
+  width: 1.2em;
+  vertical-align: middle;
+  text-align: center;
+}
+
+pre {
+  border-radius: 0.8em !important;
+  border: 1px solid var(--vp-c-divider) !important;
+}
+
+div.shiki {
+  border-radius: 0.8em !important;
+  margin: 0px !important;
+}
+
+div.vp-adaptive-theme {
+  border-radius: 0.8em !important;
+  margin: 0px !important;
+}
+
+code {
+  border-radius: 0.5em !important;
+}
