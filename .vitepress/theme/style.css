@@ -393,3 +393,29 @@ div.vp-adaptive-theme {
 code {
   border-radius: 0.5em !important;
 }
+
+div#home-page {
+  img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 0.6em;
+    box-shadow: 5px 5px 7px var(--vp-c-bg-elv);
+    transition: all 0.4s;
+  }
+
+  img:hover {
+    transform: scale(0.97);
+  }
+  p {
+    margin: 7px 0px 0px 0px !important;
+  }
+}
+
+div#home-page {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+  grid-template-rows: repeat(auto-fill, 1fr);
+  grid-gap: 0px 7px;
+}

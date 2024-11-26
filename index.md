@@ -10,7 +10,7 @@ hero:
       text: 查看文章
       link: /blogs
     - theme: alt
-      text: GitHub
-      link: https://github.com/silvaire-qwq
+      text: 壁纸
+      link: /photos
 ---
 

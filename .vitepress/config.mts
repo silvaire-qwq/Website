@@ -49,6 +49,7 @@ export default defineConfig({
     nav: [
       { text: '主页', link: '/' },
       { text: '文章', link: '/blogs' },
+      { text: '壁纸', link: '/photos' },
       { text: '朋友们', link: '/friends' }
     ],
 
