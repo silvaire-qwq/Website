@@ -1,43 +1,43 @@
 {
-  "hash": "fcbc1ea1",
-  "configHash": "87f238fb",
+  "hash": "a87822d9",
+  "configHash": "19c68d09",
   "lockfileHash": "0795f922",
-  "browserHash": "d3f04270",
+  "browserHash": "356c2e5d",
   "optimized": {
     "vue": {
       "src": "../../../node_modules/.pnpm/vue@3.5.12_typescript@5.6.3/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "890c5942",
+      "fileHash": "a293ac94",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../node_modules/.pnpm/@vue+devtools-api@7.5.2/node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "bfa4bd70",
+      "fileHash": "cda56a4f",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../node_modules/.pnpm/@vueuse+core@11.1.0_vue@3.5.12_typescript@5.6.3_/node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "a5f002e7",
+      "fileHash": "571aa668",
       "needsInterop": false
     },
     "vitepress > @vueuse/integrations/useFocusTrap": {
       "src": "../../../node_modules/.pnpm/@vueuse+integrations@11.1.0_focus-trap@7.6.0_vue@3.5.12_typescript@5.6.3_/node_modules/@vueuse/integrations/useFocusTrap.mjs",
       "file": "vitepress___@vueuse_integrations_useFocusTrap.js",
-      "fileHash": "195ba14c",
+      "fileHash": "2c1e12cc",
       "needsInterop": false
     },
     "vitepress > mark.js/src/vanilla.js": {
       "src": "../../../node_modules/.pnpm/mark.js@8.11.1/node_modules/mark.js/src/vanilla.js",
       "file": "vitepress___mark__js_src_vanilla__js.js",
-      "fileHash": "8ec2f6e8",
+      "fileHash": "a0439471",
       "needsInterop": false
     },
     "vitepress > minisearch": {
       "src": "../../../node_modules/.pnpm/minisearch@7.1.0/node_modules/minisearch/dist/es/index.js",
       "file": "vitepress___minisearch.js",
-      "fileHash": "da1591a2",
+      "fileHash": "993ba938",
       "needsInterop": false
     }
   },

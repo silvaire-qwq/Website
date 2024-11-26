@@ -15,10 +15,6 @@ features:
     details: '在这篇文章中，我会分享一下我为何放弃 VSCode 使用 NeoVim 和使用 NeoVim 的一些经验。'
     link: /docs/posts/vim-basic
     linkText: 阅读
-  - title: '美化终端'
-    details: '如果您的终端不好看，可以跟着这期教程来美化一下。'
-    link: /docs/notes/linux/shell-beauty
-    linkText: 阅读
   - title: 'Arch Linux 安装输入法'
     details: 'Arch Linux 默认是没有输入法的，如果需要，那就来看看怎么安装吧！'
     link: /docs/notes/arch/archinput
@@ -30,13 +26,5 @@ features:
   - title: '安装 Arch Linux'
     details: '你好呀，本期教程将会教您如何安装Arch Linux (并且是 Btrfs 文件系统)。'
     link: /docs/notes/arch/archinstall
-    linkText: 阅读
-  - title: Arch Linux 真的适合你吗?
-    link: /docs/notes/arch/archyes
-    details: 我们在安装 Arch Linux 前一定要知道我们适不适合它，现在您可以根据以下内容判断。
-    linkText: 阅读
-  - title: Arch Linux 是什么?
-    link: /docs/notes/arch/whatisarch
-    details: Arch Linux 是一种通用操作系统，它是基于 x86-64 架构的一类 GNU/Linux 发行版。
     linkText: 阅读
 ---

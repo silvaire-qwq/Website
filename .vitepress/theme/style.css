@@ -43,12 +43,18 @@
  *   in custom container, badges, etc.
  * -------------------------------------------------------------------------- */
 
- @import url('https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap');
  @import url('https://fonts.font.im/css?family=Fira+Mono:400,700');
+ @import url('https://fonts.font.im/css?family=Miniver');
+
+ @font-face {
+  font-family: HYTMR;
+  src: url("https://npm.elemecdn.com/fontcdn-ariasaka@1.0.0/HYTangMeiRen55W.woff2");
+ }
 
  * {
-      --vp-font-family-base: "MiSans VF" !important;
+      --vp-font-family-base: "HYTMR" !important;
       --vp-font-family-mono: "Fira Mono" !important;
+      --title-font: "Miniver" !important;
   } 
 
  :root {
@@ -126,71 +132,6 @@
   }
 }
 
-/* .vitepress/theme/style/blur.css */
-:root {
-  /* 首页导航 */
-  .VPNavBar {
-    background-color: rgba(255, 255, 255, 0);
-    backdrop-filter: blur(10px);
-  }
-
-  /* 文档页导航两侧 */
-  .VPNavBar:not(.home) {
-    background-color: rgba(255, 255, 255, 0);
-    backdrop-filter: blur(10px);
-  }
-
-  @media (min-width: 960px) {
-    /* 文档页导航两侧 */
-    .VPNavBar:not(.home) {
-      background-color: rgba(255, 255, 255, 0);
-      backdrop-filter: blur(10px);
-    }
-
-    /* 首页下滑后导航两侧 */
-    .VPNavBar:not(.has-sidebar):not(.home.top) {
-      background-color: rgba(255, 255, 255, 0);
-      backdrop-filter: blur(10px);
-    }
-  }
-
-  @media (min-width: 960px) {
-    /* 文档页导航中间 */
-    .VPNavBar:not(.home.top) .content-body {
-      background-color: rgba(255, 255, 255, 0);
-      backdrop-filter: blur(10px);
-    }
-
-    /* 首页下滑后导航中间 */
-    .VPNavBar:not(.has-sidebar):not(.home.top) .content-body {
-      background-color: rgba(255, 255, 255, 0);
-      backdrop-filter: blur(10px);
-    }
-  }
-
-  /* 分割线 */
-
-  @media (min-width: 960px) {
-
-    /* 首页分割线 */
-    .VPNavBar:not(.has-sidebar):not(.home.top) .divider {
-      background-color: rgba(255, 255, 255, 0);
-      backdrop-filter: blur(10px);
-    }
-  }
-
-  /* 搜索框 VPNavBarSearchButton.vue */
-  .DocSearch-Button {
-    background-color: rgba(255, 255, 255, 0);
-    backdrop-filter: blur(10px);
-  }
-
-  /* 移动端大纲栏 */
-  .VPLocalNav {
-    background-color: rgba(255, 255, 255, 0);
-    backdrop-filter: blur(10px);
-  }
-}
 
 /**
  * Component: Custom Block
@@ -225,9 +166,9 @@ div.VPHome {
 a.VPLink.no-icon.VPFeature {
   article.box {
     border: var(--vp-c-divider) 1px solid;
-    border-radius: 0.7em;
+    border-radius: 13px;
     transition: all 0.4s ease 0s;
-    box-shadow: 10px 10px 10px var(--vp-c-bg-elv);
+    box-shadow: 3px 3px 10px var(--vp-c-bg-elv);
   }
   article.box:hover {
     background-color: var(--vp-c-bg-elv);
@@ -249,15 +190,16 @@ a.VPLink.no-icon.VPFeature {
 /* button */
 
 a.VPButton {
-  border-radius: 0.65em !important;
+  border-radius: 0.7em !important;
 }
 
 a.VPButton.medium.brand {
-  background-image: -webkit-linear-gradient(
+  background-image: linear-gradient(
     120deg,
     var(--vp-c-brand-1) 30%,
     var(--vp-c-indigo-1)
   );
+  border: none;
   background-color: transparent;
 }
 
@@ -295,21 +237,6 @@ a.VPButton.medium.alt:hover {
   border-color: var(--vp-c-indigo-1);
 }
 
-/* a.mark */
-a.mark {
-  transition: .2s;
-  text-decoration: none !important;
-  background: linear-gradient(var(--vp-c-divider), var(--vp-c-divider)) no-repeat 0 100% / 100% 1px;
-}
-a.mark:hover {
-  border-radius: 4px;
-  padding: 0px 3px 0px 3px;
-  background: linear-gradient(var(--vp-c-divider), var(--vp-c-divider)) no-repeat 0 100% / 100% 100%;
-}
-a.mark:hover::after {
-  content: '' !important;
-}
-
 /* blockquote */
 blockquote {
   background-color: var(--vp-c-bg-soft);
@@ -341,4 +268,37 @@ div.VPHero.has-image.VPHomeHero {
 .custom-block {
   border-radius: 0.8em;
   font-size: 16px;
+}
+
+span.DocSearch-Button-Placeholder {
+  visibility: hidden !important;
+}
+
+span.DocSearch-Button-Keys {
+  visibility: hidden !important;
+}
+
+a.title {
+  span {
+    font-family: var(--title-font);
+  }
+}
+
+.VPHome {
+  .VPHero {
+    .container {
+      .main {
+        .name {
+          font-family: var(--title-font);
+        }
+        .tagline {
+          font-family: var(--title-font);
+        }
+      }
+    }
+  }
+}
+
+.VPFooter {
+  border-top: none !important;
 }
