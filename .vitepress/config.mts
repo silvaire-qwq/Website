@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
+
 export default defineConfig({
   title: "Silvaire's Blog",
   description: "明年此日青云去，却笑人间举子忙。",
@@ -11,7 +12,7 @@ export default defineConfig({
     },
   },
   themeConfig: {
-    logo: 'https://gcore.jsdelivr.net/gh/silvaire-qwq/silvaire-qwq@new/avatar.png',
+    logo: 'https://imgbed.lunars.site/file/1732958150105_IMG_20241130_171502.jpg',
     docFooter: {
       prev: '回忆',
       next: '继续探索'
@@ -48,13 +49,11 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '主页', link: '/' },
-      { text: '文章', link: '/blogs' },
-      { text: '壁纸', link: '/photos' },
       { text: '朋友们', link: '/friends' }
     ],
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/silvaire-qwq' }
-    ]
+    ],
   }
 })

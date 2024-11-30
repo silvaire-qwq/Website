@@ -8,6 +8,7 @@
     "docs:preview": "vitepress preview ."
   },
   "dependencies": {
-    "@catppuccin/vitepress": "^0.1.0"
+    "@catppuccin/vitepress": "^0.1.0",
+    "@iconify/vue": "^4.1.2"
   }
 }

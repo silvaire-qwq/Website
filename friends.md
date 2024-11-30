@@ -1,6 +1,6 @@
 ---
 layout: home
-
+pageClass: friends noTag
 features:
   - title: LeonXie の 小窝
     link: https://leonxie.cn/
@@ -31,11 +31,3 @@ features:
     details: 和我成为朋友吧 (∠・ω< )⌒☆
     linkText: 前往
 ---
-
-<br>
-
-> # 灵感来源
-> - [Ariasaka の 小窝](https://blog.yaria.top/)
-> - [纸鹿摸鱼处](https://blog.zhilu.cyou/)
-> 
-> 感谢这些网站为我提供了灵感。
