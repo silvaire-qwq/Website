@@ -370,13 +370,13 @@ a.title {
   font-size: 0.7em;
 }
 
-.vp-doc a {
+.vp-doc a:not(a.friend-card){
   background: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft)) no-repeat center bottom / 100% 2px;
   text-decoration: none;
   transition: 0.2s;
 }
 
-.vp-doc a:hover {
+.vp-doc a:hover:not(a.friend-card) {
   border-radius: 0.35em;
   padding: 1px 3px 1px 3px;
   background: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft)) no-repeat center bottom / 100% 100%;
@@ -444,32 +444,6 @@ div.VPFeatures.VPHomeFeatures {
   }
 }
 
-.friends {
-  h2 {
-    font-size: 15px !important;
-    margin: 0px !important;
-    opacity: 1;
-    padding: 0px !important;
-    transition: all 0.2s;
-  }
-  .item.grid-4 {
-    width: 25% !important;
-    padding: 5px;
-  }
-  .item.grid-3 {
-    width: 33.3% !important;
-    padding: 5px;
-  }
-  .item.grid-2 {
-    width: 50% !important;
-    padding: 5px;
-  }
-  .item.grid-1 {
-    width: 100% !important;
-    padding: 5px;
-  }
-}
-
 a.title {
   span {
     transition: 0.4s;
@@ -480,4 +454,69 @@ a.title {
     border: 1px solid var(--vp-c-gutter);
     padding: 4px 6px 4px 6px;
   }
+}
+
+a.friend-card {
+  nameAndDescription {
+    name {
+      color: var(--vp-c-text-1);
+      font-size: 20px;
+      display: block;
+      transition: all 0.4s;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    description {
+      color: var(--vp-c-text-3);
+      opacity: .8;
+      font-size: 15px;
+      display: block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    
+  }
+  img {
+    clear: both;
+    display: block;
+    float: left;
+    width: 48px;
+    height: 48px;
+    margin-right: 10px;
+    border-radius: 100%;
+    box-sizing: border-box;
+  }
+  align-items: center;
+  text-decoration: none;
+  display: block;
+  background-color: var(--vp-c-bg-alt);
+  padding: 17px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 0.8em;
+  transition: all 0.4s;
+  margin-bottom: 7px;
+}
+
+a.friend-card:hover {
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 1px 3px 5px 3px var(--vp-c-brand-soft);
+}
+
+a.friend-card:hover name {
+  color: var(--vp-c-brand-1);
+}
+
+div.friends {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-rows: repeat(auto-fill, 1fr);
+  grid-gap: 0px 7px;
+}
+
+
+.custom-block.details {
+  background-color: var(--vp-c-bg-alt) !important;
+  border: 1px solid var(--vp-c-divider) !important;
 }
