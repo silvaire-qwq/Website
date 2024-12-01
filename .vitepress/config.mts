@@ -6,6 +6,9 @@ export default defineConfig({
   title: "Silvaire's Blog",
   description: "明年此日青云去，却笑人间举子忙。",
   markdown: {
+    image: {
+      lazyLoading: true,
+    },
     theme: {
       light: 'catppuccin-latte',
       dark: 'catppuccin-mocha',
@@ -49,7 +52,8 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '主页', link: '/' },
-      { text: '朋友们', link: '/friends' }
+      { text: '手记', link: '/archives' },
+      { text: '朋友们', link: '/friends' },
     ],
 
     socialLinks: [

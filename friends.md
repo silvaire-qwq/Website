@@ -1,5 +1,6 @@
 ---
 layout: home
+title: 朋友们
 ---
 
 <br>

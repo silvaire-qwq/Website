@@ -1,4 +1,10 @@
-# Arch Linux 安装输入法
+---
+title: "在 Arch Linux 上安装输入法"
+date: 2024-08-07
+---
+
+
+# 在 Arch Linux 上安装输入法
 
 > [!WARNING] 警告
 > 本期教程为 Arch Linux (系) 撰写的。<br>

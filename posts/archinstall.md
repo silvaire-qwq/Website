@@ -1,3 +1,8 @@
+---
+title: "安装 Arch Linux"
+date: 2024-08-06
+---
+
 # 安装 Arch Linux 
 
 你好呀，本期教程将会教您如何安装Arch Linux (并且是 Btrfs 文件系统)。
