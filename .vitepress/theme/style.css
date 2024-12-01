@@ -46,11 +46,9 @@
  @import url('https://fonts.font.im/css?family=Fira+Mono:400,500,700');
  @import url('https://fonts.font.im/css?family=Miniver');
  @import url("https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap");
- @import url("https://www.apple.com.cn/wss/fonts?families=SF+Pro,v3|SF+Pro+Icons,v3");
-
 
   * {
-      --vp-font-family-base: "SF Pro Text", 'SF Pro Icons', "MiSans VF" !important;
+      --vp-font-family-base: "MiSans VF" !important;
       --vp-font-family-mono: "Fira Mono" !important;
       --title-font: "Miniver" !important;
   } 
