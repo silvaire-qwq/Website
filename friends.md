@@ -5,48 +5,48 @@ layout: home
 <br>
 
 <div class="friends">
-  <a class="friend-card" href="https://leonxie.cn/">
-    <img src="https://avatars.githubusercontent.com/u/128591764?v=4"/>
-    <nameAndDescription>
-      <name>LeonXie</name>
-      <description>保持热爱，奔赴山海！</description>
-    </nameAndDescription>
-  </a>
-  <a class="friend-card" href="https://blog.yaria.top/">
-    <img src="https://bu.dusays.com/2024/10/28/671f8bf00317e.jpg"/>
-    <nameAndDescription>
-      <name>Ariasaka</name>
-      <description>人有悲欢离合，月有阴晴圆缺。</description>
-    </nameAndDescription>
-  </a>
-  <a class="friend-card" href="https://www.pluskevin.com/blog/">
-    <img src="https://cdn.luogu.com.cn/upload/usericon/1.png"/>
-    <nameAndDescription>
-      <name>Kevin Wang</name>
-      <description>记录我的IT学习历程、我的软件开发学习！</description>
-    </nameAndDescription>
-  </a>
-  <a class="friend-card" href="https://ce-ramos.cn/">
-    <img src="https://ce-ramos.cn/Logo.png"/>
-    <nameAndDescription>
-      <name>CE-RAMOS</name>
-      <description>一款致力于模仿原版系统界面且功能强大的PE。</description>
-    </nameAndDescription>
-  </a>
-  <a class="friend-card" href="https://blog.linux-qitong.top/">
-    <img src="https://blog.linux-qitong.top/img/avatar.avif"/>
-    <nameAndDescription>
-      <name>青稚</name>
-      <description>越努力，越幸运。</description>
-    </nameAndDescription>
-  </a>
-  <a class="friend-card" href="https://blog.zhheo.com/">
-    <img src="https://bu.dusays.com/2022/12/28/63ac2812183aa.png"/>
-    <nameAndDescription>
-      <name>张洪 Heo</name>
-      <description>分享设计与科技生活。</description>
-    </nameAndDescription>
-  </a>
+  <FriendCard 
+   title="LeonXie"
+   url="https://leonxie.cn/" 
+   description="保持热爱，奔赴山海！" 
+   logo="https://avatars.githubusercontent.com/u/128591764?v=4" 
+  />
+  <FriendCard 
+   title="Ariasaka"
+   url="https://blog.yaria.top/" 
+   description="人有悲欢离合，月有阴晴圆缺。" 
+   logo="https://bu.dusays.com/2024/10/28/671f8bf00317e.jpg" 
+  />
+  <FriendCard 
+   title="GenshinImpact.Net"
+   url="https://genshinimpact.net/" 
+   description="这里是一张起始页" 
+   logo="https://genshinimpact.net/img/yuanshen_logo.jpg" 
+  />
+  <FriendCard 
+   title="Kevin Wang"
+   url="https://www.pluskevin.com/blog/" 
+   description="记录我的IT学习历程、我的软件开发学习！" 
+   logo="https://cdn.luogu.com.cn/upload/usericon/1.png" 
+  />
+  <FriendCard 
+   title="CE-RAMOS"
+   url="https://ce-ramos.cn/" 
+   description="一款致力于模仿原版系统界面且功能强大的PE。" 
+   logo="https://ce-ramos.cn/Logo.png" 
+  />
+  <FriendCard 
+   title="青稚"
+   url="https://blog.linux-qitong.top/" 
+   description="越努力，越幸运。" 
+   logo="https://blog.linux-qitong.top/img/avatar.avif" 
+  />
+  <FriendCard 
+   title="张洪 Heo"
+   url="https://blog.zhheo.com/" 
+   description="分享设计与科技生活。" 
+   logo="https://bu.dusays.com/2022/12/28/63ac2812183aa.png" 
+  />
 </div>
 
 ::: details 和我成为朋友吧！
@@ -56,7 +56,7 @@ silvaire_qwq
 ### 头像
 [右键-复制链接地址](https://imgbed.lunars.site/file/1732958150105_IMG_20241130_171502.jpg)
 ### 描述
-明年此日青云去，却笑人间举子忙。
+Stay hungry, stay foolish.
 ### 网址
 https://lunars.site 
 ## 2. 要求
@@ -76,11 +76,24 @@ https://lunars.site
 由于技术原因，这个界面是用纯 HTML (与 CSS) 实现的，所以更新很麻烦。
 ```html
 <a class="friend-card" href="链接">
-  <img src="头像"/>
+  <img src="头像"
+/>
   <nameAndDescription>
     <name>名称</name>
     <description>描述</description>
   </nameAndDescription>
 </a>
+```
+
+---
+
+但那是以前了！现在只需要：
+```vue
+<FriendCard 
+ title="名字"
+ url="链接" 
+ description="描述" 
+ logo="头像" 
+/>
 ```
 :::

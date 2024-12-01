@@ -46,9 +46,10 @@
  @import url('https://fonts.font.im/css?family=Fira+Mono:400,700');
  @import url('https://fonts.font.im/css?family=Miniver');
  @import url("https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap");
+ @import url('./fonts.css');
 
- * {
-      --vp-font-family-base: "MiSans VF" !important;
+  * {
+      --vp-font-family-base: "SF Pro Text", "MiSans VF" !important;
       --vp-font-family-mono: "Fira Mono" !important;
       --title-font: "Miniver" !important;
   } 
@@ -197,6 +198,10 @@ a.VPLink.no-icon.VPFeature {
     transition: all 0.4s ease 0s;
     margin: 0;
     box-shadow: 3px 3px 10px var(--vp-c-bg-elv);
+    p.details {
+      color: var(--vp-c-text-3);
+      opacity: .9;
+    }
   }
   h2 {
     font-size: 23px;
@@ -208,7 +213,7 @@ a.VPLink.no-icon.VPFeature {
     /*display: none;*/
     display: block;
     color: var(--vp-c-text-3);
-    opacity: .7;
+    opacity: .6;
   }
   p.link-text-value::before {
     content: '# ';
@@ -300,6 +305,14 @@ blockquote {
   padding: 10px 15px 10px 15px!important;
 }
 
+
+div.info.custom-block.github-alert {
+  background-color: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider) !important;
+  border-radius: 0.8em;
+  padding: 10px 15px 10px 15px!important;
+}
+
 /* header-anchor */
 .header-anchor {
   display: none;
@@ -370,18 +383,6 @@ a.title {
   font-size: 0.7em;
 }
 
-.vp-doc a:not(a.friend-card){
-  background: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft)) no-repeat center bottom / 100% 2px;
-  text-decoration: none;
-  transition: 0.2s;
-}
-
-.vp-doc a:hover:not(a.friend-card) {
-  border-radius: 0.35em;
-  padding: 1px 3px 1px 3px;
-  background: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft)) no-repeat center bottom / 100% 100%;
-}
-
 .vp-doc s {
   text-decoration: none;
   filter: blur(3px);
@@ -421,6 +422,8 @@ div.shiki {
 }
 
 div.vp-adaptive-theme {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
   border-radius: 0.8em !important;
 }
 
@@ -431,6 +434,12 @@ code {
 img.VPImage.logo {
   border-radius: 100%;
 }
+
+/* 标题字体大小 */
+.custom-block-title {
+  font-size: 16px;
+}
+
 
 div.VPFeatures.VPHomeFeatures {
   div.container {
@@ -444,68 +453,12 @@ div.VPFeatures.VPHomeFeatures {
   }
 }
 
-a.title {
-  span {
-    transition: 0.4s;
-  }
-  span:hover {
-    border-radius: 0.5em;
-    background-color: var(--vp-c-divider);
-    border: 1px solid var(--vp-c-gutter);
-    padding: 4px 6px 4px 6px;
-  }
+.VPHome:has(div.VPHero) {
+  margin-top: 40px;
 }
 
-a.friend-card {
-  nameAndDescription {
-    name {
-      color: var(--vp-c-text-1);
-      font-size: 20px;
-      display: block;
-      transition: all 0.4s;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-    description {
-      color: var(--vp-c-text-3);
-      opacity: .8;
-      font-size: 15px;
-      display: block;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-    
-  }
-  img {
-    clear: both;
-    display: block;
-    float: left;
-    width: 48px;
-    height: 48px;
-    margin-right: 10px;
-    border-radius: 100%;
-    box-sizing: border-box;
-  }
-  align-items: center;
-  text-decoration: none;
-  display: block;
-  background-color: var(--vp-c-bg-alt);
-  padding: 17px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 0.8em;
-  transition: all 0.4s;
-  margin-bottom: 7px;
-}
-
-a.friend-card:hover {
-  border-color: var(--vp-c-brand-1);
-  box-shadow: 1px 3px 5px 3px var(--vp-c-brand-soft);
-}
-
-a.friend-card:hover name {
-  color: var(--vp-c-brand-1);
+.VPHero {
+  margin-bottom: 50px !important;
 }
 
 div.friends {

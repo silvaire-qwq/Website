@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: "silvaire_qwq"
-  tagline: Don't aim for success if you really want it. <br>Just stick to what you love and believe in, and it will come naturally.
+  tagline: Stay hungry, stay foolish.
   image: "https://imgbed.lunars.site/file/1732958150105_IMG_20241130_171502.jpg"
 
 features:
@@ -24,7 +24,7 @@ features:
     link: /docs/notes/linux/sudonopwd
     linkText: Linux
   - title: '安装 Arch Linux'
-    details: '你好呀，本期教程将会教您如何安装Arch Linux (并且是 Btrfs 文件系统)。'
+    details: '你好呀，本期教程将会教您如何安装 Arch Linux (并且是 Btrfs 文件系统)。'
     link: /docs/notes/arch/archinstall
     linkText: Arch
 ---

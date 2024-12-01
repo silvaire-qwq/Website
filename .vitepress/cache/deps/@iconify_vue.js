@@ -1,9 +1,9 @@
 import {
   defineComponent,
   h
-} from "./chunk-TZM5EDGG.js";
+} from "./chunk-WKGHDFSU.js";
 
-// node_modules/.pnpm/@iconify+vue@4.1.2_vue@3.5.12_typescript@5.6.3_/node_modules/@iconify/vue/dist/iconify.mjs
+// node_modules/.pnpm/@iconify+vue@4.1.2_vue@3.5.13_typescript@5.6.3_/node_modules/@iconify/vue/dist/iconify.mjs
 var matchIconName = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 var stringToIcon = (value, validate, allowSimpleName, provider = "") => {
   const colonSeparated = value.split(":");
