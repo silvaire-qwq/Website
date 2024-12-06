@@ -43,17 +43,17 @@
  *   in custom container, badges, etc.
  * -------------------------------------------------------------------------- */
 
- @import url('https://fonts.font.im/css?family=Fira+Mono:400,500,700');
- @import url('https://fonts.font.im/css?family=Miniver');
- @import url("https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap");
+@import url('https://fonts.font.im/css?family=Fira+Mono:400,500,700');
+@import url('https://fonts.font.im/css?family=Miniver');
+@import url("https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap");
 
-  * {
-      --vp-font-family-base: "MiSans VF" !important;
-      --vp-font-family-mono: "Fira Mono" !important;
-      --title-font: "Miniver" !important;
-  } 
+* {
+  --vp-font-family-base: "MiSans VF" !important;
+  --vp-font-family-mono: "Fira Mono" !important;
+  --title-font: "Miniver" !important;
+}
 
- :root {
+:root {
   --vp-c-default-1: var(--vp-c-gray-1);
   --vp-c-default-2: var(--vp-c-gray-2);
   --vp-c-default-3: var(--vp-c-gray-3);
@@ -102,17 +102,13 @@
 
 :root {
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(
-    120deg,
-    var(--vp-c-brand-1) 30%,
-    var(--vp-c-indigo-1)
-  );
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg,
+      var(--vp-c-brand-1) 30%,
+      var(--vp-c-indigo-1));
 
-  --vp-home-hero-image-background-image: linear-gradient(
-    -45deg,
-    var(--vp-c-brand-1) 50%,
-    var(--vp-c-indigo-1)
-  );
+  --vp-home-hero-image-background-image: linear-gradient(-45deg,
+      var(--vp-c-brand-1) 50%,
+      var(--vp-c-indigo-1));
 
   --vp-home-hero-image-filter: blur(44px);
 }
@@ -160,7 +156,9 @@ div.VPHome {
   }
 }
 
-.fa-solid, .fa-regular, .fa-brands {
+.fa-solid,
+.fa-regular,
+.fa-brands {
   width: 1.2em;
   vertical-align: middle;
   text-align: center;
@@ -177,6 +175,7 @@ div.noTag {
   p.link-text-value {
     display: none;
   }
+
   div.link-text {
     padding: 0;
     margin: 0;
@@ -198,52 +197,63 @@ a.VPLink.no-icon.VPFeature {
     transition: all 0.4s ease 0s;
     margin: 0;
     box-shadow: 3px 3px 10px var(--vp-c-bg-elv);
+
     p.details {
       color: var(--vp-c-text-3);
       opacity: .9;
     }
   }
+
   h2 {
     font-size: 23px;
     margin-top: 0px;
     margin-bottom: 3px;
     line-height: 30px;
   }
+
   p.link-text-value {
     /*display: none;*/
     display: block;
     color: var(--vp-c-text-3);
     opacity: .6;
   }
+
   p.link-text-value::before {
     content: '# ';
   }
+
   div.link-text {
     /*padding: 0;
     margin: 0;
     display: none;*/
   }
+
   article.box:hover h2 {
     color: var(--vp-c-brand-1);
   }
+
   h2 {
     transition: all 0.4s ease 0s;
   }
+
   article.box:hover {
     transition: all 0.4s;
     border-color: var(--vp-c-brand-1);
     box-shadow: 1px 3px 5px 3px var(--vp-c-brand-soft);
   }
+
   article.box:hover .icon {
     background-color: transparent;
     transition: all 0.4s;
   }
+
   article.box .icon {
     scale: 1.8;
     background-color: transparent;
     border-radius: .35em;
     transition: all 0.4s ease 0s;
   }
+
   border: 0px;
 }
 
@@ -254,11 +264,9 @@ a.VPButton {
 }
 
 a.VPButton.medium.brand {
-  background-image: linear-gradient(
-    120deg,
-    var(--vp-c-brand-1) 30%,
-    var(--vp-c-indigo-1)
-  );
+  background-image: linear-gradient(120deg,
+      var(--vp-c-brand-1) 30%,
+      var(--vp-c-indigo-1));
   border: none;
   background-color: transparent;
 }
@@ -302,7 +310,7 @@ blockquote {
   background-color: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider) !important;
   border-radius: 0.8em;
-  padding: 10px 15px 10px 15px!important;
+  padding: 10px 15px 10px 15px !important;
 }
 
 
@@ -310,7 +318,7 @@ div.info.custom-block.github-alert {
   background-color: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider) !important;
   border-radius: 0.8em;
-  padding: 10px 15px 10px 15px!important;
+  padding: 10px 15px 10px 15px !important;
 }
 
 /* header-anchor */
@@ -359,6 +367,7 @@ a.title {
         .name {
           font-family: var(--title-font);
         }
+
         .tagline {
           font-family: var(--title-font);
         }
@@ -379,7 +388,7 @@ a.title {
   margin: 8px 0;
 }
 
-.VPMenuGroup > .title {
+.VPMenuGroup>.title {
   font-size: 0.7em;
 }
 
@@ -405,7 +414,9 @@ a.title {
   content: unset;
 }
 
-.fa-solid, .fa-regular, .fa-brands {
+.fa-solid,
+.fa-regular,
+.fa-brands {
   width: 1.2em;
   vertical-align: middle;
   text-align: center;
@@ -449,6 +460,7 @@ div.VPFeatures.VPHomeFeatures {
       border: 1px solid var(--vp-c-divider);
       padding: 5px;
     }
+
     box-shadow: 10px 10px 10px var(--vp-c-bg-alt);
   }
 }

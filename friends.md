@@ -51,23 +51,38 @@ title: 朋友们
 </div>
 
 ::: details 和我成为朋友吧！
+
 ## 1. 我的信息
+
 ### 名称
+
 silvaire_qwq
+
 ### 头像
+
 [右键-复制链接地址](https://imgbed.lunars.site/file/1732958150105_IMG_20241130_171502.jpg)
+
 ### 描述
+
 Stay hungry, stay foolish.
+
 ### 网址
-https://lunars.site 
+
+https://lunars.site
+
 ## 2. 要求
+
 - 网站在中国大陆境内可以在 40 秒内访问
 - 不存在违法违规行为
 - 已经挂上了 silvaire_qwq
 - 有 3 篇或更多的原创文章
+
 ## 3. 审核
-如果您符合条件，请将网站名、头像、简介和网址发送至 ```mail@lunars.site```，等待审核。
+
+如果您符合条件，请将网站名、头像、简介和网址发送至 `mail@lunars.site`，等待审核。
+
 ## 4. 提醒事项
+
 - 如果您违反要求，我会删除您的链接。
 - 您申请的信息可能会被简化，例如只留下您的昵称，删掉 "空间" 等字符。
 
@@ -75,10 +90,10 @@ https://lunars.site
 
 ::: details 关于这个界面...
 由于技术原因，这个界面是用纯 HTML (与 CSS) 实现的，所以更新很麻烦。
+
 ```html
 <a class="friend-card" href="链接">
-  <img src="头像"
-/>
+  <img src="头像" />
   <nameAndDescription>
     <name>名称</name>
     <description>描述</description>
@@ -89,12 +104,10 @@ https://lunars.site
 ---
 
 但那是以前了！现在只需要：
+
 ```vue
-<FriendCard 
- title="名字"
- url="链接" 
- description="描述" 
- logo="头像" 
-/>
+<FriendCard title="名字" url="链接" description="描述" logo="头像" />
 ```
+
 :::
+
