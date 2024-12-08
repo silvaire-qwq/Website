@@ -3,8 +3,6 @@ layout: home
 title: 朋友们
 ---
 
-<br>
-
 <div class="friends">
   <FriendCard 
    title="LeonXie"

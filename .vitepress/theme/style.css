@@ -43,14 +43,22 @@
  *   in custom container, badges, etc.
  * -------------------------------------------------------------------------- */
 
-@import url('https://fonts.font.im/css?family=Fira+Mono:400,500,700');
 @import url('https://fonts.font.im/css?family=Miniver');
 @import url("https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap");
+@import url('https://fonts.font.im/css?family=Fira+Mono');
 
 * {
   --vp-font-family-base: "MiSans VF" !important;
   --vp-font-family-mono: "Fira Mono" !important;
   --title-font: "Miniver" !important;
+}
+
+:root {
+  --vp-custom-nav-bg: rgba(239, 241, 245, 0.5);
+}
+
+.dark {
+  --vp-custom-nav-bg: rgba(30, 30, 46, 0.5);
 }
 
 :root {
@@ -103,12 +111,12 @@
 :root {
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(120deg,
-      var(--vp-c-brand-1) 30%,
-      var(--vp-c-indigo-1));
+      #89b4fa 30%,
+      #f5c2e7);
 
   --vp-home-hero-image-background-image: linear-gradient(-45deg,
-      var(--vp-c-brand-1) 50%,
-      var(--vp-c-indigo-1));
+    #89b4fa 50%,
+    #f5c2e7);
 
   --vp-home-hero-image-filter: blur(44px);
 }
@@ -265,8 +273,8 @@ a.VPButton {
 
 a.VPButton.medium.brand {
   background-image: linear-gradient(120deg,
-      var(--vp-c-brand-1) 30%,
-      var(--vp-c-indigo-1));
+    #f5c2e7 30%,
+    #89b4fa);
   border: none;
   background-color: transparent;
 }
@@ -356,7 +364,7 @@ span.DocSearch-Button-Keys {
 
 a.title {
   span {
-    font-family: var(--title-font);
+    display: none;
   }
 }
 
@@ -443,7 +451,8 @@ code {
 }
 
 img.VPImage.logo {
-  border-radius: 100%;
+  border-radius: 40%;
+  height: 35px;
 }
 
 /* 标题字体大小 */
@@ -465,7 +474,7 @@ div.VPFeatures.VPHomeFeatures {
   }
 }
 
-.VPHome:has(div.VPHero) {
+.VPHome {
   margin-top: 40px;
 }
 
@@ -484,4 +493,63 @@ div.friends {
 .custom-block.details {
   background-color: var(--vp-c-bg-alt) !important;
   border: 1px solid var(--vp-c-divider) !important;
+}
+
+.vp-doc {
+  h1 {
+    text-align: center;
+    margin: 50px 0px 100px 0px;
+  }
+}
+
+nav.VPNavBarMenu.menu {
+  height: 35px;
+  background-color: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 1.5em;
+  padding-left: 10px;
+  margin: 0 auto;
+  padding-right: 10px;
+}
+
+div.VPNavBarSearch.search {
+  display: none;
+  visibility: hidden;
+}
+
+div.VPNavBarAppearance.appearance:before {
+  display: none;
+}
+
+
+.Layout:has(.VPLocalNav) {
+  .VPNavBar {
+    background-color: var(--vp-custom-nav-bg) !important;
+    backdrop-filter: blur(10px) !important;
+  }
+}
+
+a.VPLink.link.VPNavScreenMenuLink {
+  border: 0px;
+  border: 1px solid var(--vp-c-divider);
+  margin: 7px 0px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 3px 3px 3px var(--vp-c-bg-alt);
+}
+
+div.VPNavScreenAppearance.appearance {
+  border: 1px solid var(--vp-c-divider);
+  box-shadow: 3px 3px 3px var(--vp-c-bg-alt);
+}
+
+.VPNavBar.screen-open {
+  border: 0px !important;
+}
+
+
+div.VPLocalNav {
+  div.container {
+    display: none;
+  }
 }
