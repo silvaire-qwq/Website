@@ -45,10 +45,15 @@
 
 @import url('https://fonts.font.im/css?family=Miniver');
 @import url("https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap");
-@import url('https://fonts.font.im/css?family=Fira+Mono');
+@import url('https://fonts.font.im/css?family=Fira+Mono:400,500,700');
+
+@font-face {
+  font-family: OPPOSans;
+  src: url("/font/oppo_sans_4.0.ttf");
+}
 
 * {
-  --vp-font-family-base: "MiSans VF" !important;
+  --vp-font-family-base: "OPPOSans", "MiSans VF" !important;
   --vp-font-family-mono: "Fira Mono" !important;
   --title-font: "Miniver" !important;
 }
@@ -70,7 +75,7 @@
   --vp-c-brand-1: var(--vp-c-indigo-1);
   --vp-c-brand-2: var(--vp-c-indigo-2);
   --vp-c-brand-3: var(--vp-c-indigo-3);
-  --vp-c-brand-soft: rgba(245, 194, 231, 0.2);
+  --vp-c-brand-soft: rgba(180, 190, 254, 0.2);
 
   --vp-c-tip-1: var(--vp-c-brand-1);
   --vp-c-tip-2: var(--vp-c-brand-2);
@@ -111,12 +116,12 @@
 :root {
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(120deg,
-      #89b4fa 30%,
-      #f5c2e7);
+    #8caaee 30%,
+    #f4b8e4);
 
   --vp-home-hero-image-background-image: linear-gradient(-45deg,
-    #89b4fa 50%,
-    #f5c2e7);
+    #8caaee 50%,
+    #f4b8e4);
 
   --vp-home-hero-image-filter: blur(44px);
 }
@@ -552,4 +557,8 @@ div.VPLocalNav {
   div.container {
     display: none;
   }
+}
+
+footer.VPFooter a {
+  text-decoration: none !important;
 }

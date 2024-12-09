@@ -4,7 +4,7 @@ import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
 import { Icon } from '@iconify/vue'
-import "@catppuccin/vitepress/theme/mocha/pink.css";
+import "@catppuccin/vitepress/theme/mocha/lavender.css";
 import FriendCard from "./vue/friend.vue"
 import Comment from "./vue/giscus.vue"
 

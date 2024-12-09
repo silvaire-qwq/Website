@@ -1,6 +1,7 @@
 ---
 layout: home
 title: 朋友们
+footer: false
 ---
 
 <div class="friends">

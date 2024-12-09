@@ -1,6 +1,7 @@
 ---
 layout: home
 title: 手记
+footer: false
 ---
 
 <script setup>
@@ -20,26 +21,28 @@ const computedYearMap = computed(()=> {
 
 <style>
   .archives {
-    margin-top: 70px;
     .year {
-      font-size: 100px;
-      color: transparent; 
-      font-weight: bolder;
-      -webkit-text-stroke: 1px var(--vp-c-divider); 
+      display: none;
     }
     .one-post {
       display: block;
-      margin-bottom: 13px;
-      align-items: center;
-      justify-content: space-between;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+      padding: 25px 27px;
+      border-radius: 1.3rem;
+      border: 1px solid var(--vp-c-divider);
+      margin: 16px 0px 0px 0px;
+      transition: .4s;
     }
     .post {
-      margin-left: 30px;
+    }
+    .description {
+      color: var(--vp-c-text-3);
+      margin-bottom: 12px;
     }
     .title {
+      font-size: 28px;
+      display: block;
+      margin: 7px 0px 15px 0px;
+      line-height: 32px;
       transition: .4s;
       color: var(--vp-c-text-1) !important;
     }
@@ -48,13 +51,15 @@ const computedYearMap = computed(()=> {
       max-width: 100%;
     }
     .one-post:hover {
-      .date {
-        color: var(--vp-c-text-1);
-        opacity: 1;
+      .title {
+        color: var(--vp-c-brand-1) !important;
+        max-width: 100%;
       }
+      box-shadow: 0 8px 16px -4px var(--vp-c-brand-soft);
+      border: 1px solid var(--vp-c-brand-1);
     }
     .date {
-      display: inline;
+      display: block;
       transition: .4s;
       color: var(--vp-c-text-3);
       opacity: .7;
@@ -66,15 +71,17 @@ const computedYearMap = computed(()=> {
 </style>
 
 <div class="archives">
-  <div v-for="year in yearList" :key="year" style="margin-top: 30px;">
+  <div v-for="year in yearList" class="one-year" :key="year" style="">
     <div v-text="year" class="year"></div>
-    <div v-for="(article, index2) in computedYearMap[year]" :key="index2" class="post">
+    <a v-for="(article, index2) in computedYearMap[year]" :key="index2" class="post" :href="article.url">
         <div class="one-post">
+          <div v-text="article.title" class="title">
+          </div>
+          <div v-text="article.description" class="description">
+          </div>
           <div v-text="article.date.string" class="date">
           </div>
-          <a v-text="article.title" :href="article.url" class="title">
-          </a>
         </div>
-    </div>
+    </a>
   </div>
 </div>

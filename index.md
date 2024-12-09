@@ -2,6 +2,7 @@
 layout: home
 title: 主页
 sidebar: false
+footer: false
 
 hero:
   name: "silvaire_qwq"
@@ -15,5 +16,3 @@ hero:
       text: GitHub
       link: https://github.com/silvaire-qwq
 ---
-
-

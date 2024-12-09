@@ -3,6 +3,11 @@ import { createContentLoader } from "vitepress";
 interface Post {
   title: string;
   url: string;
+  //md: {
+  //  time: number;
+  //  string: string;
+  //};
+  description: string;
   date: {
     time: number;
     string: string;
@@ -31,7 +36,9 @@ export default createContentLoader("posts/*.md", {
         const result = {
           title: frontmatter.title,
           url,
+          description: frontmatter.description,
           date: formatDate(frontmatter.date),
+          //md: getTime(frontmatter.date),
         };
         postMap[result.url] = result;
         return result;
@@ -67,3 +74,13 @@ function formatDate(raw: string): Post["date"] {
     string: `${year}-${month}-${day}`,
   };
 }
+
+//function getTime(raw: string): Post["date"] {
+//  const date = new Date(raw);
+//  const month = (date.getMonth() + 1).toString().padStart(2, "0"); // 月份从 0 开始，需要加 1
+//  const day = date.getDate().toString().padStart(2, "0");
+//  return {
+//    time: +date,
+//    string: `${month}-${day}` 
+//  }
+//}
