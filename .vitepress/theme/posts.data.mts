@@ -8,6 +8,7 @@ interface Post {
   //  string: string;
   //};
   description: string;
+  tag: string;
   date: {
     time: number;
     string: string;
@@ -37,7 +38,8 @@ export default createContentLoader("posts/*.md", {
           title: frontmatter.title,
           url,
           description: frontmatter.description,
-          date: formatDate(frontmatter.date),
+          tag: frontmatter.tag,
+          date: formatDate(frontmatter.clock),
           //md: getTime(frontmatter.date),
         };
         postMap[result.url] = result;
@@ -53,7 +55,6 @@ export default createContentLoader("posts/*.md", {
         yearMap[year] = [];
       }
       yearMap[year].push(item.url);
-      
     });
 
     return {

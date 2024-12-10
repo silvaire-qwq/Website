@@ -47,6 +47,9 @@
   </script>
   <style>
     .comment {
-      margin-top: 16px;
+      border: 1px solid var(--vp-c-divider);
+      padding: 20px 20px;
+      border-radius: 1.2em;
+      box-shadow: 0 8px 16px -4px var(--vp-c-bg-alt);
     }
   </style>

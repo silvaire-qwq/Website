@@ -1,10 +1,10 @@
 ---
 title: "sudo 不请求密码"
 description: "sudo 不请求密码是一个非常危险的行为，请务必三思而后行，作者不承担任何后果！"
-date: 2024-08-05
+clock: '2024-08-05'
+tag: Linux
 ---
 
-# sudo 不请求密码
 
 
 > [!DANGER] 警告

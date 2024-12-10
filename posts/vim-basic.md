@@ -1,12 +1,9 @@
 ---
 title: "我决定从 VSCode 转到 NeoVim 了 "
 description: "大家好。在这篇文章中，我会分享一下我为何放弃 VSCode 使用 NeoVim 和使用 NeoVim 的一些经验～"
-date: 2024-09-28
+clock: '2024-09-28'
+tag: Vim
 ---
-
-# 我决定从 VSCode 转到 NeoVim 了 
-
-大家好。在这篇文章中，我会分享一下我为何放弃 VSCode 使用 NeoVim 和使用 NeoVim 的一些经验～
 
 ## 为何我不再用 VSCode
 

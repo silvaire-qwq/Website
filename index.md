@@ -1,18 +1,9 @@
 ---
 layout: home
 title: 主页
-sidebar: false
 footer: false
-
-hero:
-  name: "silvaire_qwq"
-  tagline: Stay hungry, stay foolish.
-  image: "https://imgbed.lunars.site/file/1732958150105_IMG_20241130_171502.jpg"
-  actions:
-    - theme: brand
-      text: 手记
-      link: /archives
-    - theme: alt
-      text: GitHub
-      link: https://github.com/silvaire-qwq
 ---
+
+# <Icon icon="fluent:document-one-page-multiple-sparkle-16-regular" width="33" height="33"  style="display: inline; margin-right: 3px;" /> 最近文章
+
+<Archives />

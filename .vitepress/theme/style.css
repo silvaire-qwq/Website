@@ -415,6 +415,10 @@ a.title {
   filter: blur(0px);
 }
 
+.vp-doc h1 {
+  text-align: left;
+}
+
 .vp-doc h2 {
   margin-top: 24px !important;
 }
@@ -425,14 +429,6 @@ a.title {
 
 .some-comp.some-comp a[target]::after {
   content: unset;
-}
-
-.fa-solid,
-.fa-regular,
-.fa-brands {
-  width: 1.2em;
-  vertical-align: middle;
-  text-align: center;
 }
 
 pre {
@@ -500,12 +496,6 @@ div.friends {
   border: 1px solid var(--vp-c-divider) !important;
 }
 
-.vp-doc {
-  h1 {
-    text-align: center;
-    margin: 50px 0px 100px 0px;
-  }
-}
 
 nav.VPNavBarMenu.menu {
   height: 35px;
@@ -561,4 +551,20 @@ div.VPLocalNav {
 
 footer.VPFooter a {
   text-decoration: none !important;
+}
+
+.VPDoc main {
+  border: 1px solid var(--vp-c-divider);
+  padding: 8px 20px;
+  border-radius: 1.2em;
+  box-shadow: 0 8px 16px -4px var(--vp-c-bg-alt);
+}
+
+.vp-doc h2 {
+  border-top: 0px;
+  margin-top: 0px !important;
+  font-weight: 900;
+}
+.VPDocFooter {
+  margin-top: 16px !important;
 }
