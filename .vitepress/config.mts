@@ -1,10 +1,9 @@
 import { defineConfig } from 'vitepress'
-
-// https://vitepress.dev/reference/site-config
+import { default as webConfig } from "../config.json";
 
 export default defineConfig({
-  title: "Silvaire's Blog",
-  description: "明年此日青云去，却笑人间举子忙。",
+  title: webConfig.title,
+  description: webConfig.description,
   markdown: {
     image: {
       lazyLoading: true,
@@ -15,7 +14,7 @@ export default defineConfig({
     },
   },
   themeConfig: {
-    logo: 'https://imgbed.lunars.site/file/1732958150105_IMG_20241130_171502.jpg',
+    logo: webConfig.logo,
     docFooter: {
       prev: '回忆',
       next: '继续探索'
@@ -36,7 +35,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/silvaire-qwq' }
+      { icon: 'github', link: webConfig.github }
     ],
   }
 })

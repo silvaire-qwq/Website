@@ -561,10 +561,46 @@ footer.VPFooter a {
 }
 
 .vp-doc h2 {
-  border-top: 0px;
-  margin-top: 0px !important;
   font-weight: 900;
 }
+
 .VPDocFooter {
   margin-top: 16px !important;
 }
+
+
+nav.VPDocAsideOutline.has-outline {
+  padding: 10px 15px;
+  border-radius: .8em;
+  border: 1px solid var(--vp-c-divider);
+  box-shadow: 0 8px 16px -4px var(--vp-c-bg-alt);
+  div#doc-outline-aria-label {
+    display: none;
+  }
+  div.content {
+    border-left: 0px;
+    padding-left: 0px;
+  }
+  a.outline-link {
+    filter: blur(1.2px);
+    opacity: .8;
+    transition: all .4s;
+    color: var(--vp-c-text-3);
+  }
+  a.outline-link.active {
+    filter: blur(0);
+    opacity: 1;
+    color: var(--vp-c-text-1);
+    font-weight: 900;
+    font-size: 20px;
+    white-space: normal;
+  }
+  a.outline-link:hover {
+    filter: blur(0);
+    color: var(--vp-c-text-1);
+  }
+  div.outline-marker {
+    display: none;
+  }
+}
+

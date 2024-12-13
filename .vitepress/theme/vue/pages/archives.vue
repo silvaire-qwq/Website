@@ -69,7 +69,7 @@ const computedYearMap = computed(()=> {
     }
     .icon {
       display: inline; 
-      margin-right: 3px;
+      margin-right: 5px;
       color: var(--vp-c-text-3);
       opacity: .7;
       font-weight: 500;
