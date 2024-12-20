@@ -1,5 +1,6 @@
 <template>
     <div class="comment">
+      <DividerBar class="divider"/>
       <component
         v-if="isDark"
         :is="'script'"
@@ -46,10 +47,7 @@
     const { isDark } = useData();
   </script>
   <style>
-    .comment {
-      border: 1px solid var(--vp-c-divider);
-      padding: 20px 20px;
-      border-radius: 1.2em;
-      box-shadow: 0 8px 16px -4px var(--vp-c-bg-alt);
+    .divider {
+      margin: 45px 0px;
     }
   </style>

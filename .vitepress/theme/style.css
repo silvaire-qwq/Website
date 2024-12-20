@@ -43,9 +43,9 @@
  *   in custom container, badges, etc.
  * -------------------------------------------------------------------------- */
 
-@import url('https://fonts.font.im/css?family=Miniver');
+@import url("https://fonts.font.im/css?family=Miniver");
 @import url("https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap");
-@import url('https://fonts.font.im/css?family=Fira+Mono:400,500,700');
+@import url("https://fonts.font.im/css?family=Fira+Mono:400,500,700");
 
 * {
   --vp-font-family-base: "MiSans VF" !important;
@@ -55,10 +55,12 @@
 
 :root {
   --vp-custom-nav-bg: rgba(239, 241, 245, 0.5);
+  --vp-c-overlay: #e6e8ec;
 }
 
 .dark {
   --vp-custom-nav-bg: rgba(30, 30, 46, 0.5);
+  --vp-c-overlay: #2a2b3d;
 }
 
 :root {
@@ -70,6 +72,7 @@
   --vp-c-brand-1: var(--vp-c-indigo-1);
   --vp-c-brand-2: var(--vp-c-indigo-2);
   --vp-c-brand-3: var(--vp-c-indigo-3);
+
   --vp-c-brand-soft: rgba(180, 190, 254, 0.2);
 
   --vp-c-tip-1: var(--vp-c-brand-1);
@@ -110,13 +113,17 @@
 
 :root {
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(120deg,
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
     #8caaee 30%,
-    #f4b8e4);
+    #f4b8e4
+  );
 
-  --vp-home-hero-image-background-image: linear-gradient(-45deg,
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
     #8caaee 50%,
-    #f4b8e4);
+    #f4b8e4
+  );
 
   --vp-home-hero-image-filter: blur(44px);
 }
@@ -132,7 +139,6 @@
     --vp-home-hero-image-filter: blur(68px);
   }
 }
-
 
 /**
  * Component: Custom Block
@@ -208,7 +214,7 @@ a.VPLink.no-icon.VPFeature {
 
     p.details {
       color: var(--vp-c-text-3);
-      opacity: .9;
+      opacity: 0.9;
     }
   }
 
@@ -223,17 +229,11 @@ a.VPLink.no-icon.VPFeature {
     /*display: none;*/
     display: block;
     color: var(--vp-c-text-3);
-    opacity: .6;
+    opacity: 0.6;
   }
 
   p.link-text-value::before {
-    content: '# ';
-  }
-
-  div.link-text {
-    /*padding: 0;
-    margin: 0;
-    display: none;*/
+    content: "# ";
   }
 
   article.box:hover h2 {
@@ -258,7 +258,7 @@ a.VPLink.no-icon.VPFeature {
   article.box .icon {
     scale: 1.8;
     background-color: transparent;
-    border-radius: .35em;
+    border-radius: 0.35em;
     transition: all 0.4s ease 0s;
   }
 
@@ -272,9 +272,7 @@ a.VPButton {
 }
 
 a.VPButton.medium.brand {
-  background-image: linear-gradient(120deg,
-    #f5c2e7 30%,
-    #89b4fa);
+  background-image: linear-gradient(120deg, #f5c2e7 30%, #89b4fa);
   border: none;
   background-color: transparent;
 }
@@ -321,7 +319,6 @@ blockquote {
   padding: 10px 15px 10px 15px !important;
 }
 
-
 div.info.custom-block.github-alert {
   background-color: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider) !important;
@@ -341,13 +338,10 @@ div.VPHero.has-image.VPHomeHero {
   }
 }
 
-
 /* custom-block-title */
 .custom-block-title {
   font-size: 16px;
 }
-
-
 
 .custom-block {
   border-radius: 0.8em;
@@ -396,7 +390,7 @@ a.title {
   margin: 8px 0;
 }
 
-.VPMenuGroup>.title {
+.VPMenuGroup > .title {
   font-size: 0.7em;
 }
 
@@ -456,7 +450,6 @@ img.VPImage.logo {
   font-size: 16px;
 }
 
-
 div.VPFeatures.VPHomeFeatures {
   div.container {
     div.items {
@@ -485,21 +478,9 @@ div.friends {
   grid-gap: 0px 7px;
 }
 
-
 .custom-block.details {
-  background-color: var(--vp-c-bg-alt) !important;
+  background-color: var(--vp-c-bg) !important;
   border: 1px solid var(--vp-c-divider) !important;
-}
-
-
-nav.VPNavBarMenu.menu {
-  height: 35px;
-  background-color: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 1.5em;
-  padding-left: 10px;
-  margin: 0 auto;
-  padding-right: 10px;
 }
 
 div.VPNavBarSearch.search {
@@ -507,15 +488,14 @@ div.VPNavBarSearch.search {
   visibility: hidden;
 }
 
-div.VPNavBarAppearance.appearance:before {
-  display: none;
-}
-
-
-.Layout:has(.VPLocalNav) {
+.Layout {
   .VPNavBar {
+    div.divider {
+      display: none;
+    }
     background-color: var(--vp-custom-nav-bg) !important;
     backdrop-filter: blur(10px) !important;
+    border-bottom: 1px solid var(--vp-c-divider);
   }
 }
 
@@ -537,36 +517,42 @@ div.VPNavScreenAppearance.appearance {
   border: 0px !important;
 }
 
-
 div.VPLocalNav {
-  div.container {
-    display: none;
-  }
+  display: none;
 }
 
 footer.VPFooter a {
   text-decoration: none !important;
 }
 
-.VPDoc main {
-  border: 1px solid var(--vp-c-divider);
-  padding: 8px 20px;
-  border-radius: 1.2em;
-  box-shadow: 0 8px 16px -4px var(--vp-c-bg-alt);
-}
-
 .vp-doc h2 {
   font-weight: 900;
+  border: none;
+  margin-top: 30px !important;
+}
+
+.vp-doc {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--vp-c-text-1);
+  }
+}
+
+.vp-doc {
+  color: var(--vp-c-text-3);
 }
 
 .VPDocFooter {
   margin-top: 16px !important;
 }
 
-
 nav.VPDocAsideOutline.has-outline {
   padding: 10px 15px;
-  border-radius: .8em;
+  border-radius: 0.8em;
   border: 1px solid var(--vp-c-divider);
   box-shadow: 0 8px 16px -4px var(--vp-c-bg-alt);
   div#doc-outline-aria-label {
@@ -578,8 +564,8 @@ nav.VPDocAsideOutline.has-outline {
   }
   a.outline-link {
     filter: blur(1.2px);
-    opacity: .8;
-    transition: all .4s;
+    opacity: 0.8;
+    transition: all 0.4s;
     color: var(--vp-c-text-3);
   }
   a.outline-link.active {
@@ -598,4 +584,3 @@ nav.VPDocAsideOutline.has-outline {
     display: none;
   }
 }
-

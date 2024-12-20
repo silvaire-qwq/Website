@@ -40,7 +40,6 @@ const props = withDefaults(defineProps<Props>(), {
     align-items: center;
     text-decoration: none;
     display: block;
-    background-color: var(--vp-c-bg-alt);
     padding: 17px;
     border: 1px solid var(--vp-c-divider);
     border-radius: 0.8em;

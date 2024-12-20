@@ -28,13 +28,13 @@ const computedYearMap = computed(()=> {
     }
     .description {
       color: var(--vp-c-text-3);
-      margin-bottom: 12px;
+      margin-bottom: 15px;
     }
     .title {
       font-size: 28px;
       display: block;
       font-weight: 600;
-      margin: 7px 0px 15px 0px;
+      margin: 7px 0px 9px 0px;
       line-height: 32px;
       transition: .4s;
       color: var(--vp-c-text-1) !important;
@@ -53,18 +53,19 @@ const computedYearMap = computed(()=> {
       transform: scale(99%);
     }
     .date {
-      display: inline;
       transition: .4s;
       color: var(--vp-c-text-3);
-      opacity: .7;
       font-weight: 500;
-      float: right;
       margin-right: 8px;
     }
     .tags {
       display: inline;
+      background: var(--vp-c-overlay);
       color: var(--vp-c-text-3);
-      opacity: .7;
+      margin-right: 6px;
+      padding: 4px 7px;
+      border: 1px solid var(--vp-c-gutter);
+      border-radius: .6em;
       font-weight: 500;
     }
     .icon {
@@ -83,14 +84,13 @@ const computedYearMap = computed(()=> {
         <div v-text="year" class="year"></div>
         <a v-for="(article, index2) in computedYearMap[year]" :key="index2" class="post" :href="article.url">
             <div class="one-post">
+            <div v-text="article.date.string" class="date">
+            </div>
             <div v-text="article.title" class="title">
             </div>
             <div v-text="article.description" class="description">
             </div>
-            <Icon class="icon" icon="fluent:tag-16-regular" width="18" height="18" />
-            <div v-text="article.tag" class="tags">
-            </div>
-            <div v-text="article.date.string" class="date">
+            <div v-for="(tag,i) in article.tags" v-text="tag" class="tags">
             </div>
             </div>
         </a>

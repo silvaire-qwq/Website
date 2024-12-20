@@ -59,7 +59,7 @@ silvaire_qwq
 
 ### 头像
 
-[右键-复制链接地址](https://imgbed.lunars.site/file/1732958150105_IMG_20241130_171502.jpg)
+[右键-复制链接地址](https://imgbed.lunars.site/file/1734695833083_Image_135898539474484.jpg)
 
 ### 描述
 
@@ -86,3 +86,4 @@ https://lunars.site
 - 您申请的信息可能会被简化，例如只留下您的昵称，删掉 "空间" 等字符。
 
 :::
+
