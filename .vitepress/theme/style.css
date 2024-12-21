@@ -47,19 +47,20 @@
 @import url("https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap");
 @import url("https://fonts.font.im/css?family=Fira+Mono:400,500,700");
 
+
 * {
-  --vp-font-family-base: "MiSans VF" !important;
+  --vp-font-family-base: "Inter", "MiSans VF" !important;
   --vp-font-family-mono: "Fira Mono" !important;
   --title-font: "Miniver" !important;
 }
 
 :root {
-  --vp-custom-nav-bg: rgba(239, 241, 245, 0.5);
-  --vp-c-overlay: #e6e8ec;
+  --vp-custom-nav-bg: rgba(239, 241, 245, 0.7);
+  --vp-c-overlay: #e0e3ea;
 }
 
 .dark {
-  --vp-custom-nav-bg: rgba(30, 30, 46, 0.5);
+  --vp-custom-nav-bg: rgba(30, 30, 46, 0.7);
   --vp-c-overlay: #2a2b3d;
 }
 
@@ -73,7 +74,7 @@
   --vp-c-brand-2: var(--vp-c-indigo-2);
   --vp-c-brand-3: var(--vp-c-indigo-3);
 
-  --vp-c-brand-soft: rgba(180, 190, 254, 0.2);
+  --vp-c-brand-soft: rgba(180, 190, 254, 0.3);
 
   --vp-c-tip-1: var(--vp-c-brand-1);
   --vp-c-tip-2: var(--vp-c-brand-2);
@@ -348,14 +349,6 @@ div.VPHero.has-image.VPHomeHero {
   font-size: 16px;
 }
 
-span.DocSearch-Button-Placeholder {
-  visibility: hidden !important;
-}
-
-span.DocSearch-Button-Keys {
-  visibility: hidden !important;
-}
-
 a.title {
   span {
     display: none;
@@ -384,6 +377,35 @@ a.title {
 
 .vp-doc .custom-block {
   padding: 8px 16px;
+}
+
+.custom-block-title {
+  font-weight: 900;
+}
+
+.custom-block.warning .custom-block-title {
+  color: var(--vp-c-warning-1);
+}
+
+.custom-block .custom-block-title::before {
+  content: '❅';
+  margin-right: 5px;
+}
+
+.custom-block.danger .custom-block-title {
+  color: var(--vp-c-danger-1);
+}
+
+.custom-block.tip .custom-block-title {
+  color: var(--vp-c-green-1);
+}
+
+.custom-block.important .custom-block-title {
+  color: var(--vp-c-purple-1);
+}
+
+.custom-block.note .custom-block-title {
+  color: var(--vp-c-note-1);
 }
 
 .vp-doc .custom-block :first-child:first-child {
@@ -479,23 +501,23 @@ div.friends {
 }
 
 .custom-block.details {
-  background-color: var(--vp-c-bg) !important;
+  background-color: var(--vp-c-bg-soft) !important;
   border: 1px solid var(--vp-c-divider) !important;
 }
+button.DocSearch.DocSearch-Button {
+  border-radius: .7rem;
+  border: 1px solid var(--vp-c-divider);
+  background-color: var(--vp-c-bg);
+}
 
-div.VPNavBarSearch.search {
-  display: none;
-  visibility: hidden;
+div.shell {
+  border: 1px solid var(--vp-c-divider);
 }
 
 .Layout {
   .VPNavBar {
-    div.divider {
-      display: none;
-    }
     background-color: var(--vp-custom-nav-bg) !important;
     backdrop-filter: blur(10px) !important;
-    border-bottom: 1px solid var(--vp-c-divider);
   }
 }
 
@@ -528,22 +550,8 @@ footer.VPFooter a {
 .vp-doc h2 {
   font-weight: 900;
   border: none;
-  margin-top: 30px !important;
-}
-
-.vp-doc {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: var(--vp-c-text-1);
-  }
-}
-
-.vp-doc {
-  color: var(--vp-c-text-3);
+  padding: 0px !important;
+  margin-top: 40px !important;
 }
 
 .VPDocFooter {

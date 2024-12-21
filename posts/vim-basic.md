@@ -2,6 +2,7 @@
 title: "我决定从 VSCode 转到 NeoVim 了 "
 description: "大家好。在这篇文章中，我会分享一下我为何放弃 VSCode 使用 NeoVim 和使用 NeoVim 的一些经验～"
 clock: "2024-09-28"
+img: "https://imgbed.lunars.site/file/1732017276667_wall1.jpeg"
 tags:
   - Vim
 ---
@@ -61,7 +62,7 @@ nvim 文件名
 
 打开文件以后，如果你要保存，请按下 ESC 并输入 `:w`。
 
-> [!NOTE] 提示
+> [!IMPORTANT] 重要提示
 > 按下 ESC 是为了切换到 NORMAL 模式。<br>
 > 如果你已经是 NORMAL 模式了，那就不需要按下 ESC。
 
@@ -85,7 +86,7 @@ nvim 文件名
 
 如果你是要删除一行并更改，请输入 `cc` 。
 
-> [!NOTE] 小提示
+> [!TIP] 提示
 >
 > 可以在操作前面加上数字变成多行，例如 `2dd`
 

@@ -2,8 +2,10 @@
 title: "安装 Arch Linux"
 description: "安装有风险，请三思而后行。"
 clock: "2024-08-06"
+img: "https://bu.dusays.com/2023/10/28/653c731653fd4.webp"
 tags:
   - Arch
+  - Linux
 ---
 
 ## 准备

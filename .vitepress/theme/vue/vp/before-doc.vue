@@ -4,14 +4,15 @@
             {{ $frontmatter.title }}
         </h1>
         <div class="clock">
-            “{{ $frontmatter.description }}”
+            {{ $frontmatter.description }}
         </div>
     </div>
-    <div class="divider"></div>
+    <div class="vue divider"></div>
 </template>
 <script setup lang="ts">
 </script>
 <style>
+div.before-docs{
     h1 {
         margin: 0px 0px 15px 0px;
         line-height: 33px;
@@ -20,16 +21,18 @@
     }
     .clock {
         font-weight: 500;
-        font-style: italic;
         color: var(--vp-c-text-3);
     }
     .before-docs {
         margin-top: 50px;
         margin-bottom: 30px;
     }
-    .divider {
-        background-color: var(--vp-c-divider);
-        height: 1px;
-        width: 228px;
-    }
+    
+}
+.vue.divider {
+    background-color: var(--vp-c-divider);
+    height: 1px;
+    width: 228px;
+    margin: 45px 0px;
+}
 </style>

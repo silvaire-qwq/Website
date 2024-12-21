@@ -38,6 +38,7 @@ const props = withDefaults(defineProps<Props>(), {
 /* 卡片背景 */
 .linkcard {
     align-items: center;
+    background-color: var(--vp-c-bg-soft);
     text-decoration: none;
     display: block;
     padding: 17px;
@@ -50,7 +51,7 @@ const props = withDefaults(defineProps<Props>(), {
 /* 卡片鼠标悬停 */
 .linkcard:hover {
     border-color: var(--vp-c-brand-1);
-    box-shadow: 1px 3px 5px 3px var(--vp-c-brand-soft);
+    box-shadow: 10px 10px 10px var(--vp-c-brand-soft);
     transform: scale(98%);
 }
 

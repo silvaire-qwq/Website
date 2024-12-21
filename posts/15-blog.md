@@ -2,6 +2,7 @@
 title: "独立博客自省问卷 15 题"
 description: "看别人的网站时发现了这个问卷，我也来答一下。"
 clock: "2024-11-14"
+img: "https://bu.dusays.com/2024/08/31/66d30329375a5.webp"
 tags:
   - 博客
 ---

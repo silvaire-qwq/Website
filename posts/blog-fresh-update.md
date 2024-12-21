@@ -1,13 +1,12 @@
 ---
 title: "全新的博客界面"
 description: "一个月没发过文章了，来谈谈我博客这一段时间更新什么了。"
+img: "https://imgbed.lunars.site/file/1732013071309_Lofi-Cafe1.png"
 clock: "2024-12-13"
 tags:
   - 博客
   - 网页
 ---
-
-> 今天是国家公祭日，勿忘国耻。
 
 ## 用 CSS 的改动
 

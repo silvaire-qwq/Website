@@ -2,8 +2,10 @@
 title: "在 Arch Linux 上安装输入法"
 description: "Arch Linux 安装后没有输入法，那我们怎么装上输入法呢？"
 clock: "2024-08-07"
+img: "https://imgbed.lunars.site/file/1732019278828_wall3.jpeg"
 tags:
   - Arch
+  - Linux
 ---
 
 > [!WARNING] 警告

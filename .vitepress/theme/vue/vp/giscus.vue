@@ -1,6 +1,6 @@
 <template>
     <div class="comment">
-      <DividerBar class="divider"/>
+      <div class="vue divider"></div>
       <component
         v-if="isDark"
         :is="'script'"
@@ -47,7 +47,4 @@
     const { isDark } = useData();
   </script>
   <style>
-    .divider {
-      margin: 45px 0px;
-    }
   </style>

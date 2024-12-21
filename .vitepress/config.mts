@@ -19,6 +19,9 @@ export default defineConfig({
       prev: '回忆',
       next: '继续探索'
     },
+    search: {
+      provider: 'local'
+    },
     footer: {
       message: '<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans">本文采用 CC BY-NC-ND 4.0 进行许可</a>',
     },

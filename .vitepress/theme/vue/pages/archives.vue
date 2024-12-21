@@ -15,20 +15,36 @@ const computedYearMap = computed(()=> {
 
 <style>
   div.archives {
+    .one-year {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      grid-template-rows: repeat(auto-fill, 1fr);
+      grid-gap: 12px 8px;
+    }
     .year {
-      display: none;
+      font-size: 50px;
+      line-height: 70px;
+      font-weight: 900;
+      margin-bottom: 15px;
+      display: inline-block;
+    }
+    .yearChinese {
+      display: inline-block;
+      font-size: 25px;
+      line-height: 70px;
+      font-weight: 900;
+      margin-bottom: 15px;
+      margin-left: 5px;
     }
     .one-post {
-      display: block;
-      padding: 25px 27px;
-      border-radius: 1.3rem;
+      border-radius: 1rem;
       border: 1px solid var(--vp-c-divider);
-      margin: 16px 0px 0px 0px;
+      height: 100%;
       transition: .4s;
     }
     .description {
       color: var(--vp-c-text-3);
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
     .title {
       font-size: 28px;
@@ -39,9 +55,8 @@ const computedYearMap = computed(()=> {
       transition: .4s;
       color: var(--vp-c-text-1) !important;
     }
-    .title:hover {
-      color: var(--vp-c-brand-1) !important;
-      max-width: 100%;
+    .farYear {
+      margin-bottom: 100px;
     }
     .one-post:hover {
       .title {
@@ -60,13 +75,18 @@ const computedYearMap = computed(()=> {
     }
     .tags {
       display: inline;
+      opacity: 1;
+      transition: all .4s;
       background: var(--vp-c-overlay);
       color: var(--vp-c-text-3);
       margin-right: 6px;
-      padding: 4px 7px;
+      padding: 5px 10px;
       border: 1px solid var(--vp-c-gutter);
       border-radius: .6em;
       font-weight: 500;
+    }
+    .stringdata {
+      padding: 25px;
     }
     .icon {
       display: inline; 
@@ -75,15 +95,28 @@ const computedYearMap = computed(()=> {
       opacity: .7;
       font-weight: 500;
     }
+    img {
+      object-fit: cover;
+      height: 200px;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+      width: 100%;
+      transition: all .4s;
+      border-bottom: 1px solid var(--vp-c-divider);
+    }
   }
 </style>
 
 <template>
     <div class="archives">
-    <div v-for="year in yearList" class="one-year" :key="year" style="">
+    <div v-for="year in yearList" class="farYear" :key="year" style="">
         <div v-text="year" class="year"></div>
+        <div class="yearChinese">年</div>
+        <div class="one-year">
         <a v-for="(article, index2) in computedYearMap[year]" :key="index2" class="post" :href="article.url">
             <div class="one-post">
+            <img :src="article.img">
+            <div class="stringdata">
             <div v-text="article.date.string" class="date">
             </div>
             <div v-text="article.title" class="title">
@@ -93,7 +126,9 @@ const computedYearMap = computed(()=> {
             <div v-for="(tag,i) in article.tags" v-text="tag" class="tags">
             </div>
             </div>
+          </div>
         </a>
+      </div>
     </div>
     </div>
 </template>
