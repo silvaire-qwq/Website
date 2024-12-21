@@ -349,10 +349,8 @@ div.VPHero.has-image.VPHomeHero {
   font-size: 16px;
 }
 
-a.title {
-  span {
-    display: none;
-  }
+a.title span {
+  display: none;
 }
 
 .VPHome {
@@ -380,7 +378,7 @@ a.title {
 }
 
 .custom-block-title {
-  font-weight: 900;
+  font-weight: 800;
 }
 
 .custom-block.warning .custom-block-title {
@@ -504,15 +502,6 @@ div.friends {
   background-color: var(--vp-c-bg-soft) !important;
   border: 1px solid var(--vp-c-divider) !important;
 }
-button.DocSearch.DocSearch-Button {
-  border-radius: .7rem;
-  border: 1px solid var(--vp-c-divider);
-  background-color: var(--vp-c-bg);
-}
-
-div.shell {
-  border: 1px solid var(--vp-c-divider);
-}
 
 .Layout {
   .VPNavBar {
@@ -548,7 +537,7 @@ footer.VPFooter a {
 }
 
 .vp-doc h2 {
-  font-weight: 900;
+  font-weight: 800;
   border: none;
   padding: 0px !important;
   margin-top: 40px !important;
@@ -580,7 +569,7 @@ nav.VPDocAsideOutline.has-outline {
     filter: blur(0);
     opacity: 1;
     color: var(--vp-c-text-1);
-    font-weight: 900;
+    font-weight: 800;
     font-size: 20px;
     white-space: normal;
   }
@@ -591,4 +580,20 @@ nav.VPDocAsideOutline.has-outline {
   div.outline-marker {
     display: none;
   }
+}
+
+.VPNavBar .VPNavBarSearch.search {
+  display: none;
+}
+
+nav.VPNavBarMenu.menu {
+  height: 35px;
+  border-radius: 1.5em;
+  padding-left: 10px;
+  margin: 0 auto;
+  padding-right: 10px;
+}
+
+div.VPNavBarAppearance.appearance:before {
+  display: none;
 }

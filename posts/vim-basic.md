@@ -2,7 +2,7 @@
 title: "我决定从 VSCode 转到 NeoVim 了 "
 description: "大家好。在这篇文章中，我会分享一下我为何放弃 VSCode 使用 NeoVim 和使用 NeoVim 的一些经验～"
 clock: "2024-09-28"
-img: "https://imgbed.lunars.site/file/1732017276667_wall1.jpeg"
+img: "https://imgbed.lunars.site/file/1734771394185_ycy.11.webp"
 tags:
   - Vim
 ---

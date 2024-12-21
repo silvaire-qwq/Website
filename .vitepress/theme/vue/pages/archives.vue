@@ -16,10 +16,9 @@ const computedYearMap = computed(()=> {
 <style>
   div.archives {
     .one-year {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      grid-template-rows: repeat(auto-fill, 1fr);
-      grid-gap: 12px 8px;
+      column-gap: 12px;
+      column-width: 300px;
+      column-count: auto;
     }
     .year {
       font-size: 50px;
@@ -37,6 +36,8 @@ const computedYearMap = computed(()=> {
       margin-left: 5px;
     }
     .one-post {
+      margin-bottom: 12px;
+      break-inside: avoid !important;
       border-radius: 1rem;
       border: 1px solid var(--vp-c-divider);
       height: 100%;
@@ -71,19 +72,22 @@ const computedYearMap = computed(()=> {
       transition: .4s;
       color: var(--vp-c-text-3);
       font-weight: 500;
+      display: inline;
       margin-right: 8px;
     }
     .tags {
       display: inline;
       opacity: 1;
       transition: all .4s;
-      background: var(--vp-c-overlay);
       color: var(--vp-c-text-3);
-      margin-right: 6px;
-      padding: 5px 10px;
-      border: 1px solid var(--vp-c-gutter);
+      margin-right: 7px;
       border-radius: .6em;
       font-weight: 500;
+      opacity: .7;
+    }
+    .tags::before {
+      content: '#';
+      margin-right: 3px;
     }
     .stringdata {
       padding: 25px;
@@ -94,6 +98,11 @@ const computedYearMap = computed(()=> {
       color: var(--vp-c-text-3);
       opacity: .7;
       font-weight: 500;
+    }
+    p.readMore {
+      color: var(--vp-c-brand-1);
+      margin-bottom: 0px;
+      transition: all .4s;
     }
     img {
       object-fit: cover;
@@ -112,7 +121,7 @@ const computedYearMap = computed(()=> {
     <div v-for="year in yearList" class="farYear" :key="year" style="">
         <div v-text="year" class="year"></div>
         <div class="yearChinese">年</div>
-        <div class="one-year">
+        <section class="one-year">
         <a v-for="(article, index2) in computedYearMap[year]" :key="index2" class="post" :href="article.url">
             <div class="one-post">
             <img :src="article.img">
@@ -125,10 +134,11 @@ const computedYearMap = computed(()=> {
             </div>
             <div v-for="(tag,i) in article.tags" v-text="tag" class="tags">
             </div>
+            <!--<p class="readMore">开始阅读 -></p>-->
             </div>
           </div>
         </a>
-      </div>
+      </section>
     </div>
     </div>
 </template>

@@ -1,7 +1,7 @@
 ---
 title: "全新的博客界面"
 description: "一个月没发过文章了，来谈谈我博客这一段时间更新什么了。"
-img: "https://imgbed.lunars.site/file/1732013071309_Lofi-Cafe1.png"
+img: "https://bu.dusays.com/2023/10/28/653c73174bcf9.webp"
 clock: "2024-12-13"
 tags:
   - 博客
