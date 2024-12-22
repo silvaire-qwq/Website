@@ -38,7 +38,6 @@ const props = withDefaults(defineProps<Props>(), {
 /* 卡片背景 */
 .linkcard {
     align-items: center;
-    background-color: var(--vp-c-bg-soft);
     box-shadow: 0 8px 16px -4px var(--vp-c-bg-soft);
     text-decoration: none;
     display: block;

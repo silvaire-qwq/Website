@@ -513,6 +513,7 @@ div.friends {
 }
 
 .custom-block.details {
+  background-color: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider) !important;
 }
 
