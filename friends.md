@@ -59,7 +59,7 @@ silvaire_qwq
 
 ### 头像
 
-[右键-复制链接地址](https://imgbed.lunars.site/file/1734695833083_Image_135898539474484.jpg)
+[右键-复制链接地址](https://imgbed.lunars.site/file/1734840535565_IMG_20241222_120705.jpg)
 
 ### 描述
 
