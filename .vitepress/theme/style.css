@@ -314,6 +314,7 @@ a.VPButton.medium.alt:hover {
 
 /* blockquote */
 blockquote {
+  background-color: var(--vp-c-bg-alt);
   border: 1px solid var(--vp-c-divider) !important;
   border-radius: 0.8em;
   padding: 10px 15px 10px 15px !important;
@@ -475,13 +476,6 @@ img.VPImage.logo {
 
 .vp-doc h2 {
   margin-top: 0px !important;
-  border: 0px;
-  padding-top: 0px;
-  border: 1px solid var(--vp-c-divider);
-  padding: 15px 20px;
-  border-radius: .8rem;
-  background-color: var(--vp-c-bg-alt);
-  box-shadow: 0 8px 16px -4px var(--vp-c-bg-soft);
 }
 
 div.VPFeatures.VPHomeFeatures {
@@ -513,7 +507,7 @@ div.friends {
 }
 
 .custom-block.details {
-  background-color: var(--vp-c-bg);
+  background-color: var(--vp-c-bg-alt);
   border: 1px solid var(--vp-c-divider) !important;
 }
 
@@ -595,4 +589,8 @@ nav.VPDocAsideOutline.has-outline {
   div.outline-marker {
     display: none;
   }
+}
+
+.vp-doc {
+  counter-reset: section-counter;
 }
