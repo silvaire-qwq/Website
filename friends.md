@@ -4,6 +4,10 @@ title: 朋友们
 footer: false
 ---
 
+<script setup>
+    import { default as webConfig } from "./config.json";
+</script>
+
 <div class="friends">
   <FriendCard 
    title="LeonXie"
@@ -33,7 +37,7 @@ footer: false
    title="CE-RAMOS"
    url="https://ce-ramos.cn/" 
    description="一款致力于模仿原版系统界面且功能强大的PE。" 
-   logo="https://ce-ramos.cn/Logo.png" 
+   logo="https://docs.ce-ramos.cn/Logo.png" 
   />
   <FriendCard 
    title="青稚"
@@ -55,30 +59,30 @@ footer: false
 
 ### 名称
 
-silvaire_qwq
+<p v-text="webConfig.author"></p>
 
 ### 头像
 
-[右键-复制链接地址](https://imgbed.lunars.site/file/1734840535565_IMG_20241222_120705.jpg)
+<a :href="webConfig.logo">右键-复制链接地址</a>
 
 ### 描述
 
-Stay hungry, stay foolish.
+<p v-text="webConfig.description"></p>
 
 ### 网址
 
-https://lunars.site
+<p v-text="webConfig.url"></p>
 
 ## 要求
 
 - 网站在中国大陆境内可以在 40 秒内访问
 - 不存在违法违规行为
-- 已经挂上了 silvaire_qwq
+- 已经挂上了 <span v-text="webConfig.author"></span>
 - 有 3 篇或更多的原创文章
 
 ## 审核
 
-如果您符合条件，请将网站名、头像、简介和网址发送至 `mail@lunars.site`，等待审核。
+如果您符合条件，请将网站名、头像、简介和网址发送至 <code v-text="webConfig.mail"></code>，等待审核。
 
 ## 提醒事项
 

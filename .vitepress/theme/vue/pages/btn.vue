@@ -22,15 +22,19 @@ const props = withDefaults(defineProps<Props>(), {
 
 <style>
     a.CustomButton:hover {
-        background-color: var(--vp-c-bg-elv);
+        background-color: var(--vp-c-bg-alt);
+        color: var(--vp-c-text-1);
     }
     a.CustomButton {
+        box-shadow: 0 8px 16px -4px var(--vp-c-bg-soft);
+        margin-right: 6px;
         transition: all .4s;
         display: inline-block;
+        color: var(--vp-c-text-1);
         padding: 5px 10px;
         border-radius: .5em;
         border: 1px solid var(--vp-c-divider);
-        background-color: var(--vp-c-bg-soft);
+        background-color: var(--vp-c-bg);
         .icon {
             display: inline;
             margin-right: 10px;

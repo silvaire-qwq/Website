@@ -31,7 +31,20 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '主页', link: '/' },
-      { text: '朋友们', link: '/friends' },
+      {
+        text: '阅读',
+        items: [
+          { text: '文章', link: '/post' },
+          { text: '时光', link: '/list' },
+          { text: '动态', link: '/light' },
+        ]
+      },
+      { text: '其他', 
+        items: [
+          { text: '朋友们', link: '/friends' },
+          { text: '留言板', link: '/msg' },
+        ] 
+      }
     ],
 
     socialLinks: [

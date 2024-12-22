@@ -314,7 +314,6 @@ a.VPButton.medium.alt:hover {
 
 /* blockquote */
 blockquote {
-  background-color: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider) !important;
   border-radius: 0.8em;
   padding: 10px 15px 10px 15px !important;
@@ -428,16 +427,20 @@ a.title span {
   text-align: left;
 }
 
-.vp-doc h2 {
-  margin-top: 24px !important;
-}
-
 .some-comp.some-comp a {
   background: unset;
 }
 
 .some-comp.some-comp a[target]::after {
   content: unset;
+}
+
+.VPDoc main {
+  border: 1px solid var(--vp-c-divider);
+  padding: 25px 25px;
+  box-shadow: 0 8px 16px -4px var(--vp-c-bg-soft);
+  border-radius: 1.1rem;
+  margin: 15px 0px 15px 0px;
 }
 
 pre {
@@ -470,6 +473,17 @@ img.VPImage.logo {
   font-size: 16px;
 }
 
+.vp-doc h2 {
+  margin-top: 0px !important;
+  border: 0px;
+  padding-top: 0px;
+  border: 1px solid var(--vp-c-divider);
+  padding: 15px 20px;
+  border-radius: .8rem;
+  background-color: var(--vp-c-bg-alt);
+  box-shadow: 0 8px 16px -4px var(--vp-c-bg-soft);
+}
+
 div.VPFeatures.VPHomeFeatures {
   div.container {
     div.items {
@@ -499,7 +513,6 @@ div.friends {
 }
 
 .custom-block.details {
-  background-color: var(--vp-c-bg-soft) !important;
   border: 1px solid var(--vp-c-divider) !important;
 }
 
@@ -510,13 +523,17 @@ div.friends {
   }
 }
 
-a.VPLink.link.VPNavScreenMenuLink {
+a.VPLink.link.VPNavScreenMenuLink, div.VPNavScreenMenuGroup {
   border: 0px;
   border: 1px solid var(--vp-c-divider);
   margin: 7px 0px;
   padding: 10px 15px;
   border-radius: 8px;
   box-shadow: 3px 3px 3px var(--vp-c-bg-alt);
+}
+
+div.VPNavScreenMenuGroup button.button {
+  padding: 0px !important;
 }
 
 div.VPNavScreenAppearance.appearance {
@@ -538,9 +555,6 @@ footer.VPFooter a {
 
 .vp-doc h2 {
   font-weight: 800;
-  border: none;
-  padding: 0px !important;
-  margin-top: 40px !important;
 }
 
 .VPDocFooter {
@@ -580,20 +594,4 @@ nav.VPDocAsideOutline.has-outline {
   div.outline-marker {
     display: none;
   }
-}
-
-.VPNavBar .VPNavBarSearch.search {
-  display: none;
-}
-
-nav.VPNavBarMenu.menu {
-  height: 35px;
-  border-radius: 1.5em;
-  padding-left: 10px;
-  margin: 0 auto;
-  padding-right: 10px;
-}
-
-div.VPNavBarAppearance.appearance:before {
-  display: none;
 }
