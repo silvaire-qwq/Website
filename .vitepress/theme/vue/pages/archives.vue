@@ -71,6 +71,7 @@ const computedYearMap = computed(()=> {
     .date {
       transition: .4s;
       color: var(--vp-c-text-3);
+      letter-spacing: .4px;
       font-weight: 500;
       display: inline;
       margin-right: 8px;

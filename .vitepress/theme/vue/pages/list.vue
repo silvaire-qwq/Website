@@ -38,8 +38,10 @@ const computedYearMap = computed(()=> {
     }
     div.date {
         color: var(--vp-c-text-3);
-        opacity: .8;
+        opacity: .5;
         transition: all .4s;
+        font-weight: 500;
+        letter-spacing: .4px;
         float: left;
         font-family: var(--vp-font-family-mono);
         margin-right: 10px;
@@ -73,7 +75,7 @@ const computedYearMap = computed(()=> {
     }
     .one-post:hover .date {
         color: var(--vp-c-text-2);
-        opacity: .9;
+        opacity: .8;
     }
     .stringdata {
       padding: 6px 15px;
