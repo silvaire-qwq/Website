@@ -66,7 +66,6 @@ const computedYearMap = computed(()=> {
       }
       box-shadow: 0 8px 16px -4px var(--vp-c-brand-soft);
       border: 1px solid var(--vp-c-brand-1);
-      transform: scale(99%);
     }
     .date {
       transition: .4s;

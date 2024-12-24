@@ -18,6 +18,7 @@ pageClass: hide-avatar
         margin-bottom: 25px;
         img.logo {
             height: 240px;
+            width: 240px;
             border: 1px solid var(--vp-c-divider);
             padding: 6px;
             margin-bottom: 20px;
