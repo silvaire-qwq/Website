@@ -3,8 +3,13 @@ import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import { Icon } from '@iconify/vue'
-import './style.css'
+
+// Theme
+import './custom.css'
+import './index.css'
 import "@catppuccin/vitepress/theme/mocha/lavender.css";
+
+// Comps
 import FriendCard from "./vue/pages/friend.vue"
 import Comment from "./vue/vp/giscus.vue"
 import Title from "./vue/vp/before-doc.vue"

@@ -1,57 +1,18 @@
-/**
- * Customize default theme styling by overriding CSS variables:
- * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
- */
-
-/**
- * Colors
- *
- * Each colors have exact same color scale system with 3 levels of solid
- * colors with different brightness, and 1 soft color.
- * 
- * - `XXX-1`: The most solid color used mainly for colored text. It must
- *   satisfy the contrast ratio against when used on top of `XXX-soft`.
- *
- * - `XXX-2`: The color used mainly for hover state of the button.
- *
- * - `XXX-3`: The color for solid background, such as bg color of the button.
- *   It must satisfy the contrast ratio with pure white (#ffffff) text on
- *   top of it.
- *
- * - `XXX-soft`: The color used for subtle background such as custom container
- *   or badges. It must satisfy the contrast ratio when putting `XXX-1` colors
- *   on top of it.
- *
- *   The soft color must be semi transparent alpha channel. This is crucial
- *   because it allows adding multiple "soft" colors on top of each other
- *   to create a accent, such as when having inline code block inside
- *   custom containers.
- *
- * - `default`: The color used purely for subtle indication without any
- *   special meanings attached to it such as bg color for menu hover state.
- *
- * - `brand`: Used for primary brand colors, such as link text, button with
- *   brand theme, etc.
- *
- * - `tip`: Used to indicate useful information. The default theme uses the
- *   brand color for this by default.
- *
- * - `warning`: Used to indicate warning to the users. Used in custom
- *   container, badges, etc.
- *
- * - `danger`: Used to show error, or dangerous message to the users. Used
- *   in custom container, badges, etc.
- * -------------------------------------------------------------------------- */
-
 /* Import */
-@import url("https://fonts.font.im/css?family=Miniver");
-@import url("https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap");
 @import url('https://fonts.cdnfonts.com/css/sf-mono');
 
+@font-face {
+  font-family: "OPPOSans";
+  src: url("https://lf6-unpkg.zstaticcdn.com/silvaire-cdn/src/opposans/vf.ttf");
+}
+
 :root {
-  --vp-font-family-base: "Inter", "MiSans VF" !important;
-  --vp-font-family-mono: "SF Mono" !important;
-  --title-font: "Miniver" !important;
+  --vp-font-family-base: "OPPOSans";
+  --vp-font-family-mono: "SF Mono";
+}
+
+* {
+  font-weight: 500;
 }
 
 :root {
@@ -353,22 +314,6 @@ a.title span {
   display: none;
 }
 
-.VPHome {
-  .VPHero {
-    .container {
-      .main {
-        .name {
-          font-family: var(--title-font);
-        }
-
-        .tagline {
-          font-family: var(--title-font);
-        }
-      }
-    }
-  }
-}
-
 .VPFooter {
   border-top: none !important;
 }
@@ -593,4 +538,12 @@ nav.VPDocAsideOutline.has-outline {
 
 .vp-doc {
   counter-reset: section-counter;
+}
+
+div.VPNavScreenMenuGroup.open button.button {
+  margin-bottom: 6px;
+}
+
+.vp-doc strong {
+  font-weight: 700;
 }
