@@ -44,6 +44,7 @@ export default defineConfig({
           { text: '歌单', link: '/pages/others/music' },
           { text: '朋友们', link: '/pages/others/friends' },
           { text: '留言板', link: '/pages/others/msg' },
+          { text: '关于我', link: '/pages/others/about' },
         ] 
       }
     ],
