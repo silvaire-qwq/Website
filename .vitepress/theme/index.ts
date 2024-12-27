@@ -18,6 +18,7 @@ import VPBtn from "./vue/pages/btn.vue"
 import docList from './vue/pages/list.vue'
 import light from './vue/pages/light.vue'
 import msg from './vue/pages/msg.vue'
+import musicCard from './vue/pages/music-card.vue'
 
 export default {
   extends: DefaultTheme,
@@ -27,6 +28,7 @@ export default {
     app.component('Archives', Archives)
     app.component('VPBtn', VPBtn)
     app.component('DocList', docList)
+    app.component('MusicCard', musicCard)
     app.component('Light', light)
     app.component('MsgBoard', msg)
   },

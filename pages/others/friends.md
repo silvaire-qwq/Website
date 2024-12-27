@@ -5,7 +5,7 @@ footer: false
 ---
 
 <script setup>
-    import { default as webConfig } from "./config.json";
+    import { default as webConfig } from "../../config.json";
 </script>
 
 <div class="friends">

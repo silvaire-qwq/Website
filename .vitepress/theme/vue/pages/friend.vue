@@ -39,8 +39,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 .linkcard {
     align-items: center;
-    background-color: var(--vp-c-bg-soft);
-    box-shadow: 0 8px 16px -4px var(--vp-c-bg-soft);
+    box-shadow: 0 8px 16px -4px var(--vp-c-bg-alt);
     text-decoration: none;
     display: block;
     padding: 17px;
@@ -54,7 +53,6 @@ const props = withDefaults(defineProps<Props>(), {
 .linkcard:hover {
     border-color: var(--vp-c-brand-1);
     box-shadow: 0 8px 16px -4px var(--vp-c-brand-soft);
-    transform: scale(99%);
 }
 
 .name {

@@ -64,6 +64,6 @@ pageClass: hide-avatar
     <h3 class="desc" v-text="webConfig.description"></h3>
 </div>
 
-<VPBtn text="Posts" href="/post" icon="fluent:document-one-page-multiple-sparkle-16-regular" />
+<VPBtn text="Posts" href="/pages/reads/post" icon="fluent:document-one-page-multiple-sparkle-16-regular" />
 
-<VPBtn text="Moments" href="light" icon="fluent:weather-snowflake-48-regular" />
+<VPBtn text="Moments" href="/pages/reads/light" icon="fluent:weather-snowflake-48-regular" />

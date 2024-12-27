@@ -34,15 +34,16 @@ export default defineConfig({
       {
         text: '阅读',
         items: [
-          { text: '文章', link: '/post' },
-          { text: '时光', link: '/list' },
-          { text: '动态', link: '/light' },
+          { text: '文章', link: '/pages/reads/post' },
+          { text: '时光', link: '/pages/reads/list' },
+          { text: '动态', link: '/pages/reads/light' },
         ]
       },
       { text: '其他', 
         items: [
-          { text: '朋友们', link: '/friends' },
-          { text: '留言板', link: '/msg' },
+          { text: '歌单', link: '/pages/others/music' },
+          { text: '朋友们', link: '/pages/others/friends' },
+          { text: '留言板', link: '/pages/others/msg' },
         ] 
       }
     ],
