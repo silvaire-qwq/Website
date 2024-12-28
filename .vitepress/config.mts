@@ -20,7 +20,7 @@ export default defineConfig({
       next: '继续探索'
     },
     footer: {
-      message: '第 <span id="busuanzi_value_site_uv"></span> 个请求者<br>由 <a href="https://vitepress.dev/"> VitePress</a> 与 <a href="https://github.com/silvaire-qwq/Website">Silvaire\'s Blog</a> 强力驱动<br><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans">采用 CC BY-NC-ND 4.0 进行许可</a>',
+      message: '<span id="busuanzi_value_site_uv"></span> 个请求者<br>由 <a href="https://vitepress.dev/"> VitePress</a> 与 <a href="https://github.com/silvaire-qwq/Website">Silvaire\'s Blog</a> 强力驱动<br><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans">采用 CC BY-NC-ND 4.0 进行许可</a>',
     },
     darkModeSwitchLabel: '时钟',
     lightModeSwitchTitle: '切换至白天',
