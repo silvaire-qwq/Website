@@ -4,10 +4,14 @@ import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import { Icon } from '@iconify/vue'
 
+
 // Theme
 import './custom.css'
 import './index.css'
 import "@catppuccin/vitepress/theme/mocha/lavender.css";
+
+// TypeScript
+import './ts/busuanzi.ts'
 
 // Comps
 import FriendCard from "./vue/pages/friend.vue"
@@ -21,7 +25,6 @@ import msg from './vue/pages/msg.vue'
 import musicCard from './vue/pages/music-card.vue'
 
 export default {
-  extends: DefaultTheme,
   enhanceApp({ app, router, siteData }) {
     app.component('Icon', Icon)
     app.component('FriendCard', FriendCard)
