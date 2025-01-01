@@ -1,7 +1,6 @@
 ---
 title: "最满意的答卷"
 description: "—— 我的网站。"
-img: "https://bu.dusays.com/2024/09/22/66f021b44da2b.webp"
 clock: "2024-12-22"
 tags:
   - 博客

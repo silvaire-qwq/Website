@@ -57,6 +57,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 .name {
     transition: 0.4s;
+    font-weight: 900;
 }
 
 .des {

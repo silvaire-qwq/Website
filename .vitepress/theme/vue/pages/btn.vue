@@ -24,6 +24,7 @@ const props = withDefaults(defineProps<Props>(), {
     a.CustomButton:hover {
         background-color: var(--vp-c-bg-alt);
         color: var(--vp-c-text-1);
+        transform: scale(99%);
     }
     a.CustomButton {
         box-shadow: 0 8px 16px -4px var(--vp-c-bg-soft);
@@ -40,7 +41,7 @@ const props = withDefaults(defineProps<Props>(), {
             margin-right: 10px;
         }
         span {
-            font-size: 18px;
+            font-size: 16px;
         }
     }
 </style>

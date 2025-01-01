@@ -2,7 +2,6 @@
 title: "sudo 不请求密码"
 description: "sudo 不请求密码是一个非常危险的行为，请务必三思而后行，作者不承担任何后果！"
 clock: "2024-08-05"
-img: "https://imgbed.lunars.site/file/1734771392925_ycy.12.webp"
 tags:
   - Arch
   - Linux

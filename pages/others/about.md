@@ -57,11 +57,6 @@ footer: false
         <p>E代表外向，S代表感知，F代表感觉，P代表感知。</p>
     </div>
     <div class="oneOfAbout">
-        <p>座右铭</p>
-        <h1>Stay hungry, <br>stay foolish.</h1>
-        <p>一个人应该有强烈的求知欲望，就像饿了需要食物一样；同时，也应该保持谦虚的心态，就像一个愚蠢的人一样不耻下问。</p>
-    </div>
-    <div class="oneOfAbout">
         <p>年龄</p>
         <h1>10 后</h1>
         <p>风云际会，21世纪的头10年已经过去，当时间进入到2010年1月1日0时0分，“10后”正式登场。</p>

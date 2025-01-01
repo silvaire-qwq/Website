@@ -8,7 +8,7 @@ import { Icon } from '@iconify/vue'
 // Theme
 import './custom.css'
 import './index.css'
-import "@catppuccin/vitepress/theme/mocha/lavender.css";
+import "@catppuccin/vitepress/theme/mocha/red.css";
 
 // TypeScript
 import './ts/busuanzi.ts'
@@ -19,7 +19,6 @@ import Comment from "./vue/vp/giscus.vue"
 import Title from "./vue/vp/before-doc.vue"
 import Archives from "./vue/pages/archives.vue"
 import VPBtn from "./vue/pages/btn.vue"
-import docList from './vue/pages/list.vue'
 import light from './vue/pages/light.vue'
 import msg from './vue/pages/msg.vue'
 import musicCard from './vue/pages/music-card.vue'
@@ -30,7 +29,6 @@ export default {
     app.component('FriendCard', FriendCard)
     app.component('Archives', Archives)
     app.component('VPBtn', VPBtn)
-    app.component('DocList', docList)
     app.component('MusicCard', musicCard)
     app.component('Light', light)
     app.component('MsgBoard', msg)

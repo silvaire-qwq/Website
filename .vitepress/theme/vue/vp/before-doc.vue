@@ -1,6 +1,5 @@
 <template>
     <div class="before-docs">
-        <img :src="frontmatter.img"/>
         <div class="content">
             <div class="date">{{  $frontmatter.clock }}</div>
             <h1 class="doc-title">
@@ -20,6 +19,9 @@
 </script>
 <style>
 div.before-docs{
+    * {
+        user-select: none;
+    }
     border: 1px solid var(--vp-c-divider);
     box-shadow: 0 8px 16px -4px var(--vp-c-bg-soft);
     border-radius: 1.1rem;

@@ -35,7 +35,6 @@ export default defineConfig({
         text: '阅读',
         items: [
           { text: '文章', link: '/pages/reads/post' },
-          { text: '时光', link: '/pages/reads/list' },
           { text: '动态', link: '/pages/reads/light' },
         ]
       },

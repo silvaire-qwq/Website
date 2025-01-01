@@ -15,6 +15,9 @@ pageClass: hide-avatar
         display: none;
     }
     div.homePage {
+        * {
+            user-select: none;
+        }
         margin-bottom: 25px;
         img.logo {
             height: 240px;
@@ -64,6 +67,10 @@ pageClass: hide-avatar
     <h3 class="desc" v-text="webConfig.description"></h3>
 </div>
 
-<VPBtn text="Posts" href="/pages/reads/post" icon="fluent:document-one-page-multiple-sparkle-16-regular" />
+<a class="CustomButton" style="background-color: var(--vp-c-brand-soft); border: 1px solid var(--vp-c-brand-1)" href="https://www.bilibili.com/video/BV187411i71P/?share_source=copy_web&vd_source=7042c7b68a10e8b7be829bab8708b7cb">
+    <span>🎉<div style="margin-right:7px; display: inline"></div>新年快乐</span>
+</a>
 
-<VPBtn text="Moments" href="/pages/reads/light" icon="fluent:weather-snowflake-48-regular" />
+<VPBtn text="文章" href="/pages/reads/post" icon="fluent:document-one-page-multiple-sparkle-16-regular" />
+
+<VPBtn text="动态" href="/pages/reads/light" icon="fluent:weather-snowflake-48-regular" />

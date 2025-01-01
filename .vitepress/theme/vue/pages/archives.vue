@@ -15,6 +15,9 @@ const computedYearMap = computed(()=> {
 
 <style>
   div.archives {
+    * {
+      user-select: none;
+    }
     .one-year {
       column-gap: 12px;
       column-width: 300px;
@@ -124,7 +127,7 @@ const computedYearMap = computed(()=> {
         <section class="one-year">
         <a v-for="(article, index2) in computedYearMap[year]" :key="index2" class="post" :href="article.url">
             <div class="one-post">
-            <img :src="article.img">
+            <!--<img :src="article.img">-->
             <div class="stringdata">
             <div v-text="article.date.string" class="date">
             </div>
