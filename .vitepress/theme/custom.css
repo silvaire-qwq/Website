@@ -35,7 +35,7 @@
   --vp-c-brand-2: var(--vp-c-indigo-2);
   --vp-c-brand-3: var(--vp-c-indigo-3);
 
-  --vp-c-brand-soft: rgba(243, 139, 168, 0.3);
+  --vp-c-brand-soft: rgba(180, 190, 254, 0.3);
 
   --vp-c-tip-1: var(--vp-c-brand-1);
   --vp-c-tip-2: var(--vp-c-brand-2);
@@ -135,7 +135,7 @@ div.VPHome {
 .fa-solid,
 .fa-regular,
 .fa-brands {
-  width: 1.2em;
+  width: 1.2rem;
   vertical-align: middle;
   text-align: center;
 }
@@ -143,7 +143,7 @@ div.VPHome {
 :where(.iconify) {
   display: inline-block;
   flex-shrink: 0;
-  font-size: 1.2em;
+  font-size: 1.2rem;
   vertical-align: sub;
 }
 
@@ -220,7 +220,7 @@ a.VPLink.no-icon.VPFeature {
   article.box .icon {
     scale: 1.8;
     background-color: transparent;
-    border-radius: 0.35em;
+    border-radius: 0.35rem;
     transition: all 0.4s ease 0s;
   }
 
@@ -230,7 +230,7 @@ a.VPLink.no-icon.VPFeature {
 /* button */
 
 a.VPButton {
-  border-radius: 0.7em !important;
+  border-radius: 0.7rem !important;
 }
 
 a.VPButton.medium.brand {
@@ -277,14 +277,14 @@ a.VPButton.medium.alt:hover {
 blockquote {
   background-color: var(--vp-c-bg-alt);
   border: 1px solid var(--vp-c-divider) !important;
-  border-radius: 0.8em;
+  border-radius: 0.8rem;
   padding: 10px 15px 10px 15px !important;
 }
 
 div.info.custom-block.github-alert {
   background-color: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider) !important;
-  border-radius: 0.8em;
+  border-radius: 0.8rem;
   padding: 10px 15px 10px 15px !important;
 }
 
@@ -306,7 +306,7 @@ div.VPHero.has-image.VPHomeHero {
 }
 
 .custom-block {
-  border-radius: 0.8em;
+  border-radius: 0.8rem;
   font-size: 16px;
 }
 
@@ -356,7 +356,7 @@ a.title span {
 }
 
 .VPMenuGroup > .title {
-  font-size: 0.7em;
+  font-size: 0.7rem;
 }
 
 .vp-doc s {
@@ -390,23 +390,23 @@ a.title span {
 }
 
 pre {
-  border-radius: 0.8em !important;
+  border-radius: 0.8rem !important;
   border: 1px solid var(--vp-c-divider) !important;
 }
 
 div.shiki {
-  border-radius: 0.8em !important;
+  border-radius: 0.8rem !important;
   margin: 0px !important;
 }
 
 div.vp-adaptive-theme {
   margin-left: 0px !important;
   margin-right: 0px !important;
-  border-radius: 0.8em !important;
+  border-radius: 0.8rem !important;
 }
 
 code {
-  border-radius: 0.5em !important;
+  border-radius: 0.5rem !important;
 }
 
 img.VPImage.logo {
@@ -427,7 +427,7 @@ div.VPFeatures.VPHomeFeatures {
   div.container {
     div.items {
       background-color: var(--vp-c-bg-alt);
-      border-radius: 1em;
+      border-radius: 1rem;
       border: 1px solid var(--vp-c-divider);
       padding: 5px;
     }
@@ -446,7 +446,7 @@ div.VPFeatures.VPHomeFeatures {
 
 div.friends {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-template-rows: repeat(auto-fill, 1fr);
   grid-gap: 0px 7px;
 }
@@ -503,7 +503,7 @@ footer.VPFooter a {
 
 nav.VPDocAsideOutline.has-outline {
   padding: 10px 15px;
-  border-radius: 0.8em;
+  border-radius: 0.8rem;
   border: 1px solid var(--vp-c-divider);
   box-shadow: 0 8px 16px -4px var(--vp-c-bg-alt);
   div#doc-outline-aria-label {
@@ -534,6 +534,20 @@ nav.VPDocAsideOutline.has-outline {
   div.outline-marker {
     display: none;
   }
+}
+
+.vp-doc h2 {
+  display: inline-block;
+  margin-bottom: 0px !important;
+  border-top: 0px !important;
+}
+
+.vp-doc h2, .marker {
+  background: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft)) no-repeat center bottom / 100% 10px;
+  transition: all .4s;
+}
+.vp-doc h2:hover, .marker:hover {
+  background: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft)) no-repeat center bottom / 100% 20px;
 }
 
 .vp-doc {

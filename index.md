@@ -62,13 +62,13 @@ pageClass: hide-avatar
 
 <div class="homePage">
     <img class="logo" :src="webConfig.logo"/>
-    <h1 class="name">Hi, I'm <span class="author" v-text="webConfig.author"></span> 👋。</h1>
+    <h1 class="name">Hi, I'm <span class="author marker" v-text="webConfig.author"></span> 👋。</h1>
     <h1 class="work">A Student Who Is Learning <span class="codeBlock">Coding</span></h1>
     <h3 class="desc" v-text="webConfig.description"></h3>
 </div>
 
-<a class="CustomButton" style="background-color: var(--vp-c-brand-soft); border: 1px solid var(--vp-c-brand-1)" href="https://www.bilibili.com/video/BV187411i71P/?share_source=copy_web&vd_source=7042c7b68a10e8b7be829bab8708b7cb">
-    <span>🎉<div style="margin-right:7px; display: inline"></div>新年快乐</span>
+<a class="CustomButton" style="background-color: var(--vp-c-brand-soft); border: 1px solid var(--vp-c-brand-1)">
+    <span><Icon icon="fluent:weather-moon-16-regular" width="20" height="20" style="display: inline;"/><div style="margin-right:7px; display: inline"></div>寒假中</span>
 </a>
 
 <VPBtn text="文章" href="/pages/reads/post" icon="fluent:document-one-page-multiple-sparkle-16-regular" />

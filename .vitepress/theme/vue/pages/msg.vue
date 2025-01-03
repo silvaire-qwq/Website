@@ -1,5 +1,5 @@
 <template>
-    <div class="comment">
+    <div class="comment-board">
       <component
         v-if="isDark"
         :is="'script'"
@@ -46,7 +46,7 @@
     const { isDark } = useData();
   </script>
   <style>
-    .comment {
+    .comment-board {
       border: 1px solid var(--vp-c-divider);
       padding: 25px 25px;
       box-shadow: 0 8px 16px -4px var(--vp-c-bg-soft);

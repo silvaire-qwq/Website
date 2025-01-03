@@ -32,7 +32,7 @@ div.before-docs{
       transition: all .4s;
       color: var(--vp-c-text-3);
       margin-right: 7px;
-      border-radius: .6em;
+      border-radius: .6rem;
       font-weight: 500;
       opacity: .7;
     }

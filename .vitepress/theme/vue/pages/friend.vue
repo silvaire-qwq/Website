@@ -35,7 +35,6 @@ const props = withDefaults(defineProps<Props>(), {
 </template>
 
 <style>
-/* 卡片背景 */
 
 .linkcard {
     align-items: center;
@@ -49,7 +48,6 @@ const props = withDefaults(defineProps<Props>(), {
     margin-bottom: 7px;
 }
 
-/* 卡片鼠标悬停 */
 .linkcard:hover {
     border-color: var(--vp-c-brand-1);
     box-shadow: 0 8px 16px -4px var(--vp-c-brand-soft);
@@ -69,7 +67,6 @@ const props = withDefaults(defineProps<Props>(), {
     color: var(--vp-c-brand-1);
 }
 
-/* 链接样式 */
 .linkcard a {
     display: flex;
     align-items: center;
@@ -83,7 +80,6 @@ p.description {
     margin: 0px;
 }
 
-/* 描述链接文字 */
 .linkcard .description {
     color: var(--vp-c-text-1);
     font-size: 20px;
@@ -95,7 +91,6 @@ p.description {
     margin-left: 10px;
 }
 
-/* 描述链接文字2 */
 .linkcard .description span.des {
     font-size: 14px;
 }

@@ -8,7 +8,7 @@ import { Icon } from '@iconify/vue'
 // Theme
 import './custom.css'
 import './index.css'
-import "@catppuccin/vitepress/theme/mocha/red.css";
+import "@catppuccin/vitepress/theme/mocha/lavender.css";
 
 // TypeScript
 import './ts/busuanzi.ts'
