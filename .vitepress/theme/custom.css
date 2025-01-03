@@ -23,6 +23,7 @@
 .dark {
   --vp-custom-nav-bg: rgba(30, 30, 46, 0.7);
   --vp-c-overlay: #2a2b3d;
+  
 }
 
 :root {
@@ -361,8 +362,8 @@ a.title span {
 
 .vp-doc s {
   text-decoration: none;
-  filter: blur(3px);
-  transition: 0.2s;
+  opacity: .4;
+  font-style: italic;
 }
 
 .vp-doc s:hover {
@@ -379,14 +380,6 @@ a.title span {
 
 .some-comp.some-comp a[target]::after {
   content: unset;
-}
-
-.VPDoc main {
-  border: 1px solid var(--vp-c-divider);
-  padding: 25px 25px;
-  box-shadow: 0 8px 16px -4px var(--vp-c-bg-soft);
-  border-radius: 1.1rem;
-  margin: 15px 0px 15px 0px;
 }
 
 pre {
@@ -450,10 +443,17 @@ div.friends {
   grid-template-rows: repeat(auto-fill, 1fr);
   grid-gap: 0px 7px;
 }
-
 .custom-block.details {
   background-color: var(--vp-c-bg-alt);
   border: 1px solid var(--vp-c-divider) !important;
+}
+
+.VPDoc main {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  margin: 50px 0px;
+  border-top: 1px solid var(--vp-c-divider);
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .Layout {
@@ -502,10 +502,6 @@ footer.VPFooter a {
 }
 
 nav.VPDocAsideOutline.has-outline {
-  padding: 10px 15px;
-  border-radius: 0.8rem;
-  border: 1px solid var(--vp-c-divider);
-  box-shadow: 0 8px 16px -4px var(--vp-c-bg-alt);
   div#doc-outline-aria-label {
     display: none;
   }
@@ -514,7 +510,7 @@ nav.VPDocAsideOutline.has-outline {
     padding-left: 0px;
   }
   a.outline-link {
-    filter: blur(1.2px);
+    filter: blur(1.3px);
     opacity: 0.8;
     transition: all 0.4s;
     color: var(--vp-c-text-3);
@@ -524,7 +520,8 @@ nav.VPDocAsideOutline.has-outline {
     opacity: 1;
     color: var(--vp-c-text-1);
     font-weight: 800;
-    font-size: 20px;
+    font-size: 18px;
+    line-height: 30px;
     white-space: normal;
   }
   a.outline-link:hover {
@@ -570,4 +567,22 @@ div.VPNavScreenMenuGroup.open button.button {
   * {
     user-select: none;
   }
+}
+
+.VPLink.link.VPNavBarMenuLink.active {
+  color: var(--vp-c-text-1);
+  opacity: 1;
+}
+
+.VPLink.link.VPNavBarMenuLink {
+  color: var(--vp-c-text-3);
+  opacity: .5;
+}
+
+div.aside, div.spacer {
+  display: none !important;
+}
+
+header div.divider {
+  display: none;
 }

@@ -19,6 +19,7 @@ export default defineConfig({
       prev: '回忆',
       next: '继续探索'
     },
+    outline: false,
     footer: {
       message: '<span id="busuanzi_value_site_uv"></span> 个请求者<br>由 <a href="https://vitepress.dev/"> VitePress</a> 与 <a href="https://github.com/silvaire-qwq/Website">Silvaire\'s Blog</a> 强力驱动<br><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans">采用 CC BY-NC-ND 4.0 进行许可</a>',
     },
@@ -30,22 +31,10 @@ export default defineConfig({
     returnToTopLabel: '回到重生点',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: '主页', link: '/' },
-      {
-        text: '阅读',
-        items: [
-          { text: '文章', link: '/pages/reads/post' },
-          { text: '动态', link: '/pages/reads/light' },
-        ]
-      },
-      { text: '其他', 
-        items: [
-          { text: '歌单', link: '/pages/others/music' },
-          { text: '朋友们', link: '/pages/others/friends' },
-          { text: '留言板', link: '/pages/others/msg' },
-          { text: '关于我', link: '/pages/others/about' },
-        ] 
-      }
+        { text: 'Posts', link: '/pages/reads/post' },
+        { text: 'Notes', link: '/pages/reads/light' },
+        { text: 'Friends', link: '/pages/others/friends' },
+        { text: 'Board', link: '/pages/others/msg' },
     ],
 
     socialLinks: [

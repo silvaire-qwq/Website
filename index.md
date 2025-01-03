@@ -67,10 +67,6 @@ pageClass: hide-avatar
     <h3 class="desc" v-text="webConfig.description"></h3>
 </div>
 
-<a class="CustomButton" style="background-color: var(--vp-c-brand-soft); border: 1px solid var(--vp-c-brand-1)">
-    <span><Icon icon="fluent:weather-moon-16-regular" width="20" height="20" style="display: inline;"/><div style="margin-right:7px; display: inline"></div>寒假中</span>
-</a>
-
 <VPBtn text="文章" href="/pages/reads/post" icon="fluent:document-one-page-multiple-sparkle-16-regular" />
 
 <VPBtn text="动态" href="/pages/reads/light" icon="fluent:weather-snowflake-48-regular" />

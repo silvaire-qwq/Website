@@ -53,25 +53,21 @@ footer: false
   />
 </div>
 
-::: details 和我成为朋友吧！
+<br><br>
+
+---
+
+<br>
+
+# 添加友情链接
+
+<br>
 
 ## 我的信息
 
-### 名称
-
-<p v-text="webConfig.author"></p>
-
-### 头像
-
-<a :href="webConfig.logo">右键-复制链接地址</a>
-
-### 描述
-
-<p v-text="webConfig.description"></p>
-
-### 网址
-
-<p v-text="webConfig.url"></p>
+| 名称 | 头像 | 描述 | 网址 |
+| --- | --- | --- | --- |
+| <span v-text="webConfig.author"></span> | <a :href="webConfig.logo">复制链接</a> | <span v-text="webConfig.description"></span> | <span v-text="webConfig.url"></span> |
 
 ## 要求
 
@@ -88,6 +84,3 @@ footer: false
 
 - 如果您违反要求，我会删除您的链接。
 - 您申请的信息可能会被简化，例如只留下您的昵称，删掉 "空间" 等字符。
-
-:::
-

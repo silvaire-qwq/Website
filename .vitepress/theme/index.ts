@@ -21,7 +21,6 @@ import Archives from "./vue/pages/archives.vue"
 import VPBtn from "./vue/pages/btn.vue"
 import light from './vue/pages/light.vue'
 import msg from './vue/pages/msg.vue'
-import musicCard from './vue/pages/music-card.vue'
 
 export default {
   enhanceApp({ app, router, siteData }) {
@@ -29,7 +28,6 @@ export default {
     app.component('FriendCard', FriendCard)
     app.component('Archives', Archives)
     app.component('VPBtn', VPBtn)
-    app.component('MusicCard', musicCard)
     app.component('Light', light)
     app.component('MsgBoard', msg)
   },

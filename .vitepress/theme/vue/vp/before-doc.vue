@@ -1,15 +1,16 @@
 <template>
     <div class="before-docs">
         <div class="content">
-            <div class="date">{{  $frontmatter.clock }}</div>
             <h1 class="doc-title">
                 {{ $frontmatter.title }}
             </h1>
             <div class="desc">
                 {{ $frontmatter.description }}
             </div>
-            <div v-for="(tag,i) in frontmatter.tags" v-text="tag" class="tags">
-            </div>
+            <span class="date">{{  $frontmatter.clock }}</span>
+            <br>
+            <!--<span v-for="(tag,i) in frontmatter.tags" v-text="tag" class="tags">
+            </span>-->
         </div>
     </div>
 </template>
@@ -19,13 +20,11 @@
 </script>
 <style>
 div.before-docs{
+    margin: 100px 0px;
     * {
+        text-align: center;
         user-select: none;
     }
-    border: 1px solid var(--vp-c-divider);
-    box-shadow: 0 8px 16px -4px var(--vp-c-bg-soft);
-    border-radius: 1.1rem;
-    margin: 15px 0px 15px 0px;
     .tags {
       display: inline;
       opacity: 1;
@@ -43,6 +42,7 @@ div.before-docs{
     .date {
         transition: .4s;
         color: var(--vp-c-text-3);
+        opacity: .7;
         font-weight: 500;
         margin-bottom: 10px;
         margin-right: 8px;
@@ -60,9 +60,6 @@ div.before-docs{
         line-height: 33px;
         font-size: 32px;
         font-weight: 600;
-    }
-    .content {
-        padding: 40px 25px;
     }
     .desc {
         font-weight: 500;
