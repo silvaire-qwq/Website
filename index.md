@@ -69,4 +69,4 @@ pageClass: hide-avatar
 
 <VPBtn text="文章" href="/pages/reads/post" icon="fluent:document-one-page-multiple-sparkle-16-regular" />
 
-<VPBtn text="动态" href="/pages/reads/light" icon="fluent:weather-snowflake-48-regular" />
+<VPBtn text="GitHub" :href="webConfig.github" icon="hugeicons:github" />

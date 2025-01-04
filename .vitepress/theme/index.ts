@@ -19,7 +19,6 @@ import Comment from "./vue/vp/giscus.vue"
 import Title from "./vue/vp/before-doc.vue"
 import Archives from "./vue/pages/archives.vue"
 import VPBtn from "./vue/pages/btn.vue"
-import light from './vue/pages/light.vue'
 import msg from './vue/pages/msg.vue'
 
 export default {
@@ -28,7 +27,6 @@ export default {
     app.component('FriendCard', FriendCard)
     app.component('Archives', Archives)
     app.component('VPBtn', VPBtn)
-    app.component('Light', light)
     app.component('MsgBoard', msg)
   },
   Layout() {

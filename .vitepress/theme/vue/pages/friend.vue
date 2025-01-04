@@ -53,12 +53,12 @@ const props = withDefaults(defineProps<Props>(), {
     box-shadow: 0 8px 16px -4px var(--vp-c-brand-soft);
 }
 
-.name {
+.linkcard .name {
     transition: 0.4s;
     font-weight: 900;
 }
 
-.des {
+.linkcard .des {
     color: var(--vp-c-text-3);
     opacity: .8;
 }
@@ -72,11 +72,11 @@ const props = withDefaults(defineProps<Props>(), {
     align-items: center;
 }
 
-p {
+.linkcard p {
     line-height: 23px !important;
 }
 
-p.description {
+.linkcard p.description {
     margin: 0px;
 }
 
@@ -97,18 +97,15 @@ p.description {
 
 /* logo图片 */
 .linkcard .logo img {
+    margin-right: 12px;
     clear: both;
     display: block;
     float: left;
-    max-width: 48px;
-    max-height: 48px;
+    max-width: 49px;
+    max-height: 49px;
     border-radius: 100%;
     box-sizing: border-box;
 }
 
-/* 链接下划线去除 */
-.vp-doc a {
-    text-decoration: none;
-}
 
 </style>

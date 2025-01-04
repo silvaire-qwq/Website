@@ -32,7 +32,6 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
         { text: 'Posts', link: '/pages/reads/post' },
-        { text: 'Notes', link: '/pages/reads/light' },
         { text: 'Friends', link: '/pages/others/friends' },
         { text: 'Board', link: '/pages/others/msg' },
     ],

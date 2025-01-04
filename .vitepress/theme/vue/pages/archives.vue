@@ -27,7 +27,7 @@ const computedYearMap = computed(()=> {
       font-size: 50px;
       line-height: 70px;
       font-weight: 900;
-      margin-bottom: 15px;
+      margin-bottom: 0px;
       display: inline-block;
     }
     .yearChinese {
@@ -35,7 +35,7 @@ const computedYearMap = computed(()=> {
       font-size: 25px;
       line-height: 70px;
       font-weight: 900;
-      margin-bottom: 15px;
+      margin-bottom: 0px;
       margin-left: 5px;
     }
     .one-post {
@@ -48,7 +48,7 @@ const computedYearMap = computed(()=> {
     }
     .description {
       color: var(--vp-c-text-3);
-      margin-bottom: 20px;
+      /*margin-bottom: 20px;*/
     }
     .title {
       font-size: 28px;
@@ -60,7 +60,7 @@ const computedYearMap = computed(()=> {
       color: var(--vp-c-text-1) !important;
     }
     .farYear {
-      margin-bottom: 100px;
+      margin-bottom: 75px;
     }
     .one-post:hover {
       .title {
@@ -135,8 +135,8 @@ const computedYearMap = computed(()=> {
             </div>
             <div v-text="article.description" class="description">
             </div>
-            <div v-for="(tag,i) in article.tags" v-text="tag" class="tags">
-            </div>
+            <!--<div v-for="(tag,i) in article.tags" v-text="tag" class="tags">
+            </div>-->
             <!--<p class="readMore">开始阅读 -></p>-->
             </div>
           </div>

@@ -289,10 +289,6 @@ div.info.custom-block.github-alert {
   padding: 10px 15px 10px 15px !important;
 }
 
-/* header-anchor */
-.header-anchor {
-  display: none;
-}
 
 /* hero image */
 div.VPHero.has-image.VPHomeHero {
@@ -364,6 +360,10 @@ a.title span {
   text-decoration: none;
   opacity: .4;
   font-style: italic;
+}
+
+.vp-doc a {
+  text-decoration: none;
 }
 
 .vp-doc s:hover {
@@ -544,7 +544,7 @@ nav.VPDocAsideOutline.has-outline {
   transition: all .4s;
 }
 .vp-doc h2:hover, .marker:hover {
-  background: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft)) no-repeat center bottom / 100% 20px;
+  background: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft)) no-repeat center bottom / 100% 17px;
 }
 
 .vp-doc {
@@ -571,6 +571,7 @@ div.VPNavScreenMenuGroup.open button.button {
 
 .VPLink.link.VPNavBarMenuLink.active {
   color: var(--vp-c-text-1);
+  transition: all .4s;
   opacity: 1;
 }
 
