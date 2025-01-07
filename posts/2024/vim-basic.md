@@ -1,6 +1,6 @@
 ---
 title: "我决定从 VSCode 转到 NeoVim 了 "
-description: "大家好。在这篇文章中，我会分享一下我为何放弃 VSCode 使用 NeoVim 和使用 NeoVim 的一些经验～"
+description: "作者在文章中分享从 VSCode 转用 NeoVim 的原因，是因为电脑配置差，使用 VSCode 会内存跑满、卡死，且觉得用鼠标操作麻烦。作者还介绍了 NeoVim 的使用，在 Arch Linux 中可以通过 “sudo pacman -S neovim” 安装，推荐使用 AstroVim 配置。同时详细讲解了编辑文件的多种技巧，如打开、保存退出、搜索、跳转、删除、撤销、复制粘贴、编辑和替换等操作。"
 clock: "2024-09-28"
 ---
 

@@ -26,16 +26,16 @@ const computedYearMap = computed(()=> {
     .year {
       font-size: 50px;
       line-height: 70px;
-      font-weight: 900;
-      margin-bottom: 0px;
+      font-weight: 700;
+      margin-bottom: 5px;
       display: inline-block;
     }
     .yearChinese {
       display: inline-block;
       font-size: 25px;
       line-height: 70px;
-      font-weight: 900;
-      margin-bottom: 0px;
+      font-weight: 700;
+      margin-bottom: 5px;
       margin-left: 5px;
     }
     .one-post {
@@ -48,7 +48,8 @@ const computedYearMap = computed(()=> {
     }
     .description {
       color: var(--vp-c-text-3);
-      /*margin-bottom: 20px;*/
+      margin-bottom: 20px;
+      font-weight: 400;
     }
     .title {
       font-size: 28px;
@@ -60,7 +61,7 @@ const computedYearMap = computed(()=> {
       color: var(--vp-c-text-1) !important;
     }
     .farYear {
-      margin-bottom: 75px;
+      margin-bottom: 100px;
     }
     .one-post:hover {
       .title {
@@ -74,7 +75,7 @@ const computedYearMap = computed(()=> {
       transition: .4s;
       color: var(--vp-c-text-3);
       letter-spacing: .4px;
-      font-weight: 500;
+      font-weight: 400;
       display: inline;
       margin-right: 8px;
     }
@@ -85,7 +86,7 @@ const computedYearMap = computed(()=> {
       color: var(--vp-c-text-3);
       margin-right: 7px;
       border-radius: .6em;
-      font-weight: 500;
+      font-weight: 400;
       opacity: .7;
     }
     .tags::before {
@@ -100,7 +101,7 @@ const computedYearMap = computed(()=> {
       margin-right: 5px;
       color: var(--vp-c-text-3);
       opacity: .7;
-      font-weight: 500;
+      font-weight: 400;
     }
     p.readMore {
       color: var(--vp-c-brand-1);
@@ -135,9 +136,9 @@ const computedYearMap = computed(()=> {
             </div>
             <div v-text="article.description" class="description">
             </div>
-            <!--<div v-for="(tag,i) in article.tags" v-text="tag" class="tags">
-            </div>-->
-            <!--<p class="readMore">开始阅读 -></p>-->
+            <div v-for="(tag,i) in article.tags" v-text="tag" class="tags">
+            </div>
+            <p class="readMore">开始阅读 -></p>
             </div>
           </div>
         </a>

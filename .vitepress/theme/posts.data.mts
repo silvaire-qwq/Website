@@ -7,8 +7,7 @@ interface Post {
   date: {
     time: number;
     string: string;
-  };
-  img: string;
+  }
 }
 
 interface RencentPost extends Post {
@@ -41,7 +40,6 @@ export default createContentLoader("posts/*/*.md", {
           url,
           description: frontmatter.description,
           date: formatDate(frontmatter.clock),
-          img: frontmatter.img,
           tags
           //md: getTime(frontmatter.date),
         };

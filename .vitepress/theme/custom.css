@@ -1,18 +1,15 @@
 /* Import */
 @import url('https://fonts.cdnfonts.com/css/sf-mono');
-
-@font-face {
-  font-family: "OPPOSans";
-  src: url("https://lf6-unpkg.zstaticcdn.com/silvaire-cdn/src/opposans/vf.ttf");
-}
+@import url('https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap');
+@import url('https://fonts.googleapis.cn/css2?family=Fira+Code:wght@300..700&family=Noto+Serif+SC:wght@200..900&display=swap');
 
 :root {
-  --vp-font-family-base: "OPPOSans";
-  --vp-font-family-mono: "SF Mono";
+  --vp-font-family-base: "Inter", "MiSans VF";
+  --vp-font-family-mono: "Fira Code";
 }
 
 * {
-  font-weight: 500;
+  font-variant-ligatures: normal !important;
 }
 
 :root {
@@ -315,12 +312,12 @@ a.title span {
   border-top: none !important;
 }
 
-.vp-doc .custom-block {
-  padding: 8px 16px;
+.VPFooter * {
+  font-weight: 400;
 }
 
-.custom-block-title {
-  font-weight: 800;
+.vp-doc .custom-block {
+  padding: 8px 16px;
 }
 
 .custom-block.warning .custom-block-title {
@@ -446,6 +443,7 @@ div.friends {
 .custom-block.details {
   background-color: var(--vp-c-bg-alt);
   border: 1px solid var(--vp-c-divider) !important;
+
 }
 
 .VPDoc main {
@@ -493,45 +491,11 @@ footer.VPFooter a {
   text-decoration: none !important;
 }
 
-.vp-doc h2 {
-  font-weight: 800;
-}
-
 .VPDocFooter {
   margin-top: 16px !important;
 }
 
-nav.VPDocAsideOutline.has-outline {
-  div#doc-outline-aria-label {
-    display: none;
-  }
-  div.content {
-    border-left: 0px;
-    padding-left: 0px;
-  }
-  a.outline-link {
-    filter: blur(1.3px);
-    opacity: 0.8;
-    transition: all 0.4s;
-    color: var(--vp-c-text-3);
-  }
-  a.outline-link.active {
-    filter: blur(0);
-    opacity: 1;
-    color: var(--vp-c-text-1);
-    font-weight: 800;
-    font-size: 18px;
-    line-height: 30px;
-    white-space: normal;
-  }
-  a.outline-link:hover {
-    filter: blur(0);
-    color: var(--vp-c-text-1);
-  }
-  div.outline-marker {
-    display: none;
-  }
-}
+
 
 .vp-doc h2 {
   display: inline-block;
@@ -578,10 +542,6 @@ div.VPNavScreenMenuGroup.open button.button {
 .VPLink.link.VPNavBarMenuLink {
   color: var(--vp-c-text-3);
   opacity: .5;
-}
-
-div.aside, div.spacer {
-  display: none !important;
 }
 
 header div.divider {

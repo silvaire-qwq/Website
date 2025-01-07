@@ -4,13 +4,14 @@
             <h1 class="doc-title">
                 {{ $frontmatter.title }}
             </h1>
-            <div class="desc">
-                {{ $frontmatter.description }}
-            </div>
             <span class="date">{{  $frontmatter.clock }}</span>
             <br>
             <!--<span v-for="(tag,i) in frontmatter.tags" v-text="tag" class="tags">
             </span>-->
+            <div class="desc">
+                <p class="gen-by-doubao"><Icon icon="fluent:checkmark-starburst-20-filled" width="20" height="20"  style="display: inline; margin-right: 8px;" />由豆包 AI 手动生成</p><br>
+                {{ $frontmatter.description }}
+            </div>
         </div>
     </div>
 </template>
@@ -20,9 +21,8 @@
 </script>
 <style>
 div.before-docs{
-    margin: 100px 0px;
+    margin: 70px 0px;
     * {
-        text-align: center;
         user-select: none;
     }
     .tags {
@@ -62,9 +62,19 @@ div.before-docs{
         font-weight: 600;
     }
     .desc {
+        .gen-by-doubao {
+            margin-bottom: 9px;
+            border-radius: 15px;
+            color: var(--vp-c-brand-1);
+            display: inline-block;
+        }
         font-weight: 500;
-        margin-bottom: 20px;
+        margin-bottom: -40px;
         color: var(--vp-c-text-3);
+        border: 1px solid var(--vp-c-divider);
+        padding: 20px;
+        margin-top: 100px;
+        border-radius: 1.1rem;
     }
 }
 </style>

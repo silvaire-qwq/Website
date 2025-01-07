@@ -1,6 +1,6 @@
 ---
 title: "在 Arch Linux 上安装输入法"
-description: "Arch Linux 安装后没有输入法，那我们怎么装上输入法呢？"
+description: "本文是针对 Arch Linux 系统的输入法安装教程。首先介绍警告信息，说明此教程不适用于 Debian/Red Hat 系。接着给出安装命令，然后分别阐述在 Wayland 和 Xorg 环境下的配置方法，最后提醒重启系统，便可输入文字，还能运行工具修改快捷键 。"
 clock: "2024-08-07"
 ---
 

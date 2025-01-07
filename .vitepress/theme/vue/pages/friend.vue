@@ -55,7 +55,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 .linkcard .name {
     transition: 0.4s;
-    font-weight: 900;
+    font-weight: 500;
 }
 
 .linkcard .des {

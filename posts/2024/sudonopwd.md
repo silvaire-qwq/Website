@@ -1,6 +1,6 @@
 ---
 title: "sudo 不请求密码"
-description: "sudo 不请求密码是一个非常危险的行为，请务必三思而后行，作者不承担任何后果！"
+description: "本文警告 “sudo 不请求密码” 行为存在风险，作者不担责。接着介绍操作步骤：先通过 whoami 记下用户名，确保能使用 root 账户后，用 vim 打开 /etc/sudoers 文件，在特定内容下一行添加 “您的用户名 ALL=(ALL:ALL) NOPASSWD:ALL”，保存后切换回原账户，重启终端后无需密码即可用 sudo 。"
 clock: "2024-08-05"
 ---
 
