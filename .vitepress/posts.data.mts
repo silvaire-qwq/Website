@@ -1,54 +1,48 @@
 import { createContentLoader } from "vitepress";
 
 interface Post {
+  emoji: string;
   title: string;
   url: string;
-  description: string;
+  descriptions: string;
   date: {
     time: number;
     string: string;
-  }
+  };
 }
 
-interface RencentPost extends Post {
-  tags?: string[];
-}
+interface RencentPost extends Post {}
 
 interface data {
   yearMap: unknown;
   recentPosts: RencentPost[];
   postMap: unknown;
-  tagMap: unknown;
+  emojiMap: Record<string, Post[]>; // 添加 emojiMap 字段
 }
 
-declare const data: Post[];
+declare const data: data;
+
 export { data };
 
-export default createContentLoader("posts/*/*.md", {
+export default createContentLoader("/src/blogs/*/*.md", {
   transform(raw): data {
     const postMap = {};
     const yearMap = {};
-    const tagMap = {};
+    const emojiMap: Record<string, Post[]> = {}; // 初始化 emojiMap
+
     const posts = raw
       .map(({ url, frontmatter }) => {
-        let tags = []  
-        if (frontmatter?.tags) {
-          tags = [...tags, ...frontmatter.tags];
-        } 
         const result = {
+          emoji: frontmatter.emoji,
           title: frontmatter.title,
           url,
-          description: frontmatter.description,
-          date: formatDate(frontmatter.clock),
-          tags
-          //md: getTime(frontmatter.date),
+          descriptions: frontmatter.descriptions,
+          date: formatDate(frontmatter.date),
         };
         postMap[result.url] = result;
         return result;
       })
       .sort((a, b) => b.date.time - a.date.time);
-
-    const recentPosts = posts.slice(0, 999999).map((item) => ({ ...item }));
 
     posts.forEach((item) => {
       const year = new Date(item.date.string).getFullYear();
@@ -57,18 +51,18 @@ export default createContentLoader("posts/*/*.md", {
       }
       yearMap[year].push(item.url);
 
-      item.tags.forEach((tag) => {
-        if(!tagMap[tag]){
-          tagMap[tag] = []
-        }
-      })
+      // 按 emoji 分类
+      if (!emojiMap[item.emoji]) {
+        emojiMap[item.emoji] = [];
+      }
+      emojiMap[item.emoji].push(item);
     });
 
     return {
       yearMap,
-      recentPosts,
+      recentPosts: posts,
       postMap,
-      tagMap
+      emojiMap, // 返回 emojiMap
     };
   },
 });
@@ -76,7 +70,7 @@ export default createContentLoader("posts/*/*.md", {
 function formatDate(raw: string): Post["date"] {
   const date = new Date(raw);
   const year = date.getFullYear();
-  const month = (date.getMonth() + 1).toString().padStart(2, "0"); // 月份从 0 开始，需要加 1
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
   const day = date.getDate().toString().padStart(2, "0");
   return {
     time: +date,

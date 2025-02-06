@@ -2,37 +2,24 @@
 import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-import { Icon } from '@iconify/vue'
-
-
-// Theme
-import './custom.css'
-import './index.css'
+import "../../src/styles/default.css";
+import '../../src/styles/append.css'
+import "../../src/styles/pages.css";
 import "@catppuccin/vitepress/theme/mocha/lavender.css";
 
-// TypeScript
-import './ts/busuanzi.ts'
 
-// Comps
-import FriendCard from "./vue/pages/friend.vue"
-import Comment from "./vue/vp/giscus.vue"
-import Title from "./vue/vp/before-doc.vue"
-import Archives from "./vue/pages/archives.vue"
-import VPBtn from "./vue/pages/btn.vue"
-import msg from './vue/pages/msg.vue'
+// Components
+import beforeDocs from "../../src/components/layout/before-docs.vue";
+import FriendCard from "../../src/components/components/FriendCard.vue"
 
 export default {
-  enhanceApp({ app, router, siteData }) {
-    app.component('Icon', Icon)
-    app.component('FriendCard', FriendCard)
-    app.component('Archives', Archives)
-    app.component('VPBtn', VPBtn)
-    app.component('MsgBoard', msg)
-  },
-  Layout() {
+  extends: DefaultTheme,
+  Layout: () => {
     return h(DefaultTheme.Layout, null, {
-      'doc-after': () => h(Comment),
-      'doc-before': () => h(Title),
-    });
+      'doc-before': () => h(beforeDocs),
+    })
   },
+  enhanceApp({ app, router, siteData }) {
+    app.component("FriendCard", FriendCard);
+  }
 } satisfies Theme

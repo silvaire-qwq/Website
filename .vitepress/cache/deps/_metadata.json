@@ -1,46 +1,31 @@
 {
-  "hash": "e375eb12",
-  "configHash": "97a15d43",
-  "lockfileHash": "32abdb69",
-  "browserHash": "d80cff99",
+  "hash": "16409173",
+  "configHash": "8b9b918c",
+  "lockfileHash": "a183a6c1",
+  "browserHash": "b4917010",
   "optimized": {
     "vue": {
-      "src": "../../../node_modules/.pnpm/vue@3.5.13_typescript@5.6.3/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "src": "../../../node_modules/.pnpm/vue@3.5.13_typescript@5.7.3/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "7f1484dd",
+      "fileHash": "5d4485e1",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
-      "src": "../../../node_modules/.pnpm/@vue+devtools-api@7.5.2/node_modules/@vue/devtools-api/dist/index.js",
+      "src": "../../../node_modules/.pnpm/@vue+devtools-api@7.7.1/node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "18b7b3bc",
+      "fileHash": "5ef097c6",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
-      "src": "../../../node_modules/.pnpm/@vueuse+core@11.1.0_vue@3.5.13_typescript@5.6.3_/node_modules/@vueuse/core/index.mjs",
+      "src": "../../../node_modules/.pnpm/@vueuse+core@12.5.0_typescript@5.7.3/node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "12652f51",
+      "fileHash": "8a4e8e97",
       "needsInterop": false
-    },
-    "@iconify/vue": {
-      "src": "../../../node_modules/.pnpm/@iconify+vue@4.1.2_vue@3.5.13_typescript@5.6.3_/node_modules/@iconify/vue/dist/iconify.mjs",
-      "file": "@iconify_vue.js",
-      "fileHash": "15320cf5",
-      "needsInterop": false
-    },
-    "busuanzi.pure.js": {
-      "src": "../../../node_modules/.pnpm/busuanzi.pure.js@1.0.3/node_modules/busuanzi.pure.js/index.js",
-      "file": "busuanzi__pure__js.js",
-      "fileHash": "7054395a",
-      "needsInterop": true
     }
   },
   "chunks": {
-    "chunk-WKGHDFSU": {
-      "file": "chunk-WKGHDFSU.js"
-    },
-    "chunk-BUSYA2B4": {
-      "file": "chunk-BUSYA2B4.js"
+    "chunk-NVMLSRCO": {
+      "file": "chunk-NVMLSRCO.js"
     }
   }
 }
