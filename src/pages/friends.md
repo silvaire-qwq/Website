@@ -4,35 +4,6 @@ title: 'Friends'
 pageClass: friendLink
 ---
 
-# GitHub Organizations
-<div class="friends">
-  <FriendCard 
-   title="志海融新"
-   url="https://github.com/Zen-Harmony" 
-   description="智慧包容，合作创新，共铸辉煌！" 
-   logo="https://avatars.githubusercontent.com/u/185505786?s=200&v=4" 
-  />
-  <FriendCard 
-   title="GenshinImpact.Net"
-   url="https://github.com/genshinimpact-net" 
-   description="这里是一张起始页" 
-   logo="https://genshinimpact.net/img/yuanshen_logo.jpg" 
-  />
-  <FriendCard 
-   title="Lingmo OS"
-   url="https://github.com/LingmoOS" 
-   description="一个基于 Linux 的操作系统" 
-   logo="https://avatars.githubusercontent.com/u/123843846?s=200&v=4" 
-  />
-  <FriendCard 
-   title="Alien Family Hub"
-   url="https://github.com/AlienFamilyHub" 
-   description="Next gen Minecraft 1.20.6 server based on Luminol, server provided by @unify-z" 
-   logo="https://avatars.githubusercontent.com/u/197213591?s=200&v=4" 
-  />
-</div>
-
-
 # Friends
 <div class="friends">
   <FriendCard 
