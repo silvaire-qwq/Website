@@ -28,6 +28,7 @@ export default {
 }
 </style>
 
+<div class="spacer" style="height: 40px;"></div>
 <div class="allFriend">
   <div class="friends">
       <div v-for="friend in friends" :key="friend.url" class="friend-card">
