@@ -3,8 +3,7 @@ import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import "../../src/styles/default.css";
-import '../../src/styles/append.css'
-import "../../src/styles/pages.css";
+import '../../src/styles/append.css';
 import "@catppuccin/vitepress/theme/mocha/lavender.css";
 
 

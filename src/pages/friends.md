@@ -4,50 +4,41 @@ title: 'Friends'
 pageClass: friendLink
 ---
 
-# Friends
-<div class="friends">
-  <FriendCard 
-   title="LeonXie"
-   url="https://leonxie.cn/" 
-   description="保持热爱，奔赴山海！" 
-   logo="https://avatars.githubusercontent.com/u/128591764?v=4" 
-  />
-  <FriendCard 
-   title="Ariasaka"
-   url="https://blog.yaria.top/" 
-   description="人有悲欢离合，月有阴晴圆缺。" 
-   logo="https://bu.dusays.com/2024/12/05/67517ba094506.png" 
-  />
-  <FriendCard 
-   title="GenshinImpact.Net"
-   url="https://genshinimpact.net/" 
-   description="这里是一张起始页" 
-   logo="https://genshinimpact.net/img/yuanshen_logo.jpg" 
-  />
-  <FriendCard 
-   title="Kevin Wang"
-   url="https://www.pluskevin.com/blog/" 
-   description="记录我的IT学习历程、我的软件开发学习！" 
-   logo="https://cdn.luogu.com.cn/upload/usericon/1.png" 
-  />
-  <FriendCard 
-   title="CE-RAMOS"
-   url="https://ce-ramos.cn/" 
-   description="一款致力于模仿原版系统界面且功能强大的PE。" 
-   logo="https://p1.ce-ramos.cn/logo.png" 
-  />
-  <FriendCard 
-   title="青稚"
-   url="https://blog.linux-qitong.top/" 
-   description="越努力，越幸运。" 
-   logo="https://blog.linux-qitong.top/img/avatar.avif" 
-  />
-  <FriendCard 
-   title="张洪 Heo"
-   url="https://blog.zhheo.com/" 
-   description="分享设计与科技生活。" 
-   logo="https://bu.dusays.com/2022/12/28/63ac2812183aa.png" 
-  />
+<script>
+import friendsData from '/src/configs/friends.json';  // 导入 JSON 数据
+
+export default {
+  data() {
+    return {
+      friends: friendsData,  // 将 JSON 数据绑定到 Vue 的 data 中
+    };
+  },
+};
+</script>
+
+<style>
+  div.friendLink {
+    div.friends {
+        margin-top: 15px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-template-rows: repeat(auto-fill, 1fr);
+        grid-gap: 10px;
+    }
+}
+</style>
+
+<div class="allFriend">
+  <div class="friends">
+      <div v-for="friend in friends" :key="friend.url" class="friend-card">
+        <FriendCard 
+          :title="friend.title"
+          :url="friend.url"
+          :description="friend.description"
+          :logo="friend.logo"
+        />
+      </div>
+    </div>
 </div>
 
 

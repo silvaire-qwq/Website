@@ -34,6 +34,7 @@ const props = withDefaults(defineProps<CardProps>(), {
   border: 1px solid var(--vp-c-divider);
   border-radius: 0.8em;
   transition: all 0.4s;
+  height: 100%;
 }
 
 .card:hover {
