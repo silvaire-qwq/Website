@@ -4,8 +4,12 @@ title: 'Friends'
 pageClass: friendLink
 ---
 
+<script setup>
+  import { default as webConfig } from "/src/configs/config.json";
+</script>
+
 <script>
-import friendsData from '/src/configs/friends.json';  // 导入 JSON 数据
+import friendsData from '/src/configs/friends.json';  // 导入 JSON
 
 export default {
   data() {
@@ -47,13 +51,16 @@ export default {
 
 ---
 
-
 ## 添加友情链接
 
 ### 您需要做什么
-如要添加友链，请向本站 [GitHub Repo](https://github.com/silvaire-qwq/Website) 发起一个 Issue。
+如要添加友链，请向本站 [GitHub Repo](https://github.com/silvaire-qwq/Website) 发起一个 Issue。在这之前，您需要添加我的友情链接。
 
 #### 我的信息
+| 名字 | 描述 | 头像 | 链接 |
+| - | - | - | - |
+| <span v-text="webConfig.title"></span> | <span v-text="webConfig.desc"></span> | <a :href="webConfig.avatar">请复制链接</a> | <span v-text="webConfig.link"></span> | 
+
 
 #### 必须包含
 - 昵称/网站名
