@@ -51,6 +51,6 @@ export default defineConfig({
     sidebarMenuLabel: "地图",
     outlineTitle: "在此页上",
     returnToTopLabel: "回到重生点",
-    socialLinks: [{ icon: "github", link: config.github },{ icon: 'rss', link: `${config.link}/feed.rss` }],
+    socialLinks: [{ icon: "github", link: config.github }],
   },
 });
