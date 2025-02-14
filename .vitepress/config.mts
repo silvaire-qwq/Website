@@ -1,10 +1,28 @@
 import { defineConfig } from "vitepress";
 import { default as config } from "../src/configs/config.json";
+import { RssPlugin } from 'vitepress-plugin-rss';
+import type { RSSOptions } from 'vitepress-plugin-rss';
+
+// RSS feed configuration
+const RSS: RSSOptions = {
+  title: config.title,
+  baseUrl: config.link,
+  icon: false,
+  copyright: '采用 CC BY-NC-ND 4.0 授权',
+  renderExpect: (fileContent, frontmatter) => {
+    // The logic for generating an article abstract, such as returning the first 140 characters
+    const excerpt = fileContent.substring(0, 140) + '...';
+    return excerpt;
+  },
+}
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: config.title,
   description: config.desc,
+  vite: {
+    plugins: [RssPlugin(RSS)]
+  },
   markdown: {
     theme: {
       light: "catppuccin-latte",
@@ -29,6 +47,6 @@ export default defineConfig({
     sidebarMenuLabel: "地图",
     outlineTitle: "在此页上",
     returnToTopLabel: "回到重生点",
-    socialLinks: [{ icon: "github", link: config.github }],
+    socialLinks: [{ icon: "github", link: config.github },{ icon: 'rss', link: `${config.link}/feed.rss` }],
   },
 });
