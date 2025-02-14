@@ -7,7 +7,6 @@ import type { RSSOptions } from 'vitepress-plugin-rss';
 const RSS: RSSOptions = {
   title: config.title,
   baseUrl: config.link,
-  icon: false,
   copyright: '采用 CC BY-NC-ND 4.0 授权',
   description: config.desc,
   filename: 'feed.rss',
