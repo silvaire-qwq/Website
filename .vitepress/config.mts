@@ -9,9 +9,14 @@ const RSS: RSSOptions = {
   baseUrl: config.link,
   icon: false,
   copyright: '采用 CC BY-NC-ND 4.0 授权',
+  description: config.desc,
+  filename: 'feed.rss',
+  log: true,
+  ignoreHome: true,
+  ignorePublish: false,
   renderExpect: (fileContent, frontmatter) => {
     // The logic for generating an article abstract, such as returning the first 140 characters
-    const excerpt = fileContent.substring(0, 140) + '...';
+    const excerpt = fileContent;
     return excerpt;
   },
 }
