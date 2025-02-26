@@ -15,7 +15,7 @@ date: '2025-02-25'
 > 如果您在安装过程中遇到问题，请尝试使用搜索引擎搜索问题或者查阅 [Arch Wiki](https://wiki.archlinux.org)，最好不要询问他人。
 
 > [!DANGER]
-> 您硬盘上的所有信息将会被抹除，所以请提前备份，后果自负。
+> 您硬盘上的所有信息将会被抹除，所以请提前备份，如出现数据丢失等情况，后果自负。
 
 ## 准备
 1. 一个 [Arch Linux 镜像](https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/archlinux-x86_64.iso)。
