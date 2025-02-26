@@ -198,7 +198,7 @@ vim /etc/hosts
 执行以下命令添加中文以及英文的支持，并将默认语言设置为英语：
 
 > [!DANGER]
-> 如果你想问为什么不设置中文，答案是你的终端里没有中文字符的支持，即使安装了桌面环境也不行，因为你没有中文字体。
+> 如果你想问为什么不设置中文，答案是你的终端里没有中文字符的支持，即使直接安装了桌面环境也不行，因为你没有安装中文字体。
 
 ```bash
 echo 'zh_CN.GBK GBK'  > /etc/locale.gen
@@ -215,6 +215,7 @@ passwd root
 ```
 
 ### 安装 Plasma 桌面 (可选)
+这会同时安装中文字体。
 ```bash
 pacman -S adobe-source-han-sans-cn-fonts plasma konsole dolphin xorg ark neofetch sddm
 ```
