@@ -39,7 +39,7 @@ const props = withDefaults(defineProps<CardProps>(), {
 
 .card:hover {
   border-color: var(--vp-c-brand-1);
-  box-shadow: 0 8px 16px -4px var(--vp-c-brand-soft);
+  box-shadow: 0 4px 16px -4px var(--vp-c-brand-soft);
 }
 
 .card .title {

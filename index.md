@@ -12,4 +12,3 @@ hero:
       text: 所有文章
       link: "/src/pages/posts"
 ---
-

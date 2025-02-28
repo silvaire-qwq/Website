@@ -20,7 +20,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
   div.friendLink {
     div.friends {
         margin-top: 15px;

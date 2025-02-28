@@ -1,8 +1,10 @@
 ---
-emoji: '🐧'
 title: '使用命令行安装单系统 Arch Linux'
-descriptions: '论如何使用命令行安装 Arch Linux。这是进入 Arch 邪教的第一步！（如要双系统勿入）'
+descriptions: '论如何使用命令行安装单系统的 Arch Linux。这是进入 Arch 邪教的第一步！'
 date: '2025-02-25'
+tags:
+    - Arch
+    - Linux
 ---
 
 ## 检查

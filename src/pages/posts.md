@@ -10,23 +10,23 @@ import { computed } from 'vue'
 // 从 .vitepress/posts.data.mts 中导入数据
 import { data } from '/.vitepress/posts.data.mts'
 
-// 从数据中提取 emojiMap
-const emojiMap = ref(data.emojiMap)
+// 从数据中提取 tagMap
+const tagMap = ref(data.tagMap)
 
-// 用于存储当前选中的 emoji
-const selectedEmoji = ref<string | null>(null)
+// 用于存储当前选中的标签
+const selectedTag = ref<string | null>(null)
 
-// 当点击某个 emoji 分类时，设置 selectedEmoji
-const selectEmoji = (emoji: string) => {
-  selectedEmoji.value = emoji
+// 当点击某个标签分类时，设置 selectedTag
+const selectTag = (tag: string | null) => {
+  selectedTag.value = tag
 }
 
 // 所有文章
-const { yearMap,postMap } = data
-const yearList = Object.keys(yearMap).sort((a, b) => b - a);
-const computedYearMap = computed(()=> {
-  let result = {}
-  for(let key in yearMap) {
+const { yearMap, postMap } = data
+const yearList = Object.keys(yearMap).sort((a, b) => parseInt(b) - parseInt(a));
+const computedYearMap = computed(() => {
+  let result: Record<string, any[]> = {}
+  for (let key in yearMap) {
     result[key] = yearMap[key].map(url => postMap[url])
   }
   return result
@@ -34,32 +34,31 @@ const computedYearMap = computed(()=> {
 </script>
 
 <div>
-  <!-- 显示所有 emoji 分类 -->
+  <!-- 显示所有标签分类 -->
   <div class="tagSpacer"></div>
   <div>
     <ul>
-      <li class="emojis">
+      <li class="tags">
         <button 
-          @click="selectEmoji(null)"
+          @click="selectTag(null)"
           class="allPostsButton"
-          :class="{'selected': selectedEmoji === null}">
+          :class="{'selected': selectedTag === null}">
           <span>所有文章</span>
         </button>
       </li>
-      <li class="emojis" v-for="(posts, emoji) in emojiMap" :key="emoji">
+      <li class="tags" v-for="(posts, tag) in tagMap" :key="tag">
         <button 
-          @click="selectEmoji(emoji)"
-          :class="{'selected': selectedEmoji === emoji}">
-          {{ emoji }} <span class="number">{{ posts.length }}</span> <!-- 显示每个分类下的文章数 -->
+          @click="selectTag(tag)"
+          :class="{'selected': selectedTag === tag}">
+          {{ tag }} <span class="number">{{ posts.length }}</span> <!-- 显示每个分类下的文章数 -->
         </button>
       </li>
     </ul>
   </div>
 
-  <!-- 如果选择了某个 emoji 分类，显示该分类下的文章 -->
-  <div v-if="selectedEmoji" class="selected">
-    <div class="grid">
-      <div class="list" v-for="post in emojiMap[selectedEmoji]" :key="post.url">
+  <!-- 如果选择了某个标签分类，显示该分类下的文章 -->
+  <div v-if="selectedTag" class="selected grid">
+      <div class="list" v-for="post in tagMap[selectedTag]" :key="post.url">
         <a :href="post.url" style="color: var(--vp-c-text)">
           <article class="onePost">
             <p class="time" v-text="post.date.string"></p>
@@ -68,25 +67,26 @@ const computedYearMap = computed(()=> {
           </article>
         </a>
       </div>
-    </div>
   </div>
 
-   <!-- 如果选择了 "所有文章"，显示所有文章 -->
-  <div v-if="selectedEmoji === null" class="selected">
+  <!-- 如果选择了 "所有文章"，显示所有文章 -->
+  <div v-if="selectedTag === null" class="selected">
     <div class="postArchives">
       <div v-for="year in yearList" class="numberAndYear" :key="year">
-          <div v-text="year" class="yearNumber"></div>
-          <!-- 一年的文章 -->
-          <section class="oneYear">
-            <a v-for="(article, index2) in computedYearMap[year]" :key="index2" class="post" :href="article.url">
-              <!-- 单个文章 -->
-              <article class="onePost">
-                <h1 class="icon" v-text="article.emoji"></h1>
-                <p class="time" v-text="article.date.string"></p>
-                <h1 class="title" v-text="article.title"></h1>
-                <p class="descriptions" v-text="article.descriptions"></p>
-              </article>
-            </a>
+        <div v-text="year" class="yearNumber"></div>
+        <!-- 一年的文章 -->
+        <section class="oneYear">
+          <a v-for="(article, index2) in computedYearMap[year]" :key="index2" class="post" :href="article.url">
+            <!-- 单个文章 -->
+            <article class="onePost">
+              <p class="time" v-text="article.date.string"></p>
+              <h1 class="title" v-text="article.title"></h1>
+              <p class="descriptions" v-text="article.descriptions"></p>
+              <p class="tagList">
+                <span class="oneTag" v-for="tag in article.tags" :key="tag">{{ tag }}</span>
+              </p>
+            </article>
+          </a>
         </section>
       </div>
     </div>
@@ -113,12 +113,19 @@ button {
   border-radius: 0.5rem;
   border: 1px solid var(--vp-c-divider);
   transition: all .4s;
+  span.number {
+    opacity: 0.6;
+  }
+}
+
+button:hover {
+  border-color: var(--vp-c-brand-1);
 }
 
 button.selected {
   border-color: var(--vp-c-brand-1);
-  box-shadow: var(--vp-c-brand-soft) 0px 12px 25px -5px, var(--vp-c-brand-soft) 0px 7px 7px -7px; 
-  span, span.number {
+  box-shadow: var(--vp-c-brand-soft) 0px 1px 25px -5px, var(--vp-c-brand-soft) 0px 3px 7px -7px; 
+  &, span, span.number {
     color: var(--vp-c-brand-1);
   }
 }
@@ -139,7 +146,7 @@ div.grid {
   grid-gap: 10px;
 }
 
-li.emojis {
+li.tags {
   display: inline-block;
   margin-right: 10px;
 }
@@ -151,6 +158,7 @@ article.onePost {
   border-radius: 0.7rem;
   padding: 24px;
   height: 100%;
+  max-width: 800px;
   transition: all 0.4s;
 }
 
@@ -175,12 +183,16 @@ p.time {
   opacity: 0.7;
 }
 
-article.onePost:hover {
-  box-shadow: var(--vp-c-brand-soft) 0px 12px 25px -5px, var(--vp-c-brand-soft) 0px 7px 7px -7px; 
-  border: 1px solid var(--vp-c-brand-1);
-  h1.title {
-    color: var(--vp-c-brand-1);
-  }  
+p.tagList {
+  margin: 8px 0px 0px 0px;
+  span.oneTag {
+    color: var(--vp-c-text-2);
+    margin-right: 4px;
+    border: 1px solid var(--vp-c-gutter);
+    background: var(--vp-c-divider);
+    padding: 2px 7px;
+    border-radius: 6px;
+  }
 }
 
 div.selected {
@@ -188,12 +200,14 @@ div.selected {
 }
 
 div.yearNumber {
-  font-size: 70px;
-  line-height: 74px;
+  font-size: 80px;
+  line-height: 84px;
   font-weight: 700;
   color: transparent;
   -webkit-text-stroke: 1px var(--vp-c-gutter);
-  margin-bottom: -17px;
+  margin-bottom: -25px;
+  z-index: -1;
+  position: relative;
 }
 
 div.postArchives {
@@ -207,7 +221,7 @@ div.postArchives {
 
 section.oneYear {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /*grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));*/
   grid-gap: 10px;
 }
 
@@ -219,7 +233,7 @@ article.onePost .icon {
 }
 
 article.onePost:hover {
-  box-shadow: var(--vp-c-brand-soft) 0px 12px 25px -5px, var(--vp-c-brand-soft) 0px 7px 7px -7px; 
+  box-shadow: var(--vp-c-brand-soft) 0px 1px 25px -5px, var(--vp-c-brand-soft) 0px 3px 7px -7px; 
   border: 1px solid var(--vp-c-brand-1);
   h1.title {
     color: var(--vp-c-brand-1);
