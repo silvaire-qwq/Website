@@ -2,6 +2,7 @@
 title: '使用命令行安装单系统 Arch Linux'
 descriptions: '论如何使用命令行安装单系统的 Arch Linux。这是进入 Arch 邪教的第一步！'
 date: '2025-02-25'
+image: 'https://imgbed.lunars.site/file/1740785662031_astronaut.png'
 tags:
     - Arch
     - Linux

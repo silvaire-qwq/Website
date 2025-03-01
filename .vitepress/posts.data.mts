@@ -4,6 +4,7 @@ interface Post {
   tags: string[];
   title: string;
   url: string;
+  image: string;
   descriptions: string;
   date: {
     time: number;
@@ -34,6 +35,7 @@ export default createContentLoader("/src/blogs/*/*.md", {
           tags: frontmatter.tags || [],
           title: frontmatter.title,
           url,
+          image: frontmatter.image,
           descriptions: frontmatter.descriptions,
           date: formatDate(frontmatter.date),
         };

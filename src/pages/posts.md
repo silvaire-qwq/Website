@@ -57,13 +57,18 @@ const computedYearMap = computed(() => {
   </div>
 
   <!-- 如果选择了某个标签分类，显示该分类下的文章 -->
-  <div v-if="selectedTag" class="selected grid">
+  <div v-if="selectedTag" class="selected column">
       <div class="list" v-for="post in tagMap[selectedTag]" :key="post.url">
         <a :href="post.url" style="color: var(--vp-c-text)">
           <article class="onePost">
-            <p class="time" v-text="post.date.string"></p>
-            <h1 class="title" v-text="post.title"></h1>
-            <p class="descriptions" v-text="post.descriptions"></p>
+            <div v-if="post.image" class="imageContainer">
+                <img :src="post.image" :alt="post.title" class="image" />
+            </div>
+            <div class="textContainer">
+              <p class="time" v-text="post.date.string"></p>
+              <h1 class="title" v-text="post.title"></h1>
+              <p class="descriptions" v-text="post.descriptions"></p>
+            </div>
           </article>
         </a>
       </div>
@@ -79,12 +84,17 @@ const computedYearMap = computed(() => {
           <a v-for="(article, index2) in computedYearMap[year]" :key="index2" class="post" :href="article.url">
             <!-- 单个文章 -->
             <article class="onePost">
-              <p class="time" v-text="article.date.string"></p>
-              <h1 class="title" v-text="article.title"></h1>
-              <p class="descriptions" v-text="article.descriptions"></p>
-              <p class="tagList">
-                <span class="oneTag" v-for="tag in article.tags" :key="tag">{{ tag }}</span>
-              </p>
+              <div v-if="article.image" class="imageContainer">
+                <img :src="article.image" :alt="article.title" class="image" />
+              </div>
+              <div class="textContainer">
+                <p class="time" v-text="article.date.string"></p>
+                <h1 class="title" v-text="article.title"></h1>
+                <p class="descriptions" v-text="article.descriptions"></p>
+                <p class="tagList">
+                  <span class="oneTag" v-for="tag in article.tags" :key="tag">{{ tag }}</span>
+                </p>
+              </div>
             </article>
           </a>
         </section>
@@ -140,10 +150,10 @@ ul {
   padding: 0;
 }
 
-div.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 10px;
+.column {
+  column-gap: 10px;
+  column-width: 300px;
+  column-count: auto;
 }
 
 li.tags {
@@ -156,9 +166,10 @@ article.onePost {
   border: 1px solid var(--vp-c-gutter);
   background-color: var(--vp-c-bg);
   border-radius: 0.7rem;
-  padding: 24px;
   height: 100%;
   max-width: 800px;
+  break-inside: avoid !important;
+  margin-bottom: 10px;
   transition: all 0.4s;
 }
 
@@ -195,6 +206,21 @@ p.tagList {
   }
 }
 
+div.imageContainer {
+  img.image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 0.7rem;
+    border-top-right-radius: 0.7rem;
+    border-bottom: 1px solid var(--vp-c-gutter);
+  }
+}
+
+div.textContainer {
+  padding: 24px;
+}
+
 div.selected {
   margin-top: 30px;
 }
@@ -220,9 +246,9 @@ div.postArchives {
 }
 
 section.oneYear {
-  display: grid;
-  /*grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));*/
-  grid-gap: 10px;
+  display: column;
+  /*column-template-columns: repeat(auto-fill, minmax(300px, 1fr));*/
+  column-gap: 10px;
 }
 
 article.onePost .icon {
