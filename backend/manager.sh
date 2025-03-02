@@ -10,9 +10,9 @@ POSTS_SCRIPT="$REAL_ROOT/backend/posts.sh"
 # 主菜单函数
 main_menu() {
 	choice=$(whiptail --title "网站管理菜单" --menu "请选择操作" 15 60 5 \
+		"E" "博客文章管理" \
 		"I" "个人信息修改" \
 		"L" "友情链接管理" \
-		"E" "博客文章管理" \
 		"P" "提交更改" \
 		"Q" "退出" 3>&1 1>&2 2>&3)
 
