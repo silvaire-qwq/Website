@@ -1,10 +1,11 @@
 # Silvaire's Blog
-可能是世界上第一个使用 Shell 作为后端的 VitePress 静态网站。
+可能是世界上第一个使用 Shell 作为类似后端技术或管理面板的 VitePress 静态网站。
 > [!CAUTION]
 > 1. 如果您需要个人使用，本网站不提供技术支持。
 > 2. 所有 Shell 脚本仅在 GNU/Linux 环境测试。
 > 3. Windows 用户如果不安装 Linux/Bash/Shell 环境将无法使用。
 > 4. 面板随时会删除。
+> 5. ~~不喜勿喷。~~
 
 ## 面板依赖软件/命令
 以下软件或命令可能列得不够全面：
