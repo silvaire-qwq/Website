@@ -1,3 +1,6 @@
+manage:
+	sudo sh ./backend/manager.sh
+
 build:
 	pnpm docs:build
 
