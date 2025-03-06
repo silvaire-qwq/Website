@@ -158,6 +158,8 @@ ul {
   border-radius: 12px;
   margin: 0px auto;
   transition: all .4s;
+  max-height: 52px;
+  overflow-x: auto;
 }
 
 ul:hover {
@@ -172,9 +174,10 @@ ul:hover {
 }
 
 li.tags {
-  display: inline-block;
+  display: inline;
   margin-right: 1px;
   margin-top: 0px;
+  white-space: nowrap !important;
 }
 
 article.onePost {
