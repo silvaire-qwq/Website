@@ -11,6 +11,9 @@ importers:
       '@catppuccin/vitepress':
         specifier: ^0.1.0
         version: 0.1.0(typescript@5.7.3)
+      typed.js:
+        specifier: ^2.1.0
+        version: 2.1.0
       vitepress-plugin-rss:
         specifier: ^0.3.1
         version: 0.3.1(vitepress@1.6.3(@algolia/client-search@5.20.0)(postcss@8.5.1)(search-insights@2.17.3)(typescript@5.7.3))
@@ -769,6 +772,9 @@ packages:
 
   trim-lines@3.0.1:
     resolution: {integrity: sha512-kRj8B+YHZCc9kQYdWfJB2/oUl9rA99qbowYYBtr4ui4mZyAQ2JpvVBd/6U2YloATfqBhBTSMhTpgBHtU0Mf3Rg==}
+
+  typed.js@2.1.0:
+    resolution: {integrity: sha512-bDuXEf7YcaKN4g08NMTUM6G90XU25CK3bh6U0THC/Mod/QPKlEt9g/EjvbYB8x2Qwr2p6J6I3NrsoYaVnY6wsQ==}
 
   typescript@5.7.3:
     resolution: {integrity: sha512-84MVSjMEHP+FQRPy3pX9sTVV/INIex71s9TL2Gm5FG/WG1SqXeKyZ0k7/blY/4FdOzI12CBy1vGc4og/eus0fw==}
@@ -1607,6 +1613,8 @@ snapshots:
   tabbable@6.2.0: {}
 
   trim-lines@3.0.1: {}
+
+  typed.js@2.1.0: {}
 
   typescript@5.7.3: {}
 

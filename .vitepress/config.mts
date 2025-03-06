@@ -37,7 +37,6 @@ export default defineConfig({
     // 单独在 index.md 中修改主页图像
     logo: config.avatar,
     nav: [
-      { text: "Posts", link: "/src/pages/posts" },
       { text: "Friends", link: "/src/pages/friends" },
     ],
     docFooter: {

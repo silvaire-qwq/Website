@@ -71,21 +71,14 @@ export default createContentLoader("/src/blogs/*/*.md", {
 function formatDate(raw: string): Post["date"] {
   const date = new Date(raw);
 
-  // 定义选项
-  const options: Intl.DateTimeFormatOptions = {
-    weekday: "short",
-    day: "2-digit",
-    month: "short",
-  };
+  // 获取星期、日期、月份和年份
+  const weekday = date.toLocaleString("en-GB", { weekday: "short" }) + "."; // "Thu."
+  const day = date.toLocaleString("en-GB", { day: "2-digit" }); // "06"
+  const month = date.toLocaleString("en-GB", { month: "short" }) + "."; // "Mar."
+  const year = `(${date.getFullYear()})`; // "(2025)"
 
-  // 使用 Intl.DateTimeFormat 格式化日期
-  const formatter = new Intl.DateTimeFormat("en-GB", options);
-  let formattedDate = formatter.format(date);
-
-  // 手动在星期和月份缩写后添加句点
-  formattedDate = formattedDate
-    .replace(/(\w{3}),/, "$1.") // 在星期缩写后添加句点
-    .replace(/(\w{3}) (\d{2}) (\w{3})/, "$1. $2 $3."); // 在月份缩写后添加句点
+  // 拼接成目标格式
+  const formattedDate = `${weekday} ${day} ${month} ${year}`;
 
   return {
     time: date.getTime(),
