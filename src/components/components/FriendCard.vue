@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<CardProps>(), {
 
 <template>
   <div class="card">
-    <a :href="props.url" target="_blank" class="card-link">
+    <a :href="props.url" target="_blank" class="card-link" rel="nofollow">
       <div class="logo-container">
         <img alt="logo" width="70" height="70" :src="props.logo" />
       </div>

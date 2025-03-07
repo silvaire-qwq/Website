@@ -187,14 +187,14 @@ const uptime = computed(() => {
                     <p class="time" v-text="article.date.string"></p>
                     <h1 class="title" v-text="article.title"></h1>
                     <p class="descriptions" v-text="article.descriptions"></p>
-                    <p class="tagList">
+                    <!--<p class="tagList">
                       <span
                         class="oneTag"
                         v-for="tag in article.tags"
                         :key="tag"
                         >{{ tag }}</span
                       >
-                    </p>
+                    </p>-->
                   </div>
                 </article>
               </a>
@@ -240,7 +240,7 @@ div.main-content {
 
 div.sidebar {
   width: 300px;
-  margin-right: 15px;
+  margin-right: 10px;
   aside {
     h1.title {
       color: var(--vp-c-gutter);

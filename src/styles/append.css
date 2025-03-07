@@ -3,10 +3,11 @@
 */
 
 @import url('https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap');
+@import url('https://cdn-font.hyperos.mi.com/font/css?family=Misans_TC_VF:VF:Chinese_Traditional_TW&display=swap');
 @import url('https://fonts.googleapis.cn/css2?family=Fira+Code:wght@300..700&display=swap');
 
 :root {
-    --vp-font-family-base: "Inter", "MiSans VF";
+    --vp-font-family-base: "Inter", "MiSans VF", "MiSans TC VF";
     --vp-font-family-mono: "Fira Code";
 }
 

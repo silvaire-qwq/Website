@@ -3,8 +3,8 @@
         <div style="margin-top: 175px;"></div>
         <div class="alignCenter">
             <div class="titles">
-                <h1>你好👋，</h1>
-                <h1>欢迎来到 <highlight v-text="config.title"></highlight>。</h1>
+                <h1>你好，</h1>
+                <h1>歡迎蒞臨 <highlight v-text="config.title"></highlight>。</h1>
             </div>
             <p v-text="config.desc" class="desc"></p>
         </div>
