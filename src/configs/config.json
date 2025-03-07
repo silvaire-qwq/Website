@@ -1,7 +1,14 @@
 {
+  "card": {
+    "avatar": "https://avatars.githubusercontent.com/u/184231508?v=4",
+    "name": "Silvaire",
+    "desc": "君埋泉下泥销骨，我寄人间雪满头。",
+    "uptime": "2024-08-23T21:00:00Z"
+  },
   "title": "Silvaire's Blog",
   "desc": "君埋泉下泥销骨，我寄人间雪满头。",
-  "avatar": "https://avatars.githubusercontent.com/u/184231508?v=4",
+  "logo": "https://avatars.githubusercontent.com/u/184231508?v=4",
   "github": "https://github.com/silvaire-qwq",
-  "link": "https://lunars.site"
+  "link": "https://lunars.site",
+  "announcement": "特别感谢 Solitude 主题为本站样式提供了灵感。本站终于有了一个比较完善的外观。"
 }

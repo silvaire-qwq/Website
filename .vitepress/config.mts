@@ -35,7 +35,7 @@ export default defineConfig({
   },
   themeConfig: {
     // 单独在 index.md 中修改主页图像
-    logo: config.avatar,
+    logo: config.logo,
     nav: [
       { text: "Friends", link: "/src/pages/friends" },
     ],

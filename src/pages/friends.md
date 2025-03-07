@@ -59,7 +59,7 @@ export default {
 #### 我的信息
 | 名字 | 描述 | 头像 | 链接 |
 | - | - | - | - |
-| <span v-text="webConfig.title"></span> | <span v-text="webConfig.desc"></span> | <a :href="webConfig.avatar">请复制链接</a> | <span v-text="webConfig.link"></span> | 
+| <span v-text="webConfig.title"></span> | <span v-text="webConfig.desc"></span> | <a :href="webConfig.logo">请复制链接</a> | <span v-text="webConfig.link"></span> | 
 
 
 #### 必须包含

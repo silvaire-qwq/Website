@@ -1,9 +1,8 @@
 // https://vitepress.dev/guide/custom-theme
-import { h, onMounted, ref, watch } from "vue";
+import { h } from "vue";
 import type { Theme } from "vitepress";
-import { useRoute } from "vitepress";
 import DefaultTheme from "vitepress/theme";
-import { Converter } from "opencc-js";
+import { Icon } from "@iconify/vue";
 import "../../src/styles/default.css";
 import "../../src/styles/append.css";
 import "@catppuccin/vitepress/theme/mocha/pink.css";
@@ -21,6 +20,7 @@ export default {
     });
   },
   enhanceApp({ app, router, siteData }) {
+    app.component("Icon", Icon);
     app.component("FriendCard", FriendCard);
     app.component("PostList", PostList)
   },

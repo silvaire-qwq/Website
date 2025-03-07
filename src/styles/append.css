@@ -230,3 +230,40 @@ div.vp-code-group.vp-adaptive-theme {
         border: 0px !important;
     }
 }
+
+/*
+    Iconify
+*/
+
+.fa-solid,
+.fa-regular,
+.fa-brands {
+    width: 1.2em;
+    vertical-align: middle;
+    text-align: center;
+}
+
+svg:where(.iconify) {
+    display: inline-block;
+    flex-shrink: 0;
+    font-size: 1.2em;
+    vertical-align: text-top;
+}
+
+/*
+    自定义元素：highlight
+*/
+highlight {
+    font-weight: bold;
+    color: transparent;
+    margin: 0px;
+    display: inline;
+    position: relative;
+    background-clip: text;
+    & {
+        background-image: linear-gradient(90deg, #dd7878, #ea76cb, #8839ef, #7287fd, #1e66f5, #209fb5, #04a5e5, #179299);
+    }
+    html.dark & {
+        background-image: linear-gradient(90deg, #f2cdcd, #f5c2e7, #cba6f7, #b4befe, #89b4fa, #74c7ec, #89dceb, #94e2d5);
+    }
+}
