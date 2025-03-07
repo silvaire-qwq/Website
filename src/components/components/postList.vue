@@ -235,6 +235,7 @@ div.container {
 
 div.main-content {
   flex: 1;
+  overflow: hidden;
 }
 
 div.sidebar {
