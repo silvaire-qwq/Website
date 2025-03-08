@@ -86,7 +86,7 @@ const uptime = computed(() => {
       </aside>
       <aside class="tagList">
         <h1 class="title">
-          <Icon icon="fluent:tag-16-filled" width="25" height="25" /> 标签
+          <Icon icon="fluent:book-number-16-filled" width="25" height="25" style="position: relative; bottom: -1px;"/> Tags
         </h1>
         <ul class="sidebar">
           <li class="tags">
@@ -111,7 +111,7 @@ const uptime = computed(() => {
       </aside>
       <aside class="uptime">
         <h1 class="title">
-          <Icon icon="fluent:clock-24-filled" width="25" height="25" /> 建立日
+          <Icon icon="fluent:clock-24-filled" width="25" height="25" /> Uptime
         </h1>
         <img :src="config.logo" />
         <strong class="name" v-text="config.title"></strong>
@@ -187,14 +187,14 @@ const uptime = computed(() => {
                     <p class="time" v-text="article.date.string"></p>
                     <h1 class="title" v-text="article.title"></h1>
                     <p class="descriptions" v-text="article.descriptions"></p>
-                    <!--<p class="tagList">
+                    <p class="tagList">
                       <span
                         class="oneTag"
                         v-for="tag in article.tags"
                         :key="tag"
-                        >{{ tag }}</span
+                        ><Icon icon="fluent:number-symbol-24-filled" width="14" height="21" style="margin-right: 2px;"/>{{ tag }}</span
                       >
-                    </p>-->
+                    </p>
                   </div>
                 </article>
               </a>
@@ -522,12 +522,9 @@ p.time {
 p.tagList {
   margin: 8px 0px 0px 0px;
   span.oneTag {
-    color: var(--vp-c-text-2);
-    margin-right: 4px;
-    border: 1px solid var(--vp-c-gutter);
-    background: var(--vp-c-divider);
-    padding: 2px 7px;
-    border-radius: 6px;
+    color: var(--vp-c-text-3);
+    margin-right: 10px;
+    padding: 0px;
   }
 }
 

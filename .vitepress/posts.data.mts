@@ -72,13 +72,12 @@ function formatDate(raw: string): Post["date"] {
   const date = new Date(raw);
 
   // 获取星期、日期、月份和年份
-  const weekday = date.toLocaleString("en-GB", { weekday: "short" }) + "."; // "Thu."
-  const day = date.toLocaleString("en-GB", { day: "2-digit" }); // "06"
-  const month = date.toLocaleString("en-GB", { month: "short" }) + "."; // "Mar."
-  const year = `(${date.getFullYear()})`; // "(2025)"
+  const day = date.toLocaleString("en-GB", { day: "2-digit" }) + ","; // "06,"
+  const month = date.toLocaleString("en-GB", { month: "short" }); // "Mar"
+  const year = `${date.getFullYear()}`; // "(2025)"
 
   // 拼接成目标格式
-  const formattedDate = `${weekday} ${day} ${month} ${year}`;
+  const formattedDate = `${month} ${day} ${year}`;
 
   return {
     time: date.getTime(),

@@ -10,6 +10,7 @@
       <!-- 新增标签显示区域 -->
       <div class="tags" v-if="frontmatter.tags">
         <span v-for="(tag, index) in frontmatter.tags" :key="index" class="tag">
+          <Icon icon="fluent:number-symbol-24-filled" width="14" height="21" style="margin-right: 0px;"/>
           {{ tag }}
         </span>
       </div>
@@ -59,11 +60,8 @@ div.vp-doc.layout.beforeDocs {
     margin-top: 13px;
   }
   .tag {
-    color: var(--vp-c-text-2);
-    margin-right: 4px;
-    border: 1px solid var(--vp-c-gutter);
-    background: var(--vp-c-divider);
-    padding: 2px 7px;
+    margin-right: 12px;
+    padding: 0px;
     border-radius: 6px;
   }
 }
