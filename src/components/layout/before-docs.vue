@@ -10,8 +10,15 @@
       <!-- 新增标签显示区域 -->
       <div class="tags" v-if="frontmatter.tags">
         <span v-for="(tag, index) in frontmatter.tags" :key="index" class="tag">
-          <Icon icon="fluent:number-symbol-24-filled" width="14" height="21" style="margin-right: 0px;"/>
-          {{ tag }}
+          <a :href="`/?tag=${tag}`">
+            <Icon
+              icon="fluent:number-symbol-24-filled"
+              width="14"
+              height="21"
+              style="margin-right: -2px"
+            />
+            {{ tag }}
+          </a>
         </span>
       </div>
     </div>
@@ -19,7 +26,7 @@
 </template>
 
 <script setup>
-import { useData } from 'vitepress';
+import { useData } from "vitepress";
 const { page } = useData();
 const frontmatter = page.value.frontmatter;
 </script>
@@ -59,10 +66,17 @@ div.vp-doc.layout.beforeDocs {
   .tags {
     margin-top: 13px;
   }
-  .tag {
+  .tag a {
     margin-right: 12px;
     padding: 0px;
     border-radius: 6px;
+  }
+  .tag a:hover {
+    color: var(--vp-c-brand-3) !important;
+  }
+  .tag a:not(:hover) {
+    color: var(--vp-c-text-3) !important;
+    opacity: .8;
   }
 }
 </style>

@@ -1,33 +1,33 @@
 <script setup lang="ts">
-interface CardProps {
-  url: string;
-  title: string;
-  description: string;
-  logo: string;
+interface MusicProps {
+  name: string;
+  singer: string;
+  album: string;
+  img: string;
 }
 
-const props = withDefaults(defineProps<CardProps>(), {
-  url: "",
-  title: "",
-  description: "",
-  logo: "",
+const props = withDefaults(defineProps<MusicProps>(), {
+  name: "",
+  singer: "",
+  album: "",
+  img: "",
 });
 </script>
 
 <template>
   <div class="card">
-    <a :href="props.url" target="_blank" class="card-link" rel="nofollow">
-      <div class="logo-container">
-        <img alt="logo" width="70" height="70" :src="props.logo" />
-      </div>
-      <div class="title">{{ props.title }}</div>
-      <div class="description">{{ props.description }}</div>
-    </a>
+    <div class="logo-container">
+      <img alt="album cover" width="70" height="70" :src="props.img" />
+    </div>
+    <div class="title">{{ props.name }}</div>
+    <!--<div class="description">{{ props.singer }}</div>-->
+    <div class="album">{{ props.album }}</div>
   </div>
 </template>
 
 <style scoped>
 .card {
+  background-color: var(--vp-c-bg) !important;
   box-shadow: 0 8px 16px -4px var(--vp-c-bg-alt);
   text-decoration: none;
   padding: 20px 22px;
@@ -60,6 +60,13 @@ const props = withDefaults(defineProps<CardProps>(), {
   opacity: 0.8;
 }
 
+.card .album {
+  color: var(--vp-c-text-2);
+  font-size: 14px;
+  line-height: 20px;
+  opacity: 0.8;
+}
+
 .card:hover .title {
   color: var(--vp-c-brand-1);
 }
@@ -69,6 +76,7 @@ const props = withDefaults(defineProps<CardProps>(), {
   display: block;
   max-width: 55px;
   max-height: 55px;
-  border-radius: 100%;
+  border-radius: 7px;
+  border: 1px solid var(--vp-c-divider);
 }
 </style>

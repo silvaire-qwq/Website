@@ -3,22 +3,24 @@ import { ref, computed, onMounted, onUnmounted } from "vue";
 
 // 从 .vitepress/posts.data.mts 中导入数据
 import { data } from "../../../.vitepress/posts.data.mjs";
+import config from "../../../src/configs/config.json";
 
-// Configs
-import { default as config } from "../../../src/configs/config.json";
-
-// 从数据中提取 tagMap
 const tagMap = ref(data.tagMap);
-
-// 用于存储当前选中的标签
 const selectedTag = ref<string | null>(null);
 
-// 当点击某个标签分类时，设置 selectedTag
+// 修改选择标签的函数，同时更新 URL 查询参数
 const selectTag = (tag: string | null) => {
   selectedTag.value = tag;
+  const url = new URL(window.location.href);
+  if (tag) {
+    url.searchParams.set("tag", tag);
+  } else {
+    url.searchParams.delete("tag");
+  }
+  // 更新地址栏但不刷新页面
+  window.history.replaceState(null, "", url.toString());
 };
 
-// 所有文章
 const { yearMap, postMap } = data;
 const yearList = Object.keys(yearMap).sort((a, b) => parseInt(b) - parseInt(a));
 const computedYearMap = computed(() => {
@@ -29,32 +31,32 @@ const computedYearMap = computed(() => {
   return result;
 });
 
-// 正数计时
-const startDate = new Date(config.card.uptime); // 读取 config.json 的 startDate
-
+const startDate = new Date(config.card.uptime);
 const elapsedTime = ref(Date.now() - startDate.getTime());
-
 const updateElapsedTime = () => {
   elapsedTime.value = Date.now() - startDate.getTime();
 };
 
-// 让 TypeScript 正确推导 setInterval 的返回值类型
 let interval: ReturnType<typeof setInterval> | null = null;
 
 onMounted(() => {
-  updateElapsedTime(); // 组件挂载时先计算一次
+  updateElapsedTime();
   interval = setInterval(updateElapsedTime, 1000);
+
+  // 读取 URL 查询参数中的 tag 并赋值
+  const urlParams = new URLSearchParams(window.location.search);
+  const tagFromUrl = urlParams.get("tag");
+  if (tagFromUrl) {
+    selectedTag.value = tagFromUrl;
+  }
 });
 
-// 组件销毁时清除定时器
 onUnmounted(() => {
   if (interval) clearInterval(interval);
 });
 
-// 计算时间差
 const uptime = computed(() => {
   const diff = elapsedTime.value;
-
   const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
   const days = Math.floor(
     (diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24)
@@ -62,21 +64,12 @@ const uptime = computed(() => {
   const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
   return `${years} 年 ${days} 天 ${hours} 时 ${minutes} 分 ${seconds} 秒`;
 });
 </script>
 
 <template>
-  <div class="announcement">
-    <Icon
-      icon="fluent:megaphone-loud-20-filled"
-      width="20"
-      height="20"
-      style="margin-right: 10px; "
-    />
-    <span v-text="config.announcement"></span>
-  </div>
+  <div class="holder" style="height: 30px"></div>
   <div class="container">
     <div class="sidebar">
       <aside class="infos">
@@ -86,7 +79,13 @@ const uptime = computed(() => {
       </aside>
       <aside class="tagList">
         <h1 class="title">
-          <Icon icon="fluent:book-number-16-filled" width="25" height="25" style="position: relative; bottom: -1px;"/> Tags
+          <Icon
+            icon="fluent:book-number-16-filled"
+            width="25"
+            height="25"
+            style="position: relative; bottom: -1px"
+          />
+          Tags
         </h1>
         <ul class="sidebar">
           <li class="tags">
@@ -192,8 +191,17 @@ const uptime = computed(() => {
                         class="oneTag"
                         v-for="tag in article.tags"
                         :key="tag"
-                        ><Icon icon="fluent:number-symbol-24-filled" width="14" height="21" style="margin-right: 2px;"/>{{ tag }}</span
+                        @mousedown.prevent.stop="selectTag(tag)"
+                        @click.prevent.stop="selectTag(tag)"
                       >
+                        <Icon
+                          icon="fluent:number-symbol-24-filled"
+                          width="14"
+                          height="21"
+                          style="margin-right: -2px"
+                        />
+                        {{ tag }}
+                      </span>
                     </p>
                   </div>
                 </article>
@@ -210,23 +218,6 @@ const uptime = computed(() => {
 </template>
 
 <style scoped>
-/* 公告 */
-div.announcement {
-  border: 1px solid var(--vp-c-gutter);
-  box-shadow: var(--vp-c-bg-elv) 0px 12px 25px -5px,
-    var(--vp-c-bg-elv) 0px 7px 15px -7px;
-  border-radius: 12px;
-  margin-bottom: 10px;
-  font-size: 18px;
-  padding: 15px 20px;
-  transition: all .4s;
-  &:hover {
-    box-shadow: var(--vp-c-brand-soft) 0px 1px 25px -5px,
-      var(--vp-c-brand-soft) 0px 3px 7px -7px;
-    border: 1px solid var(--vp-c-brand-1);
-  }
-}
-
 /* Sidebar */
 
 div.container {
@@ -275,9 +266,6 @@ aside.infos {
     margin-bottom: 30px;
     margin-bottom: 0px;
     transition: all 0.4s;
-  }
-  img:hover {
-    transform: scale(96%);
   }
   h1 {
     font-size: 24px;
@@ -385,7 +373,7 @@ aside.uptime {
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
   div.sidebar {
     display: none;
   }
@@ -394,7 +382,7 @@ aside.uptime {
   }
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 800px) {
   div.sidebar {
     display: block;
   }
@@ -491,7 +479,6 @@ article.onePost {
   background-color: var(--vp-c-bg);
   border-radius: 12px;
   height: 100%;
-  max-width: 900px;
   break-inside: avoid !important;
   margin-bottom: 10px;
   transition: all 0.4s;
@@ -525,6 +512,11 @@ p.tagList {
     color: var(--vp-c-text-3);
     margin-right: 10px;
     padding: 0px;
+    transition: all .4s;
+    opacity: .8;
+  }
+  span.oneTag:hover {
+    color: var(--vp-c-brand-3);
   }
 }
 

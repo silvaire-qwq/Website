@@ -1,4 +1,5 @@
 ---
+emoji: '🌎'
 title: '千里之行，始于足下。'
 descriptions: '换博客啦！'
 date: '2025-02-05'
