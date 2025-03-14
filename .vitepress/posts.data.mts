@@ -10,6 +10,9 @@ interface Post {
     time: number;
     string: string;
   };
+  category: string;
+  pin?: boolean;
+  modify?: string;
 }
 
 interface Data {
@@ -17,6 +20,7 @@ interface Data {
   recentPosts: Post[];
   postMap: Record<string, Post>;
   tagMap: Record<string, Post[]>;
+  categoryMap: Record<string, Post[]>;
 }
 
 declare const data: Data;
@@ -28,6 +32,7 @@ export default createContentLoader("/src/blogs/*/*.md", {
     const postMap: Record<string, Post> = {};
     const yearMap: Record<string, string[]> = {};
     const tagMap: Record<string, Post[]> = {};
+    const categoryMap: Record<string, Post[]> = {};
 
     const posts = raw
       .map(({ url, frontmatter }) => {
@@ -37,15 +42,27 @@ export default createContentLoader("/src/blogs/*/*.md", {
           url,
           image: frontmatter.image,
           descriptions: frontmatter.descriptions,
-          date: formatDate(frontmatter.date),
+          date: formatDate(
+            frontmatter.modify || frontmatter.date,
+            !!frontmatter.modify
+          ),
+          category: frontmatter.category || "Uncategorized",
+          pin: frontmatter.pin || false,
+          modify: frontmatter.modify,
         };
         postMap[result.url] = result;
         return result;
       })
-      .sort((a, b) => b.date.time - a.date.time);
+      .sort((a, b) => {
+        if (a.pin && !b.pin) return -1;
+        if (!a.pin && b.pin) return 1;
+        return b.date.time - a.date.time;
+      });
 
     posts.forEach((item) => {
-      const year = new Date(item.date.time).getFullYear().toString();
+      const year = item.pin
+        ? "9999"
+        : new Date(item.date.time).getFullYear().toString();
       if (!yearMap[year]) {
         yearMap[year] = [];
       }
@@ -57,6 +74,11 @@ export default createContentLoader("/src/blogs/*/*.md", {
         }
         tagMap[tag].push(item);
       });
+
+      if (!categoryMap[item.category]) {
+        categoryMap[item.category] = [];
+      }
+      categoryMap[item.category].push(item);
     });
 
     return {
@@ -64,23 +86,40 @@ export default createContentLoader("/src/blogs/*/*.md", {
       recentPosts: posts,
       postMap,
       tagMap,
+      categoryMap,
     };
   },
 });
 
-function formatDate(raw: string): Post["date"] {
+function formatDate(raw: string, isModified: boolean): Post["date"] {
   const date = new Date(raw);
 
   // 获取星期、日期、月份和年份
-  const day = date.toLocaleString("en-GB", { day: "2-digit" }) + ","; // "06,"
-  const month = date.toLocaleString("en-GB", { month: "short" }); // "Mar"
-  const year = `${date.getFullYear()}`; // "(2025)"
+  const day = date.toLocaleString("zh-CN", { day: "numeric" });
+  const month = date.toLocaleString("zh-CN", { month: "short" });
+  const year = `${date.getFullYear()}`;
 
-  // 拼接成目标格式
-  const formattedDate = `${month} ${day} ${year}`;
+  const now = new Date();
+  const diffTime = now.getTime() - date.getTime();
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+  let displayDate;
+  if (diffDays === 0) {
+    displayDate = isModified ? "最后修改于今天" : "今天";
+  } else if (diffDays === 1) {
+    displayDate = isModified ? "最后修改于昨天" : "昨天";
+  } else if (diffDays === 2) {
+    displayDate = isModified ? "最后修改于前天" : "前天";
+  } else if (date.getFullYear() === now.getFullYear()) {
+    displayDate = isModified ? `最后修改于${month}${day}` : `${month}${day}`;
+  } else {
+    displayDate = isModified
+      ? `修改于${year}年${month}${day}`
+      : `${year}年${month}${day}`;
+  }
 
   return {
     time: date.getTime(),
-    string: formattedDate,
+    string: displayDate,
   };
 }

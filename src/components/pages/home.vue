@@ -41,7 +41,7 @@ const typeWriterEffect = (text) => {
 
 onMounted(() => {
   const urlParams = new URLSearchParams(window.location.search);
-  isTagPresent.value = urlParams.has('tag');
+  isTagPresent.value = urlParams.has('tag') || urlParams.has('category');
   
   if (!isTagPresent.value) {
   hitokoto.value = getRandomHitokoto();

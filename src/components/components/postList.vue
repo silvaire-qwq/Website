@@ -1,23 +1,37 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from "vue";
-
-// 从 .vitepress/posts.data.mts 中导入数据
 import { data } from "../../../.vitepress/posts.data.mjs";
 import config from "../../../src/configs/config.json";
+import moments from "../../../src/configs/moments.json";
 
 const tagMap = ref(data.tagMap);
+const categoryMap = ref(data.categoryMap);
 const selectedTag = ref<string | null>(null);
+const selectedCategory = ref<string | null>(null);
 
-// 修改选择标签的函数，同时更新 URL 查询参数
 const selectTag = (tag: string | null) => {
   selectedTag.value = tag;
+  selectedCategory.value = null; // 清除选中的分类
   const url = new URL(window.location.href);
   if (tag) {
     url.searchParams.set("tag", tag);
+    url.searchParams.delete("category");
   } else {
     url.searchParams.delete("tag");
   }
-  // 更新地址栏但不刷新页面
+  window.history.replaceState(null, "", url.toString());
+};
+
+const selectCategory = (category: string | null) => {
+  selectedCategory.value = category;
+  selectedTag.value = null; // 清除选中的标签
+  const url = new URL(window.location.href);
+  if (category) {
+    url.searchParams.set("category", category);
+    url.searchParams.delete("tag");
+  } else {
+    url.searchParams.delete("category");
+  }
   window.history.replaceState(null, "", url.toString());
 };
 
@@ -31,11 +45,46 @@ const computedYearMap = computed(() => {
   return result;
 });
 
+const postCount = computed(() => {
+  let count = 0;
+  for (let key in yearMap) {
+    count += yearMap[key].length;
+  }
+  return `共撰写 ${count} 篇文章`;
+});
+
+const lastUpdate = computed(() => {
+  let latestDate = 0;
+  for (let key in postMap) {
+    const postDate = new Date(postMap[key].date.time).getTime();
+    if (postDate > latestDate) {
+      latestDate = postDate;
+    }
+  }
+  const diff = Date.now() - latestDate;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  return `上次更新于 ${days} 天前`;
+});
+
 const startDate = new Date(config.card.uptime);
 const elapsedTime = ref(Date.now() - startDate.getTime());
 const updateElapsedTime = () => {
   elapsedTime.value = Date.now() - startDate.getTime();
 };
+
+const latestMoment = computed(() => {
+  const now = new Date();
+  const latestMoment = moments[0];
+  const momentDate = new Date(latestMoment.date);
+  const diffTime = now.getTime() - momentDate.getTime();
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+  if (diffDays <= 2) {
+    return `${latestMoment.content}`;
+  } else {
+    return config.card.desc;
+  }
+});
 
 let interval: ReturnType<typeof setInterval> | null = null;
 
@@ -43,11 +92,13 @@ onMounted(() => {
   updateElapsedTime();
   interval = setInterval(updateElapsedTime, 1000);
 
-  // 读取 URL 查询参数中的 tag 并赋值
   const urlParams = new URLSearchParams(window.location.search);
   const tagFromUrl = urlParams.get("tag");
+  const categoryFromUrl = urlParams.get("category");
   if (tagFromUrl) {
     selectedTag.value = tagFromUrl;
+  } else if (categoryFromUrl) {
+    selectedCategory.value = categoryFromUrl;
   }
 });
 
@@ -57,92 +108,113 @@ onUnmounted(() => {
 
 const uptime = computed(() => {
   const diff = elapsedTime.value;
-  const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
-  const days = Math.floor(
-    (diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24)
-  );
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-  return `${years} 年 ${days} 天 ${hours} 时 ${minutes} 分 ${seconds} 秒`;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  return `诞生于 ${days} 天前`;
 });
 </script>
 
 <template>
   <div class="holder" style="height: 30px"></div>
   <div class="container">
-    <div class="sidebar">
-      <aside class="infos">
-        <img :src="config.card.avatar" />
-        <h1 v-text="config.card.name"></h1>
-        <p v-text="config.card.desc"></p>
-      </aside>
-      <aside class="tagList">
-        <h1 class="title">
-          <Icon
-            icon="fluent:book-number-16-filled"
-            width="25"
-            height="25"
-            style="position: relative; bottom: -1px"
-          />
-          Tags
-        </h1>
-        <ul class="sidebar">
-          <li class="tags">
-            <button
-              @click="selectTag(null)"
-              class="allPostsButton"
-              :class="{ selected: selectedTag === null }"
-            >
-              <span>All Posts</span>
-            </button>
-          </li>
-          <li class="tags" v-for="(posts, tag) in tagMap" :key="tag">
-            <button
-              @click="selectTag(tag)"
-              :class="{ selected: selectedTag === tag }"
-            >
-              {{ tag }} <span class="number">{{ posts.length }}</span>
-              <!-- 显示每个分类下的文章数 -->
-            </button>
-          </li>
-        </ul>
-      </aside>
-      <aside class="uptime">
-        <h1 class="title">
-          <Icon icon="fluent:clock-24-filled" width="25" height="25" /> Uptime
-        </h1>
-        <img :src="config.logo" />
-        <strong class="name" v-text="config.title"></strong>
-        <span v-text="uptime" class="uptime"></span>
-      </aside>
-    </div>
     <div class="main-content">
-      <!-- 显示所有标签分类 -->
+      <!-- 显示所有分类 -->
       <div>
         <ul class="topBar">
-          <li class="tags">
+          <li class="categories">
             <button
-              @click="selectTag(null)"
+              @click="
+                () => {
+                  selectCategory(null);
+                  selectTag(null);
+                }
+              "
               class="allPostsButton"
-              :class="{ selected: selectedTag === null }"
+              :class="{
+                selected: selectedCategory === null && selectedTag === null,
+              }"
             >
               <span>All Posts</span>
             </button>
           </li>
-          <li class="tags" v-for="(posts, tag) in tagMap" :key="tag">
+          <li
+            class="categories"
+            v-for="(posts, category) in categoryMap"
+            :key="category"
+          >
             <button
-              @click="selectTag(tag)"
-              :class="{ selected: selectedTag === tag }"
+              @click="selectCategory(category)"
+              :class="{ selected: selectedCategory === category }"
             >
-              {{ tag }} <span class="number">{{ posts.length }}</span>
-              <!-- 显示每个分类下的文章数 -->
+              {{ category }} <span class="number">{{ posts.length }}</span>
             </button>
           </li>
         </ul>
       </div>
 
-      <!-- 如果选择了某个标签分类，显示该分类下的文章 -->
+      <!-- 如果选择了某个分类，显示该分类下的文章 -->
+      <div v-if="selectedCategory" class="selected">
+        <div
+          class="list"
+          v-for="post in categoryMap[selectedCategory]"
+          :key="post.url"
+        >
+          <a :href="post.url" style="color: var(--vp-c-text)">
+            <article class="onePost">
+              <div v-if="post.image" class="imageContainer">
+                <img :src="post.image" :alt="post.title" class="image" />
+              </div>
+              <div class="textContainer">
+                <p class="time">
+                  <Icon
+                    v-if="post.pin"
+                    icon="fluent:pin-28-filled"
+                    width="18"
+                    height="18"
+                    style="margin-right: 3px; color: var(--vp-c-brand-2)"
+                  />
+                  {{ post.date.string }}
+                </p>
+                <h1 class="title" v-text="post.title"></h1>
+                <p class="descriptions" v-text="post.descriptions"></p>
+                <p class="tagList">
+                  <span
+                    v-if="post.category"
+                    class="oneCategory oneTag"
+                    @mousedown.prevent.stop="selectCategory(post.category)"
+                    @click.prevent.stop="selectCategory(post.category)"
+                  >
+                    <Icon
+                      icon="fluent:folder-24-filled"
+                      width="14"
+                      height="21"
+                    />
+                    {{ post.category }}
+                  </span>
+
+                  <span
+                    class="oneTag"
+                    v-if="post.tags"
+                    v-for="tag in post.tags"
+                    :key="tag"
+                    @mousedown.prevent.stop="selectTag(tag)"
+                    @click.prevent.stop="selectTag(tag)"
+                  >
+                    <Icon
+                      icon="fluent:number-symbol-24-filled"
+                      width="14"
+                      height="21"
+                      style="margin-right: -2px"
+                    />
+                    {{ tag }}
+                  </span>
+                </p>
+              </div>
+            </article>
+          </a>
+        </div>
+      </div>
+
+      <!-- 如果选择了某个标签，显示该标签下的文章 -->
       <div v-if="selectedTag" class="selected">
         <div class="list" v-for="post in tagMap[selectedTag]" :key="post.url">
           <a :href="post.url" style="color: var(--vp-c-text)">
@@ -151,9 +223,50 @@ const uptime = computed(() => {
                 <img :src="post.image" :alt="post.title" class="image" />
               </div>
               <div class="textContainer">
-                <p class="time" v-text="post.date.string"></p>
+                <p class="time">
+                  <Icon
+                    v-if="post.pin"
+                    icon="fluent:pin-28-filled"
+                    width="18"
+                    height="18"
+                    style="margin-right: 3px; color: var(--vp-c-brand-2)"
+                  />
+                  {{ post.date.string }}
+                </p>
                 <h1 class="title" v-text="post.title"></h1>
                 <p class="descriptions" v-text="post.descriptions"></p>
+                <p class="tagList">
+                  <span
+                    v-if="post.category"
+                    class="oneCategory oneTag"
+                    @mousedown.prevent.stop="selectCategory(post.category)"
+                    @click.prevent.stop="selectCategory(post.category)"
+                  >
+                    <Icon
+                      icon="fluent:folder-24-filled"
+                      width="14"
+                      height="21"
+                    />
+                    {{ post.category }}
+                  </span>
+
+                  <span
+                    class="oneTag"
+                    v-if="post.tags"
+                    v-for="tag in post.tags"
+                    :key="tag"
+                    @mousedown.prevent.stop="selectTag(tag)"
+                    @click.prevent.stop="selectTag(tag)"
+                  >
+                    <Icon
+                      icon="fluent:number-symbol-24-filled"
+                      width="14"
+                      height="21"
+                      style="margin-right: -2px"
+                    />
+                    {{ tag }}
+                  </span>
+                </p>
               </div>
             </article>
           </a>
@@ -161,7 +274,10 @@ const uptime = computed(() => {
       </div>
 
       <!-- 如果选择了 "所有文章"，显示所有文章 -->
-      <div v-if="selectedTag === null" class="selected">
+      <div
+        v-if="selectedCategory === null && selectedTag === null"
+        class="selected"
+      >
         <div class="postArchives">
           <div v-for="year in yearList" class="numberAndYear" :key="year">
             <div v-text="year" class="yearNumber"></div>
@@ -183,12 +299,38 @@ const uptime = computed(() => {
                     />
                   </div>
                   <div class="textContainer">
-                    <p class="time" v-text="article.date.string"></p>
+                    <p class="time">
+                      <Icon
+                        v-if="article.pin"
+                        icon="fluent:pin-28-filled"
+                        width="18"
+                        height="18"
+                        style="margin-right: 3px; color: var(--vp-c-brand-2)"
+                      />
+                      {{ article.date.string }}
+                    </p>
                     <h1 class="title" v-text="article.title"></h1>
                     <p class="descriptions" v-text="article.descriptions"></p>
                     <p class="tagList">
                       <span
+                        v-if="article.category"
+                        class="oneCategory oneTag"
+                        @mousedown.prevent.stop="
+                          selectCategory(article.category)
+                        "
+                        @click.prevent.stop="selectCategory(article.category)"
+                      >
+                        <Icon
+                          icon="fluent:folder-24-filled"
+                          width="14"
+                          height="21"
+                        />
+                        {{ article.category }}
+                      </span>
+
+                      <span
                         class="oneTag"
+                        v-if="article.tags"
                         v-for="tag in article.tags"
                         :key="tag"
                         @mousedown.prevent.stop="selectTag(tag)"
@@ -214,6 +356,46 @@ const uptime = computed(() => {
       <!-- 如果没有选择分类，展示提示 -->
       <div v-else></div>
     </div>
+
+    <div class="sidebar">
+      <aside class="infos">
+        <img :src="config.card.avatar" />
+        <h1>{{ config.card.name }}</h1>
+        <p v-text="latestMoment"></p>
+      </aside>
+      <aside class="tagList">
+        <h1 class="title">
+          <Icon
+            icon="fluent:book-number-16-filled"
+            width="25"
+            height="25"
+            style="position: relative; bottom: -1px"
+          />
+          Tags
+        </h1>
+        <ul class="sidebar">
+          <li class="tags" v-for="(posts, tag) in tagMap" :key="tag">
+            <button
+              @click="selectTag(tag)"
+              :class="{ selected: selectedTag === tag }"
+            >
+              {{ tag }} <span class="number">{{ posts.length }}</span>
+              <!-- 显示每个分类下的文章数 -->
+            </button>
+          </li>
+        </ul>
+      </aside>
+      <aside class="uptime">
+        <h1 class="title">
+          <Icon icon="fluent:clock-24-filled" width="25" height="25" /> Uptime
+        </h1>
+        <img :src="config.logo" />
+        <strong class="name" v-text="config.title"></strong>
+        <span class="uptime"><Icon icon="fluent:food-cake-12-filled" width="16" height="16" /> {{ uptime }}</span>
+        <span class="postCount uptime"><Icon icon="fluent:calligraphy-pen-20-filled" width="16" height="16"/> {{ postCount }}</span>
+        <span class="lastUpdate uptime"><Icon icon="fluent:book-clock-20-filled" width="16" height="16" /> {{ lastUpdate }}</span>
+      </aside>
+    </div>
   </div>
 </template>
 
@@ -231,7 +413,7 @@ div.main-content {
 
 div.sidebar {
   width: 300px;
-  margin-right: 10px;
+  margin-left: 10px;
   aside {
     h1.title {
       color: var(--vp-c-gutter);
@@ -387,7 +569,7 @@ aside.uptime {
     display: block;
   }
   ul.topBar {
-    display: none;
+    display: block;
   }
 }
 
@@ -402,6 +584,7 @@ ul.topBar button {
   font-size: 17.5px;
   padding: 3px 9px 3px 9px;
   border-radius: 7px;
+  margin-right: 3px;
   /*border: 1px solid var(--vp-c-divider);*/
   transition: all 0.4s;
   span.number {
@@ -464,7 +647,7 @@ ul.topBar:hover {
   column-count: auto;
 }
 
-ul.topBar li.tags {
+ul.topBar li.categories {
   display: inline;
   margin-right: 1px;
   margin-top: 0px;
@@ -512,8 +695,8 @@ p.tagList {
     color: var(--vp-c-text-3);
     margin-right: 10px;
     padding: 0px;
-    transition: all .4s;
-    opacity: .8;
+    transition: all 0.4s;
+    opacity: 0.8;
   }
   span.oneTag:hover {
     color: var(--vp-c-brand-3);
@@ -557,9 +740,9 @@ div.postArchives {
   * {
     text-decoration: none;
   }
-  div.numberAndYear {
+  /*div.numberAndYear {
     margin-bottom: 60px;
-  }
+  }*/
 }
 
 section.oneYear {

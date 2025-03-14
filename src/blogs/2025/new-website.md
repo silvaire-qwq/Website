@@ -1,10 +1,12 @@
 ---
-emoji: '🌎'
 title: '千里之行，始于足下。'
 descriptions: '换博客啦！'
 date: '2025-02-05'
+modify: '2025-03-14'
+category: Blog
+pin: true
 tags:
-    - Website
+    - Blog
 ---
 
 ## 关于我为什么要更换网站
