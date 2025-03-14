@@ -14,7 +14,10 @@ import friendsData from '/src/configs/friends.json';  // 导入 JSON
 export default {
   data() {
     return {
-      friends: friendsData,  // 将 JSON 数据绑定到 Vue 的 data 中
+      friends: friendsData.map(friend => ({
+        ...friend,
+        logo: friend.logo || 'https://cdn.luogu.com.cn/upload/usericon/1.png'
+      })),  // 将 JSON 数据绑定到 Vue 的 data 中，并设置默认头像
     };
   },
 };
@@ -80,4 +83,5 @@ export default {
 - 三个月不更新网站的；
 - 死链；
 - 单方面删除友情链接的
-  > 如果您的网站添加友情链接后违反了上述规定，我将立即删除您的友情链接，并永远不会再次添加。
+> 如果您的网站添加友情链接后违反了上述规定，我将立即删除您的友情链接，并永远不会再次添加。
+

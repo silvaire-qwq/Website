@@ -77,6 +77,5 @@ const props = withDefaults(defineProps<MusicProps>(), {
   max-width: 55px;
   max-height: 55px;
   border-radius: 7px;
-  border: 1px solid var(--vp-c-divider);
 }
 </style>
