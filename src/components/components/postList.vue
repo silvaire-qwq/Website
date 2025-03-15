@@ -9,9 +9,13 @@ const categoryMap = ref(data.categoryMap);
 const selectedTag = ref<string | null>(null);
 const selectedCategory = ref<string | null>(null);
 
+const currentPage = ref(1);
+const postsPerPage = 10;
+
 const selectTag = (tag: string | null) => {
   selectedTag.value = tag;
   selectedCategory.value = null; // 清除选中的分类
+  currentPage.value = 1; // 重置页码
   const url = new URL(window.location.href);
   if (tag) {
     url.searchParams.set("tag", tag);
@@ -25,6 +29,7 @@ const selectTag = (tag: string | null) => {
 const selectCategory = (category: string | null) => {
   selectedCategory.value = category;
   selectedTag.value = null; // 清除选中的标签
+  currentPage.value = 1; // 重置页码
   const url = new URL(window.location.href);
   if (category) {
     url.searchParams.set("category", category);
@@ -45,12 +50,38 @@ const computedYearMap = computed(() => {
   return result;
 });
 
-const postCount = computed(() => {
-  let count = 0;
-  for (let key in yearMap) {
-    count += yearMap[key].length;
+// 将所有文章扁平化成一个列表，按年份降序排列
+const allPosts = computed(() => {
+  let posts: any[] = [];
+  yearList.forEach((year) => {
+    posts = posts.concat(computedYearMap.value[year]);
+  });
+  return posts;
+});
+
+// 根据选择的分类、tag或全部文章进行过滤
+const filteredPosts = computed(() => {
+  if (selectedCategory.value) {
+    return categoryMap.value[selectedCategory.value] || [];
+  } else if (selectedTag.value) {
+    return tagMap.value[selectedTag.value] || [];
+  } else {
+    return allPosts.value;
   }
-  return `共撰写 ${count} 篇文章`;
+});
+
+const totalPages = computed(() => {
+  return Math.ceil(filteredPosts.value.length / postsPerPage);
+});
+
+const paginatedPosts = computed(() => {
+  const start = (currentPage.value - 1) * postsPerPage;
+  const end = start + postsPerPage;
+  return filteredPosts.value.slice(start, end);
+});
+
+const postCount = computed(() => {
+  return `共撰写 ${filteredPosts.value.length} 篇文章`;
 });
 
 const startDate = new Date(config.card.uptime);
@@ -77,7 +108,6 @@ let interval: ReturnType<typeof setInterval> | null = null;
 
 onMounted(() => {
   updateElapsedTime();
-
   const urlParams = new URLSearchParams(window.location.search);
   const tagFromUrl = urlParams.get("tag");
   const categoryFromUrl = urlParams.get("category");
@@ -96,6 +126,51 @@ const uptime = computed(() => {
   const diff = elapsedTime.value;
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
   return `诞生于 ${days} 天前`;
+});
+
+// 分页操作方法
+const goToPage = (page: number) => {
+  if (page >= 1 && page <= totalPages.value) {
+    currentPage.value = page;
+  }
+};
+
+const nextPage = () => {
+  if (currentPage.value < totalPages.value) {
+    currentPage.value++;
+  }
+};
+
+const prevPage = () => {
+  if (currentPage.value > 1) {
+    currentPage.value--;
+  }
+};
+
+const displayPages = computed(() => {
+  const pages: (number | string)[] = [];
+  const total = totalPages.value;
+  const current = currentPage.value;
+
+  // 如果总页数较少，直接显示所有页码
+  if (total <= 7) {
+    for (let i = 1; i <= total; i++) {
+      pages.push(i);
+    }
+  } else {
+    pages.push(1);
+
+    // 设置中间连续页码的起始与结束（当前页左右各一页）
+    const startPage = Math.max(2, current - 1);
+    const endPage = Math.min(total - 1, current + 1);
+    for (let i = startPage; i <= endPage; i++) {
+      pages.push(i);
+    }
+
+    // 如果当前页离最后一页还有至少 2 页距离，则显示省略号
+    pages.push(total);
+  }
+  return pages;
 });
 </script>
 
@@ -136,210 +211,96 @@ const uptime = computed(() => {
         </ul>
       </div>
       <div class="main-content">
-        <!-- 如果选择了某个分类，显示该分类下的文章 -->
-        <div v-if="selectedCategory" class="selected">
-          <div
-            class="list"
-            v-for="post in categoryMap[selectedCategory]"
-            :key="post.url"
+        <!-- 使用统一的 paginatedPosts 渲染文章列表 -->
+        <div class="selected">
+          <div class="list" v-for="post in paginatedPosts" :key="post.url">
+            <a :href="post.url" style="color: var(--vp-c-text)">
+              <article class="onePost">
+                <div v-if="post.image" class="imageContainer">
+                  <img :src="post.image" :alt="post.title" class="image" />
+                </div>
+                <div class="textContainer">
+                  <p class="time">
+                    <Icon
+                      v-if="post.pin"
+                      icon="fluent:pin-28-filled"
+                      width="18"
+                      height="18"
+                      style="margin-right: 3px; color: var(--vp-c-brand-2)"
+                    />
+                    {{ post.date.string }}
+                  </p>
+                  <h1 class="title" v-text="post.title"></h1>
+                  <p class="descriptions" v-text="post.descriptions"></p>
+                  <p class="tagList">
+                    <span
+                      v-if="post.category"
+                      class="oneCategory oneTag"
+                      @mousedown.prevent.stop="selectCategory(post.category)"
+                      @click.prevent.stop="selectCategory(post.category)"
+                    >
+                      <Icon
+                        icon="fluent:folder-24-filled"
+                        width="14"
+                        height="21"
+                      />
+                      {{ post.category }}
+                    </span>
+                    <span
+                      class="oneTag"
+                      v-if="post.tags"
+                      v-for="tag in post.tags"
+                      :key="tag"
+                      @mousedown.prevent.stop="selectTag(tag)"
+                      @click.prevent.stop="selectTag(tag)"
+                    >
+                      <Icon
+                        icon="fluent:number-symbol-24-filled"
+                        width="14"
+                        height="21"
+                        style="margin-right: -2px"
+                      />
+                      {{ tag }}
+                    </span>
+                  </p>
+                </div>
+              </article>
+            </a>
+          </div>
+        </div>
+        <!-- 分页按钮，所有视图（全部、分类、tag）共用相同的 class -->
+        <div class="pagination" v-if="totalPages > 1">
+          <!-- 仅在小屏幕下显示当前页数 -->
+          <button class="current-page">{{ currentPage }}</button>
+          <button
+            class="pagination-button prev"
+            @click="prevPage"
+            :disabled="currentPage === 1"
           >
-            <a :href="post.url" style="color: var(--vp-c-text)">
-              <article class="onePost">
-                <div v-if="post.image" class="imageContainer">
-                  <img :src="post.image" :alt="post.title" class="image" />
-                </div>
-                <div class="textContainer">
-                  <p class="time">
-                    <Icon
-                      v-if="post.pin"
-                      icon="fluent:pin-28-filled"
-                      width="18"
-                      height="18"
-                      style="margin-right: 3px; color: var(--vp-c-brand-2)"
-                    />
-                    {{ post.date.string }}
-                  </p>
-                  <h1 class="title" v-text="post.title"></h1>
-                  <p class="descriptions" v-text="post.descriptions"></p>
-                  <p class="tagList">
-                    <span
-                      v-if="post.category"
-                      class="oneCategory oneTag"
-                      @mousedown.prevent.stop="selectCategory(post.category)"
-                      @click.prevent.stop="selectCategory(post.category)"
-                    >
-                      <Icon
-                        icon="fluent:folder-24-filled"
-                        width="14"
-                        height="21"
-                      />
-                      {{ post.category }}
-                    </span>
-
-                    <span
-                      class="oneTag"
-                      v-if="post.tags"
-                      v-for="tag in post.tags"
-                      :key="tag"
-                      @mousedown.prevent.stop="selectTag(tag)"
-                      @click.prevent.stop="selectTag(tag)"
-                    >
-                      <Icon
-                        icon="fluent:number-symbol-24-filled"
-                        width="14"
-                        height="21"
-                        style="margin-right: -2px"
-                      />
-                      {{ tag }}
-                    </span>
-                  </p>
-                </div>
-              </article>
-            </a>
-          </div>
+            <Icon icon="fluent:chevron-left-16-filled" width="16" height="16" />
+          </button>
+          <!-- 这些页码按钮在小屏幕下会被隐藏 -->
+          <button
+            v-for="(page, index) in displayPages"
+            :key="index"
+            class="pagination-button"
+            :class="{ selected: page === currentPage }"
+            @click="typeof page === 'number' && goToPage(page)"
+          >
+            {{ page }}
+          </button>
+          <button
+            class="pagination-button next"
+            @click="nextPage"
+            :disabled="currentPage === totalPages"
+          >
+            <Icon
+              icon="fluent:chevron-right-16-filled"
+              width="16"
+              height="16"
+            />
+          </button>
         </div>
-
-        <!-- 如果选择了某个标签，显示该标签下的文章 -->
-        <div v-if="selectedTag" class="selected">
-          <div class="list" v-for="post in tagMap[selectedTag]" :key="post.url">
-            <a :href="post.url" style="color: var(--vp-c-text)">
-              <article class="onePost">
-                <div v-if="post.image" class="imageContainer">
-                  <img :src="post.image" :alt="post.title" class="image" />
-                </div>
-                <div class="textContainer">
-                  <p class="time">
-                    <Icon
-                      v-if="post.pin"
-                      icon="fluent:pin-28-filled"
-                      width="18"
-                      height="18"
-                      style="margin-right: 3px; color: var(--vp-c-brand-2)"
-                    />
-                    {{ post.date.string }}
-                  </p>
-                  <h1 class="title" v-text="post.title"></h1>
-                  <p class="descriptions" v-text="post.descriptions"></p>
-                  <p class="tagList">
-                    <span
-                      v-if="post.category"
-                      class="oneCategory oneTag"
-                      @mousedown.prevent.stop="selectCategory(post.category)"
-                      @click.prevent.stop="selectCategory(post.category)"
-                    >
-                      <Icon
-                        icon="fluent:folder-24-filled"
-                        width="14"
-                        height="21"
-                      />
-                      {{ post.category }}
-                    </span>
-
-                    <span
-                      class="oneTag"
-                      v-if="post.tags"
-                      v-for="tag in post.tags"
-                      :key="tag"
-                      @mousedown.prevent.stop="selectTag(tag)"
-                      @click.prevent.stop="selectTag(tag)"
-                    >
-                      <Icon
-                        icon="fluent:number-symbol-24-filled"
-                        width="14"
-                        height="21"
-                        style="margin-right: -2px"
-                      />
-                      {{ tag }}
-                    </span>
-                  </p>
-                </div>
-              </article>
-            </a>
-          </div>
-        </div>
-
-        <!-- 如果选择了 "所有文章"，显示所有文章 -->
-        <div
-          v-if="selectedCategory === null && selectedTag === null"
-          class="selected"
-        >
-          <div class="postArchives">
-            <div v-for="year in yearList" class="numberAndYear" :key="year">
-              <div v-text="year" class="yearNumber"></div>
-              <!-- 一年的文章 -->
-              <section class="oneYear">
-                <a
-                  v-for="(article, index2) in computedYearMap[year]"
-                  :key="index2"
-                  class="post"
-                  :href="article.url"
-                >
-                  <!-- 单个文章 -->
-                  <article class="onePost">
-                    <div v-if="article.image" class="imageContainer">
-                      <img
-                        :src="article.image"
-                        :alt="article.title"
-                        class="image"
-                      />
-                    </div>
-                    <div class="textContainer">
-                      <p class="time">
-                        <Icon
-                          v-if="article.pin"
-                          icon="fluent:pin-28-filled"
-                          width="18"
-                          height="18"
-                          style="margin-right: 3px; color: var(--vp-c-brand-2)"
-                        />
-                        {{ article.date.string }}
-                      </p>
-                      <h1 class="title" v-text="article.title"></h1>
-                      <p class="descriptions" v-text="article.descriptions"></p>
-                      <p class="tagList">
-                        <span
-                          v-if="article.category"
-                          class="oneCategory oneTag"
-                          @mousedown.prevent.stop="
-                            selectCategory(article.category)
-                          "
-                          @click.prevent.stop="selectCategory(article.category)"
-                        >
-                          <Icon
-                            icon="fluent:folder-24-filled"
-                            width="14"
-                            height="21"
-                          />
-                          {{ article.category }}
-                        </span>
-
-                        <span
-                          class="oneTag"
-                          v-if="article.tags"
-                          v-for="tag in article.tags"
-                          :key="tag"
-                          @mousedown.prevent.stop="selectTag(tag)"
-                          @click.prevent.stop="selectTag(tag)"
-                        >
-                          <Icon
-                            icon="fluent:number-symbol-24-filled"
-                            width="14"
-                            height="21"
-                            style="margin-right: -2px"
-                          />
-                          {{ tag }}
-                        </span>
-                      </p>
-                    </div>
-                  </article>
-                </a>
-              </section>
-            </div>
-          </div>
-        </div>
-
-        <!-- 如果没有选择分类，展示提示 -->
-        <div v-else></div>
       </div>
     </div>
     <div class="sidebar">
@@ -365,7 +326,6 @@ const uptime = computed(() => {
               :class="{ selected: selectedTag === tag }"
             >
               {{ tag }} <span class="number">{{ posts.length }}</span>
-              <!-- 显示每个分类下的文章数 -->
             </button>
           </li>
         </ul>
@@ -376,24 +336,95 @@ const uptime = computed(() => {
         </h1>
         <img :src="config.logo" />
         <strong class="name" v-text="config.title"></strong>
-        <span class="uptime"
-          ><Icon icon="fluent:food-cake-12-filled" width="16" height="16" />
-          {{ uptime }}</span
-        >
-        <span class="postCount uptime"
-          ><Icon
+        <span class="uptime">
+          <Icon icon="fluent:food-cake-12-filled" width="16" height="16" />
+          {{ uptime }}
+        </span>
+        <span class="postCount uptime">
+          <Icon
             icon="fluent:calligraphy-pen-20-filled"
             width="16"
             height="16"
           />
-          {{ postCount }}</span
-        >
+          {{ postCount }}
+        </span>
       </aside>
     </div>
   </div>
 </template>
 
 <style scoped>
+/* 分页 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+.pagination-button,
+.current-page {
+  margin-right: 7px;
+  padding: 5px 10px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 9px;
+  color: var(--vp-c-text);
+  cursor: pointer;
+  transition: all 0.4s;
+  height: 38px;
+  width: 38px;
+  line-height: 16px;
+  font-size: 16px;
+  box-shadow: var(--vp-c-bg-elv) 0px 12px 25px -5px,
+    var(--vp-c-bg-elv) 0px 7px 15px -7px;
+}
+
+.pagination-button:hover,
+.current-page:hover {
+  color: var(--vp-c-brand-1);
+  transform: scale(105%);
+  border-color: var(--vp-c-brand-1);
+}
+
+.pagination-button.prev,
+.pagination-button.next {
+  width: 58px;
+}
+
+.pagination-button.selected {
+  background-color: var(--vp-c-brand-1);
+  color: var(--vp-c-bg);
+  box-shadow: var(--vp-c-brand-soft) 0px 1px 25px -5px,
+    var(--vp-c-brand-soft) 0px 3px 7px -7px;
+  border: 1px solid var(--vp-c-brand-1);
+}
+
+.pagination-button:disabled {
+  display: none;
+}
+
+@media screen and (min-width: 800px) {
+  button.current-page {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .pagination-button:not(.prev):not(.next) {
+    display: none;
+  }
+  .prev,
+  .next {
+    /* 让每个按钮占用一半 */
+    width: 50% !important;
+    &:hover {
+      transform: none;
+    }
+  }
+  .current-page:hover {
+    transform: none;
+  }
+}
+
 /* Sidebar */
 
 div.container {
@@ -422,7 +453,7 @@ div.sidebar {
   margin-left: 10px;
   position: -webkit-sticky; /* Safari */
   position: sticky;
-  top: 80px;
+  top: calc(var(--vp-nav-height) + 25px);
   height: fit-content;
   aside {
     h1.title {
@@ -571,6 +602,12 @@ aside.uptime {
   }
   ul.topBar {
     display: block;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  div.sidebar {
+    top: 25px;
   }
 }
 
