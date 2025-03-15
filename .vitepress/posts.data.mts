@@ -104,11 +104,11 @@ function formatDate(raw: string, isModified: boolean): Post["date"] {
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
   let displayDate;
-  if (diffDays === -1) {
+  if (diffDays === 0) {
     displayDate = isModified ? "最后修改于今天" : "今天";
-  } else if (diffDays === 0) {
-    displayDate = isModified ? "最后修改于昨天" : "昨天";
   } else if (diffDays === 1) {
+    displayDate = isModified ? "最后修改于昨天" : "昨天";
+  } else if (diffDays === 2) {
     displayDate = isModified ? "最后修改于前天" : "前天";
   } else if (date.getFullYear() === now.getFullYear()) {
     displayDate = isModified ? `最后修改于${month}${day}` : `${month}${day}`;

@@ -596,7 +596,7 @@ aside.uptime {
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   div.sidebar {
     display: none;
   }
@@ -611,7 +611,7 @@ aside.uptime {
   }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
   div.sidebar {
     display: block;
   }

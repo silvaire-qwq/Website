@@ -50,11 +50,11 @@ function formatDate(raw, isModified = false) {
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
   let displayDate;
-  if (diffDays === -1) {
+  if (diffDays === 0) {
     displayDate = isModified ? "今天" : "今天";
-  } else if (diffDays === 0) {
-    displayDate = isModified ? "昨天" : "昨天";
   } else if (diffDays === 1) {
+    displayDate = isModified ? "昨天" : "昨天";
+  } else if (diffDays === 2) {
     displayDate = isModified ? "前天" : "前天";
   } else if (date.getFullYear() === now.getFullYear()) {
     displayDate = isModified ? `修改于${month}${day}` : `${month}${day}`;
@@ -70,7 +70,7 @@ function formatDate(raw, isModified = false) {
 div.vp-doc.layout.beforeDocs {
   /* 提高文字区域的空间 */
   .textArea {
-    margin-top: 40px;
+    margin-top: 100px;
     margin-bottom: 40px;
   }
 

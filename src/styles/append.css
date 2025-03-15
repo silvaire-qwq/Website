@@ -208,7 +208,14 @@ img.VPImage.image-src {
 }
 
 img.VPImage.logo {
-    border-radius: 100%;
+    border-radius: 40%;
+    height: 35px;
+    width: 35px;
+    aspect-ratio: 1;   
+}
+
+a.title span {
+    display: none;
 }
 
 /*
@@ -276,4 +283,22 @@ highlight {
 
 img {
     user-select: none !important;
+}
+
+/*
+    顶栏按钮居中
+*/
+
+nav.VPNavBarMenu.menu {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    @media (max-width: 600px) {
+        display: none;
+    }
+    
+}
+
+div.VPNavBarAppearance.appearance::before {
+    display: none;
 }

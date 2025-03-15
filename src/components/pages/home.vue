@@ -2,8 +2,8 @@
   <div id="CustomHome" :class="{ hidden: isTagPresent }">
     <div class="alignCenter">
       <div class="titles">
-        <h1>你好，</h1>
-        <h1>欢迎光临 <highlight v-text="config.title"></highlight>。</h1>
+        <h1>你好</h1>
+        <h1>欢迎光临 <highlight v-text="config.title"></highlight></h1>
       </div>
       <p class="desc">
         <span v-for="(char, index) in displayedText" :key="index">{{ char }}</span>
@@ -52,7 +52,7 @@ onMounted(() => {
 
 <style scoped>
 div#CustomHome {
-  height: calc(100vh - var(--vp-nav-height));
+  height: calc(40vh - var(--vp-nav-height));
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -21,11 +21,11 @@ function formatRelativeDate(dateString, timeString) {
     const diffTime = now - date;
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
     
-    if (diffDays === -1) {
+    if (diffDays === 0) {
         return `今天 ${timeString}`;
-    } else if (diffDays === 0) {
-        return `昨天 ${timeString}`;
     } else if (diffDays === 1) {
+        return `昨天 ${timeString}`;
+    } else if (diffDays === 2) {
         return `前天 ${timeString}`;
     } else if (date.getFullYear() === now.getFullYear()) {
         return formatDate(dateString);
