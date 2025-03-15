@@ -81,7 +81,7 @@ const paginatedPosts = computed(() => {
 });
 
 const postCount = computed(() => {
-  return `共撰写 ${filteredPosts.value.length} 篇文章`;
+  return `此分类下撰写过 ${filteredPosts.value.length} 篇文章`;
 });
 
 const startDate = new Date(config.card.uptime);
