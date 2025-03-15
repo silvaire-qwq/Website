@@ -95,7 +95,7 @@ function formatDate(raw: string, isModified: boolean): Post["date"] {
   const date = new Date(raw);
 
   // 获取星期、日期、月份和年份
-  const day = date.toLocaleString("zh-CN", { day: "numeric" });
+  const day = date.toLocaleString("zh-CN", { day: "2-digit" });
   const month = date.toLocaleString("zh-CN", { month: "short" });
   const year = `${date.getFullYear()}`;
 
@@ -104,17 +104,17 @@ function formatDate(raw: string, isModified: boolean): Post["date"] {
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
   let displayDate;
-  if (diffDays === 0) {
+  if (diffDays === -1) {
     displayDate = isModified ? "最后修改于今天" : "今天";
-  } else if (diffDays === 1) {
+  } else if (diffDays === 0) {
     displayDate = isModified ? "最后修改于昨天" : "昨天";
-  } else if (diffDays === 2) {
+  } else if (diffDays === 1) {
     displayDate = isModified ? "最后修改于前天" : "前天";
   } else if (date.getFullYear() === now.getFullYear()) {
     displayDate = isModified ? `最后修改于${month}${day}` : `${month}${day}`;
   } else {
     displayDate = isModified
-      ? `修改于${year}年${month}${day}`
+      ? `最后修改于${year}年${month}${day}`
       : `${year}年${month}${day}`;
   }
 

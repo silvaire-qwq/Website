@@ -53,19 +53,6 @@ const postCount = computed(() => {
   return `共撰写 ${count} 篇文章`;
 });
 
-const lastUpdate = computed(() => {
-  let latestDate = 0;
-  for (let key in postMap) {
-    const postDate = new Date(postMap[key].date.time).getTime();
-    if (postDate > latestDate) {
-      latestDate = postDate;
-    }
-  }
-  const diff = Date.now() - latestDate;
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  return `上次更新于 ${days} 天前`;
-});
-
 const startDate = new Date(config.card.uptime);
 const elapsedTime = ref(Date.now() - startDate.getTime());
 const updateElapsedTime = () => {
@@ -90,7 +77,6 @@ let interval: ReturnType<typeof setInterval> | null = null;
 
 onMounted(() => {
   updateElapsedTime();
-  interval = setInterval(updateElapsedTime, 1000);
 
   const urlParams = new URLSearchParams(window.location.search);
   const tagFromUrl = urlParams.get("tag");
@@ -116,9 +102,8 @@ const uptime = computed(() => {
 <template>
   <div class="holder" style="height: 30px"></div>
   <div class="container">
-    <div class="main-content">
-      <!-- 显示所有分类 -->
-      <div>
+    <div class="oneRow">
+      <div class="topBar">
         <ul class="topBar">
           <li class="categories">
             <button
@@ -150,213 +135,213 @@ const uptime = computed(() => {
           </li>
         </ul>
       </div>
-
-      <!-- 如果选择了某个分类，显示该分类下的文章 -->
-      <div v-if="selectedCategory" class="selected">
-        <div
-          class="list"
-          v-for="post in categoryMap[selectedCategory]"
-          :key="post.url"
-        >
-          <a :href="post.url" style="color: var(--vp-c-text)">
-            <article class="onePost">
-              <div v-if="post.image" class="imageContainer">
-                <img :src="post.image" :alt="post.title" class="image" />
-              </div>
-              <div class="textContainer">
-                <p class="time">
-                  <Icon
-                    v-if="post.pin"
-                    icon="fluent:pin-28-filled"
-                    width="18"
-                    height="18"
-                    style="margin-right: 3px; color: var(--vp-c-brand-2)"
-                  />
-                  {{ post.date.string }}
-                </p>
-                <h1 class="title" v-text="post.title"></h1>
-                <p class="descriptions" v-text="post.descriptions"></p>
-                <p class="tagList">
-                  <span
-                    v-if="post.category"
-                    class="oneCategory oneTag"
-                    @mousedown.prevent.stop="selectCategory(post.category)"
-                    @click.prevent.stop="selectCategory(post.category)"
-                  >
+      <div class="main-content">
+        <!-- 如果选择了某个分类，显示该分类下的文章 -->
+        <div v-if="selectedCategory" class="selected">
+          <div
+            class="list"
+            v-for="post in categoryMap[selectedCategory]"
+            :key="post.url"
+          >
+            <a :href="post.url" style="color: var(--vp-c-text)">
+              <article class="onePost">
+                <div v-if="post.image" class="imageContainer">
+                  <img :src="post.image" :alt="post.title" class="image" />
+                </div>
+                <div class="textContainer">
+                  <p class="time">
                     <Icon
-                      icon="fluent:folder-24-filled"
-                      width="14"
-                      height="21"
+                      v-if="post.pin"
+                      icon="fluent:pin-28-filled"
+                      width="18"
+                      height="18"
+                      style="margin-right: 3px; color: var(--vp-c-brand-2)"
                     />
-                    {{ post.category }}
-                  </span>
-
-                  <span
-                    class="oneTag"
-                    v-if="post.tags"
-                    v-for="tag in post.tags"
-                    :key="tag"
-                    @mousedown.prevent.stop="selectTag(tag)"
-                    @click.prevent.stop="selectTag(tag)"
-                  >
-                    <Icon
-                      icon="fluent:number-symbol-24-filled"
-                      width="14"
-                      height="21"
-                      style="margin-right: -2px"
-                    />
-                    {{ tag }}
-                  </span>
-                </p>
-              </div>
-            </article>
-          </a>
-        </div>
-      </div>
-
-      <!-- 如果选择了某个标签，显示该标签下的文章 -->
-      <div v-if="selectedTag" class="selected">
-        <div class="list" v-for="post in tagMap[selectedTag]" :key="post.url">
-          <a :href="post.url" style="color: var(--vp-c-text)">
-            <article class="onePost">
-              <div v-if="post.image" class="imageContainer">
-                <img :src="post.image" :alt="post.title" class="image" />
-              </div>
-              <div class="textContainer">
-                <p class="time">
-                  <Icon
-                    v-if="post.pin"
-                    icon="fluent:pin-28-filled"
-                    width="18"
-                    height="18"
-                    style="margin-right: 3px; color: var(--vp-c-brand-2)"
-                  />
-                  {{ post.date.string }}
-                </p>
-                <h1 class="title" v-text="post.title"></h1>
-                <p class="descriptions" v-text="post.descriptions"></p>
-                <p class="tagList">
-                  <span
-                    v-if="post.category"
-                    class="oneCategory oneTag"
-                    @mousedown.prevent.stop="selectCategory(post.category)"
-                    @click.prevent.stop="selectCategory(post.category)"
-                  >
-                    <Icon
-                      icon="fluent:folder-24-filled"
-                      width="14"
-                      height="21"
-                    />
-                    {{ post.category }}
-                  </span>
-
-                  <span
-                    class="oneTag"
-                    v-if="post.tags"
-                    v-for="tag in post.tags"
-                    :key="tag"
-                    @mousedown.prevent.stop="selectTag(tag)"
-                    @click.prevent.stop="selectTag(tag)"
-                  >
-                    <Icon
-                      icon="fluent:number-symbol-24-filled"
-                      width="14"
-                      height="21"
-                      style="margin-right: -2px"
-                    />
-                    {{ tag }}
-                  </span>
-                </p>
-              </div>
-            </article>
-          </a>
-        </div>
-      </div>
-
-      <!-- 如果选择了 "所有文章"，显示所有文章 -->
-      <div
-        v-if="selectedCategory === null && selectedTag === null"
-        class="selected"
-      >
-        <div class="postArchives">
-          <div v-for="year in yearList" class="numberAndYear" :key="year">
-            <div v-text="year" class="yearNumber"></div>
-            <!-- 一年的文章 -->
-            <section class="oneYear">
-              <a
-                v-for="(article, index2) in computedYearMap[year]"
-                :key="index2"
-                class="post"
-                :href="article.url"
-              >
-                <!-- 单个文章 -->
-                <article class="onePost">
-                  <div v-if="article.image" class="imageContainer">
-                    <img
-                      :src="article.image"
-                      :alt="article.title"
-                      class="image"
-                    />
-                  </div>
-                  <div class="textContainer">
-                    <p class="time">
+                    {{ post.date.string }}
+                  </p>
+                  <h1 class="title" v-text="post.title"></h1>
+                  <p class="descriptions" v-text="post.descriptions"></p>
+                  <p class="tagList">
+                    <span
+                      v-if="post.category"
+                      class="oneCategory oneTag"
+                      @mousedown.prevent.stop="selectCategory(post.category)"
+                      @click.prevent.stop="selectCategory(post.category)"
+                    >
                       <Icon
-                        v-if="article.pin"
-                        icon="fluent:pin-28-filled"
-                        width="18"
-                        height="18"
-                        style="margin-right: 3px; color: var(--vp-c-brand-2)"
+                        icon="fluent:folder-24-filled"
+                        width="14"
+                        height="21"
                       />
-                      {{ article.date.string }}
-                    </p>
-                    <h1 class="title" v-text="article.title"></h1>
-                    <p class="descriptions" v-text="article.descriptions"></p>
-                    <p class="tagList">
-                      <span
-                        v-if="article.category"
-                        class="oneCategory oneTag"
-                        @mousedown.prevent.stop="
-                          selectCategory(article.category)
-                        "
-                        @click.prevent.stop="selectCategory(article.category)"
-                      >
-                        <Icon
-                          icon="fluent:folder-24-filled"
-                          width="14"
-                          height="21"
-                        />
-                        {{ article.category }}
-                      </span>
+                      {{ post.category }}
+                    </span>
 
-                      <span
-                        class="oneTag"
-                        v-if="article.tags"
-                        v-for="tag in article.tags"
-                        :key="tag"
-                        @mousedown.prevent.stop="selectTag(tag)"
-                        @click.prevent.stop="selectTag(tag)"
-                      >
-                        <Icon
-                          icon="fluent:number-symbol-24-filled"
-                          width="14"
-                          height="21"
-                          style="margin-right: -2px"
-                        />
-                        {{ tag }}
-                      </span>
-                    </p>
-                  </div>
-                </article>
-              </a>
-            </section>
+                    <span
+                      class="oneTag"
+                      v-if="post.tags"
+                      v-for="tag in post.tags"
+                      :key="tag"
+                      @mousedown.prevent.stop="selectTag(tag)"
+                      @click.prevent.stop="selectTag(tag)"
+                    >
+                      <Icon
+                        icon="fluent:number-symbol-24-filled"
+                        width="14"
+                        height="21"
+                        style="margin-right: -2px"
+                      />
+                      {{ tag }}
+                    </span>
+                  </p>
+                </div>
+              </article>
+            </a>
           </div>
         </div>
+
+        <!-- 如果选择了某个标签，显示该标签下的文章 -->
+        <div v-if="selectedTag" class="selected">
+          <div class="list" v-for="post in tagMap[selectedTag]" :key="post.url">
+            <a :href="post.url" style="color: var(--vp-c-text)">
+              <article class="onePost">
+                <div v-if="post.image" class="imageContainer">
+                  <img :src="post.image" :alt="post.title" class="image" />
+                </div>
+                <div class="textContainer">
+                  <p class="time">
+                    <Icon
+                      v-if="post.pin"
+                      icon="fluent:pin-28-filled"
+                      width="18"
+                      height="18"
+                      style="margin-right: 3px; color: var(--vp-c-brand-2)"
+                    />
+                    {{ post.date.string }}
+                  </p>
+                  <h1 class="title" v-text="post.title"></h1>
+                  <p class="descriptions" v-text="post.descriptions"></p>
+                  <p class="tagList">
+                    <span
+                      v-if="post.category"
+                      class="oneCategory oneTag"
+                      @mousedown.prevent.stop="selectCategory(post.category)"
+                      @click.prevent.stop="selectCategory(post.category)"
+                    >
+                      <Icon
+                        icon="fluent:folder-24-filled"
+                        width="14"
+                        height="21"
+                      />
+                      {{ post.category }}
+                    </span>
+
+                    <span
+                      class="oneTag"
+                      v-if="post.tags"
+                      v-for="tag in post.tags"
+                      :key="tag"
+                      @mousedown.prevent.stop="selectTag(tag)"
+                      @click.prevent.stop="selectTag(tag)"
+                    >
+                      <Icon
+                        icon="fluent:number-symbol-24-filled"
+                        width="14"
+                        height="21"
+                        style="margin-right: -2px"
+                      />
+                      {{ tag }}
+                    </span>
+                  </p>
+                </div>
+              </article>
+            </a>
+          </div>
+        </div>
+
+        <!-- 如果选择了 "所有文章"，显示所有文章 -->
+        <div
+          v-if="selectedCategory === null && selectedTag === null"
+          class="selected"
+        >
+          <div class="postArchives">
+            <div v-for="year in yearList" class="numberAndYear" :key="year">
+              <div v-text="year" class="yearNumber"></div>
+              <!-- 一年的文章 -->
+              <section class="oneYear">
+                <a
+                  v-for="(article, index2) in computedYearMap[year]"
+                  :key="index2"
+                  class="post"
+                  :href="article.url"
+                >
+                  <!-- 单个文章 -->
+                  <article class="onePost">
+                    <div v-if="article.image" class="imageContainer">
+                      <img
+                        :src="article.image"
+                        :alt="article.title"
+                        class="image"
+                      />
+                    </div>
+                    <div class="textContainer">
+                      <p class="time">
+                        <Icon
+                          v-if="article.pin"
+                          icon="fluent:pin-28-filled"
+                          width="18"
+                          height="18"
+                          style="margin-right: 3px; color: var(--vp-c-brand-2)"
+                        />
+                        {{ article.date.string }}
+                      </p>
+                      <h1 class="title" v-text="article.title"></h1>
+                      <p class="descriptions" v-text="article.descriptions"></p>
+                      <p class="tagList">
+                        <span
+                          v-if="article.category"
+                          class="oneCategory oneTag"
+                          @mousedown.prevent.stop="
+                            selectCategory(article.category)
+                          "
+                          @click.prevent.stop="selectCategory(article.category)"
+                        >
+                          <Icon
+                            icon="fluent:folder-24-filled"
+                            width="14"
+                            height="21"
+                          />
+                          {{ article.category }}
+                        </span>
+
+                        <span
+                          class="oneTag"
+                          v-if="article.tags"
+                          v-for="tag in article.tags"
+                          :key="tag"
+                          @mousedown.prevent.stop="selectTag(tag)"
+                          @click.prevent.stop="selectTag(tag)"
+                        >
+                          <Icon
+                            icon="fluent:number-symbol-24-filled"
+                            width="14"
+                            height="21"
+                            style="margin-right: -2px"
+                          />
+                          {{ tag }}
+                        </span>
+                      </p>
+                    </div>
+                  </article>
+                </a>
+              </section>
+            </div>
+          </div>
+        </div>
+
+        <!-- 如果没有选择分类，展示提示 -->
+        <div v-else></div>
       </div>
-
-      <!-- 如果没有选择分类，展示提示 -->
-      <div v-else></div>
     </div>
-
     <div class="sidebar">
       <aside class="infos">
         <img :src="config.card.avatar" />
@@ -391,9 +376,18 @@ const uptime = computed(() => {
         </h1>
         <img :src="config.logo" />
         <strong class="name" v-text="config.title"></strong>
-        <span class="uptime"><Icon icon="fluent:food-cake-12-filled" width="16" height="16" /> {{ uptime }}</span>
-        <span class="postCount uptime"><Icon icon="fluent:calligraphy-pen-20-filled" width="16" height="16"/> {{ postCount }}</span>
-        <span class="lastUpdate uptime"><Icon icon="fluent:book-clock-20-filled" width="16" height="16" /> {{ lastUpdate }}</span>
+        <span class="uptime"
+          ><Icon icon="fluent:food-cake-12-filled" width="16" height="16" />
+          {{ uptime }}</span
+        >
+        <span class="postCount uptime"
+          ><Icon
+            icon="fluent:calligraphy-pen-20-filled"
+            width="16"
+            height="16"
+          />
+          {{ postCount }}</span
+        >
       </aside>
     </div>
   </div>
@@ -406,6 +400,18 @@ div.container {
   display: flex;
 }
 
+div.oneRow {
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  margin: 0 auto;
+  transition: all 0.4s;
+  flex: 1;
+  column-gap: 10px;
+  column-width: 300px;
+  column-count: auto;
+}
+
 div.main-content {
   flex: 1;
   overflow: hidden;
@@ -414,6 +420,10 @@ div.main-content {
 div.sidebar {
   width: 300px;
   margin-left: 10px;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 80px;
+  height: fit-content;
   aside {
     h1.title {
       color: var(--vp-c-gutter);
@@ -580,6 +590,15 @@ aside.uptime {
 }
 
 /* 样式: 按钮和文章列表 */
+
+/*div.topBar {
+  position: -webkit-sticky;
+  position: sticky !important;
+  top: 80px;
+  background-color: var(--vp-c-bg);
+  z-index: 10;
+}*/
+
 ul.topBar button {
   font-size: 17.5px;
   padding: 3px 9px 3px 9px;

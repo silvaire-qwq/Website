@@ -4,7 +4,7 @@
       <img :src="frontmatter.image" alt="文章顶部图片" class="image" />
     </div>
     <div class="textArea">
-      <p class="time">创建于{{ formatDate(frontmatter.date) }}<br>最后修改于{{ formatDate(frontmatter.modify, true) }}</p>
+      <p class="time">创建于{{ formatDate(frontmatter.date) }}<br><span v-if="frontmatter.modify">最后修改于{{ formatDate(frontmatter.modify, true) }}</span></p>
       <h1 class="title">{{ frontmatter.title }}</h1>
       <p class="desc">{{ frontmatter.descriptions }}</p>
       <!-- 新增标签显示区域 -->
@@ -50,11 +50,11 @@ function formatDate(raw, isModified = false) {
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
   let displayDate;
-  if (diffDays === 0) {
+  if (diffDays === -1) {
     displayDate = isModified ? "今天" : "今天";
-  } else if (diffDays === 1) {
+  } else if (diffDays === 0) {
     displayDate = isModified ? "昨天" : "昨天";
-  } else if (diffDays === 2) {
+  } else if (diffDays === 1) {
     displayDate = isModified ? "前天" : "前天";
   } else if (date.getFullYear() === now.getFullYear()) {
     displayDate = isModified ? `修改于${month}${day}` : `${month}${day}`;
