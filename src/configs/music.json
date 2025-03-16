@@ -10,8 +10,13 @@
     "name": "光辉岁月",
     "singer": "Beyond",
     "album": "Beyond 25th Anniversary",
-    "img": "https://p2.music.126.net/zZtUDuWk6qIe3ezMt4UMjg==/109951165796417308.jpg?param=130y130",
-    "priority": "9"
+    "img": "https://p2.music.126.net/zZtUDuWk6qIe3ezMt4UMjg==/109951165796417308.jpg?param=130y130"
+  },
+  {
+    "name": "农民",
+    "singer": "Beyond",
+    "album": "Beyond 20th Anniversary",
+    "img": "https://p2.music.126.net/oauvOyQDA4HICYAL8rc4fQ==/588238720882448.jpg?param=130y130"
   },
   {
     "name": "灰色轨迹",
@@ -48,6 +53,19 @@
     "singer": "Beyond",
     "album": "二楼后座",
     "img": "https://p2.music.126.net/7pcI2vWoWjgCYkCZ_oFQkw==/109951168914746924.jpg?param=130y130"
+  },
+  {
+    "name": "遥远的 Paradise",
+    "singer": "Beyond",
+    "album": "二楼后座",
+    "img": "https://p2.music.126.net/7pcI2vWoWjgCYkCZ_oFQkw==/109951168914746924.jpg?param=130y130"
+  },
+  {
+    "name": "祝您愉快",
+    "singer": "Beyond",
+    "album": "二楼后座",
+    "img": "https://p2.music.126.net/7pcI2vWoWjgCYkCZ_oFQkw==/109951168914746924.jpg?param=130y130",
+    "priority": "top"
   },
   {
     "name": "Amani",

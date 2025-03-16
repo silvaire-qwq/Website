@@ -52,31 +52,35 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  user-select: none;
+}
 
-  h1 {
-    user-select: none;
+div.musicLink {
+  div.music {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* 居中对齐 */
+    gap: 10px;
   }
-
-  div.musicLink {
-    div.music {
-      margin-top: 15px;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      grid-template-rows: repeat(auto-fill, 1fr);
-      grid-gap: 10px;
-    }
-    div.singer {
-      margin-bottom: 100px;
-    }
-    h1.singer {
-      font-size: 70px;
-      line-height: 70px;
-      color: transparent;
-      -webkit-text-stroke: 1px var(--vp-c-gutter);
-      margin-bottom: -30px;
-      z-index: -1;
-    }
+  div.singer {
+    margin-bottom: 100px;
   }
+  h1.singer {
+    text-align: center;
+    font-size: 80px;
+    line-height: 80px;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--vp-c-gutter);
+    margin-bottom: -35px;
+    z-index: -1;
+  }
+  .music-card {
+    flex: 1 1 250px; /* 确保卡片在小屏幕上也能正常显示 */
+    max-width: 600px;
+  }
+}
 </style>
 
 <div class="spacer" style="height: 50px;"></div>

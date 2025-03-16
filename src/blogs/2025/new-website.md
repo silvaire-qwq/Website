@@ -4,7 +4,6 @@ descriptions: '换博客啦！'
 date: '2025-02-05'
 modify: '2025-03-14'
 category: Blog
-pin: true
 tags:
     - Blog
 ---

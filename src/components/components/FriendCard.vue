@@ -32,7 +32,7 @@ const props = withDefaults(defineProps<CardProps>(), {
   text-decoration: none;
   padding: 20px 22px;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 0.8em;
+  border-radius: 15px;
   transition: all 0.4s;
   height: 100%;
 }

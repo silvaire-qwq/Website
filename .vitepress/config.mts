@@ -40,6 +40,7 @@ export default defineConfig({
       { text: "Moments", link: "/src/pages/moments" },
       { text: "Music", link: "/src/pages/music" },
       { text: "Friends", link: "/src/pages/friends" },
+      { text: "About", link: "/src/pages/about" },
     ],
     docFooter: {
       prev: "回忆",

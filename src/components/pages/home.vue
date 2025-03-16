@@ -52,7 +52,7 @@ onMounted(() => {
 
 <style scoped>
 div#CustomHome {
-  height: calc(40vh - var(--vp-nav-height));
+  height: calc(50vh - var(--vp-nav-height));
   display: flex;
   flex-direction: column;
   justify-content: center;

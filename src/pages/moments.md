@@ -56,7 +56,7 @@ function formatRelativeDate(dateString, timeString) {
     box-shadow: var(--vp-c-bg-elv) 0px 12px 25px -5px, var(--vp-c-bg-elv) 0px 7px 15px -7px;
     border: 1px solid var(--vp-c-gutter);
     background-color: var(--vp-c-bg);
-    border-radius: 12px;
+    border-radius: 15px;
     padding: 16px 20px;
     transition: all 0.4s;
 }

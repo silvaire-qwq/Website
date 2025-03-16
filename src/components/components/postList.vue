@@ -177,6 +177,54 @@ const displayPages = computed(() => {
 <template>
   <div class="holder" style="height: 30px"></div>
   <div class="container">
+
+    <div class="sidebar">
+      <aside class="infos">
+        <img :src="config.card.avatar" />
+        <h1>{{ config.card.name }}</h1>
+        <p v-text="latestMoment"></p>
+      </aside>
+      <aside class="tagList">
+        <h1 class="title">
+          <Icon
+            icon="fluent:book-number-16-filled"
+            width="25"
+            height="25"
+            style="position: relative; bottom: -1px"
+          />
+          Tags
+        </h1>
+        <ul class="sidebar">
+          <li class="tags" v-for="(posts, tag) in tagMap" :key="tag">
+            <button
+              @click="selectTag(tag)"
+              :class="{ selected: selectedTag === tag }"
+            >
+              {{ tag }} <span class="number">{{ posts.length }}</span>
+            </button>
+          </li>
+        </ul>
+      </aside>
+      <aside class="uptime">
+        <h1 class="title">
+          <Icon icon="fluent:clock-24-filled" width="25" height="25" /> Uptime
+        </h1>
+        <img :src="config.logo" />
+        <strong class="name" v-text="config.title"></strong>
+        <span class="uptime">
+          <Icon icon="fluent:food-cake-12-filled" width="16" height="16" />
+          {{ uptime }}
+        </span>
+        <span class="postCount uptime">
+          <Icon
+            icon="fluent:calligraphy-pen-20-filled"
+            width="16"
+            height="16"
+          />
+          {{ postCount }}
+        </span>
+      </aside>
+    </div>
     <div class="oneRow">
       <div class="topBar">
         <ul class="topBar">
@@ -205,7 +253,7 @@ const displayPages = computed(() => {
               @click="selectCategory(category)"
               :class="{ selected: selectedCategory === category }"
             >
-              {{ category }} <span class="number">{{ posts.length }}</span>
+              {{ category }}
             </button>
           </li>
         </ul>
@@ -303,53 +351,6 @@ const displayPages = computed(() => {
         </div>
       </div>
     </div>
-    <div class="sidebar">
-      <aside class="infos">
-        <img :src="config.card.avatar" />
-        <h1>{{ config.card.name }}</h1>
-        <p v-text="latestMoment"></p>
-      </aside>
-      <aside class="tagList">
-        <h1 class="title">
-          <Icon
-            icon="fluent:book-number-16-filled"
-            width="25"
-            height="25"
-            style="position: relative; bottom: -1px"
-          />
-          Tags
-        </h1>
-        <ul class="sidebar">
-          <li class="tags" v-for="(posts, tag) in tagMap" :key="tag">
-            <button
-              @click="selectTag(tag)"
-              :class="{ selected: selectedTag === tag }"
-            >
-              {{ tag }} <span class="number">{{ posts.length }}</span>
-            </button>
-          </li>
-        </ul>
-      </aside>
-      <aside class="uptime">
-        <h1 class="title">
-          <Icon icon="fluent:clock-24-filled" width="25" height="25" /> Uptime
-        </h1>
-        <img :src="config.logo" />
-        <strong class="name" v-text="config.title"></strong>
-        <span class="uptime">
-          <Icon icon="fluent:food-cake-12-filled" width="16" height="16" />
-          {{ uptime }}
-        </span>
-        <span class="postCount uptime">
-          <Icon
-            icon="fluent:calligraphy-pen-20-filled"
-            width="16"
-            height="16"
-          />
-          {{ postCount }}
-        </span>
-      </aside>
-    </div>
   </div>
 </template>
 
@@ -374,7 +375,7 @@ const displayPages = computed(() => {
   width: 38px;
   line-height: 16px;
   font-size: 16px;
-  box-shadow: var(--vp-c-bg-elv) 0px 12px 25px -5px,
+  box-shadow: var(--vp-c-bg-elv) 0px 15px 25px -5px,
     var(--vp-c-bg-elv) 0px 7px 15px -7px;
 }
 
@@ -450,24 +451,24 @@ div.main-content {
 
 div.sidebar {
   width: 300px;
-  margin-left: 10px;
+  margin-right: 10px;
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: calc(var(--vp-nav-height) + 25px);
   height: fit-content;
   aside {
     h1.title {
-      color: var(--vp-c-gutter);
+      color: var(--vp-c-divider);
       font-size: 24px;
       line-height: 24px;
       margin-top: 4px;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
     }
     background-color: var(--vp-c-bg);
-    border: 1px solid var(--vp-c-gutter);
-    box-shadow: var(--vp-c-bg-elv) 0px 12px 25px -5px,
+    border: 1px solid var(--vp-c-divider);
+    box-shadow: var(--vp-c-bg-elv) 0px 15px 25px -5px,
       var(--vp-c-bg-elv) 0px 7px 15px -7px;
-    border-radius: 12px;
+    border-radius: 15px;
     padding: 20px 25px;
     transition: all 0.4s;
     margin-bottom: 10px;
@@ -678,12 +679,12 @@ ul.topBar span.number {
 
 ul.topBar {
   list-style-type: none;
-  box-shadow: var(--vp-c-bg-elv) 0px 12px 25px -5px,
+  box-shadow: var(--vp-c-bg-elv) 0px 15px 25px -5px,
     var(--vp-c-bg-elv) 0px 7px 15px -7px;
-  border: 1px solid var(--vp-c-gutter);
+  border: 1px solid var(--vp-c-divider);
   padding: 10px;
   max-width: 900px;
-  border-radius: 12px;
+  border-radius: 15px;
   margin: 0px auto;
   margin-bottom: 10px;
   transition: all 0.4s;
@@ -712,11 +713,11 @@ ul.topBar li.categories {
 
 article.onePost {
   margin: 0 auto;
-  box-shadow: var(--vp-c-bg-elv) 0px 12px 25px -5px,
+  box-shadow: var(--vp-c-bg-elv) 0px 15px 25px -5px,
     var(--vp-c-bg-elv) 0px 7px 15px -7px;
-  border: 1px solid var(--vp-c-gutter);
+  border: 1px solid var(--vp-c-divider);
   background-color: var(--vp-c-bg);
-  border-radius: 12px;
+  border-radius: 15px;
   height: 100%;
   break-inside: avoid !important;
   margin-bottom: 10px;
@@ -764,9 +765,9 @@ div.imageContainer {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    border-bottom: 1px solid var(--vp-c-gutter);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom: 1px solid var(--vp-c-divider);
   }
 }
 
@@ -784,7 +785,7 @@ div.yearNumber {
   line-height: 84px;
   font-weight: 700;
   color: transparent;
-  -webkit-text-stroke: 1px var(--vp-c-gutter);
+  -webkit-text-stroke: 1px var(--vp-c-divider);
   margin-bottom: -25px;
   z-index: -1;
   position: relative;

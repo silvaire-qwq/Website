@@ -34,7 +34,7 @@ a.VPButton.medium {
 .Layout {
     .VPNavBar {
         background-color: var(--vp-custom-nav-bg) !important;
-        backdrop-filter: blur(10px) !important;
+        backdrop-filter: blur(50px) !important;
     }
 }
 
@@ -85,6 +85,7 @@ div.VPLocalNav {
     background-color: transparent !important;
     padding: 0px 0px 0px 16px;
     border-radius: 0% !important;
+
     p {
         margin: 0px !important;
     }
@@ -211,7 +212,7 @@ img.VPImage.logo {
     border-radius: 40%;
     height: 35px;
     width: 35px;
-    aspect-ratio: 1;   
+    aspect-ratio: 1;
 }
 
 a.title span {
@@ -225,14 +226,17 @@ a.title span {
 div.vp-code-group.vp-adaptive-theme {
     border-radius: 0.6rem !important;
     border: 1px solid var(--vp-c-divider) !important;
+
     div.tabs {
         margin: 0px;
         border-top-left-radius: 0.6rem !important;
         border-top-right-radius: 0.6rem !important;
     }
+
     div.language-bash.vp-adaptive-theme.active {
         margin-bottom: 0px;
     }
+
     pre {
         border-radius: 0px !important;
         border: 0px !important;
@@ -269,9 +273,11 @@ highlight {
     display: inline;
     position: relative;
     background-clip: text;
+
     & {
         background-image: linear-gradient(90deg, #dd7878, #ea76cb, #8839ef, #7287fd, #1e66f5, #209fb5, #04a5e5, #179299);
     }
+
     html.dark & {
         background-image: linear-gradient(90deg, #f2cdcd, #f5c2e7, #cba6f7, #b4befe, #89b4fa, #74c7ec, #89dceb, #94e2d5);
     }
@@ -290,13 +296,30 @@ img {
 */
 
 nav.VPNavBarMenu.menu {
+    border: 1px solid var(--vp-c-divider);
+    border-radius: 100vh;
+    margin: 20px auto;
+    padding: 0px 5px;
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
+    background-color: var(--vp-c-bg);
+    box-shadow: var(--vp-c-bg-elv) 0px 15px 25px -5px,
+        var(--vp-c-bg-elv) 0px 7px 15px -7px;
+
     @media (max-width: 600px) {
         display: none;
     }
-    
+
+    span {
+        line-height: 30px;
+        user-select: none;
+    }
+
+    a.active span {
+        line-height: 29px;
+        border-bottom: 1px solid var(--vp-c-brand);
+    }
 }
 
 div.VPNavBarAppearance.appearance::before {
