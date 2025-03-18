@@ -32,7 +32,7 @@ const props = withDefaults(defineProps<MusicProps>(), {
   background-color: var(--vp-c-bg) !important;
   box-shadow: 0 8px 16px -4px var(--vp-c-bg-alt);
   text-decoration: none;
-  padding: 17px;
+  padding: 17px 19px;
   border: 1px solid var(--vp-c-divider);
   border-radius: 15px;
   transition: all 0.4s;

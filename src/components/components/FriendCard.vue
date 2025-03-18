@@ -28,9 +28,10 @@ const props = withDefaults(defineProps<CardProps>(), {
 
 <style scoped>
 .card {
+  background-color: var(--vp-c-bg);
   box-shadow: 0 8px 16px -4px var(--vp-c-bg-alt);
   text-decoration: none;
-  padding: 20px 22px;
+  padding: 22px;
   border: 1px solid var(--vp-c-divider);
   border-radius: 15px;
   transition: all 0.4s;

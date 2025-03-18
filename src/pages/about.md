@@ -2,7 +2,7 @@
 layout: home
 ---
 
-<br><br>
+<spacer height="70px" />
 
 # 关于本站
 本站是一个学生用仅有的 CSS 与 Vue 知识拼凑出来的基于 VitePress 默认主题之上修改的主题的网站，并且使用了 Catppuccin 色调。

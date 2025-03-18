@@ -14,30 +14,56 @@ import friendsData from '/src/configs/friends.json';  // 导入 JSON
 export default {
   data() {
     return {
-      friends: friendsData.map(friend => ({
-        ...friend,
-        logo: friend.logo || 'https://cdn.luogu.com.cn/upload/usericon/1.png'
-      })),  // 将 JSON 数据绑定到 Vue 的 data 中，并设置默认头像
+      friends: friendsData.reduce((acc, category) => {
+        const categoryName = category.category || "朋友";
+        acc[categoryName] = category.items.map(friend => ({
+          ...friend,
+          logo: friend.logo || 'https://cdn.luogu.com.cn/upload/usericon/1.png'
+        }));
+        return acc;
+      }, {}),
     };
   },
 };
 </script>
 
 <style scoped>
-  div.friendLink {
-    div.friends {
-        margin-top: 15px;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        grid-template-rows: repeat(auto-fill, 1fr);
-        grid-gap: 10px;
-    }
+h1 {
+  user-select: none;
+}
+
+div.friendLink {
+  div.friends {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* 居中对齐 */
+    gap: 10px;
+  }
+  div.category {
+    margin-bottom: 100px;
+  }
+  h1.category {
+    text-align: center;
+    font-size: 80px;
+    line-height: 80px;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--vp-c-gutter);
+    margin-bottom: -35px;
+    z-index: -1;
+  }
+  .friend-card {
+    flex: 1 1 250px; /* 确保卡片在小屏幕上也能正常显示 */
+    max-width: 1200px;
+  }
 }
 </style>
 
-<div class="spacer" style="height: 50px;"></div>
+<spacer />
 <div class="allFriend">
-  <div class="friends">
+  <div v-for="(friends, category) in friends" :key="category" class="category">
+    <h1 class="category">{{ category }}</h1>
+    <div class="friends">
       <div v-for="friend in friends" :key="friend.url" class="friend-card">
         <FriendCard 
           :title="friend.title"
@@ -47,6 +73,7 @@ export default {
         />
       </div>
     </div>
+  </div>
 </div>
 
 <br><br>

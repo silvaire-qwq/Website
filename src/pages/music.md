@@ -78,12 +78,12 @@ div.musicLink {
   }
   .music-card {
     flex: 1 1 250px; /* 确保卡片在小屏幕上也能正常显示 */
-    max-width: 600px;
+    max-width: 1200px;
   }
 }
 </style>
 
-<div class="spacer" style="height: 50px;"></div>
+<spacer />
 <div class="allMusic">
   <div v-for="(musics, singer) in groupedMusic" :key="singer" class="singer">
     <h1 class="singer">{{ singer }}</h1>

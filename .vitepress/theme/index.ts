@@ -12,6 +12,7 @@ import beforeDocs from "../../src/components/layout/before-docs.vue";
 import FriendCard from "../../src/components/components/FriendCard.vue";
 import PostList from "../../src/components/components/postList.vue"
 import MusicCard from "../../src/components/components/MusicCard.vue"
+import spacer from "../../src/components/components/spacer.vue";
 
 export default {
   extends: DefaultTheme,
@@ -25,5 +26,6 @@ export default {
     app.component("FriendCard", FriendCard);
     app.component("PostList", PostList);
     app.component("MusicCard", MusicCard);
+    app.component("spacer", spacer);
   },
 } satisfies Theme;

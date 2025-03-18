@@ -35,7 +35,7 @@ function formatRelativeDate(dateString, timeString) {
 }
 </script>
 
-<div class="spacer" style="height: 50px;"></div>
+<spacer />
 <div class="moments-container">
   <div class="moment" v-for="moment in momentsList" :key="moment.date + moment.content">
     <div class="moment-content">
@@ -54,7 +54,7 @@ function formatRelativeDate(dateString, timeString) {
 
 .moment {
     box-shadow: var(--vp-c-bg-elv) 0px 12px 25px -5px, var(--vp-c-bg-elv) 0px 7px 15px -7px;
-    border: 1px solid var(--vp-c-gutter);
+    border: 1px solid var(--vp-c-divider);
     background-color: var(--vp-c-bg);
     border-radius: 15px;
     padding: 16px 20px;

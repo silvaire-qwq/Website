@@ -175,9 +175,8 @@ const displayPages = computed(() => {
 </script>
 
 <template>
-  <div class="holder" style="height: 30px"></div>
+  <spacer height="30px"/>
   <div class="container">
-
     <div class="sidebar">
       <aside class="infos">
         <img :src="config.card.avatar" />
