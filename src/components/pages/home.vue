@@ -9,7 +9,7 @@
         <span v-for="(char, index) in displayedText" :key="index">{{ char }}</span>
       </p>
     </div>
-  </div>  
+  </div>
   <PostList />
 </template>
 
@@ -52,7 +52,7 @@ onMounted(() => {
 
 <style scoped>
 div#CustomHome {
-  height: calc(50vh - var(--vp-nav-height));
+  height: calc(100vh - var(--vp-nav-height));
   display: flex;
   flex-direction: column;
   justify-content: center;

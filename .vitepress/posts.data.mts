@@ -105,13 +105,13 @@ function formatDate(raw: string, isModified: boolean): Post["date"] {
 
   let displayDate;
   if (diffDays === 0) {
-    displayDate = isModified ? "最后修改于今天" : "今天";
+    displayDate = isModified ? "修改于今天" : "今天";
   } else if (diffDays === 1) {
-    displayDate = isModified ? "最后修改于昨天" : "昨天";
+    displayDate = isModified ? "修改于昨天" : "昨天";
   } else if (diffDays === 2) {
-    displayDate = isModified ? "最后修改于前天" : "前天";
+    displayDate = isModified ? "修改于前天" : "前天";
   } else if (date.getFullYear() === now.getFullYear()) {
-    displayDate = isModified ? `最后修改于${month}${day}` : `${month}${day}`;
+    displayDate = isModified ? `修改于${month}${day}` : `${month}${day}`;
   } else {
     displayDate = isModified
       ? `最后修改于${year}年${month}${day}`

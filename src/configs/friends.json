@@ -43,7 +43,12 @@
   {
     "title": "Royの主页",
     "url": "https://www.royofficial.com/",
-    "description": "一个平平无奇的主页",
-    "logo": "https://us01.cdn.roynetwork.com/RoyOfficial.jpg"
+    "description": "一个平平无奇的主页"
+  },
+  {
+    "title": "Shenley",
+    "url": "http://blog.ykrazy.top/",
+    "description": "Web开发新手",
+    "logo": "https://blog.ykrazy.top/avatar.jpg"
   }
 ]
