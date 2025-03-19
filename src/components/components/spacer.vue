@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps, withDefaults } from 'vue';
 
 interface SpacerProps {
   height: string;

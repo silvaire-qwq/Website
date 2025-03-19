@@ -33,6 +33,9 @@ export default defineConfig({
       dark: "catppuccin-mocha",
     },
   },
+  head: [
+    ['link', { rel: 'icon', href: config.logo }],
+  ],
   themeConfig: {
     // 单独在 index.md 中修改主页图像
     logo: config.logo,
