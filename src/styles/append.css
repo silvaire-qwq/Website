@@ -329,3 +329,11 @@ nav.VPNavBarMenu.menu {
 div.VPNavBarAppearance.appearance::before {
     display: none;
 }
+
+/*
+    Footer 去除边框
+*/
+
+footer.VPFooter {
+    border-top: 0px !important;
+}

@@ -1,15 +1,15 @@
 import { defineConfig } from "vitepress";
 import { default as config } from "../src/configs/config.json";
-import { RssPlugin } from 'vitepress-plugin-rss';
-import type { RSSOptions } from 'vitepress-plugin-rss';
+import { RssPlugin } from "vitepress-plugin-rss";
+import type { RSSOptions } from "vitepress-plugin-rss";
 
 // RSS feed configuration
 const RSS: RSSOptions = {
   title: config.title,
   baseUrl: config.link,
-  copyright: '采用 CC BY-NC-ND 4.0 授权',
+  copyright: "采用 CC BY-NC-ND 4.0 授权",
   description: config.desc,
-  filename: 'feed.rss',
+  filename: "feed.rss",
   log: true,
   ignoreHome: true,
   ignorePublish: false,
@@ -18,14 +18,14 @@ const RSS: RSSOptions = {
     const excerpt = fileContent;
     return excerpt;
   },
-}
+};
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: config.title,
   description: config.desc,
   vite: {
-    plugins: [RssPlugin(RSS)]
+    plugins: [RssPlugin(RSS)],
   },
   markdown: {
     theme: {
@@ -33,12 +33,15 @@ export default defineConfig({
       dark: "catppuccin-mocha",
     },
   },
-  head: [
-    ['link', { rel: 'icon', href: config.logo }],
-  ],
+  head: [["link", { rel: "icon", href: config.logo }]],
   themeConfig: {
-    // 单独在 index.md 中修改主页图像
     logo: config.logo,
+    footer: {
+      message:
+        "Made with ❤️ by <a href='https://github.com/silvaire-qwq/Website'>Silvaire</a>",
+      copyright:
+        "<a href='https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans'>CC BY-NC-ND 4.0</a>",
+    },
     nav: [
       { text: "Moments", link: "/src/pages/moments" },
       { text: "Music", link: "/src/pages/music" },
