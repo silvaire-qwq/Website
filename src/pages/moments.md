@@ -3,7 +3,7 @@ layout: home
 footer: false
 title: Moments
 icon: fluent:comment-note-24-filled
-desc: 煤耗的生活在博客记录
+desc: 博客，记录煤耗生活
 pageClass: MomentsPage
 ---
 
