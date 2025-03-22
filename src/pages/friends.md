@@ -1,9 +1,11 @@
 ---
 layout: home
+footer: false
 title: "Friends"
+icon: fluent:animal-cat-16-regular
+desc: "好耶！是朋友们！"
 pageClass: friendLink
 ---
-
 <script setup>
   import { default as webConfig } from "/src/configs/config.json";
 </script>
@@ -59,10 +61,11 @@ div.friendLink {
 }
 </style>
 
-<spacer />
+<spacer height="40px"/>
+<pt />
 <div class="allFriend">
   <div v-for="(friends, category) in friends" :key="category" class="category">
-    <h1 class="category">{{ category }}</h1>
+    <!--<h1 class="category">{{ category }}</h1>-->
     <div class="friends">
       <div v-for="friend in friends" :key="friend.url" class="friend-card">
         <FriendCard 

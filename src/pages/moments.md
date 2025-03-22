@@ -1,6 +1,9 @@
 ---
 layout: home
+footer: false
 title: Moments
+icon: fluent:comment-note-24-filled
+desc: 煤耗的生活在博客记录
 pageClass: MomentsPage
 ---
 
@@ -35,7 +38,8 @@ function formatRelativeDate(dateString, timeString) {
 }
 </script>
 
-<spacer />
+<spacer height="40px"/>
+<pt />
 <div class="moments-container">
   <div class="moment" v-for="moment in momentsList" :key="moment.date + moment.content">
     <div class="moment-content">

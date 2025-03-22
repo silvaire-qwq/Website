@@ -1,6 +1,9 @@
 ---
 layout: home
+footer: false
 title: 'Music'
+icon: fluent:music-note-2-16-filled
+desc: "喜欢听的音乐"
 pageClass: musicLink
 ---
 
@@ -83,7 +86,9 @@ div.musicLink {
 }
 </style>
 
-<spacer />
+<spacer height="40px" />
+<pt />
+
 <div class="allMusic">
   <div v-for="(musics, singer) in groupedMusic" :key="singer" class="singer">
     <h1 class="singer">{{ singer }}</h1>

@@ -29,7 +29,7 @@ const props = withDefaults(defineProps<CardProps>(), {
 <style scoped>
 .card {
   background-color: var(--vp-c-bg);
-  box-shadow: 0 8px 16px -4px var(--vp-c-bg-alt);
+  box-shadow: var(--vp-c-bg-elv) 0px 12px 25px -5px, var(--vp-c-bg-elv) 0px 7px 15px -7px;
   text-decoration: none;
   padding: 22px;
   border: 1px solid var(--vp-c-divider);

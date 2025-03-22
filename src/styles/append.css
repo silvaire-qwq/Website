@@ -300,29 +300,24 @@ img {
 */
 
 nav.VPNavBarMenu.menu {
-    border: 1px solid var(--vp-c-divider);
     border-radius: 100vh;
     margin: 20px auto;
     padding: 0px 5px;
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    background-color: var(--vp-c-bg);
-    box-shadow: var(--vp-c-bg-elv) 0px 15px 25px -5px,
-        var(--vp-c-bg-elv) 0px 7px 15px -7px;
 
     @media (max-width: 600px) {
         display: none;
     }
 
-    span {
+    span, button {
         line-height: 30px;
         user-select: none;
     }
 
-    a.active span {
-        line-height: 29px;
-        border-bottom: 1px solid var(--vp-c-brand);
+    span.vpi-chevron-down.text-icon {
+        display: none;
     }
 }
 
@@ -335,5 +330,9 @@ div.VPNavBarAppearance.appearance::before {
 */
 
 footer.VPFooter {
-    border-top: 0px !important;
+    background-color: var(--vp-c-bg-alt) !important;
+    transition: all .4s;
+    &:hover {
+        border-top-color: var(--vp-c-brand-1);
+    }
 }

@@ -1,8 +1,8 @@
 <template>
   <div class="vp-doc layout beforeDocs">
-    <div v-if="frontmatter.image" class="image-container">
+    <!--<div v-if="frontmatter.image" class="image-container">
       <img :src="frontmatter.image" alt="文章顶部图片" class="image" />
-    </div>
+    </div>-->
     <div class="textArea">
       <p class="time">创建于{{ formatDate(frontmatter.date) }}<br><span v-if="frontmatter.modify">修改于{{ formatDate(frontmatter.modify, true) }}</span></p>
       <h1 class="title">{{ frontmatter.title }}</h1>
@@ -10,14 +10,14 @@
       <!-- 新增标签显示区域 -->
       <div class="tags" v-if="frontmatter.tags">
         <span class="category tag" v-if="frontmatter.category">
-          <a :href="`/?category=${frontmatter.category}`">
+          <a :href="`/src/pages/categories?category=${frontmatter.category}`">
             <Icon icon="fluent:folder-24-filled" width="14" height="21" />
             {{ frontmatter.category }}
           </a>
         </span>
 
         <span v-for="(tag, index) in frontmatter.tags" :key="index" class="tag">
-          <a :href="`/?tag=${tag}`">
+          <a :href="`/src/pages/tags?tag=${tag}`">
             <Icon
               icon="fluent:number-symbol-24-filled"
               width="14"
@@ -102,7 +102,7 @@ div.vp-doc.layout.beforeDocs {
     margin-top: 13px;
   }
   .tag a {
-    margin-right: 12px;
+    margin-right: 8px;
     padding: 0px;
     border-radius: 6px;
   }

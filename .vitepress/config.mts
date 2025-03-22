@@ -43,10 +43,28 @@ export default defineConfig({
         "<a href='https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans'>CC BY-NC-ND 4.0</a>",
     },
     nav: [
-      { text: "Moments", link: "/src/pages/moments" },
-      { text: "Music", link: "/src/pages/music" },
-      { text: "Friends", link: "/src/pages/friends" },
-      { text: "About", link: "/src/pages/about" },
+      { text: "Home", link: "/" },
+      {
+        text: "Blogs",
+        items: [
+          { text: "Categories", link: "/src/pages/categories" },
+          { text: "Tags", link: "/src/pages/tags" },
+        ],
+      },
+      {
+        text: "Lists",
+        items: [
+          { text: "Music", link: "/src/pages/music" },
+          { text: "Friends", link: "/src/pages/friends" },
+        ],
+      },
+      {
+        text: "Life",
+        items: [
+          { text: "Moments", link: "/src/pages/moments" },
+          { text: "About", link: "/src/pages/about" },
+        ],
+      }
     ],
     docFooter: {
       prev: "回忆",

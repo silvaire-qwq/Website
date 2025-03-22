@@ -1,8 +1,13 @@
 ---
 layout: home
+footer: false
+title: About
+icon: fluent:book-information-24-filled
+desc: 关于本站
 ---
 
-<spacer height="70px" />
+<spacer height="40px"/>
+<pt />
 
 # 关于本站
 本站是一个学生用仅有的 CSS 与 Vue 知识拼凑出来的基于 VitePress 默认主题之上修改的主题的网站，并且使用了 Catppuccin 色调。
