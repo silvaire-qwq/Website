@@ -13,8 +13,7 @@ const RSS: RSSOptions = {
   log: true,
   ignoreHome: true,
   ignorePublish: false,
-  renderExpect: (fileContent, frontmatter) => {
-    // The logic for generating an article abstract, such as returning the first 140 characters
+  renderExpect: (fileContent) => {
     const excerpt = fileContent;
     return excerpt;
   },
@@ -38,7 +37,7 @@ export default defineConfig({
     logo: config.logo,
     footer: {
       message:
-        "Made with ❤️ by <a href='https://github.com/silvaire-qwq/Website'>Silvaire</a>",
+        "Made with ❤️ by <a href='https://github.com/silvaire-qwq'>Silvaire</a>",
       copyright:
         "<a href='https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans'>CC BY-NC-ND 4.0</a>",
     },
@@ -64,7 +63,7 @@ export default defineConfig({
           { text: "Moments", link: "/src/pages/moments" },
           { text: "About", link: "/src/pages/about" },
         ],
-      }
+      },
     ],
     docFooter: {
       prev: "回忆",
