@@ -14,7 +14,8 @@ const computedYearMap = computed(() => {
 </script>
 
 <template>
-  <spacer height="50px" />
+  <spacer height="100px" />
+  <HomeLayout />
   <div class="archives">
     <div v-for="year in yearList" :key="year" class="year-section">
       <div class="year-title">
@@ -76,16 +77,12 @@ const computedYearMap = computed(() => {
 <style scoped>
 .archives {
   .year-section {
-    margin-bottom: 100px;
-  }
-
-  .year-title {
-    display: flex;
-    align-items: baseline;
-    margin-bottom: 15px;
+    margin-top: 0px;
+    margin-bottom: 10px;
   }
 
   .year-number {
+    display: none;
     color: transparent;
     -webkit-text-stroke: 1px var(--vp-c-gutter);
     font-size: 80px;
@@ -104,15 +101,16 @@ const computedYearMap = computed(() => {
   }
 
   .post-card {
-    flex: 1 1 300px; /* 确保卡片在小屏幕上也能正常显示 */
-    break-inside: avoid; /* 防止卡片被拆分 */
+    flex: 1 1 100%; /* 确保卡片在小屏幕上也能正常显示 */
+    max-width: 850px;
     text-decoration: none;
     border-radius: 1rem;
     border: 1px solid var(--vp-c-divider);
     transition: 0.4s;
     overflow: hidden;
     background-color: var(--vp-c-bg);
-    box-shadow: var(--vp-c-bg-elv) 0px 12px 25px -5px, var(--vp-c-bg-elv) 0px 7px 15px -7px;
+    box-shadow: var(--vp-c-bg-elv) 0px 12px 25px -5px,
+      var(--vp-c-bg-elv) 0px 7px 15px -7px;
   }
 
   .post-card:hover {

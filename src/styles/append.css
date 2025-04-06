@@ -213,7 +213,7 @@ img.VPImage.image-src {
 }
 
 img.VPImage.logo {
-    border-radius: 40%;
+    border-radius: 100%;
     height: 35px;
     width: 35px;
     aspect-ratio: 1;

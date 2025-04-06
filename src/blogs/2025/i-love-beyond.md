@@ -1,6 +1,6 @@
 ---
 title: 'Beyond'
-descriptions: '关于我是如何认识 Beyond 这个乐队的。'
+descriptions: '作者讲述认识 Beyond 乐队的过程。在香港因一段旋律询问 AI，后上数学课外班时听到《光辉岁月》，由此喜欢上 Beyond，听了《海阔天空》等众多歌曲，得知黄家驹去世。还回忆起曾痴迷万能青年旅店，感慨天下无听不腻的歌。'
 date: '2025-03-20'
 category: Life
 tags:

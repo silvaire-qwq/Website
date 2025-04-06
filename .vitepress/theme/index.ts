@@ -14,6 +14,7 @@ import PostList from "../../src/components/components/postList.vue"
 import MusicCard from "../../src/components/components/MusicCard.vue"
 import spacer from "../../src/components/components/spacer.vue";
 import pt from "../../src/components/components/pt.vue";
+import HomeLayout from "../../src/components/pages/home.vue";
 
 export default {
   extends: DefaultTheme,
@@ -29,5 +30,6 @@ export default {
     app.component("MusicCard", MusicCard);
     app.component("spacer", spacer);
     app.component("pt", pt);
+    app.component("HomeLayout", HomeLayout);
   },
 } satisfies Theme;

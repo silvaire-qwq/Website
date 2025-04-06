@@ -20,6 +20,6 @@ desc: 关于本站
 
 ## 借鉴的网站
 本站特别感谢以下网站为本站的某个或某些方面提供了灵感：
-- 主页设计：[Tianli's Blog](https://blog.tianli0.top/)
+- 主页设计：[Tianli's Blog](https://blog.tianli0.top/)、[Redish101 Blog](https://blog.redish101.top/)
 - 文章列表设计：[Tianli's Blog](https://blog.tianli0.top/)、[张洪 Heo](https://blog.zhheo.com/)
 - 顶栏、文章正文前的设计：[静かな森](http://innei.in/)

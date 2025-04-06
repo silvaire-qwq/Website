@@ -1,6 +1,6 @@
 ---
 title: '使用命令行安装单系统 Arch Linux'
-descriptions: '论如何使用命令行安装单系统的 Arch Linux。这是进入 Arch 邪教的第一步！'
+descriptions: '本文是单系统 Arch Linux 命令行安装教程。先检查条件、准备镜像与工具；接着联网、换源；再分区、创建文件系统；然后安装基本系统；最后配置系统，包括换源、设置主机名、语言、密码等，安装桌面、启动管理器等，完成安装。'
 date: '2025-02-25'
 category: Linux
 tags:

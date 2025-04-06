@@ -157,7 +157,8 @@ li.categorys {
 }
 
 div.list {
-  flex: 1 1 300px; /* 确保卡片在小屏幕上也能正常显示 */
+  flex: 1 1 100%; /* 确保卡片在小屏幕上也能正常显示 */
+  max-width: 850px;
 }
 
 article.onePost {
