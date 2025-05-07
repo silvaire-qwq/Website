@@ -3,6 +3,12 @@
     "category": "Friend",
     "items": [
       {
+        "title": "Pinpe 的云端",
+        "url": "https://pinpe.top",
+        "description": "一个属于自己的云朵。",
+        "logo": "https://pinpe.top/head.jpg"
+      },
+      {
         "title": "LeonXie",
         "url": "https://leonxie.cn/",
         "description": "保持热爱，奔赴山海！",
