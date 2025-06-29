@@ -1,4 +1,5 @@
 build:
+	pnpm install
 	pnpm build
 
 dev:

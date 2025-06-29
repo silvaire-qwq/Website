@@ -8,14 +8,14 @@ body:
     label: 确认
     description: 请确认您满足可添加友联的需求
     options:
-      - label: 已了解 https://magma.ink/links/ 中添加站点的需求
+      - label: 已了解 https://lunars.site/links/ 中添加站点的需求
         required: true
 - type: input
   id: site-name
   attributes:
     label: 站点名称
     description: 你的站点名字
-    placeholder: Magma Ink
+    placeholder: Silvaire's Blog
   validations:
     required: true
 - type: input
@@ -23,13 +23,13 @@ body:
   attributes:
     label: 站点简介
     description: 站点的描述（可选）
-    placeholder: 为美好的生活献礼
+    placeholder: 生如夏花之绚烂，死如秋叶之静美。
 - type: input
   id: site-link
   attributes:
     label: 站点地址
     description: 站点的主页链接
-    placeholder: https://magma.ink
+    placeholder: https://lunars.site/
   validations:
     required: true
 - type: input
@@ -37,4 +37,4 @@ body:
   attributes:
     label: 站点头像
     description: 你的站点头像链接（推荐）
-    placeholder: https://q1.qlogo.cn/g?b=qq&nk=823202450&s=640
+    placeholder: https://wsrv.nl/?url=avatars.githubusercontent.com/u/184231508
