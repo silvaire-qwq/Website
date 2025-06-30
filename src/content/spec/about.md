@@ -23,15 +23,15 @@
 下面是我熟悉的操作系统和编程语言，这些熟悉度都是和我自己比较的，所以仅供参考：
 | 🛠 操作系统 或 编程语言 / Operating System or Programming Language | 🤔 相对水平 / Relative Proficiency |
 | --- | --- |
-| Arch Linux (Manjaro, EndeavourOS, etc.) | \***\* |
-| Shell | \*\*** |
-| Debian (Kali, Ubuntu, etc.) | **_ |
-| HTML | _** |
-| CSS | **\* |
+| Arch Linux (Manjaro, EndeavourOS, etc.) | **** |
+| Shell | **** |
+| Debian (Kali, Ubuntu, etc.) | *** |
+| HTML | *** |
+| CSS | *** |
 | Windows | ** |
-| Vue | \*_ |
-| Red Hat (Fedora, CentOS, etc.) | _ |
-| Astro | \* |
+| Vue | ** |
+| Red Hat (Fedora, CentOS, etc.) | * |
+| Astro | * |
 
 ## 配置文件 / Dotfiles
 
