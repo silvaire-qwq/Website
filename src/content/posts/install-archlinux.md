@@ -106,20 +106,20 @@ cfdisk /dev/你的磁盘
 
 
 
- ┌────────────────────────────────────────────────────┐
+ ┌───────────────────────────────────────────────────────────────────────────────────────┐
  │  Partition UUID: D3F1CADC-8559-44B4-A98F-3DCBD07C7B0B                                 │
  │  Partition type: EFI System (C12A7328-F81F-11D2-BA4B-00A0C93EC93B)                    │
  │  Filesystem UUID: 59A1-A47E                                                           │
  │  Filesystem LABEL: EFI                                                                │
  │  Filesystem: vfat                                                                     │
  │  Mountpoint: /boot (mounted)                                                          │
- └────────────────────────────────────────────────────┘
+ └───────────────────────────────────────────────────────────────────────────────────────┘
     [ Delete ]  [ Resize ]  [  Quit  ]  [  Type  ]  [  Help  ]  [  Write ]  [  Dump  ]
 ```
 
-1. 你需要删除所有的分区，选中分区后选择第一个DELETE，直到你的设备一栏里只剩余 ***Free Space***。
-2. 你需要选中 Free Space，然后选择 Create，分区大小修改为```1G```，然后选择 Type，找到第一个，EFI，选中。这个分区在后面会被称之为 EFI 分区。请记住他是 ```/dev/***```。
-3. 继续把光标放在 Free Space 上，直接回车，然后选择 Write ，输入```y```后，你的磁盘就完成分区了。这个分区在后面会被称之为系统分区。请记住他是 ```/dev/***```。
+1. 你需要删除所有的分区。选中分区后选择第一个DELETE，直到你的设备一栏里只剩余 ***Free Space***。
+2. 你需要选中 Free Space，然后选择 Create，分区大小修改为```1G```，然后选择 Type，找到第一个，EFI，选中。这个分区在后面会被称之为 EFI 分区。请记住它是 ```/dev/***```。
+3. 继续把光标放在 Free Space 上，直接回车，然后选择 Write ，输入```y```后，你的磁盘就完成分区了。这个分区在后面会被称之为系统分区。请记住它是 ```/dev/***```。
 
 ## 创建文件系统
 你需要做的就是（创建 EFI 分区的文件系统、）创建系统分区的文件系统，然后创建一些子卷，最后挂载。你可以按照下面的命令操作。
@@ -202,12 +202,38 @@ vim /etc/hosts
 > [!NOTE]
 > 如果你想问为什么不设置中文，答案是你的终端里没有中文字符的支持，即使直接安装了桌面环境也不行，因为你没有安装中文字体。
 
+1. 使用编辑器打开 `/etc/locale.gen`
 ```bash
-echo 'zh_CN.GBK GBK'  > /etc/locale.gen
-echo 'zh_CN.UTF-8 UTF-8'  > /etc/locale.gen
-echo 'en_US.UTF-8 UTF-8'  > /etc/locale.gen
+vim /etc/locale.gen
+```
+2. 在文件内找到以下内容：
+```bash
+#zh_CN.GBK GBK
+#zh_CN.UTF-8 UTF-8
+#en_US.UTF-8 UTF-8
+```
+3. 按下 `i` 键打开编辑模式，找到 `#`，用光标对准其后方，然后把它删掉，以此类推。编辑完后，请按下 `ESC`，然后输入 `:wq` 回车来退出。
+
+4. 生成语言支持
+```bash
 locale-gen
+```
+
+5. 设置系统语言
+> [!TIP]
+> 现在不能设置中文是因为终端内无法查看中文字符，请在安装完桌面环境和中文字体后再修改语言。
+```bash
 echo 'LANG=en_US.UTF-8'  > /etc/locale.conf
+```
+
+### 时区
+1. 使用这条命令设置为上海时间（UTC+8）。
+```bash
+ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+```
+2. 同步到硬件时间。
+```bash
+hwclock --systohc
 ```
 
 ### Root 的密码
@@ -216,7 +242,7 @@ echo 'LANG=en_US.UTF-8'  > /etc/locale.conf
 passwd root
 ```
 
-### 安装 Plasma 桌面 (可选)
+### 安装 Plasma 桌面（可选）
 这会同时安装中文字体。
 ```bash
 pacman -S adobe-source-han-sans-cn-fonts plasma konsole dolphin xorg ark neofetch sddm
@@ -240,6 +266,7 @@ vim /etc/sudoers
 # %wheel ALL=(ALL:ALL) ALL
 ```
 完成后请按下 ESC 并输入 ```:wq```，回车。
+
 
 ### 安装微码
 
