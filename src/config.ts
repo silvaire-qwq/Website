@@ -58,7 +58,7 @@ export const profileConfig: ProfileConfig = {
     {
       name: "GitHub",
       icon: "fa6-brands:github",
-      url: "https://github.com/MagmaBlock",
+      url: "https://github.com/silvaire-qwq",
     },
     {
       name: "Outlook",
