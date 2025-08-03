@@ -76,6 +76,12 @@ const links: { title: string; link: string; desc: string; img: string }[] = [
     desc: "一个属于自己的云朵。",
     img: "https://pinpe.top/_astro/head.DsU2qhAz_ZsxwbE.webp",
   },
+  {
+    title: "芸汐酱",
+    link: "https://awa.2085.fun/",
+    desc: "人类的伟大在于面对死亡之时的崇高姿态",
+    img: "https://wsrv.nl/?url=avatars.githubusercontent.com/u/140612774?v=4",
+  }
 ];
 
 const randomLinks = computed(() => links.sort(() => Math.random() - 0.5));
