@@ -23,7 +23,7 @@ import vue from '@astrojs/vue'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://lunars.site/',
+  site: 'https://qwq.blue/',
   base: '/',
   trailingSlash: 'ignore',
   integrations: [
