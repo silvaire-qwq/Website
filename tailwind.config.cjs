@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Blueaka"],
+        sans: ["MiSans VF"],
       },
     },
   },

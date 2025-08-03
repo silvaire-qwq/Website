@@ -10,6 +10,10 @@ draft: false
 
 ---
 
+:::caution
+本站已更换域名为 https://qwq.blue 。原域名 https://lunars.site 将会在今年的 8 月 23 日到期。如果您添加了我的友情链接并未修改信息，请您尽快修改以免误会，谢谢。
+:::
+
 ## 友链添加和维持要求
 
 本站欢迎相似的个人向网站添加友链，目前有以下几个要求：
@@ -20,14 +24,14 @@ draft: false
 - 您的站点需要保持本站的友链。
 - 您的站点不可含有色情、赌博、虚假医药、高版权风险、涉政等不宜的内容；
 
-如站点无法满足以上要求，友链请求可能不会被同意。若在添加友链后出现相关问题，会在我发现后归档至下方。
+如站点无法满足以上要求，友链请求可能不会被同意。
 
 ## 申请添加友链
 
 本站目前暂停了评论系统，您可以使用以下两种方式申请：
 
-- [在 GitHub 上发送 Issue](https://github.com/silvaire-qwq/Website/issues/new/choose)
-- 向我发邮件：[silvaire_qwq@outlook.com](mailto:silvaire_qwq@outlook.com)
+- 在 GitHub 上 [发送 Issue](https://github.com/silvaire-qwq/Website/issues/new/choose)
+- 向我发邮件：[mail@qwq.blue](mailto:mail@qwq.blue)
 
 ## 本站的友链信息
 
