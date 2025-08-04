@@ -46,6 +46,10 @@ export const navBarConfig: NavBarConfig = {
       name: "友链",
       url: "/links/",
     },
+    {
+      name: "留言",
+      url: "/comment/",
+    },
     LinkPreset.About,
   ],
 };

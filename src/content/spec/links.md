@@ -30,12 +30,15 @@ draft: false
 
 本站目前暂停了评论系统，您可以使用以下两种方式申请：
 
-- 在 GitHub 上 [发送 Issue](https://github.com/silvaire-qwq/Website/issues/new/choose)
-- 向我发邮件：[mail@qwq.blue](mailto:mail@qwq.blue)
+- 在 GitHub 上 [发送 Issue](https://github.com/silvaire-qwq/Website/issues/new/choose)。
+- 向我发邮件：[mail@qwq.blue](mailto:mail@qwq.blue)。
+- [留言](/comment)。
 
 ## 本站的友链信息
 
-- 名称：Silvaire
-- 描述：生如夏花之绚烂，死如秋叶之静美。
-- 地址：https://qwq.blue/
-- 图片：https://wsrv.nl/?url=avatars.githubusercontent.com/u/184231508
+| 项目 | 内容 |
+| --- | --- |
+| 名称 | Silvaire |
+| 描述 | 生如夏花之绚烂，死如秋叶之静美。|
+| 地址 | https://qwq.blue/ |
+| 图片 | https://wsrv.nl/?url=avatars.githubusercontent.com/u/184231508 |
