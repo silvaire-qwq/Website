@@ -42,14 +42,14 @@ function formatDate(dateStr: string) {
           <div class="w-[70%] md:w-[80%] transition text-left text-50">{group.moments.length} 条动态</div>
         </div>
         {group.moments.map(item => (
-          <div class="group btn-plain h-10 !block w-full rounded-lg hover:text-[initial]">
+          <div class="group btn-plain !block w-full rounded-lg hover:text-[initial]">
             <div class="flex flex-row justify-start items-center h-full">
               <!-- date -->
               <div class="w-[15%] md:w-[10%] transition text-sm text-right text-50">
                 {formatDate(item.date)}
               </div>
               <!-- dot and line -->
-              <div class="w-[15%] md:w-[10%] relative dash-line h-full flex items-center">
+              <div class="w-[15%] md:w-[10%] relative h-full flex items-center">
                 <div class="transition-all mx-auto w-1 h-1 rounded group-hover:h-5
                   bg-[oklch(0.5_0.05_var(--hue))] group-hover:bg-[var(--primary)]
                   outline outline-4 z-50
@@ -59,7 +59,7 @@ function formatDate(dateStr: string) {
                 "></div>
               </div>
               <!-- content -->
-              <div class="w-[70%] md:max-w-[65%] md:w-[65%] text-left font-bold group-hover:translate-x-1 transition-all group-hover:text-[var(--primary)] text-75 pr-8 whitespace-nowrap overflow-ellipsis overflow-hidden"
+              <div class="w-[70%] md:max-w-[65%] md:w-[65%] text-left font-bold group-hover:translate-x-1 transition-all group-hover:text-[var(--primary)] text-75 pr-8 p-2"
               >
                 {item.content}
               </div>
