@@ -3,7 +3,7 @@ import type { AUTO_MODE, DARK_MODE, LIGHT_MODE } from '@constants/constants'
 export type SiteConfig = {
   title: string
   subtitle: string
-
+  domain: string[]
   lang: string
 
   themeColor: {

@@ -70,7 +70,7 @@ function formatTag(tag: string[]) {
     groups.map(group => (
       <divr class="relative">
         <div class="absolute left-[22.5%] md:left-[15%] top-[2.3rem] bottom-4
-                    border-[1px] border-dashed border-[var(--line-color)]
+                    border-[1px] border-solid border-[var(--line-color)]
                     pointer-events-none z-20">
         </div>
 
@@ -83,7 +83,7 @@ function formatTag(tag: string[]) {
             <div class="h-3 w-3 bg-none rounded-full outline outline-[var(--primary)] mx-auto -outline-offset-[2px] z-50 outline-3 relative left-[1px]"></div>
           </div>
 
-          <div class="w-[70%] md:w-[80%] transition text-left text-50">{group.posts.length} {i18n(I18nKey.postsCount)}</div>
+          <div class="w-[70%] md:w-[80%] transition text-left text-50 relative left-2">{group.posts.length} {i18n(I18nKey.postsCount)}</div>
         </div>
 
         {group.posts.map(post => (
