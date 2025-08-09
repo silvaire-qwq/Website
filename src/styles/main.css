@@ -1,5 +1,9 @@
-@import url('./blueaka.css');
 @tailwind components;
+
+@font-face {
+    font-family: HYTMR;
+    src: url("https://npm.elemecdn.com/fontcdn-ariasaka@1.0.0/HYTangMeiRen55W.woff2") format("woff2");
+}
 
 @layer components {
     .card-base {

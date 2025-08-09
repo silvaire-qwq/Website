@@ -1,7 +1,7 @@
 ---
-title: 雨。
+title: 论我的电脑是如何损坏的
 published: 2025-08-08
-description: 一场大雨。
+description: 前天晚上，天津下大雨了。当时我在睡觉，由于我睡觉都是不关窗户的，雨点吹到了我的身上。我除了惊讶，并没有发现什么其他的不对。
 tags: [Life]
 category: Life
 draft: false
