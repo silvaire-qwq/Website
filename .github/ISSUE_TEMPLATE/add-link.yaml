@@ -25,6 +25,8 @@ body:
     label: 站点简介
     description: 站点的描述（可选）
     placeholder: 生如夏花之绚烂，死如秋叶之静美。
+  validations:
+    required: true
 - type: input
   id: site-link
   attributes:
@@ -39,3 +41,5 @@ body:
     label: 站点头像
     description: 你的站点头像链接（推荐）
     placeholder: https://wsrv.nl/?url=avatars.githubusercontent.com/u/184231508
+  validations:
+    required: true

@@ -1,5 +1,8 @@
 name: Add Friend from Issue
 
+permissions:
+  issues: write
+
 on:
   issues:
     types: [labeled]
