@@ -70,7 +70,13 @@ export const links: { title: string; link: string; desc: string; img: string }[]
     link: "https://github.com",
     desc: "1",
     img: "1"
+  },  {
+    title: "3",
+    link: "https://gitlab.com",
+    desc: "3",
+    img: "3"
   },
+
 
   {
     title: "添加友情链接",
