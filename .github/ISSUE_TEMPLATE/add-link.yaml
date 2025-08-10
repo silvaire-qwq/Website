@@ -1,8 +1,7 @@
 name: 友链添加申请
 description: 在本站添加友链的申请
 title: 友链添加申请
-labels:
-  - friend-link
+labels: ["friend-link"]
 body:
 - type: checkboxes
   id: agree
