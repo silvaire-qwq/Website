@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import LinkCard from "./LinkCard.vue";
-import { links } from "../../data/friends";
+import { links } from "../../friend";
 
 const randomLinks = computed(() => links.sort());
 </script>

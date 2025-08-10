@@ -1,14 +1,16 @@
-name: 友联添加申请
-description: 在本站添加友联的申请
-title: 友联添加申请
+name: 友链添加申请
+description: 在本站添加友链的申请
+title: 友链添加申请
+labels:
+  - friend-link
 body:
 - type: checkboxes
   id: agree
   attributes:
     label: 确认
-    description: 请确认您满足可添加友联的需求
+    description: 请确认您满足可添加友链的需求
     options:
-      - label: 已了解 https://lunars.site/links/ 中添加站点的需求
+      - label: 已了解 https://qwq.blue/add-yours 中添加站点的需求
         required: true
 - type: input
   id: site-name
@@ -29,7 +31,7 @@ body:
   attributes:
     label: 站点地址
     description: 站点的主页链接
-    placeholder: https://lunars.site/
+    placeholder: https://qwq.blue
   validations:
     required: true
 - type: input

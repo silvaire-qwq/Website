@@ -1,0 +1,36 @@
+name: Add Friend From Issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  add-friend:
+    if: contains(github.event.issue.labels.*.name, 'friend-link')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run script
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: node .github/scripts/add-friend.js
+
+      - name: Commit & Push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/friend.ts
+          git commit -m "Add friend from #${{ github.event.issue.number }}" || echo "No changes"
+          git push
+
+      - name: Close issue
+        uses: peter-evans/close-issue@v2
+        with:
+          comment: "已添加友链。"
