@@ -1,8 +1,8 @@
-name: Add Friend From Issue
+name: Add Friend from Issue
 
 on:
   issues:
-    types: [opened]
+    types: [opened, labeled]
 
 jobs:
   add-friend:
