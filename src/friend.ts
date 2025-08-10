@@ -65,18 +65,7 @@ export const links: { title: string; link: string; desc: string; img: string }[]
     link: "https://awa.2085.fun/",
     desc: "人类的伟大在于面对死亡之时的崇高姿态",
     img: "https://wsrv.nl/?url=avatars.githubusercontent.com/u/140612774?v=4",
-  },  {
-    title: "1",
-    link: "https://github.com",
-    desc: "1",
-    img: "1"
-  },  {
-    title: "3",
-    link: "https://gitlab.com",
-    desc: "3",
-    img: "3"
-  },
-
+  },  
 
   {
     title: "添加友情链接",
