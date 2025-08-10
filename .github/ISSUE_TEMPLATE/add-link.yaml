@@ -24,28 +24,32 @@ body:
 - type: input
   id: site-name
   attributes:
-    label: 站点名称
+    label: 标题
+    description: Title
     placeholder: Silvaire's Blog
   validations:
     required: true
 - type: input
   id: site-desc
   attributes:
-    label: 站点简介
+    label: 简介
+    description: Description
     placeholder: 生如夏花之绚烂，死如秋叶之静美。
   validations:
     required: true
 - type: input
   id: site-link
   attributes:
-    label: 站点地址
+    label: 地址
+    description: URL
     placeholder: https://qwq.blue
   validations:
     required: true
 - type: input
   id: site-img
   attributes:
-    label: 站点头像
+    label: 头像
+    description: Avatar
     placeholder: https://wsrv.nl/?url=avatars.githubusercontent.com/u/184231508
   validations:
     required: true

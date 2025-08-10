@@ -3,14 +3,14 @@ import fs from "fs";
 const body = process.env.ISSUE_BODY || "";
 
 // 提取表单内容
-const title = (body.match(/### 站点名称\s+(.+)/) || [])[1]?.trim();
-const desc = (body.match(/### 站点简介\s+([\s\S]+?)\n### 站点地址/) || [])[1]?.trim() || "";
-const link = (body.match(/### 站点地址\s+(.+)/) || [])[1]?.trim();
-const img = (body.match(/### 站点头像\s+(.+)/) || [])[1]?.trim() || "";
+const title = (body.match(/### 标题\s+(.+)/) || [])[1]?.trim();
+const desc = (body.match(/### 简介\s+([\s\S]+?)\n### 地址/) || [])[1]?.trim() || "";
+const link = (body.match(/### 地址\s+(.+)/) || [])[1]?.trim();
+const img = (body.match(/### 头像\s+(.+)/) || [])[1]?.trim() || "";
 
 // 检查必填项
 if (!title || !link) {
-  console.error("缺少必要字段（站点名称或站点地址）");
+  console.error("缺少必要字段（标题或地址）");
   process.exit(1);
 }
 
