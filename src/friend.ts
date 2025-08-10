@@ -65,12 +65,8 @@ export const links: { title: string; link: string; desc: string; img: string }[]
     link: "https://awa.2085.fun/",
     desc: "人类的伟大在于面对死亡之时的崇高姿态",
     img: "https://wsrv.nl/?url=avatars.githubusercontent.com/u/140612774?v=4",
-  },  {
-    title: "Silvaire's Blog",
-    link: "https://qwq.blue/",
-    desc: "生如夏花之绚烂，死如秋叶之静美。",
-    img: "https://wsrv.nl/?url=avatars.githubusercontent.com/u/184231508"
-  },
+  }, 
+  
   
 
   {
