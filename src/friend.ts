@@ -1,5 +1,11 @@
 export const links: { title: string; link: string; desc: string; img: string }[] = [
   {
+    title: "添加友情链接",
+    link: "/add-yours",
+    desc: "和我做朋友吧！",
+    img: "https://pic2.zhimg.com/50/v2-cc1a32fcb444fc9d5e23f2ee078dc6e1_720w.jpg?source=1940ef5c"
+  },
+  {
     title: "Ariasaka",
     link: "https://blog.yaria.top/",
     desc: "人有悲欢离合，月有阴晴圆缺。",
@@ -66,10 +72,4 @@ export const links: { title: string; link: string; desc: string; img: string }[]
     desc: "人类的伟大在于面对死亡之时的崇高姿态",
     img: "https://wsrv.nl/?url=avatars.githubusercontent.com/u/140612774?v=4",
   },
-  {
-    title: "添加友情链接",
-    link: "/add-yours",
-    desc: "和我做朋友吧！",
-    img: "https://pic2.zhimg.com/50/v2-cc1a32fcb444fc9d5e23f2ee078dc6e1_720w.jpg?source=1940ef5c"
-  }
 ];
