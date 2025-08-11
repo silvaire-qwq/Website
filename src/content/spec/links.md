@@ -7,7 +7,3 @@ tags: []
 category: ""
 draft: false
 ---
-
-:::caution[域名更换]
-本站域名已更换为 https://qwq.blue 。
-:::

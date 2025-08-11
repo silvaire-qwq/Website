@@ -71,8 +71,8 @@ export const links: { title: string; link: string; desc: string; img: string }[]
 
   {
     title: "添加友情链接",
-    link: "/add-yours",
-    desc: "和我做朋友吧！",
+    link: "https://github.com/silvaire-qwq/Website/issues/new?template=add-link.yaml",
+    desc: "仅用于添加友情链接，申请后自动添加。我的信息可见关于页面，谢谢。",
     img: "https://pic2.zhimg.com/50/v2-cc1a32fcb444fc9d5e23f2ee078dc6e1_720w.jpg?source=1940ef5c"
   }
 ];

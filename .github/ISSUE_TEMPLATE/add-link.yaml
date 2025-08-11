@@ -40,8 +40,8 @@ body:
 - type: input
   id: site-link
   attributes:
-    label: 地址
-    description: URL
+    label: 链接
+    description: Link
     placeholder: https://qwq.blue
   validations:
     required: true
