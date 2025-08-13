@@ -4,6 +4,7 @@ export type SiteConfig = {
   title: string
   subtitle: string
   domain: string[]
+  warnLink: string
   lang: string
 
   themeColor: {

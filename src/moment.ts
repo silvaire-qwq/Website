@@ -33,5 +33,10 @@ export const momentsData = [
     date: "2025-08-08",
     time: "20:38",
     content: "呜呜呜呜呜呜呜我要加友情链接羡慕你们"
+  },
+  {
+    date: "2025-08-13",
+    time: "08:58",
+    content: "https://warn.qwq.blue/?url=https://lunars.site/links 防盗链小网站，自动把域名替换成正确的（这里是 https://qwq.blue/links），界面抄袭了一下 Google 新的登录界面。"
   }
 ]
