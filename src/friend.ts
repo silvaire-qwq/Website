@@ -66,6 +66,12 @@ export const links: { title: string; link: string; desc: string; img: string }[]
     desc: "人类的伟大在于面对死亡之时的崇高姿态",
     img: "https://wsrv.nl/?url=avatars.githubusercontent.com/u/140612774?v=4",
   }, 
+  {
+    title: "𝟞𝟙𝟡'𝕤 𝔹𝕃𝕆𝔾",
+    desc: "𝓙𝓾𝓼𝓽 𝓪 𝓬𝓵𝓸𝓾𝓭.",
+    link: "https://66619.eu.org",
+    img: "https://image.66619.eu.org/file/3db3168b82b1137c0e4d7.png"
+  },
   
   
 
