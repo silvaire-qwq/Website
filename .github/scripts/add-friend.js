@@ -4,8 +4,8 @@ const body = process.env.ISSUE_BODY || "";
 
 // 提取表单内容
 const title = (body.match(/### 标题\s+(.+)/) || [])[1]?.trim();
-const desc = (body.match(/### 简介\s+([\s\S]+?)\n### 地址/) || [])[1]?.trim() || "";
-const link = (body.match(/### 地址\s+(.+)/) || [])[1]?.trim();
+const desc = (body.match(/### 简介\s+([\s\S]+?)\n### 链接/) || [])[1]?.trim() || "";
+const link = (body.match(/### 链接\s+(.+)/) || [])[1]?.trim();
 const img = (body.match(/### 头像\s+(.+)/) || [])[1]?.trim() || "";
 
 // 检查必填项
