@@ -70,7 +70,7 @@ export const links: { title: string; link: string; desc: string; img: string }[]
     title: "𝟞𝟙𝟡'𝕤 𝔹𝕃𝕆𝔾",
     link: "https://66619.eu.org",
     desc: "𝓙𝓾𝓼𝓽 𝓪 𝓬𝓵𝓸𝓾𝓭.",
-    img: "https://image.66619.eu.org/file/3db3168b82b1137c0e4d7.png"
+    img: "https://wsrv.nl/?url=avatars.githubusercontent.com/u/65111206?v=4",
   },
   
   
