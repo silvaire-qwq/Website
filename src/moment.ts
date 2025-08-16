@@ -1,3 +1,5 @@
+import { date } from "astro:schema";
+
 export const momentsData = [
   {
     date: "2025-08-06",
@@ -38,5 +40,20 @@ export const momentsData = [
     date: "2025-08-13",
     time: "08:58",
     content: "https://warn.qwq.blue/?url=https://lunars.site/links 防盗链小网站，自动把域名替换成正确的（这里是 https://qwq.blue/links），界面抄袭了一下 Google 新的登录界面。"
+  },
+  {
+    date: "2025-08-16",
+    time: "09:37",
+    content: "由于个人原因，在 24 号之前我不会再更新了。"
+  },
+  {
+    date: "2025-08-16",
+    time: "09:40",
+    content: "换了个头像，偷表情包的（"
+  },
+  {
+    date: "2025-08-16",
+    time: "10:42",
+    content: "我想写日记，但是放博客里有点奇怪，而且可能存在负面内容，不然我开个分站（？"
   }
 ]

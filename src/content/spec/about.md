@@ -17,6 +17,7 @@
 | 地址 / URL | https://qwq.blue/ |
 | 头像 / Avatar | https://wsrv.nl/?url=avatars.githubusercontent.com/u/184231508 |
 
+
 ## 技术 / Technology
 
 下面是我熟悉的操作系统和编程语言，这些熟悉度都是和我自己比较的，所以仅供参考：
@@ -29,7 +30,6 @@
 | CSS | *** |
 | Windows | ** |
 | Vue | ** |
-| Red Hat (Fedora, CentOS, etc.) | * |
 | Astro | * |
 
 ## 配置文件 / Dotfiles
