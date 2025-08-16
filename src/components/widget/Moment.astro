@@ -1,0 +1,93 @@
+---
+import WidgetLayout from './WidgetLayout.astro'
+import { momentsData } from '../../moment.ts'
+
+const sortedMoments = [...momentsData].sort((a, b) => {
+  const dateA = BigInt(new Date(a.date + ' ' + a.time).getTime())
+  const dateB = BigInt(new Date(b.date + ' ' + b.time).getTime())
+  return Number(dateB - dateA) // Convert bigint result back to number for sort
+})
+const latestDate = new Date(sortedMoments[0].date + ' ' + sortedMoments[0].time)
+const latestMoment = sortedMoments[0]
+
+function formatDate(raw: string) {
+  const date = new Date(raw);
+
+  // 获取星期、日期、月份和年份
+  const day = date.toLocaleString("zh-CN", { day: "2-digit" });
+  const month = date.toLocaleString("zh-CN", { month: "short" });
+  const year = `${date.getFullYear()}`;
+
+  const now = new Date();
+  const diffTime = now.getTime() - date.getTime();
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+  let displayDate;
+  if (diffDays === 0) {
+    displayDate = "今天";
+  } else if (diffDays === 1) {
+    displayDate = "昨天";
+  } else if (diffDays === 2) {
+    displayDate = "前天";
+  } else if (date.getFullYear() === now.getFullYear()) {
+    displayDate = `${month}${day}`;
+  } else {
+    `${year}年${month}${day}`;
+  }
+
+  return {
+    time: date.getTime(),
+    string: displayDate,
+  };
+}
+
+interface Props {
+  class?: string
+  style?: string
+}
+const className = Astro.props.class
+const style = Astro.props.style
+---
+
+<WidgetLayout name="动态" id="moment"
+                class={className} style={style}
+>
+    <a id="lastMomentContent" href="/moments" class="block hover:bg-[var(--btn-plain-bg-hover)]
+            active:bg-[var(--btn-plain-bg-active)] transition-all
+            p-2 hover:pl-3 rounded-lg
+            text-neutral-700
+            dark:text-neutral-300">
+        <span class="
+                w-full
+                h-10
+                rounded-lg
+                bg-none
+                active:bg-[var(--btn-plain-bg-active)]
+                transition-all
+                text-neutral-700
+                dark:text-neutral-300
+            ">{latestMoment.content}</span>
+        <span id="lastMomentDate" class="
+                w-full
+                h-10
+                rounded-lg
+                bg-none
+                active:bg-[var(--btn-plain-bg-active)]
+                transition-all
+                text-neutral-300
+                dark:text-neutral-600
+            ">{formatDate(latestMoment.date).string}</span>
+</a>
+</WidgetLayout>
+
+<style scoped>
+    #lastMomentContent:hover {
+        * {
+            color: var(--primary)
+        }
+
+        #lastMomentDate {
+            opacity: .3;
+        }
+    }
+</style>

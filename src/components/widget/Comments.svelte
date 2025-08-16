@@ -9,7 +9,7 @@
         data-reactions-enabled="0"
         data-emit-metadata="0"
         data-input-position="top"
-        data-theme={$mode === DARK_MODE ? 'dark' : 'light'}
+        data-theme={$mode === DARK_MODE ? 'noborder_gray' : 'noborder_light'}
         data-lang="zh-CN"
         data-loading="lazy"
         crossorigin="anonymous"
@@ -41,3 +41,17 @@ window.onload = () => {
   updateGiscusTheme()
 }
 </script>
+
+<style scoped>
+  section {
+    background: var(--card-bg);
+    border-radius: var(--radius-large);
+    padding: 21px;
+    margin-bottom: 16px;
+  }
+
+  @media screen and (max-width: 767px) {
+    section { margin-bottom: 14px; }
+  }
+
+</style>

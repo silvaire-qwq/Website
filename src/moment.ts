@@ -1,5 +1,3 @@
-import { date } from "astro:schema";
-
 export const momentsData = [
   {
     date: "2025-08-06",
