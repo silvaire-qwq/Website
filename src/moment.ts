@@ -53,5 +53,10 @@ export const momentsData = [
     date: "2025-08-16",
     time: "10:42",
     content: "我想写日记，但是放博客里有点奇怪，而且可能存在负面内容，不然我开个分站（？"
+  },
+  {
+    date: "2025-08-17",
+    time: "09:40",
+    content: "最后一日了。由于我是 Catppuccin 教，所以我尝试把这个网站也改成 Catppuccin 色调，但是失败了。"
   }
 ]

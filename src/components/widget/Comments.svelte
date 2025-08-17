@@ -1,9 +1,9 @@
 <section>
     <script src="https://giscus.app/client.js"
-        data-repo="silvaire-qwq/Website"
-        data-repo-id="R_kgDONDiNmg"
-        data-category="Announcements"
-        data-category-id="DIC_kwDONDiNms4CkxsX"
+        data-repo={giscusConfig.repo}
+        data-repo-id={giscusConfig.repoId}
+        data-category={giscusConfig.category}
+        data-category-id={giscusConfig.categoryId}
         data-mapping="pathname"
         data-strict="0"
         data-reactions-enabled="0"
@@ -18,6 +18,7 @@
 </section>
 
 <script>
+import { giscusConfig } from '@/config';
 import { AUTO_MODE, DARK_MODE } from '@constants/constants.ts'
 import { onMount } from 'svelte'
 import { writable } from 'svelte/store';
@@ -28,7 +29,7 @@ onMount(() => {
 })
 
 function updateGiscusTheme() {
-  const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+  const theme = document.documentElement.classList.contains('dark') ? 'noborder_gray' : 'noborder_light'
   const iframe = document.querySelector('iframe.giscus-frame')
   if (!iframe) return
   iframe.contentWindow.postMessage({ giscus: { setConfig: { theme } } }, 'https://giscus.app')
@@ -46,7 +47,7 @@ window.onload = () => {
   section {
     background: var(--card-bg);
     border-radius: var(--radius-large);
-    padding: 21px;
+    padding: 36px;
     margin-bottom: 16px;
   }
 
