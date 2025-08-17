@@ -6,7 +6,7 @@ export type SiteConfig = {
   domain: string[]
   warnLink: string
   lang: string
-
+  dateCreated: string
   themeColor: {
     hue: number
     fixed: boolean
