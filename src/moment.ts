@@ -58,5 +58,10 @@ export const momentsData = [
     date: "2025-08-17",
     time: "09:40",
     content: "最后一日了。由于我是 Catppuccin 教，所以我尝试把这个网站也改成 Catppuccin 色调，但是失败了。"
+  },
+  {
+    date: "2025-08-19",
+    time: "21:04",
+    content: "关于新的电脑坏了以后以为是主板问题寄走修发现什么问题也没有这件事。"
   }
 ]
