@@ -50,6 +50,10 @@ export const navBarConfig: NavBarConfig = {
       url: "/moments/",
     },
     {
+      name: "项目",
+      url: "/projects/",
+    },
+    {
       name: "友链",
       url: "/links/",
     },
@@ -87,8 +91,13 @@ export const licenseConfig: LicenseConfig = {
 };
 
 export const giscusConfig = {
+  // generate from https://giscus.app/
   repo: "silvaire-qwq/Website",
   repoId: "R_kgDONDiNmg",
   category: "Announcements",
   categoryId: "DIC_kwDONDiNms4CkxsX",
+}
+
+export const projectConfig = {
+  username: "silvaire-qwq" // ur github username
 }

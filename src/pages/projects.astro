@@ -1,0 +1,120 @@
+---
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+---
+
+<MainGridLayout title="项目">
+  <div class="card-base px-8 py-6">
+    <div id="projects-list" class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8 my-4">
+    </div>
+  </div>
+  <script>
+    import { projectConfig } from "@/config";
+
+    const username = projectConfig.username
+    const CACHE_KEY = "github_projects_cache";
+    const CACHE_TTL = 60 * 60 * 1000; // 1小时
+
+    async function fetchGithubData() {
+      // 获取项目列表
+      const res = await fetch(`https://api.github.com/users/${username}/repos`);
+      if (!res.ok) throw new Error("GitHub API rate limited.");
+      const data = await res.json();
+
+      // 获取头像
+      let avatarUrl = "";
+      try {
+        const userRes = await fetch(`https://api.github.com/users/${username}`);
+        const userData = await userRes.json();
+        avatarUrl = userData.avatar_url;
+      } catch {}
+
+      // 获取每个项目的最后一次提交
+      const projects = await Promise.all(
+        data.map(async (repo: any) => {
+          let lastCommit = "";
+          try {
+            const commitsRes = await fetch(`https://api.github.com/repos/${username}/${repo.name}/commits?per_page=1`);
+            const commits = await commitsRes.json();
+            lastCommit = commits[0]?.commit?.message || "";
+          } catch {}
+          return {
+            html_url: repo.html_url,
+            name: repo.name.replace(/-/g, " "),
+            description: repo.description,
+            lastCommit,
+            avatarUrl
+          };
+        })
+      );
+      return projects;
+    }
+
+    function renderProjects(projects: any[]) {
+      const list = document.getElementById("projects-list");
+      
+      if (!list || !projects || projects.length === 0) {
+        if (list) {
+          list.innerHTML = "<div>ERROR</div>";
+        }
+        return;
+      }
+      list.innerHTML = "";
+      projects.forEach(repo => {const div = document.createElement("div");
+        div.className = "flex flex-nowrap items-stretch h-28 gap-4 rounded-[var(--radius-large)]";
+        div.innerHTML = `
+          <div class="w-28 h-28 flex-shrink-0 rounded-lg overflow-hidden bg-zinc-200 dark:bg-zinc-900">
+            <img src="${repo.avatarUrl}" alt="项目头像" class="w-full h-full object-cover" />
+          </div>
+          <div class="grow w-full flex flex-col justify-between">
+            <div>
+              <div class="font-bold transition text-lg text-neutral-900 dark:text-neutral-100 mb-1" style="line-height:24px;">
+                ${repo.name}
+              </div>
+                <div class="text-50 text-sm font-medium break-words line-clamp-3">${repo.description ?? ""}</div>
+            </div>
+            <div>
+              ${repo.lastCommit
+                ? `<span class="text-xs text-zinc-400 opacity-60 break-words line-clamp-3">${repo.lastCommit}</span>`
+                : `<span class="text-xs text-zinc-400 opacity-60">No commits yet</span>`
+              }
+            </div>
+          </div>
+          <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer"
+            class="flex btn-regular w-[3.25rem] rounded-lg bg-[var(--enter-btn-bg)] hover:bg-[var(--enter-btn-bg-hover)] active:bg-[var(--enter-btn-bg-active)] active:scale-95 items-center justify-center ml-2"
+          >
+            <svg class="transition text-[var(--primary)] text-4xl mx-auto" width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9.29 6.71a1 1 0 0 0 0 1.41L13.17 12l-3.88 3.88a1 1 0 1 0 1.41 1.41l4.59-4.59a1 1 0 0 0 0-1.41L10.7 6.7a1 1 0 0 0-1.41.01z"/>
+            </svg>
+          </a>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    (async () => {
+      let cache = localStorage.getItem(CACHE_KEY);
+      let cacheTime = localStorage.getItem(CACHE_KEY + "_time");
+      let projects = [];
+      if (cache && cacheTime && (Date.now() - Number(cacheTime) < CACHE_TTL)) {
+        try {
+          projects = JSON.parse(cache);
+        } catch {}
+      }
+      if (!projects || projects.length === 0) {
+        try {
+          projects = await fetchGithubData();
+          localStorage.setItem(CACHE_KEY, JSON.stringify(projects));
+          localStorage.setItem(CACHE_KEY + "_time", Date.now().toString());
+        } catch (e) {
+          // 获取失败时，尝试用过期缓存
+          if (cache) {
+            try {
+              projects = JSON.parse(cache);
+            } catch {}
+          }
+        }
+      }
+      renderProjects(projects);
+    })();
+  </script>
+</MainGridLayout>

@@ -1,3 +1,5 @@
+import { date } from "astro:schema";
+
 export const momentsData = [
   {
     date: "2025-08-06",
@@ -63,5 +65,10 @@ export const momentsData = [
     date: "2025-08-19",
     time: "21:04",
     content: "关于新的电脑坏了以后以为是主板问题寄走修发现什么问题也没有这件事。"
+  },
+  {
+    date: "2025-08-24",
+    time: "21:37",
+    content: "孩子们我回来辣～"
   }
 ]
