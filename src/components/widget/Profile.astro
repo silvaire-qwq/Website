@@ -6,7 +6,6 @@ import { url } from '../../utils/url-utils'
 
 const config = profileConfig
 ---
-<script src="//api.busuanzi.cc/static/3.6.9/busuanzi.min.js" defer></script>
 <div class="card-base p-3">
     <a aria-label="Go to About Page" href={url('/about/')}
        class="group block relative mx-auto mt-1 lg:mx-0 lg:mt-0 mb-3
@@ -39,7 +38,7 @@ const config = profileConfig
         <div class="text-center text-sm text-neutral-500 dark:text-neutral-400 mt-3 pt-3">
             <div class="flex items-center justify-center gap-1">
                 <Icon name="material-symbols:visibility-outline" class="text-base"></Icon>
-                <span id="site-stats">浏览量 <span id="busuanzi_site_pv"></span> · 访问数 <span id="busuanzi_site_uv"></span></span>
+                <span id="site-stats">浏览量 <span id="busuanzi_site_pv">0</span> · 访问数 <span id="busuanzi_site_uv">0</span></span>
             </div>
         </div>
     </div>

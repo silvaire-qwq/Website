@@ -16,6 +16,8 @@ interface Props {
 }
 const { published, updated, tags, category, hideTagsForMobile = false, hideUpdateDate = false } = Astro.props
 const className = Astro.props.class
+
+const currentPath = Astro.url.pathname
 ---
 
 <div class:list={["flex flex-wrap text-neutral-500 dark:text-neutral-400 items-center gap-4 gap-x-4 gap-y-2", className]}>
@@ -72,4 +74,16 @@ const className = Astro.props.class
             {!(tags && tags.length > 0) && <div class="transition text-50 text-sm font-medium">{i18n(I18nKey.noTags)}</div>}
         </div>
     </div>
+
+    <!-- 浏览数，只在 /posts/ 下显示 -->
+    {currentPath.includes('/posts/') && (
+        <div class="getViewer flex items-center">
+            <div class="meta-icon">
+                <Icon name="material-symbols:visibility-outline-rounded" class="text-xl"></Icon>
+            </div>
+            <span class="text-50 text-sm font-medium" id="page-views-display">
+                浏览量 <span id="busuanzi_page_pv">0</span> · 访问数 <span id="busuanzi_page_uv">0</span>
+            </span>
+        </div>
+    )}
 </div>
