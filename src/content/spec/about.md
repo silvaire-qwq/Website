@@ -31,8 +31,3 @@
 | Windows | ** |
 | Vue | ** |
 | Astro | * |
-
-## 配置文件 / Dotfiles
-
-由于想写一个成功的脚本，我尝试写了一个 Dotfiles Manager。这是我的配置文件仓库：
-::github{repo="silvaire-qwq/Configs"}

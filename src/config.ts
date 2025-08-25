@@ -50,10 +50,6 @@ export const navBarConfig: NavBarConfig = {
       url: "/moments/",
     },
     {
-      name: "项目",
-      url: "/projects/",
-    },
-    {
       name: "友链",
       url: "/links/",
     },
