@@ -1,0 +1,338 @@
+/*
+    字体 (MiSans VF + Fira Code)
+*/
+
+@import url('https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap');
+@import url('https://cdn-font.hyperos.mi.com/font/css?family=Misans_TC_VF:VF:Chinese_Traditional_TW&display=swap');
+@import url('https://fonts.googleapis.cn/css2?family=Fira+Code:wght@300..700&display=swap');
+
+:root {
+    --vp-font-family-base: "Inter", "MiSans VF", "MiSans TC VF";
+    --vp-font-family-mono: "Fira Code";
+}
+
+/* 
+    设定为了阴影的 var(--vp-c-brand-soft)
+*/
+
+:root {
+    --vp-c-brand-soft: rgba(114, 135, 253, 0.5);
+}
+
+:root.dark {
+    --vp-c-brand-soft: rgba(180, 190, 254, 0.5);
+}
+
+/* 
+    将 VPButton 调整为圆角矩形
+*/
+
+a.VPButton.medium {
+    border-radius: 0.6rem !important;
+}
+
+/* 
+    模糊顶栏
+*/
+
+.Layout {
+    .VPNavBar {
+        background-color: var(--vp-custom-nav-bg) !important;
+        backdrop-filter: blur(50px) !important;
+    }
+}
+
+/* 
+    手机端菜单调整
+*/
+
+a.VPLink.link.VPNavScreenMenuLink,
+div.VPNavScreenMenuGroup {
+    border: 0px;
+    border: 1px solid var(--vp-c-divider);
+    margin: 7px 0px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 3px var(--vp-c-bg-alt);
+}
+
+div.VPNavScreenMenuGroup button.button {
+    padding: 0px !important;
+}
+
+div.VPNavScreenAppearance.appearance {
+    border: 1px solid var(--vp-c-divider);
+    box-shadow: 3px 3px 3px var(--vp-c-bg-alt);
+}
+
+.VPNavBar.screen-open {
+    border: 0px !important;
+}
+
+/* 
+    隐藏 VPLocalNav
+*/
+
+div.VPLocalNav {
+    display: none;
+}
+
+/* 
+    Custom Block 
+*/
+
+:root {
+    --vp-custom-block-tip-bg: var(--vp-c-green-soft);
+}
+
+.custom-block {
+    background-color: transparent !important;
+    padding: 0px 0px 0px 16px;
+    border-radius: 0% !important;
+
+    p {
+        margin: 0px !important;
+    }
+}
+
+.custom-block.tip {
+    border-left: 2px solid var(--vp-c-green-2);
+    color: var(--vp-c-green-2);
+}
+
+.custom-block.warning {
+    border-left: 2px solid var(--vp-c-yellow-2);
+    color: var(--vp-c-yellow-2);
+}
+
+.custom-block.danger {
+    border-left: 2px solid var(--vp-c-red-2);
+    color: var(--vp-c-red-2);
+}
+
+.custom-block.important {
+    border-left: 2px solid var(--vp-c-purple-1);
+    color: var(--vp-c-purple-1);
+}
+
+.custom-block.note {
+    border-left: 2px solid var(--vp-c-indigo-1);
+    color: var(--vp-c-indigo-1);
+}
+
+div.info.custom-block.github-alert {
+    border-left: 2px solid var(--vp-c-text-3);
+    color: var(--vp-c-text-3);
+}
+
+.custom-block-title {
+    display: none;
+}
+
+.custom-block {
+    border-radius: 0.6rem;
+    font-size: 16px;
+}
+
+
+/* 
+    <s> 删除线文本
+*/
+
+.vp-doc s {
+    text-decoration: none;
+    opacity: .4;
+    user-select: none;
+    filter: blur(3px);
+    transition: all .3s;
+}
+
+.vp-doc s:hover {
+    filter: blur(0px);
+}
+
+/*
+    代码块 (<pre>, <code>)
+*/
+
+pre {
+    border-radius: 0.6rem !important;
+    border: 1px solid var(--vp-c-divider) !important;
+}
+
+div.shiki {
+    border-radius: 0.6rem !important;
+    margin: 0px !important;
+}
+
+div.vp-adaptive-theme {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    border-radius: 0.6rem !important;
+}
+
+code {
+    border-radius: 0.5rem !important;
+}
+
+/*
+    <h2> style
+*/
+
+.vp-doc h2 {
+    display: inline-block;
+    margin-bottom: 0px !important;
+    border-top: 0px !important;
+}
+
+.vp-doc h2,
+.marker {
+    background: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft)) no-repeat center bottom / 100% 12px;
+    transition: all .4s;
+}
+
+.vp-doc h2:hover,
+.marker:hover {
+    background: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft)) no-repeat center bottom / 100% 17px;
+}
+
+/*
+    <a>
+*/
+
+a {
+    text-decoration: none !important;
+}
+
+/*
+    圆形 Logo
+*/
+
+img.VPImage.image-src {
+    border-radius: 100%;
+}
+
+img.VPImage.logo {
+    border-radius: 100%;
+    height: 35px;
+    width: 35px;
+    aspect-ratio: 1;
+}
+
+a.title span {
+    display: none;
+}
+
+/*
+    Code Group 样式
+*/
+
+div.vp-code-group.vp-adaptive-theme {
+    border-radius: 0.6rem !important;
+    border: 1px solid var(--vp-c-divider) !important;
+
+    div.tabs {
+        margin: 0px;
+        border-top-left-radius: 0.6rem !important;
+        border-top-right-radius: 0.6rem !important;
+    }
+
+    div.language-bash.vp-adaptive-theme.active {
+        margin-bottom: 0px;
+    }
+
+    pre {
+        border-radius: 0px !important;
+        border: 0px !important;
+    }
+}
+
+/*
+    Iconify
+*/
+
+.fa-solid,
+.fa-regular,
+.fa-brands {
+    width: 1.2em;
+    vertical-align: middle;
+    text-align: center;
+}
+
+svg:where(.iconify) {
+    display: inline-block;
+    flex-shrink: 0;
+    font-size: 1.2em;
+    vertical-align: text-top;
+    position: relative;
+}
+
+/*
+    自定义元素：highlight
+*/
+highlight {
+    font-weight: bold;
+    color: transparent;
+    margin: 0px;
+    display: inline;
+    position: relative;
+    background-clip: text;
+
+    & {
+        background-image: linear-gradient(90deg, #dd7878, #ea76cb, #8839ef, #7287fd, #1e66f5, #209fb5, #04a5e5, #179299);
+    }
+
+    html.dark & {
+        background-image: linear-gradient(90deg, #f2cdcd, #f5c2e7, #cba6f7, #b4befe, #89b4fa, #74c7ec, #89dceb, #94e2d5);
+    }
+}
+
+/*
+    禁止选中图片
+*/
+
+img {
+    user-select: none !important;
+}
+
+/*
+    顶栏按钮居中
+*/
+
+nav.VPNavBarMenu.menu {
+    border-radius: 100vh;
+    margin: 20px auto;
+    padding: 0px 5px;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @media (max-width: 600px) {
+        display: none;
+    }
+
+    span, button {
+        line-height: 30px;
+        user-select: none;
+    }
+
+    span.vpi-chevron-down.text-icon {
+        display: none;
+    }
+}
+
+div.VPNavBarAppearance.appearance::before {
+    display: none;
+}
+
+/*
+    Footer 去除边框
+*/
+
+footer.VPFooter {
+    background-color: var(--vp-c-bg-alt) !important;
+    transition: all .4s;
+    &:hover {
+        border-top-color: var(--vp-c-brand-1);
+    }
+}

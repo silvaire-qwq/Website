@@ -1,38 +1,35 @@
 // https://vitepress.dev/guide/custom-theme
-import { h } from 'vue'
-import type { Theme } from 'vitepress'
-import DefaultTheme from 'vitepress/theme'
-import { Icon } from '@iconify/vue'
-
-
-// Theme
-import './custom.css'
-import './index.css'
+import { h } from "vue";
+import type { Theme } from "vitepress";
+import DefaultTheme from "vitepress/theme";
+import { Icon } from "@iconify/vue";
+import "../../src/styles/default.css";
+import "../../src/styles/append.css";
 import "@catppuccin/vitepress/theme/mocha/lavender.css";
 
-// TypeScript
-import './ts/busuanzi.ts'
-
-// Comps
-import FriendCard from "./vue/pages/friend.vue"
-import Comment from "./vue/vp/giscus.vue"
-import Title from "./vue/vp/before-doc.vue"
-import Archives from "./vue/pages/archives.vue"
-import VPBtn from "./vue/pages/btn.vue"
-import msg from './vue/pages/msg.vue'
+// Components
+import beforeDocs from "../../src/components/layout/before-docs.vue";
+import FriendCard from "../../src/components/components/FriendCard.vue";
+import PostList from "../../src/components/components/postList.vue"
+import MusicCard from "../../src/components/components/MusicCard.vue"
+import spacer from "../../src/components/components/spacer.vue";
+import pt from "../../src/components/components/pt.vue";
+import HomeLayout from "../../src/components/pages/home.vue";
 
 export default {
-  enhanceApp({ app, router, siteData }) {
-    app.component('Icon', Icon)
-    app.component('FriendCard', FriendCard)
-    app.component('Archives', Archives)
-    app.component('VPBtn', VPBtn)
-    app.component('MsgBoard', msg)
-  },
-  Layout() {
+  extends: DefaultTheme,
+  Layout: () => {
     return h(DefaultTheme.Layout, null, {
-      'doc-after': () => h(Comment),
-      'doc-before': () => h(Title),
+      "doc-before": () => h(beforeDocs),
     });
   },
-} satisfies Theme
+  enhanceApp({ app, router, siteData }) {
+    app.component("Icon", Icon);
+    app.component("FriendCard", FriendCard);
+    app.component("PostList", PostList);
+    app.component("MusicCard", MusicCard);
+    app.component("spacer", spacer);
+    app.component("pt", pt);
+    app.component("HomeLayout", HomeLayout);
+  },
+} satisfies Theme;

@@ -1,10 +1,13 @@
+install:
+	pnpm install --force
+
 build:
 	pnpm docs:build
 
 dev:
-	sudo pnpm docs:dev
+	pnpm docs:dev
 
 push:
-	sudo git add .
-	sudo git commit -m "Auto"
-	sudo git push -uf origin main
+	git add .
+	git commit -m "Auto"
+	git push -uf origin main
