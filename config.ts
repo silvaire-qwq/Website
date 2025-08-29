@@ -23,7 +23,7 @@ export const globalConfig = {
       recentPosts: true, // recent posts
       githubLastStatus: true, // github last status
       projects: true, // projects
-      techStack: true, // tech stack
+      techStack: false, // tech stack (very sloooooow)
       friends: true, // friends
     },
 
