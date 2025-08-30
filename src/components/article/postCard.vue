@@ -127,6 +127,7 @@ const animateCard = (el) => {
 </template>
 
 <style scoped>
+
 .img-container img {
   border-radius: var(--vp-border-radius-1) var(--vp-border-radius-1) 0 0;
   height: 200px;
