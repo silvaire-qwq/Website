@@ -42,12 +42,13 @@ export const links: { title: string; link: string; desc: string; img: string }[]
     desc: "分享设计与科技生活。",
     img: "https://bu.dusays.com/2022/12/28/63ac2812183aa.png",
   },
-  {
-    title: "Royの主页",
-    link: "https://www.royofficial.com/",
-    img: "https://pic1.afdiancdn.com/user/72a9af182cec11ed97b352540025c377/avatar/bb5ce165f9f1a04b0b098fc365c36f3c_w1080_h1200_s712.jpeg?imageView2/1/w/120/h/120",
-    desc: "一个平平无奇的主页",
-  },
+  // 单方面删除：
+  // {
+  //   title: "Royの主页",
+  //   link: "https://www.royofficial.com/",
+  //   img: "https://pic1.afdiancdn.com/user/72a9af182cec11ed97b352540025c377/avatar/bb5ce165f9f1a04b0b098fc365c36f3c_w1080_h1200_s712.jpeg?imageView2/1/w/120/h/120",
+  //   desc: "一个平平无奇的主页",
+  // },
   {
     title: "Shenley 的存档点",
     link: "http://blog.ykrazy.top/",
@@ -71,6 +72,12 @@ export const links: { title: string; link: string; desc: string; img: string }[]
     link: "https://66619.eu.org",
     desc: "𝓙𝓾𝓼𝓽 𝓪 𝓬𝓵𝓸𝓾𝓭.",
     img: "https://wsrv.nl/?url=avatars.githubusercontent.com/u/65111206?v=4",
+  },
+  {
+    title: "Android",
+    link: "https://android99.com",
+    desc: "边缘矩阵",
+    img: "https://android99.com/img/avatar.png",
   },
   
   
