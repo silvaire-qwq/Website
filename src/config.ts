@@ -14,12 +14,12 @@ export const siteConfig: SiteConfig = {
   lang: "zh_CN", // 'en', 'zh_CN', 'zh_TW', 'ja', 'ko', 'es', 'th'
   dateCreated: "2024-08-23",
   themeColor: {
-    hue: 330, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
+    hue: 275, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
     fixed: false, // Hide the theme color picker for visitors
   },
   banner: {
     enable: true,
-    src: "assets/images/banner/image.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
+    src: "assets/images/banner/banner.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
     position: "center", // Equivalent to object-position, only supports 'top', 'center', 'bottom'. 'center' by default
     credit: {
       enable: false, // Display the credit text of the banner image
@@ -43,17 +43,31 @@ export const siteConfig: SiteConfig = {
 
 export const navBarConfig: NavBarConfig = {
   links: [
-    LinkPreset.Home,
-    LinkPreset.Archive,
     {
+      icon: 'material-symbols:home-outline-rounded',
+      name: "主页",
+      url: "/",
+    },
+    {
+      icon: 'material-symbols:archive-outline-rounded',
+      name: '归档',
+      url: '/archive/'
+    },
+    {
+      icon: 'material-symbols:calendar-today-outline',
       name: "动态",
       url: "/moments/",
     },
     {
+      icon: 'material-symbols:link-rounded',
       name: "友链",
       url: "/links/",
     },
-    LinkPreset.About,
+    {
+      icon: 'material-symbols:id-card-outline-rounded',
+      name: '关于',
+      url: '/about/'
+    },
   ],
 };
 
@@ -92,8 +106,4 @@ export const giscusConfig = {
   repoId: "R_kgDONDiNmg",
   category: "Announcements",
   categoryId: "DIC_kwDONDiNms4CkxsX",
-}
-
-export const projectConfig = {
-  username: "silvaire-qwq" // ur github username
 }

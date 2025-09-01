@@ -66,6 +66,18 @@ const jsonLd = {
                     </div>
                     <div class="text-sm">{remarkPluginFrontmatter.minutes} {" " + i18n(I18nKey.minutesCount)}</div>
                 </div>
+                <div class="flex flex-row items-center">
+                    <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
+                        <Icon name="material-symbols:visibility-outline-rounded"></Icon>
+                    </div>
+                    <div class="text-sm"><span id="busuanzi_page_pv"></span> 次访问</div>
+                </div>
+                <div class="flex flex-row items-center">
+                    <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
+                        <Icon name="fluent:person-12-regular"></Icon>
+                    </div>
+                    <div class="text-sm"><span id="busuanzi_page_uv"></span> 人访问</div>
+                </div>
             </div>
 
             <!-- title -->
@@ -86,6 +98,7 @@ const jsonLd = {
             <div class="onload-animation">
                 <PostMetadata
                         class="mb-5"
+                        pinned={entry.data.pinned ?? false}
                         published={entry.data.published}
                         updated={entry.data.updated}
                         tags={entry.data.tags}
