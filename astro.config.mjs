@@ -5,7 +5,6 @@ import swup from '@swup/astro'
 import Compress from 'astro-compress'
 import icon from 'astro-icon'
 import { defineConfig } from 'astro/config'
-import { siteConfig } from 'src/config.ts'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeComponents from 'rehype-components' /* Render the custom directive content */
 import rehypeKatex from 'rehype-katex'
@@ -24,7 +23,7 @@ import vue from '@astrojs/vue'
 
 // https://astro.build/config
 export default defineConfig({
-  site: siteConfig.domain[0],
+  site: "https://qwq.blue/",
   base: '/',
   trailingSlash: 'ignore',
   integrations: [
