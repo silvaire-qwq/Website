@@ -4,12 +4,11 @@ import type {
   ProfileConfig,
   SiteConfig,
 } from "./types/config";
-import { LinkPreset } from "./types/config";
 
 export const siteConfig: SiteConfig = {
   title: "Silvaire's Blog",
   subtitle: "生如夏花之绚烂，死如秋叶之静美。",
-  domain: ["https://qwq.blue", "https://blog.qwq.blue"],
+  domain: ["https://qwq.blue"],
   warnLink: "https://warn.qwq.blue",
   lang: "zh_CN", // 'en', 'zh_CN', 'zh_TW', 'ja', 'ko', 'es', 'th'
   dateCreated: "2024-08-23",
