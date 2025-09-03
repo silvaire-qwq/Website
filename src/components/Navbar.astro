@@ -82,18 +82,14 @@ function switchTheme() {
 function loadButtonScript() {
     let switchBtn = document.getElementById("scheme-switch");
     if (switchBtn) {
-        switchBtn.addEventListener("click", function () {
-            switchTheme()
-        });
+        switchBtn.addEventListener("click", switchTheme);
     }
 
     let settingBtn = document.getElementById("display-settings-switch");
     if (settingBtn) {
         settingBtn.addEventListener("click", function () {
             let settingPanel = document.getElementById("display-setting");
-            if (settingPanel) {
-                settingPanel.classList.toggle("float-panel-closed");
-            }
+            if (settingPanel) settingPanel.classList.toggle("float-panel-closed");
         });
     }
 
@@ -101,50 +97,11 @@ function loadButtonScript() {
     if (menuBtn) {
         menuBtn.addEventListener("click", function () {
             let menuPanel = document.getElementById("nav-menu-panel");
-            if (menuPanel) {
-                menuPanel.classList.toggle("float-panel-closed");
-            }
+            if (menuPanel) menuPanel.classList.toggle("float-panel-closed");
         });
     }
 }
 
 loadButtonScript();
-document.addEventListener('astro:after-swap', () => {
-    loadButtonScript();
-}, { once: false });
+document.addEventListener('astro:after-swap', () => loadButtonScript(), { once: false });
 </script>
-
-<!-- 只改这里，把 Pagefind 脚本改为客户端 onMount 逻辑 -->
-<Search client:load>
-  <script lang="ts">
-    import { onMount } from 'svelte';
-
-    onMount(() => {
-      if (!window.pagefind) {
-        const script = document.createElement('script');
-        script.src = '/pagefind/pagefind.js';
-        script.async = true;
-        script.onload = () => {
-          if (window.pagefind && typeof window.pagefind.search === 'function') {
-            window.pagefind.options({ excerptLength: 20 }).then(() => {
-              document.dispatchEvent(new CustomEvent('pagefindready'));
-              console.log('Pagefind loaded and ready.');
-            });
-          }
-        };
-        script.onerror = () => {
-          console.error('Failed to load Pagefind script');
-          document.dispatchEvent(new CustomEvent('pagefindloaderror'));
-        };
-        document.head.appendChild(script);
-      } else {
-        if (window.pagefind && typeof window.pagefind.search === 'function') {
-          window.pagefind.options({ excerptLength: 20 }).then(() => {
-            document.dispatchEvent(new CustomEvent('pagefindready'));
-            console.log('Pagefind loaded and ready.');
-          });
-        }
-      }
-    });
-  </script>
-</Search>
