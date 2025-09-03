@@ -7,6 +7,7 @@ import { url } from '../utils/url-utils'
 
 interface Props {
   pinned: boolean
+  origin: string
   class: string
   published: Date
   updated?: Date
@@ -15,7 +16,7 @@ interface Props {
   hideTagsForMobile?: boolean
   hideUpdateDate?: boolean
 }
-const { pinned, published, updated, tags, category, hideTagsForMobile = false, hideUpdateDate = false } = Astro.props
+const { pinned, published, updated, tags, category, hideTagsForMobile = false, hideUpdateDate = false, origin } = Astro.props
 const className = Astro.props.class
 
 const currentPath = Astro.url.pathname

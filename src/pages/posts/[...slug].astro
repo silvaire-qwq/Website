@@ -93,6 +93,7 @@ const jsonLd = {
                 <PostMetadata
                         class="mb-5"
                         pinned={entry.data.pinned ?? false}
+                        origin={entry.data.origin}
                         published={entry.data.published}
                         updated={entry.data.updated}
                         tags={entry.data.tags}
@@ -112,7 +113,8 @@ const jsonLd = {
                 <Content />
             </Markdown>
 
-            {licenseConfig.enable && <License title={entry.data.title} slug={entry.slug} pubDate={entry.data.published} class="mb-6 rounded-xl license-container onload-animation"></License>}
+            {licenseConfig.enable && !entry.data.origin && <License title={entry.data.title} slug={entry.slug} pubDate={entry.data.published} class="mb-6 rounded-xl license-container onload-animation"></License>}
+            {entry.data.origin && <License title={entry.data.title} slug={entry.slug} pubDate={entry.data.published} url={entry.data.origin} class="mb-6 rounded-xl license-container onload-animation"></License>}
         </div>
     </div>
 

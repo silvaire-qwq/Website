@@ -95,7 +95,7 @@ const handleFocus = () => {
         class="absolute text-[1.25rem] pointer-events-none ml-3 my-auto text-black/30 dark:text-white/30"
       />
       <input
-        placeholder="Search"
+        placeholder="搜索"
         bind:value={keyword}
         class="pl-10 absolute inset-0 text-sm bg-transparent outline-0 focus:w-60 text-black/50 dark:text-white/50"
         on:blur={handleBlur}
