@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import LinkCard from "./LinkCard.vue";
-import { links } from "../../friend";
+import { links } from "../../config/friend";
 
 // 判断类型：英文 / 中文 / 其他
 function getCategory(title: string): number {

@@ -8,6 +8,7 @@ import Search from './Search.svelte'
 import { LinkPresets } from '../constants/link-presets'
 import LightDarkSwitch from './LightDarkSwitch.svelte'
 import { url } from '../utils/url-utils'
+
 const className = Astro.props.class
 
 let links: NavBarLink[] = navBarConfig.links.map(
@@ -20,16 +21,20 @@ let links: NavBarLink[] = navBarConfig.links.map(
 )
 ---
 <div id="navbar" class="z-50 onload-animation">
-    <div class="absolute h-8 left-0 right-0 -top-8 bg-[var(--card-bg)] transition"></div> <!-- used for onload animation -->
+    <div class="absolute h-8 left-0 right-0 -top-8 bg-[var(--card-bg)] transition"></div>
     <div class:list={[
         className,
         "card-base !overflow-visible max-w-[var(--page-width)] h-[4.5rem] !rounded-t-none mx-auto flex items-center justify-between px-4"]}>
+        
+        <!-- logo -->
         <a href={url('/')} class="btn-plain scale-animation rounded-lg h-[3.25rem] px-5 font-bold active:scale-95">
             <div class="flex flex-row text-[var(--primary)] items-center text-md">
                 <Icon name="fluent:animal-cat-24-regular" class="text-[1.75rem] mb-1 mr-2" />
                 {siteConfig.title}
             </div>
         </a>
+
+        <!-- nav links -->
         <div class="hidden md:flex">
             {links.map((l) => {
                 return <a aria-label={l.name} href={l.external ? l.url : url(l.url)} target={l.external ? "_blank" : null}
@@ -43,26 +48,27 @@ let links: NavBarLink[] = navBarConfig.links.map(
                 </a>;
             })}
         </div>
+
+        <!-- right side: search + settings -->
         <div class="flex">
-            <!--<SearchPanel client:load>-->
-            <Search client:load></Search>
+            <Search client:load />
             {!siteConfig.themeColor.fixed && (
-                    <button aria-label="Display Settings" class="btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90" id="display-settings-switch">
-                        <Icon name="material-symbols:palette-outline" class="text-[1.25rem]"></Icon>
-                    </button>
+                <button aria-label="Display Settings" class="btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90" id="display-settings-switch">
+                    <Icon name="material-symbols:palette-outline" class="text-[1.25rem]"></Icon>
+                </button>
             )}
-            <LightDarkSwitch client:load></LightDarkSwitch>
+            <LightDarkSwitch client:load />
             <button aria-label="Menu" name="Nav Menu" class="btn-plain scale-animation rounded-lg w-11 h-11 active:scale-90 md:!hidden" id="nav-menu-switch">
                 <Icon name="material-symbols:menu-rounded" class="text-[1.25rem]"></Icon>
             </button>
         </div>
+
         <NavMenuPanel links={links}></NavMenuPanel>
         <DisplaySettings client:only="svelte"></DisplaySettings>
     </div>
 </div>
 
 <script>
-
 function switchTheme() {
     if (localStorage.theme === 'dark') {
         document.documentElement.classList.remove('dark');
@@ -103,44 +109,42 @@ function loadButtonScript() {
 }
 
 loadButtonScript();
-
 document.addEventListener('astro:after-swap', () => {
     loadButtonScript();
 }, { once: false });
 </script>
 
-{import.meta.env.PROD && <script is:inline define:vars={{scriptUrl: url('/pagefind/pagefind.js')}}>
-async function loadPagefind() {
-    try {
-        const response = await fetch(scriptUrl, { method: 'HEAD' });
-        if (!response.ok) {
-            throw new Error(`Pagefind script not found: ${response.status}`);
-        }
+<!-- 只改这里，把 Pagefind 脚本改为客户端 onMount 逻辑 -->
+<Search client:load>
+  <script lang="ts">
+    import { onMount } from 'svelte';
 
-        const pagefind = await import(scriptUrl);
-
-        await pagefind.options({
-            excerptLength: 20
-        });
-
-        window.pagefind = pagefind;
-
-        document.dispatchEvent(new CustomEvent('pagefindready'));
-        console.log('Pagefind loaded and initialized successfully, event dispatched.');
-    } catch (error) {
-        console.error('Failed to load Pagefind:', error);
-        window.pagefind = {
-            search: () => Promise.resolve({ results: [] }),
-            options: () => Promise.resolve(),
+    onMount(() => {
+      if (!window.pagefind) {
+        const script = document.createElement('script');
+        script.src = '/pagefind/pagefind.js';
+        script.async = true;
+        script.onload = () => {
+          if (window.pagefind && typeof window.pagefind.search === 'function') {
+            window.pagefind.options({ excerptLength: 20 }).then(() => {
+              document.dispatchEvent(new CustomEvent('pagefindready'));
+              console.log('Pagefind loaded and ready.');
+            });
+          }
         };
-        document.dispatchEvent(new CustomEvent('pagefindloaderror'));
-        console.log('Pagefind load error, event dispatched.');
-    }
-}
-
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', loadPagefind);
-} else {
-    loadPagefind();
-}
-</script>}
+        script.onerror = () => {
+          console.error('Failed to load Pagefind script');
+          document.dispatchEvent(new CustomEvent('pagefindloaderror'));
+        };
+        document.head.appendChild(script);
+      } else {
+        if (window.pagefind && typeof window.pagefind.search === 'function') {
+          window.pagefind.options({ excerptLength: 20 }).then(() => {
+            document.dispatchEvent(new CustomEvent('pagefindready'));
+            console.log('Pagefind loaded and ready.');
+          });
+        }
+      }
+    });
+  </script>
+</Search>

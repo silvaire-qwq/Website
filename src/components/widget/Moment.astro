@@ -1,6 +1,6 @@
 ---
 import WidgetLayout from './WidgetLayout.astro'
-import { momentsData } from '../../moment.ts'
+import { momentsData } from '../../config/moment.ts'
 
 const sortedMoments = [...momentsData].sort((a, b) => {
   const dateA = BigInt(new Date(a.date + ' ' + a.time).getTime())
