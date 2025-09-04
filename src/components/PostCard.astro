@@ -22,6 +22,7 @@ interface Props {
 	draft: boolean;
 	pinned?: boolean;
 	style: string;
+	origin: string;
 }
 const {
 	entry,
@@ -34,6 +35,7 @@ const {
 	image,
 	description,
 	pinned,
+    origin,
 	style,
 } = Astro.props;
 const className = Astro.props.class;
@@ -59,7 +61,7 @@ const { remarkPluginFrontmatter } = await entry.render();
         </a>
 
         <!-- metadata -->
-        <PostMetadata pinned={pinned ?? false} published={published} updated={updated} tags={tags} category={category} hideTagsForMobile={true} hideUpdateDate={false} class="mb-4"></PostMetadata>
+        <PostMetadata origin={origin} pinned={pinned ?? false} published={published} updated={updated} tags={tags} category={category} hideTagsForMobile={true} hideUpdateDate={false} class="mb-4"></PostMetadata>
 
         <!-- description -->
         <div class:list={["transition text-75 mb-3.5 pr-4", {"line-clamp-2 md:line-clamp-1": !description}]}>

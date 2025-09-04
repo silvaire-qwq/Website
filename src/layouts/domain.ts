@@ -5,12 +5,9 @@ const warnLink = siteConfig.warnLink
 // 域名检测功能
 function checkDomain() {
     try {
-        // 获取当前访问的完整URL
         const currentUrl = window.location.href;
-        // 获取当前域名
         const currentDomain = window.location.hostname;
         
-        // 获取所有官方域名
         const officialDomains = officialSites.map(site => {
             try {
                 return new URL(site).hostname;
@@ -19,21 +16,17 @@ function checkDomain() {
             }
         }).filter(domain => domain !== null);
         
-        // 检查当前域名是否为官方域名或本地开发环境
         const isOfficialDomain = officialDomains.includes(currentDomain);
         const isLocalDev = currentDomain === 'localhost' || currentDomain === '127.0.0.1';
         
-        // 如果当前域名不是官方域名且不是本地开发环境
         if (!isOfficialDomain && !isLocalDev) {
             const currentUrl = encodeURIComponent(window.location.href);
             window.location.href = `${warnLink}/?url=${currentUrl}`;
         }
     } catch (error) {
-        // 如果检测过程中出现错误，静默处理，不影响正常访问
     }
 }
 
-// 页面加载完成后执行域名检测
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', checkDomain);
 } else {
