@@ -14,7 +14,7 @@ function formatDate(raw: string) {
   const date = new Date(raw);
 
   // 获取星期、日期、月份和年份
-  const day = date.toLocaleString("zh-CN", { day: "2-digit" });
+  const day = date.toLocaleString("zh-CN", { day: "numeric" });
   const month = date.toLocaleString("zh-CN", { month: "short" });
   const year = `${date.getFullYear()}`;
 
