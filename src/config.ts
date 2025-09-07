@@ -8,12 +8,16 @@ import type {
 export const siteConfig: SiteConfig = {
   title: "Silvaire's Blog",
   subtitle: "生如夏花之绚烂，死如秋叶之静美。",
+  lang: "zh_CN", // 'en', 'zh_CN', 'zh_TW', 'ja', 'ko', 'es', 'th'
   domain: ["https://qwq.blue"],
   warnLink: "https://warn.qwq.blue",
-  lang: "zh_CN", // 'en', 'zh_CN', 'zh_TW', 'ja', 'ko', 'es', 'th'
+  editPost: {
+    enable: false,
+    repo: "silvaire-qwq/Website",
+  },
   dateCreated: "2024-08-23",
   themeColor: {
-    hue: 210, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
+    hue: 330, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
     fixed: false, // Hide the theme color picker for visitors
   },
   banner: {
@@ -47,16 +51,26 @@ export const navBarConfig: NavBarConfig = {
       name: "主页",
       url: "/",
     },
-    {
-      icon: "material-symbols:archive-outline-rounded",
-      name: "归档",
-      url: "/archive/",
+    { 
+      icon: "material-symbols:folder-outline-rounded",
+      name: "文章",
+      items: [
+        {
+          icon: "material-symbols:archive-outline-rounded",
+          name: "归档",
+          url: "/archive/",
+        },
+        {
+          icon: "material-symbols:calendar-today-outline",
+          name: "动态",
+          url: "/moments/",
+        },
+      ]
     },
     {
-      icon: "material-symbols:calendar-today-outline",
-      name: "动态",
-      url: "/moments/",
-    },
+      icon: "material-symbols:info-outline-rounded",
+      name: "杂项",
+      items: [
     {
       icon: "material-symbols:link-rounded",
       name: "友链",
@@ -67,6 +81,7 @@ export const navBarConfig: NavBarConfig = {
       name: "关于",
       url: "/about/",
     },
+  ]},
   ],
 };
 

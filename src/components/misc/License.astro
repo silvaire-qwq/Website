@@ -18,6 +18,11 @@ const className = Astro.props.class
 const profileConf = profileConfig
 const licenseConf = licenseConfig
 const postUrl = decodeURIComponent(Astro.url.toString())
+
+function formatUrl(url: string): string {
+  const matches = url.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/);
+  return matches ? matches[1] : url;
+}
 ---
 <div class={`relative transition overflow-hidden bg-[var(--license-block-bg)] py-5 px-6 ${className}`}>
   <!-- Title -->
@@ -26,14 +31,10 @@ const postUrl = decodeURIComponent(Astro.url.toString())
   </div>
 
   <!-- URL Rendering -->
-  {!url ? (
-    <a href={postUrl} class="link text-[var(--primary)]">{postUrl}</a>
-  ) : (
-    <a href={url} class="link text-[var(--primary)]">{url}</a>
-  )}
+  <a href={postUrl} class="link text-[var(--primary)]">{postUrl}</a>
 
   <!-- Author, Date, License Information -->
-  {!url && (
+  {!url ? (
     <div class="flex gap-6 mt-2">
       <div>
         <div class="transition text-black/30 dark:text-white/30 text-sm">
@@ -60,11 +61,38 @@ const postUrl = decodeURIComponent(Astro.url.toString())
         </a>
       </div>
     </div>
+  ) : (
+    <div class="flex gap-6 mt-2">
+      <div>
+        <div class="transition text-black/30 dark:text-white/30 text-sm">
+          修改者
+        </div>
+        <div class="transition text-black/75 dark:text-white/75 whitespace-nowrap">
+          {profileConf.name}
+        </div>
+      </div>
+      <div>
+        <div class="transition text-black/30 dark:text-white/30 text-sm">
+          修改于
+        </div>
+        <div class="transition text-black/75 dark:text-white/75 whitespace-nowrap">
+          {formatDateToYYYYMMDD(pubDate)}
+        </div>
+      </div>
+      <div>
+        <div class="transition text-black/30 dark:text-white/30 text-sm">
+          来源
+        </div>
+        <div class="transition text-black/75 dark:text-white/75 whitespace-nowrap">
+          <a href={url} class="link text-[var(--primary)]">{formatUrl(url)}</a>
+        </div>
+      </div>
+    </div>
   )}
 
   <!-- Icon for License/Save -->
   <Icon
-    name={url ? "fluent:save-copy-24-regular" : "fa6-brands:creative-commons"}
+    name={url ? "fluent:link-square-12-regular" : "fa6-brands:creative-commons"}
     class="transition text-[15rem] absolute pointer-events-none right-6 top-1/2 -translate-y-1/2 text-black/5 dark:text-white/5"
   />
 </div>

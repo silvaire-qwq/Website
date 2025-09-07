@@ -1,32 +1,105 @@
 ---
-import { type NavBarLink } from '../../types/config'
 import { Icon } from 'astro-icon/components'
 import { url } from '../../utils/url-utils'
 
 interface Props {
-  links: NavBarLink[]
+  links: any[]
 }
 
 const links = Astro.props.links
 ---
-<div id="nav-menu-panel" class:list={["float-panel float-panel-closed absolute transition-all fixed right-4 px-2 py-2"]}>
-    {links.map((link) => (
-        <a href={link.external ? link.url : url(link.url)} class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
-            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
-        "
-           target={link.external ? "_blank" : null}
+
+<div id="nav-menu-panel" class="float-panel float-panel-closed fixed right-4 top-[4.5rem] px-2 py-2 w-40 bg-[var(--float-panel-bg)] rounded-2xl shadow-xl z-50">
+  {links.map((link) => (
+    <div class="flex flex-col">
+      {link.items ? (
+        <div 
+          class="flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-2
+                 font-bold text-black/75 dark:text-white/75 cursor-pointer
+                 hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]
+                 hover:text-[var(--primary)] dark:hover:text-[var(--primary)]
+                 transition-colors duration-100"
         >
-            <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)]">
-                {link.name}
-            </div>
-            {!link.external && <Icon name="material-symbols:chevron-right-rounded"
-                  class="transition text-[1.25rem] text-[var(--primary)]"
-            >
-            </Icon>}
-            {link.external && <Icon name="fa6-solid:arrow-up-right-from-square"
-                  class="transition text-[0.75rem] text-black/25 dark:text-white/25 -translate-x-1"
-            >
-            </Icon>}
+          <div class="flex items-center gap-2">
+            {link.icon && <Icon name={link.icon} class="text-[1.2rem] text-inherit transition-colors duration-0" />}
+            <span class="transition-colors duration-0">{link.name}</span>
+          </div>
+          <Icon name="material-symbols:keyboard-arrow-down-rounded" class="link-arrow text-current transition-transform duration-100 " />
+        </div>
+      ) : (
+        <a 
+          href={link.external ? link.url : url(link.url)} 
+          class="flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-2
+                 font-bold text-black/75 dark:text-white/75
+                 hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]
+                 hover:text-[var(--primary)] dark:hover:text-[var(--primary)]
+                 transition-colors duration-100 "
+          target={link.external ? "_blank" : undefined}
+        >
+          <div class="flex items-center gap-2">
+            {link.icon && <Icon name={link.icon} class="text-[1.2rem] text-inherit transition-colors duration-0" />}
+            <span class="transition-colors duration-0">{link.name}</span>
+          </div>
+          {link.external && (
+            <Icon name="fa6-solid:arrow-up-right-from-square" class="text-[0.75rem] text-current -translate-x-1 transition-transform duration-0" />
+          )}
         </a>
-    ))}
+      )}
+
+      {link.items && (
+        <div class="ml-4 overflow-hidden max-h-0 submenu transition-all duration-0">
+          {link.items.map((sub: any) => (
+            <a 
+              href={sub.external ? sub.url : url(sub.url)} 
+              target={sub.external ? "_blank" : undefined}
+              class="flex items-center justify-between py-2 pl-4 pr-1 rounded-lg gap-2
+                     font-medium text-black/75 dark:text-white/75
+                     hover:bg-[var(--btn-plain-bg-hover)] hover:text-[var(--primary)] dark:hover:text-[var(--primary)]
+                     transition-colors duration-100 "
+            >
+              <div class="flex items-center gap-2">
+                {sub.icon && <Icon name={sub.icon} class="text-[1.2rem] text-inherit transition-colors duration-0" />}
+                <span class="transition-colors duration-0">{sub.name}</span>
+              </div>
+              {sub.external && (
+                <Icon name="fa6-solid:arrow-up-right-from-square" class="text-[0.75rem] text-current -translate-x-1 transition-transform duration-0" />
+              )}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  ))}
 </div>
+
+<script>
+// 移动端展开二级菜单
+document.addEventListener('DOMContentLoaded', () => {
+  const menuPanel = document.getElementById('nav-menu-panel');
+  if (!menuPanel) return;
+
+  const triggers = menuPanel.querySelectorAll('.link-arrow');
+
+  triggers.forEach(arrow => {
+    const parent = arrow.closest('div.flex.flex-col');
+    if (!parent) return;
+
+    const submenu = parent.querySelector('.submenu') as HTMLElement | null;
+    if (!submenu) return;
+
+    const triggerDiv = arrow.parentElement as HTMLElement | null;
+    if (!triggerDiv) return;
+
+    triggerDiv.addEventListener('click', () => {
+      const isOpen = submenu.style.maxHeight && submenu.style.maxHeight !== '0px';
+      if (isOpen) {
+        submenu.style.maxHeight = '0';
+        arrow.classList.remove('rotate-180');
+      } else {
+        submenu.style.maxHeight = submenu.scrollHeight + 'px';
+        arrow.classList.add('rotate-180');
+      }
+    });
+  });
+});
+</script>

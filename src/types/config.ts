@@ -5,6 +5,10 @@ export type SiteConfig = {
   subtitle: string
   domain: string[]
   warnLink: string
+  editPost: {
+    enable: boolean
+    repo: string
+  }
   lang: string
   dateCreated: string
   themeColor: {
@@ -48,9 +52,7 @@ export type NavBarLink = {
   external?: boolean
 }
 
-export type NavBarConfig = {
-  links: (NavBarLink | LinkPreset)[]
-}
+export type NavBarConfig = any
 
 export type ProfileConfig = {
   avatar?: string

@@ -45,6 +45,11 @@ const jsonLd = {
   inLanguage: (entry.data.lang ? entry.data.lang.replace('_', '-') : siteConfig.lang.replace('_', '-')),
   // TODO include cover image here
 }
+
+function formatUrl(url: string): string {
+  const matches = url.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/);
+  return matches ? matches[1] : url;
+}
 ---
 <MainGridLayout banner={entry.data.image} title={entry.data.title} description={entry.data.description} lang={entry.data.lang} setOGTypeArticle={true} headings={headings}>
     <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
@@ -66,12 +71,23 @@ const jsonLd = {
                     </div>
                     <div class="text-sm">{remarkPluginFrontmatter.minutes} {" " + i18n(I18nKey.minutesCount)}</div>
                 </div>
+
+                
+                { entry.data.origin ? (
+                <div class="flex flex-row items-center">
+                    <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
+                        <Icon name="fluent:link-square-12-regular"></Icon>
+                    </div>
+                    <div class="text-sm">{formatUrl(entry.data.origin)}</div>
+                </div> 
+                ) : (
                 <div class="flex flex-row items-center">
                     <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
                         <Icon name="fluent:person-12-regular"></Icon>
                     </div>
                     <div class="text-sm"><span id="busuanzi_page_uv"></span> 人访问</div>
                 </div>
+                )}
             </div>
 
             <!-- title -->
@@ -115,6 +131,28 @@ const jsonLd = {
 
             {licenseConfig.enable && !entry.data.origin && <License title={entry.data.title} slug={entry.slug} pubDate={entry.data.published} class="mb-6 rounded-xl license-container onload-animation"></License>}
             {entry.data.origin && <License title={entry.data.title} slug={entry.slug} pubDate={entry.data.published} url={entry.data.origin} class="mb-6 rounded-xl license-container onload-animation"></License>}
+
+            {siteConfig.editPost.enable && (
+                <div class="flex items-start gap-3 relative transition overflow-hidden bg-[var(--license-block-bg)] py-5 px-6 my-6 rounded-xl license-container onload-animation">
+                            <div class="flex-1">
+                                <p class="text-black/80 dark:text-white/80 text-sm mb-1">发现错误或想要改进这篇文章？</p>
+                                <a 
+                                    href={`https://github.com/${siteConfig.editPost.repo}/edit/main/src/content/posts/${entry.slug}.md`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-1 text-sm font-medium transition-colors link text-[var(--primary)]"
+                                >
+                                    <Icon name="fa6-brands:github" class="text-[0.875rem] mr-1"></Icon>
+                                    在 GitHub 上编辑此页
+                                </a>
+                            </div>
+
+                        <Icon
+                            name="fluent:edit-12-regular"
+                            class="transition text-[15rem] absolute pointer-events-none right-6 top-1/2 -translate-y-1/2 text-black/5 dark:text-white/5"
+                        />
+                </div>
+            )}
         </div>
     </div>
 
