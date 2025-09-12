@@ -12,12 +12,12 @@ export const siteConfig: SiteConfig = {
   domain: ["https://qwq.blue"],
   warnLink: "https://warn.qwq.blue",
   editPost: {
-    enable: false,
+    enable: true,
     repo: "silvaire-qwq/Website",
   },
   dateCreated: "2024-08-23",
   themeColor: {
-    hue: 330, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
+    hue: 285, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
     fixed: false, // Hide the theme color picker for visitors
   },
   banner: {

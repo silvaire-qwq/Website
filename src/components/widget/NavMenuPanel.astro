@@ -14,7 +14,7 @@ const links = Astro.props.links
     <div class="flex flex-col">
       {link.items ? (
         <div 
-          class="flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-2
+          class="menu-trigger flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-2
                  font-bold text-black/75 dark:text-white/75 cursor-pointer
                  hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]
                  hover:text-[var(--primary)] dark:hover:text-[var(--primary)]
@@ -47,7 +47,7 @@ const links = Astro.props.links
       )}
 
       {link.items && (
-        <div class="ml-4 overflow-hidden max-h-0 submenu transition-all duration-0">
+        <div class="ml-4 overflow-hidden max-h-0 submenu transition-all duration-200">
           {link.items.map((sub: any) => (
             <a 
               href={sub.external ? sub.url : url(sub.url)} 
@@ -73,24 +73,24 @@ const links = Astro.props.links
 </div>
 
 <script>
-// 移动端展开二级菜单
 document.addEventListener('DOMContentLoaded', () => {
   const menuPanel = document.getElementById('nav-menu-panel');
   if (!menuPanel) return;
 
-  const triggers = menuPanel.querySelectorAll('.link-arrow');
+  const triggers = menuPanel.querySelectorAll('.menu-trigger');
 
-  triggers.forEach(arrow => {
-    const parent = arrow.closest('div.flex.flex-col');
-    if (!parent) return;
+  triggers.forEach(trigger => {
+    const arrow = trigger.querySelector('.link-arrow');
+    const submenu = trigger.parentElement?.querySelector('.submenu');
 
-    const submenu = parent.querySelector('.submenu') as HTMLElement | null;
-    if (!submenu) return;
+    // 确认 submenu 是 HTMLElement
+    if (!arrow || !(submenu instanceof HTMLElement)) return;
 
-    const triggerDiv = arrow.parentElement as HTMLElement | null;
-    if (!triggerDiv) return;
+    (trigger as HTMLElement).style.cursor = 'pointer';
 
-    triggerDiv.addEventListener('click', () => {
+    trigger.addEventListener('click', () => {
+      console.log('clicked:', trigger.textContent?.trim()); // 调试输出
+
       const isOpen = submenu.style.maxHeight && submenu.style.maxHeight !== '0px';
       if (isOpen) {
         submenu.style.maxHeight = '0';
@@ -102,4 +102,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
 </script>
