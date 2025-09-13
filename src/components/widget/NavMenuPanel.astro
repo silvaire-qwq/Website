@@ -13,8 +13,8 @@ const links = Astro.props.links
   {links.map((link) => (
     <div class="flex flex-col">
       {link.items ? (
-        <div 
-          class="menu-trigger flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-2
+        <div
+          class="menu-group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-2
                  font-bold text-black/75 dark:text-white/75 cursor-pointer
                  hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]
                  hover:text-[var(--primary)] dark:hover:text-[var(--primary)]
@@ -27,7 +27,7 @@ const links = Astro.props.links
           <Icon name="material-symbols:keyboard-arrow-down-rounded" class="link-arrow text-current transition-transform duration-100 " />
         </div>
       ) : (
-        <a 
+        <a
           href={link.external ? link.url : url(link.url)} 
           class="flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-2
                  font-bold text-black/75 dark:text-white/75
@@ -49,7 +49,7 @@ const links = Astro.props.links
       {link.items && (
         <div class="ml-4 overflow-hidden max-h-0 submenu transition-all duration-200">
           {link.items.map((sub: any) => (
-            <a 
+            <a
               href={sub.external ? sub.url : url(sub.url)} 
               target={sub.external ? "_blank" : undefined}
               class="flex items-center justify-between py-2 pl-4 pr-1 rounded-lg gap-2
@@ -73,34 +73,24 @@ const links = Astro.props.links
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const menuPanel = document.getElementById('nav-menu-panel');
-  if (!menuPanel) return;
+  const groups = document.querySelectorAll('#nav-menu-panel .menu-group');
 
-  const triggers = menuPanel.querySelectorAll('.menu-trigger');
+  for (const group of groups) {
+    const arrow = group.querySelector('.link-arrow');
+    const submenu = group.parentElement?.querySelector('.submenu');
 
-  triggers.forEach(trigger => {
-    const arrow = trigger.querySelector('.link-arrow');
-    const submenu = trigger.parentElement?.querySelector('.submenu');
+    if (!arrow || !(submenu instanceof HTMLElement)) continue;
 
-    // 确认 submenu 是 HTMLElement
-    if (!arrow || !(submenu instanceof HTMLElement)) return;
+    group.addEventListener('click', () => {
+      const isOpen = submenu.style.maxHeight;
 
-    (trigger as HTMLElement).style.cursor = 'pointer';
-
-    trigger.addEventListener('click', () => {
-      console.log('clicked:', trigger.textContent?.trim()); // 调试输出
-
-      const isOpen = submenu.style.maxHeight && submenu.style.maxHeight !== '0px';
       if (isOpen) {
-        submenu.style.maxHeight = '0';
         arrow.classList.remove('rotate-180');
+        submenu.style.maxHeight = '';
       } else {
-        submenu.style.maxHeight = submenu.scrollHeight + 'px';
         arrow.classList.add('rotate-180');
+        submenu.style.maxHeight = `${submenu.scrollHeight}px`;
       }
     });
-  });
-});
-
+  }
 </script>

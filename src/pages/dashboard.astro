@@ -1,11 +1,10 @@
 ---
 import MainGridLayout from "../layouts/MainGridLayout.astro";
-import { i18n } from "../i18n/translation";
-import I18nKey from "../i18n/i18nKey";
 import { links } from "../config/friend";
 import { momentsData } from "../config/moment";
 import { postData } from "../config/posts";
 import { Icon } from "astro-icon/components";
+import { siteConfig } from "../config";
 
 const dashboardTopItems = [
   {
@@ -24,13 +23,49 @@ const dashboardTopItems = [
     content: links.length,
   },
 ];
+
+const sortedPosts = [...postData].sort(
+  (a, b) => new Date(b.published).getTime() - new Date(a.published).getTime()
+);
+
+function getTimeString() {
+  const now = new Date();
+  const yyyy = now.getFullYear();
+  const mm = String(now.getMonth() + 1).padStart(2, "0");
+  const dd = String(now.getDate()).padStart(2, "0");
+  const hh = String(now.getHours()).padStart(2, "0");
+  const min = String(now.getMinutes()).padStart(2, "0");
+  const ss = String(now.getSeconds()).padStart(2, "0");
+  return `${yyyy}${mm}${dd}_${hh}${min}${ss}`;
+}
+
+function getDate() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+const fileTemplate = `---
+title:
+published: ${getDate()}
+description: 
+tags: []
+category: 
+origin: ""
+image: ""
+pinned: false
+draft: false
+---`;
 ---
 
-<MainGridLayout title={i18n(I18nKey.about)} description={i18n(I18nKey.about)}>
-  <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative card-base px-6 py-5 mb-4">
+<MainGridLayout title="仪表盘" description="网页信息一览">
+  <!-- 顶部统计 -->
+  <div class="flex flex-col sm:flex-row w-full overflow-hidden relative card-base px-9 py-6 mb-4">
     {dashboardTopItems.map((item, index) => (
       <>
-        <div class="flex items-center flex-1">
+        <div class="flex items-center w-full sm:flex-1 mb-0">
           <Icon
             name={item.icon}
             class="w-6 h-6 text-neutral-900 dark:text-neutral-100"
@@ -43,19 +78,62 @@ const dashboardTopItems = [
           </div>
         </div>
 
-        {/* 竖向分隔线：除了最后一个 */}
         {index !== dashboardTopItems.length - 1 && (
-          <div class="border-l-[1px] border-dashed border-black/10 dark:border-white/[0.15] mx-6"></div>
+          <div class="sm:border-l-[1px] border-t-[1px] border-dashed border-black/10 dark:border-white/[0.15] mx-0 my-4 sm:mx-6 sm:my-0"></div>
         )}
       </>
     ))}
   </div>
 
-  <!--
-  <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
-    <div class="card-base z-10 px-9 py-6 relative w-full">
+  <!-- 文章列表 -->
+  <div class="card-base z-10 px-9 py-6 relative w-full flex flex-col gap-3.5">
 
+    <!-- 新增文章 -->
+    <div class="flex items-center">
+      <span class="text-neutral-900 dark:text-neutral-100 font-semibold">新增文章</span>
+
+      <!-- 新建按钮 -->
+      <a
+        class=" p-1 rounded-md ml-auto transition-colors"
+        href={`https://github.com/${siteConfig.editPost.repo}/new/main/src/content/posts?filename=${getTimeString()}.md&value=${encodeURIComponent(fileTemplate)}`}
+      >
+        <Icon
+          name="material-symbols:new-window-rounded"
+          class="text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 transition-all"
+        />
+      </a>
     </div>
+
+    <div class="sm:border-l-[1px] border-t-[1px] border-dashed border-black/10 dark:border-white/[0.15] my-0"></div>
+
+    <!-- 已有文章 -->
+    {sortedPosts.map((post) => (
+      <>
+        <div class="flex items-center">
+          <span class="text-neutral-900 dark:text-neutral-100 font-semibold">{post.title}</span>
+
+          <!-- 编辑按钮 -->
+          <a
+            class=" p-1 rounded-md ml-auto transition-colors"
+            href={`https://github.com/${siteConfig.editPost.repo}/edit/main/src/content${post.url}.md`}
+          >
+            <Icon name="fluent:edit-12-regular" class="text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all" />
+          </a>
+
+          <!-- 删除按钮 -->
+          <a
+            class="  p-1 rounded-md ml-2 transition-colors"
+            href={`https://github.com/${siteConfig.editPost.repo}/delete/main/src/content${post.url}.md`}
+          >
+            <Icon name="fluent:delete-12-regular" class="text-red-500 dark:text-red-400 hover:text-red-600 dark:hover:text-red-300 transition-all" />
+          </a>
+        </div>
+
+        {post !== sortedPosts[sortedPosts.length - 1] && (
+          <div class="sm:border-l-[1px] border-t-[1px] border-dashed border-black/10 dark:border-white/[0.15] my-0"></div>
+        )}
+
+      </>
+    ))}
   </div>
-   -->
 </MainGridLayout>

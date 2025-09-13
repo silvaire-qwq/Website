@@ -33,7 +33,8 @@ function walkDir(dir) {
         url: urlPath,
         title: data.title || "",
         description: data.description || "",
-        content: textContent,
+        published: data.published || "",
+        content: textContent || "",
       });
     }
   }
