@@ -3,12 +3,20 @@ import { getEntry } from "astro:content";
 import LinkGridList from "@components/links/LinkGridList.vue";
 import Markdown from "@components/misc/Markdown.astro";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
+import RandomFriend from "@components/links/randomFriend.vue";
 
 const linksPost = await getEntry("spec", "links");
 const { Content } = await linksPost.render();
 ---
 
 <MainGridLayout title="友链" description="友情链接">
+  <div
+    class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32 mb-4"
+  >
+      <RandomFriend client:only="vue" />
+    </div>
+  </div>
+
   <div
     class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32"
   >
