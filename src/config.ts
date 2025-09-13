@@ -81,6 +81,11 @@ export const navBarConfig: NavBarConfig = {
       name: "关于",
       url: "/about/",
     },
+    //{
+    //  icon: "material-symbols:dashboard-outline",
+    //  name: "仪表盘",
+    //  url: "/dashboard/",
+    //}
   ]},
   ],
 };

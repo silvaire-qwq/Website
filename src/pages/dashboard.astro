@@ -1,0 +1,61 @@
+---
+import MainGridLayout from "../layouts/MainGridLayout.astro";
+import { i18n } from "../i18n/translation";
+import I18nKey from "../i18n/i18nKey";
+import { links } from "../config/friend";
+import { momentsData } from "../config/moment";
+import { postData } from "../config/posts";
+import { Icon } from "astro-icon/components";
+
+const dashboardTopItems = [
+  {
+    title: "文章",
+    icon: "material-symbols:folder-outline-rounded",
+    content: postData.length,
+  },
+  {
+    title: "动态",
+    icon: "material-symbols:calendar-today-outline",
+    content: momentsData.length,
+  },
+  {
+    title: "友链",
+    icon: "material-symbols:link-rounded",
+    content: links.length,
+  },
+];
+---
+
+<MainGridLayout title={i18n(I18nKey.about)} description={i18n(I18nKey.about)}>
+  <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative card-base px-6 py-5 mb-4">
+    {dashboardTopItems.map((item, index) => (
+      <>
+        <div class="flex items-center flex-1">
+          <Icon
+            name={item.icon}
+            class="w-6 h-6 text-neutral-900 dark:text-neutral-100"
+          />
+          <div class="text-xl text-neutral-900 dark:text-neutral-100 ml-3 font-semibold">
+            {item.title}
+          </div>
+          <div class="text-xl text-neutral-400 dark:text-neutral-600 ml-auto">
+            {item.content}
+          </div>
+        </div>
+
+        {/* 竖向分隔线：除了最后一个 */}
+        {index !== dashboardTopItems.length - 1 && (
+          <div class="border-l-[1px] border-dashed border-black/10 dark:border-white/[0.15] mx-6"></div>
+        )}
+      </>
+    ))}
+  </div>
+
+  <!--
+  <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
+    <div class="card-base z-10 px-9 py-6 relative w-full">
+
+    </div>
+  </div>
+   -->
+</MainGridLayout>

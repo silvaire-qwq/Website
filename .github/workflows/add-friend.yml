@@ -40,4 +40,4 @@ jobs:
       - name: Close issue
         uses: peter-evans/close-issue@v2
         with:
-          comment: "已添加友链。"
+          comment: "Added."

@@ -10,7 +10,7 @@ const img = (body.match(/### 头像\s+(.+)/) || [])[1]?.trim() || "";
 
 // 检查必填项
 if (!title || !link) {
-  console.error("缺少必要字段（标题或地址）");
+  console.error("Title or link is missing.");
   process.exit(1);
 }
 
@@ -19,7 +19,7 @@ let content = fs.readFileSync(filePath, "utf8");
 
 // 检查是否已存在该链接
 if (content.includes(link)) {
-  console.log("链接已存在，跳过");
+  console.log("The link already exists, skip");
   process.exit(0);
 }
 
@@ -38,4 +38,4 @@ content = content.replace(
 );
 
 fs.writeFileSync(filePath, content, "utf8");
-console.log(`已添加：${title}`);
+console.log(`Added: ${title}`);

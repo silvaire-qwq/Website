@@ -1,4 +1,5 @@
-export const momentsData = [{
+export const momentsData: { date: string, time: string, content: string }[] = [
+  {
     "date": "2025-04-05",
     "time": "17:12",
     "content": "高速上有车抢救护车的应急车道，救护车被堵住了😅"
