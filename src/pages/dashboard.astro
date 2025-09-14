@@ -46,7 +46,8 @@ function getTimeString() {
   const dd = String(now.getDate()).padStart(2, "0");
   const hh = String(now.getHours()).padStart(2, "0");
   const min = String(now.getMinutes()).padStart(2, "0");
-  return `${yyyy}${mm}${dd}_${hh}${min}`;
+  const ss = String(now.getSeconds()).padStart(2, "0");
+  return `${yyyy}${mm}${dd}_${hh}${min}${ss}`;
 }
 
 function getDate() {
@@ -87,7 +88,7 @@ const momentFileTemplate = `{
   <!-- Top statistics buttons -->
   <div
     id="dashboard-tabs"
-    class="flex flex-col sm:flex-row w-full overflow-hidden relative card-base px-9 py-6 mb-4 *:transition-all"
+    class="flex flex-col sm:flex-row w-full overflow-hidden relative card-base px-9 py-6 mb-4"
   >
     {
       dashboardTopItems.map((item, index) => (
@@ -284,14 +285,15 @@ const momentFileTemplate = `{
 
   <!-- Tab switch script -->
   <script type="module">
-    // Get all buttons and sections
     const buttons = document.querySelectorAll("#dashboard-tabs button");
     const sections = document.querySelectorAll(".tab-section");
 
-    // Set default active tab
-    let activeTab = "posts";
+    // Read last active tab from localStorage, default to "posts"
+    let activeTab = localStorage.getItem("dashboardActiveTab") || "posts";
+
+    // Show the correct section and button opacity
     sections.forEach(
-      (s) => (s.style.display = s.id === "tab-posts" ? "flex" : "none")
+      (s) => (s.style.display = s.id === "tab-" + activeTab ? "flex" : "none")
     );
     buttons.forEach(
       (b) => (b.style.opacity = b.dataset.tab === activeTab ? "1" : "0.6")
@@ -301,6 +303,10 @@ const momentFileTemplate = `{
     buttons.forEach((btn) => {
       btn.addEventListener("click", () => {
         activeTab = btn.dataset.tab;
+
+        // Save the current tab to localStorage
+        localStorage.setItem("dashboardActiveTab", activeTab);
+
         sections.forEach(
           (s) =>
             (s.style.display = s.id === "tab-" + activeTab ? "flex" : "none")

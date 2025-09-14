@@ -1,9 +1,9 @@
 <section>
   <script src="https://giscus.app/client.js"
-    data-repo={giscusConfig.repo}
-    data-repo-id={giscusConfig.repoId}
-    data-category={giscusConfig.category}
-    data-category-id={giscusConfig.categoryId}
+    data-repo={commentConfig.giscus.repo}
+    data-repo-id={commentConfig.giscus.repoId}
+    data-category={commentConfig.giscus.category}
+    data-category-id={commentConfig.giscus.categoryId}
     data-mapping="pathname"
     data-strict="0"
     data-reactions-enabled="0"
@@ -18,7 +18,7 @@
 </section>
 
 <script>
-import { giscusConfig } from '@/config'
+import { commentConfig } from '@/config'
 
 function detectGiscusTheme() {
   return document.documentElement.classList.contains('dark') ? 'noborder_gray' : 'noborder_light'

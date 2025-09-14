@@ -119,10 +119,16 @@ export const licenseConfig: LicenseConfig = {
   url: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
 };
 
-export const giscusConfig = {
-  // generate from https://giscus.app/
-  repo: "silvaire-qwq/Website",
-  repoId: "R_kgDONDiNmg",
-  category: "Announcements",
-  categoryId: "DIC_kwDONDiNms4CkxsX",
-};
+export const commentConfig = {
+  platform: "giscus",
+  giscus: {
+    // generate from https://giscus.app/
+    repo: "silvaire-qwq/Website",
+    repoId: "R_kgDONDiNmg",
+    category: "Announcements",
+    categoryId: "DIC_kwDONDiNms4CkxsX",
+  },
+  twikoo: {
+    envId: '',
+  },
+}
