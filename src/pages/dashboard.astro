@@ -27,6 +27,90 @@ const dashboardTopItems = [
   },
 ];
 
+function getTotalCharCount(posts: typeof postData): number {
+  return posts.reduce((sum, post) => {
+    if (!post.content) return sum;
+
+    let count = 0;
+    for (const char of post.content) {
+      if (/[\u4e00-\u9fff]/.test(char)) {
+        // 中文按 1 个字
+        count += 1;
+      } else if (/[a-zA-Z0-9]/.test(char)) {
+        // 英文和数字按 2 个算 1 个字
+        count += 0.5;
+      } else {
+        // 其他符号按 0.5 个算 1 个字
+        count += 0.5;
+      }
+    }
+
+    return sum + count;
+  }, 0);
+}
+
+// 计算距今天最近更新天数
+function getDaysSinceLastUpdate(posts: typeof postData): number {
+  if (!posts.length) return 0;
+  const latest = posts
+    .map((p) => new Date(p.published).getTime())
+    .reduce((a, b) => Math.max(a, b));
+  const now = Date.now();
+  return Math.floor((now - latest) / (1000 * 60 * 60 * 24));
+}
+
+// 计算平均更新频率（单位：天）
+function getUpdateFrequency(posts: typeof postData): number {
+  if (posts.length < 2) return 0;
+  const sorted = posts
+    .map((p) => new Date(p.published).getTime())
+    .sort((a, b) => a - b);
+
+  let totalDiff = 0;
+  for (let i = 1; i < sorted.length; i++) {
+    totalDiff += sorted[i] - sorted[i - 1];
+  }
+  const avgDiffMs = totalDiff / (sorted.length - 1);
+  return Math.round(avgDiffMs / (1000 * 60 * 60 * 24));
+}
+
+function getDaysSinceFirstUpdate(posts: typeof postData): number {
+  if (!posts.length) return 0;
+  const firstDate = new Date(
+    Math.min(...posts.map((p) => new Date(p.published).getTime()))
+  );
+  const now = new Date();
+  const diffMs = now.getTime() - firstDate.getTime();
+  return Math.floor(diffMs / (1000 * 60 * 60 * 24));
+}
+
+const postContent = [
+  {
+    title: "字数",
+    icon: "material-symbols:text-snippet-outline-rounded",
+    content: getTotalCharCount(postData),
+    key: "posts",
+  },
+  {
+    title: "距上次更新",
+    icon: "material-symbols:calendar-clock-outline-rounded",
+    content: getDaysSinceLastUpdate(postData) + "d",
+    key: "lastUpdate",
+  },
+  {
+    title: "平均更新频率",
+    icon: "material-symbols:edit-calendar-outline-rounded",
+    content: getUpdateFrequency(postData) + "d",
+    key: "updateFrequency",
+  },
+  {
+    title: "距离第一次更新",
+    icon: "material-symbols:calendar-month-outline-rounded",
+    content: getDaysSinceFirstUpdate(postData) + "d",
+    key: "firstUpdate",
+  },
+];
+
 const sortedPosts = [...postData].sort(
   (a, b) => new Date(b.published).getTime() - new Date(a.published).getTime()
 );
@@ -39,24 +123,42 @@ const sortedLinks = [...links].sort((a, b) =>
   a.fileName.localeCompare(b.fileName)
 );
 
-function getTimeString() {
+function getTimeString(): string {
   const now = new Date();
-  const yyyy = now.getFullYear();
-  const mm = String(now.getMonth() + 1).padStart(2, "0");
-  const dd = String(now.getDate()).padStart(2, "0");
-  const hh = String(now.getHours()).padStart(2, "0");
-  const min = String(now.getMinutes()).padStart(2, "0");
-  const ss = String(now.getSeconds()).padStart(2, "0");
-  return `${yyyy}${mm}${dd}_${hh}${min}${ss}`;
+  const parts = new Intl.DateTimeFormat("zh-CN", {
+    timeZone: "Asia/Shanghai",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).formatToParts(now);
+
+  const get = (type: string) =>
+    parts.find((p) => p.type === type)?.value ?? "00";
+
+  return `${get("year")}${get("month")}${get("day")}_${get("hour")}${get("minute")}`;
 }
 
-function getDate() {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, "0");
-  const day = String(today.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
+function getDate(): string {
+  const now = new Date();
+  const parts = new Intl.DateTimeFormat("zh-CN", {
+    timeZone: "Asia/Shanghai",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(now);
+
+  const get = (type: string) =>
+    parts.find((p) => p.type === type)?.value ?? "00";
+
+  return `${get("year")}-${get("month")}-${get("day")}`;
 }
+
+// 测试
+console.log(getTimeString()); // 20250914_1955
+console.log(getDate()); // 2025-09-14
 
 const postFileTemplate = `---
 title:
@@ -101,10 +203,10 @@ const momentFileTemplate = `{
               name={item.icon}
               class="w-6 h-6 text-neutral-900 dark:text-neutral-100"
             />
-            <div class="text-xl text-neutral-900 dark:text-neutral-100 ml-3 font-semibold">
+            <div class=" text-neutral-900 dark:text-neutral-100 ml-3 font-semibold">
               {item.title}
             </div>
-            <div class="text-xl text-neutral-400 dark:text-neutral-600 ml-auto">
+            <div class=" text-neutral-400 dark:text-neutral-600 ml-auto">
               {item.content}
             </div>
           </button>
@@ -147,8 +249,18 @@ const momentFileTemplate = `{
           <span class="text-neutral-700 dark:text-neutral-300 font-semibold overflow-hidden whitespace-nowrap text-ellipsis pr-10">
             {post.title}
           </span>
+
           <a
             class="p-1 rounded-md ml-auto transition-colors"
+            href={`${siteConfig.domain[0]}${post.url}`}
+          >
+            <Icon
+              name="fluent:open-12-regular"
+              class="text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all"
+            />
+          </a>
+          <a
+            class="p-1 rounded-md ml-2 transition-colors"
             href={`https://github.com/${siteConfig.editPost.repo}/edit/main/src/content${post.url}.md`}
           >
             <Icon
@@ -166,6 +278,30 @@ const momentFileTemplate = `{
             />
           </a>
         </div>
+      ))
+    }
+  </div>
+
+  <div
+    id="tab-posts"
+    class="tab-section card-base z-10 px-9 py-6 relative w-full flex flex-col gap-3.5 mb-4"
+  >
+    {
+      postContent.map((item) => (
+        <>
+          <div class="flex">
+            <Icon
+              name={item.icon}
+              class="relative top-[3px] mr-3 text-neutral-700 dark:text-neutral-300 transition-all"
+            />
+            <div class="font-semibold text-neutral-700 dark:text-neutral-300 transition-all">
+              {item.title}
+            </div>
+            <div class="ml-auto text-neutral-500 dark:text-neutral-500 transition-all">
+              {item.content}
+            </div>
+          </div>
+        </>
       ))
     }
   </div>
@@ -207,6 +343,15 @@ const momentFileTemplate = `{
           </span>
           <a
             class="p-1 rounded-md ml-auto transition-colors"
+            href={`${link.link}`}
+          >
+            <Icon
+              name="fluent:open-12-regular"
+              class="text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all"
+            />
+          </a>
+          <a
+            class="p-1 rounded-md ml-2 transition-colors"
             href={`https://github.com/${siteConfig.editPost.repo}/edit/main/src/config/friends/${link.fileName}`}
           >
             <Icon
@@ -260,8 +405,18 @@ const momentFileTemplate = `{
           <span class="text-neutral-700 dark:text-neutral-300 font-semibold overflow-hidden whitespace-nowrap text-ellipsis pr-10">
             {m.content}
           </span>
-          <a
+          <button
             class="p-1 rounded-md ml-auto transition-colors"
+            onclick="navigator.clipboard.writeText(this.dataset.content).then(()=>console.log('Copied!'))"
+            data-content={m.content}
+          >
+            <Icon
+              name="fluent:copy-16-regular"
+              class="text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all"
+            />
+          </button>
+          <a
+            class="p-1 rounded-md ml-2 transition-colors"
             href={`https://github.com/${siteConfig.editPost.repo}/edit/main/src/config/moments/${m.fileName}`}
           >
             <Icon
