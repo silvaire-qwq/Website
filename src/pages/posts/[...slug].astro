@@ -14,7 +14,6 @@ import ImageWrapper from "../../components/misc/ImageWrapper.astro";
 import { profileConfig, siteConfig, commentConfig } from "../../config";
 import { formatDateToYYYYMMDD } from "../../utils/date-utils";
 import Comments from "@components/widget/Comments.svelte";
-import Comment from "@components/comment/index.astro";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("posts", ({ data }) => {
@@ -232,9 +231,7 @@ function formatUrl(url: string): string {
 
   { commentConfig.platform == "giscus" ? (
     <Comments client:only="svelte" />
-  ) : (
-    <Comment post={entry} />
-  )}
+  ) : true}
 
   <div
     class="flex flex-col md:flex-row justify-between mb-4 gap-4 overflow-hidden w-full"

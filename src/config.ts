@@ -128,7 +128,4 @@ export const commentConfig = {
     category: "Announcements",
     categoryId: "DIC_kwDONDiNms4CkxsX",
   },
-  twikoo: {
-    envId: '',
-  },
 }
