@@ -1,91 +1,86 @@
-export const links: { title: string; link: string; desc: string; img: string }[] = [
+export const links: { fileName: string; title: string; link: string; desc: string; img: string }[] = [
   {
-    title: "添加友情链接",
-    link: "https://github.com/silvaire-qwq/Website/issues/new?template=add-link.yaml",
-    desc: "仅用于添加友情链接，申请后自动添加。我的信息可见关于页面，谢谢。",
-    img: "https://pic2.zhimg.com/50/v2-cc1a32fcb444fc9d5e23f2ee078dc6e1_720w.jpg?source=1940ef5c"
-  },
-  {
-    title: "Ariasaka",
-    link: "https://blog.yaria.top/",
-    desc: "人有悲欢离合，月有阴晴圆缺。",
-    img: "https://wsrv.nl/?url=avatars.githubusercontent.com/u/66897357?v=4",
-  },
-  {
-    title: "LeonXie",
-    link: "https://leonxie.cn/",
-    desc: "保持热爱，奔赴山海！",
-    img: "https://www.leonxie.cn/upload/avatar.jpg",
-  },
-  {
-    title: "Genshin Impact",
-    link: "https://genshinimpact.net/",
-    desc: "这里是一张起始页",
-    img: "https://genshinimpact.net/img/yuanshen_logo.jpg",
-  },
-  {
-    title: "YuanRetro",
-    link: "https://www.yuanshen.dev/",
-    desc: "这是一个成分复杂的小站哦~",
-    img: "https://www.yuanshen.dev/img/nahida.png"
-  },
-  // 失效：
-  // {
-  //   title: "CE-RAMOS",
-  //   link: "https://ce-ramos.cn/",
-  //   desc: "一款致力于模仿原版系统界面且功能强大的PE。",
-  //   img: "https://p1.ce-ramos.cn/logo.png",
-  // },
-  {
-    title: "青稚",
-    link: "https://blog.linux-qitong.top/",
-    desc: "越努力，越幸运。",
-    img: "https://blog.linux-qitong.top/img/avatar.webp",
-  },
-  {
-    title: "张洪 Heo",
-    link: "https://blog.zhheo.com/",
-    desc: "分享设计与科技生活。",
-    img: "https://bu.dusays.com/2022/12/28/63ac2812183aa.png",
-  },
-  // 单方面删除：
-  // {
-  //   title: "Royの主页",
-  //   link: "https://www.royofficial.com/",
-  //   img: "https://pic1.afdiancdn.com/user/72a9af182cec11ed97b352540025c377/avatar/bb5ce165f9f1a04b0b098fc365c36f3c_w1080_h1200_s712.jpeg?imageView2/1/w/120/h/120",
-  //   desc: "一个平平无奇的主页",
-  // },
-  {
-    title: "Shenley 的存档点",
-    link: "http://blog.ykrazy.top/",
-    desc: "随手存个档～",
-    img: "https://blog.ykrazy.top/avatar.jpg",
-  },
-  {
-    title: "Pinpe 的云端",
-    link: "https://pinpe.top",
-    desc: "一个属于自己的云朵。",
-    img: "https://pinpe.top/head.jpg",
-  },
-  {
-    title: "芸汐酱",
-    link: "https://awa.2085.fun/",
-    desc: "人类的伟大在于面对死亡之时的崇高姿态",
-    img: "https://wsrv.nl/?url=avatars.githubusercontent.com/u/140612774?v=4",
-  }, 
-  {
+    fileName: "619Blog.json",
     title: "𝟞𝟙𝟡'𝕤 𝔹𝕃𝕆𝔾",
     link: "https://66619.eu.org",
     desc: "𝓙𝓾𝓼𝓽 𝓪 𝓬𝓵𝓸𝓾𝓭.",
     img: "https://wsrv.nl/?url=avatars.githubusercontent.com/u/65111206?v=4",
   },
   {
+    fileName: "AddLink.json",
+    title: "添加友情链接",
+    link: "https://github.com/silvaire-qwq/Website/issues/new?template=add-link.yaml",
+    desc: "仅用于添加友情链接，我的信息可见关于页面，多谢惠顾～",
+    img: "https://pic2.zhimg.com/50/v2-cc1a32fcb444fc9d5e23f2ee078dc6e1_720w.jpg?source=1940ef5c",
+  },
+  {
+    fileName: "Android.json",
     title: "Android",
     link: "https://android99.com",
     desc: "边缘矩阵",
     img: "https://android99.com/img/avatar.png",
   },
-  
-  
-
+  {
+    fileName: "Ariasaka.json",
+    title: "Ariasaka",
+    link: "https://blog.yaria.top/",
+    desc: "人有悲欢离合，月有阴晴圆缺。",
+    img: "https://wsrv.nl/?url=avatars.githubusercontent.com/u/66897357?v=4",
+  },
+  {
+    fileName: "GenshinImpact.json",
+    title: "Genshin Impact",
+    link: "https://genshinimpact.net/",
+    desc: "这里是一张起始页",
+    img: "https://genshinimpact.net/img/yuanshen_logo.jpg",
+  },
+  {
+    fileName: "LeonXie.json",
+    title: "LeonXie",
+    link: "https://leonxie.cn/",
+    desc: "保持热爱，奔赴山海！",
+    img: "https://www.leonxie.cn/upload/avatar.jpg",
+  },
+  {
+    fileName: "Pinpe.json",
+    title: "Pinpe 的云端",
+    link: "https://pinpe.top",
+    desc: "一个属于自己的云朵。",
+    img: "https://pinpe.top/head.jpg",
+  },
+  {
+    fileName: "QingZhi.json",
+    title: "青稚",
+    link: "https://blog.linux-qitong.top/",
+    desc: "越努力，越幸运。",
+    img: "https://blog.linux-qitong.top/img/avatar.webp",
+  },
+  {
+    fileName: "Shenley.json",
+    title: "Shenley 的存档点",
+    link: "http://blog.ykrazy.top/",
+    desc: "随手存个档～",
+    img: "https://blog.ykrazy.top/avatar.jpg",
+  },
+  {
+    fileName: "YuanRetro.json",
+    title: "YuanRetro",
+    link: "https://www.yuanshen.dev/",
+    desc: "这是一个成分复杂的小站哦~",
+    img: "https://www.yuanshen.dev/img/nahida.png",
+  },
+  {
+    fileName: "YunXiJiang.json",
+    title: "芸汐酱",
+    link: "https://awa.2085.fun/",
+    desc: "人类的伟大在于面对死亡之时的崇高姿态",
+    img: "https://wsrv.nl/?url=avatars.githubusercontent.com/u/140612774?v=4",
+  },
+  {
+    fileName: "ZhangHongHeo.json",
+    title: "张洪 Heo",
+    link: "https://blog.zhheo.com/",
+    desc: "分享设计与科技生活。",
+    img: "https://bu.dusays.com/2022/12/28/63ac2812183aa.png",
+  }
 ];

@@ -33,7 +33,6 @@ import { ref, onMounted, onBeforeUnmount } from "vue";
 import { links } from "../../config/friend";
 
 const validLinks = links
-    .filter((l) => l.title !== "添加友情链接")
     .map((l, index) => ({ ...l, id: index }));
 
 const friend = ref(validLinks[Math.floor(Math.random() * validLinks.length)]);

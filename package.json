@@ -3,13 +3,13 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "node scripts/post-list.js && astro dev",
-    "start": "node scripts/post-list.js && astro dev",
-    "build": "node scripts/post-list.js && astro build",
+    "dev": "node scripts/generateData.js && astro dev",
+    "start": "node scripts/generateData.js && astro dev",
+    "build": "node scripts/generateData.js && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "type-check": "tsc --noEmit --isolatedDeclarations",
-    "gen-list": "node scripts/post-list.js",
+    "gen-list": "node scripts/generateData.js",
     "format": "biome format --write ./src",
     "lint": "biome check --apply ./src",
     "preinstall": "npx only-allow pnpm"
