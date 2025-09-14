@@ -1,127 +1,138 @@
 ---
-import { Icon } from 'astro-icon/components'
-import DisplaySettings from './widget/DisplaySettings.svelte'
-import { LinkPreset, type NavBarLink } from '../types/config'
-import { navBarConfig, siteConfig } from '../config'
-import NavMenuPanel from './widget/NavMenuPanel.astro'
-import Search from './Search.svelte'
-import { LinkPresets } from '../constants/link-presets'
-import LightDarkSwitch from './LightDarkSwitch.svelte'
-import { url } from '../utils/url-utils'
+import { Icon } from "astro-icon/components";
+import DisplaySettings from "./widget/DisplaySettings.svelte";
+import { LinkPreset, type NavBarLink } from "../types/config";
+import { navBarConfig, siteConfig } from "../config";
+import NavMenuPanel from "./widget/NavMenuPanel.astro";
+import Search from "./Search.svelte";
+import { LinkPresets } from "../constants/link-presets";
+import LightDarkSwitch from "./LightDarkSwitch.svelte";
+import { url } from "../utils/url-utils";
 
-const className = Astro.props.class
+const className = Astro.props.class;
 
-let links = navBarConfig.links.map(
-  (item: NavBarLink | LinkPreset) => {
-    if (typeof item === 'number') {
-      return LinkPresets[item]
-    }
-    return item
-  },
-)
+let links = navBarConfig.links.map((item: NavBarLink | LinkPreset) => {
+  if (typeof item === "number") {
+    return LinkPresets[item];
+  }
+  return item;
+});
 ---
 
 <div id="navbar" class="z-50 onload-animation">
-  <div class="absolute h-8 left-0 right-0 -top-8 bg-[var(--card-bg)] transition"></div>
+  <div
+    class="absolute h-8 left-0 right-0 -top-8 bg-[var(--card-bg)] transition"
+  >
+  </div>
   <div
     class:list={[
       className,
-      'card-base !overflow-visible max-w-[var(--page-width)] h-[4.5rem] !rounded-t-none mx-auto flex items-center justify-between px-4',
+      "card-base !overflow-visible max-w-[var(--page-width)] h-[4.5rem] mx-auto flex items-center justify-between px-4 !rounded-t-none",
     ]}
   >
     <!-- logo -->
     <a
-      href={url('/')}
+      href={url("/")}
       class="btn-plain scale-animation rounded-lg h-[3.25rem] px-5 font-bold active:scale-95"
     >
       <div class="flex flex-row text-[var(--primary)] items-center text-md">
-        <Icon name="fluent:animal-cat-24-regular" class="text-[1.75rem] mb-1 mr-2" />
+        <Icon
+          name="fluent:animal-cat-24-regular"
+          class="text-[1.75rem] mb-1 mr-2"
+        />
         {siteConfig.title}
       </div>
     </a>
 
     <!-- nav links (桌面端) -->
     <div class="hidden md:flex gap-2">
-      {links.map((l: any) => {
-        if (l.items) {
-          return (
-            <div class="relative dropdown-container group">
-              <button
-                class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95 flex items-center dropdown-trigger"
-                aria-expanded="false"
-                aria-haspopup="true"
-              >
-                {l.icon && <Icon name={l.icon} class="text-[1.25rem] mr-2" />}
-                {l.name}
-                <Icon
-                  name="material-symbols:keyboard-arrow-down-rounded"
-                  class="ml-1 text-[1rem] dropdown-arrow transition-transform duration-200"
-                />
-              </button>
+      {
+        links.map((l: any) => {
+          if (l.items) {
+            return (
+              <div class="relative dropdown-container group">
+                <button
+                  class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95 flex items-center dropdown-trigger"
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                >
+                  {l.icon && <Icon name={l.icon} class="text-[1.25rem] mr-2" />}
+                  {l.name}
+                  <Icon
+                    name="material-symbols:keyboard-arrow-down-rounded"
+                    class="ml-1 text-[1rem] dropdown-arrow transition-transform duration-200"
+                  />
+                </button>
 
-              <div
-                class="absolute left-0 top-full pt-2 opacity-0 invisible pointer-events-none transition-all duration-200 ease-out transform -translate-y-2 z-50"
-              >
-                <div class="bg-[var(--float-panel-bg)] rounded-2xl shadow-xl min-w-[10rem] overflow-hidden border border-black/5 dark:border-white/10">
-                  {l.items.map((sub: any) => (
-                    <a
-                      aria-label={sub.name}
-                      href={sub.external ? sub.url : url(sub.url)}
-                      target={sub.external ? '_blank' : undefined}
-                      class="flex items-center justify-between px-5 py-3 text-black/75 dark:text-white/75 hover:text-[var(--primary)] hover:bg-[var(--btn-plain-bg-hover)] transition-all duration-150 font-medium"
-                    >
-                      <div class="flex items-center">
-                        {sub.icon && <Icon name={sub.icon} class="text-[1rem] mr-2" />}
-                        {sub.name}
-                        {sub.external && (
-                          <Icon
-                            name="fa6-solid:arrow-up-right-from-square"
-                            class="text-[0.75rem] ml-1 text-black/[0.2] dark:text-white/[0.2]"
-                          />
-                        )}
-                      </div>
-                    </a>
-                  ))}
+                <div class="absolute left-0 top-full pt-2 opacity-0 invisible pointer-events-none transition-all duration-200 ease-out transform -translate-y-2 z-50">
+                  <div class="bg-[var(--float-panel-bg)] rounded-2xl shadow-xl min-w-[10rem] overflow-hidden border border-black/5 dark:border-white/10">
+                    {l.items.map((sub: any) => (
+                      <a
+                        aria-label={sub.name}
+                        href={sub.external ? sub.url : url(sub.url)}
+                        target={sub.external ? "_blank" : undefined}
+                        class="flex items-center justify-between px-5 py-3 text-black/75 dark:text-white/75 hover:text-[var(--primary)] hover:bg-[var(--btn-plain-bg-hover)] transition-all duration-150 font-medium"
+                      >
+                        <div class="flex items-center">
+                          {sub.icon && (
+                            <Icon name={sub.icon} class="text-[1rem] mr-2" />
+                          )}
+                          {sub.name}
+                          {sub.external && (
+                            <Icon
+                              name="fa6-solid:arrow-up-right-from-square"
+                              class="text-[0.75rem] ml-1 text-black/[0.2] dark:text-white/[0.2]"
+                            />
+                          )}
+                        </div>
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          )
-        }
+            );
+          }
 
-        return (
-          <a
-            aria-label={l.name}
-            href={l.external ? l.url : url(l.url)}
-            target={l.external ? '_blank' : undefined}
-            class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"
-          >
-            <div class="flex items-center">
-              {l.icon && <Icon name={l.icon} class="text-[1.25rem] mr-2" />}
-              {l.name}
-              {l.external && (
-                <Icon
-                  name="fa6-solid:arrow-up-right-from-square"
-                  class="text-[0.875rem] ml-1 text-black/[0.2] dark:text-white/[0.2]"
-                />
-              )}
-            </div>
-          </a>
-        )
-      })}
+          return (
+            <a
+              aria-label={l.name}
+              href={l.external ? l.url : url(l.url)}
+              target={l.external ? "_blank" : undefined}
+              class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"
+            >
+              <div class="flex items-center">
+                {l.icon && <Icon name={l.icon} class="text-[1.25rem] mr-2" />}
+                {l.name}
+                {l.external && (
+                  <Icon
+                    name="fa6-solid:arrow-up-right-from-square"
+                    class="text-[0.875rem] ml-1 text-black/[0.2] dark:text-white/[0.2]"
+                  />
+                )}
+              </div>
+            </a>
+          );
+        })
+      }
     </div>
 
     <!-- right side: search + settings -->
     <div class="flex">
       <Search client:load />
-      {!siteConfig.themeColor.fixed && (
-        <button
-          aria-label="Display Settings"
-          class="btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90"
-          id="display-settings-switch"
-        >
-          <Icon name="material-symbols:palette-outline" class="text-[1.25rem]" />
-        </button>
-      )}
+      {
+        !siteConfig.themeColor.fixed && (
+          <button
+            aria-label="Display Settings"
+            class="btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90"
+            id="display-settings-switch"
+          >
+            <Icon
+              name="material-symbols:palette-outline"
+              class="text-[1.25rem]"
+            />
+          </button>
+        )
+      }
       <LightDarkSwitch client:load />
       <button
         aria-label="Menu"
@@ -134,8 +145,8 @@ let links = navBarConfig.links.map(
     </div>
 
     <!-- 移动端菜单面板 -->
-    <NavMenuPanel links={links}></NavMenuPanel>
-    <DisplaySettings client:only="svelte"></DisplaySettings>
+    <NavMenuPanel links={links} />
+    <DisplaySettings client:only="svelte" />
   </div>
 </div>
 
@@ -153,43 +164,44 @@ let links = navBarConfig.links.map(
     pointer-events: auto;
     transform: translateY(0);
   }
-  
 </style>
 
 <script>
   function switchTheme() {
-    if (localStorage.theme === 'dark') {
-      document.documentElement.classList.remove('dark')
-      localStorage.theme = 'light'
+    if (localStorage.theme === "dark") {
+      document.documentElement.classList.remove("dark");
+      localStorage.theme = "light";
     } else {
-      document.documentElement.classList.add('dark')
-      localStorage.theme = 'dark'
+      document.documentElement.classList.add("dark");
+      localStorage.theme = "dark";
     }
   }
 
   function loadButtonScript() {
-    let switchBtn = document.getElementById('scheme-switch')
+    let switchBtn = document.getElementById("scheme-switch");
     if (switchBtn) {
-      switchBtn.addEventListener('click', switchTheme)
+      switchBtn.addEventListener("click", switchTheme);
     }
 
-    let settingBtn = document.getElementById('display-settings-switch')
+    let settingBtn = document.getElementById("display-settings-switch");
     if (settingBtn) {
-      settingBtn.addEventListener('click', function () {
-        let settingPanel = document.getElementById('display-setting')
-        if (settingPanel) settingPanel.classList.toggle('float-panel-closed')
-      })
+      settingBtn.addEventListener("click", function () {
+        let settingPanel = document.getElementById("display-setting");
+        if (settingPanel) settingPanel.classList.toggle("float-panel-closed");
+      });
     }
 
-    let menuBtn = document.getElementById('nav-menu-switch')
+    let menuBtn = document.getElementById("nav-menu-switch");
     if (menuBtn) {
-      menuBtn.addEventListener('click', function () {
-        let menuPanel = document.getElementById('nav-menu-panel')
-        if (menuPanel) menuPanel.classList.toggle('float-panel-closed')
-      })
+      menuBtn.addEventListener("click", function () {
+        let menuPanel = document.getElementById("nav-menu-panel");
+        if (menuPanel) menuPanel.classList.toggle("float-panel-closed");
+      });
     }
   }
 
-  loadButtonScript()
-  document.addEventListener('astro:after-swap', () => loadButtonScript(), { once: false })
+  loadButtonScript();
+  document.addEventListener("astro:after-swap", () => loadButtonScript(), {
+    once: false,
+  });
 </script>

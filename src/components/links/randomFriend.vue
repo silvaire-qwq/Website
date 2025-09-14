@@ -1,10 +1,9 @@
 <template>
-    <a class="card-base z-10 relative w-full rounded-2xl h-[250px] overflow-hidden" :href="friend.link"
-        target="_blank">
+    <a class="card-base z-10 relative w-full rounded-2xl h-[250px] overflow-hidden" :href="friend.link" target="_blank">
         <!-- 背景 + 标题同时淡入淡出 -->
         <transition name="fade-bg-title" mode="out-in">
             <div :key="friend.id" class="relative h-full w-full">
-                <div class="absolute top-0 bottom-0 right-0 w-[60%] bg-cover bg-center opacity-50 blur-[2px] rounded-2xl"
+                <div class="absolute top-0 bottom-0 right-0 w-[80%] bg-cover bg-center opacity-50 blur-[2px] rounded-2xl"
                     :style="{ backgroundImage: `url(${friend.img})` }">
                     <!-- 渐变层永远存在 -->
                     <div class="absolute inset-0" :style="{

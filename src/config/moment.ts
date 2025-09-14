@@ -128,5 +128,10 @@ export const momentsData: { date: string, time: string, content: string }[] = [
     date: "2025-09-13",
     time: "07:33",
     content: "虽然别人的生活比自己幸福多了，但是不要去羡慕别人了！做好自己！！！！♥️"
+  },
+  {
+    date: "2025-09-14",
+    time: "08:05",
+    content: "fuwari泛滥了，不如我换回vp吧，呜呜呜呜呜呜呜"
   }
 ]
